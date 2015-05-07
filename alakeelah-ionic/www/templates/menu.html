@@ -50,25 +50,9 @@
         <ion-item>
  			<h1 class="sub-title">صفحات</h1>
  		</ion-item >
- 		<ion-item nav-clear menu-close href="#/app/houseyn">
-          حسينيات
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/speachers">
-          خطباء
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/tales">
-          روايد
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/poets">
-          شعراء
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/commercial">
-          تجارية
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/other">
-          أخرى
-        </ion-item>
-        
+ 		<ion-item nav-clear menu-close ng-repeat="p in pageList" href="#/app/pageView/{{p.id}}" >
+          {{ p.name }}
+        </ion-item>        
         <ion-item>
  			<h1 class="sub-title">التواصل الاجتماعي</h1>
  		</ion-item >
