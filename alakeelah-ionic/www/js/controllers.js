@@ -45,5 +45,6 @@ angular.module('starter.controllers', [])
 	$scope.pageName = 'Page' + $stateParams.pageId;
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('mainCtrl', function($scope, $stateParams) {
+	$scope.mainSlides=[{title: 'slide1'}, {title: 'slide2'}, {title: 'slide3'}];
 });
