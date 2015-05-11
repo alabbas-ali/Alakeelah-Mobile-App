@@ -3,7 +3,7 @@
 	xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 	<name>Alakeelah</name>
 	<description>Alakeelah TV</description>
-	<author email="yahya.alfayad@gmail.com" href="">Yahya Alfayad </author>
+	<author email="yahya.alfayad@gmail.com" href="">Yahya Alfayad</author>
 	<content src="index.html" />
 	<access origin="*" />
 	<preference name="webviewbounce" value="false" />

@@ -102,15 +102,6 @@ angular.module('starter', [ 'ionic', 'starter.controllers' ])
 		}
 	})
 
-	.state('app.houseyn', {
-		url : "/houseyn",
-		views : {
-			'menuContent' : {
-				templateUrl : "templates/houseyn.html",
-			}
-		}
-	})
-
 	.state('app.speachers', {
 		url : "/speachers",
 		views : {
