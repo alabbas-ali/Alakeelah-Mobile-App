@@ -24,7 +24,7 @@ angular
 
 					ionic.Platform
 							.ready(function() {
-
+								alert('platform is ready');
 								var endIntro = function() {
 									$ionicHistory.nextViewOptions({
 										disableAnimate: true,
