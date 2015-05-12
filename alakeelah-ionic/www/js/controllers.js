@@ -1,6 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+
 	$scope.pageList = [ {
 		id : 1,
 		name : 'page1'
@@ -16,24 +17,36 @@ angular.module('starter.controllers', [])
 	$scope.pageName = 'Page' + $stateParams.pageId;
 })
 
-.controller('introVidCtrl', function($scope) {
-	
-	$scope.intro = true;
-	var videoUrl;
+.controller('introVidCtrl', function($scope, $cordovaMedia) {
 
-	if (ionic.Platform.isAndroid()) {
-		videoUrl = "android.resource://com.alakeela/raw/intro";
-	} else {
-		videoUrl = "vid/intro.m4v";
-	}
+	ionic.Platform.ready(function() {
 
-	var videoTag = document.getElementById("intro_video");
-	videoTag.src = videoUrl;
-	videoTag.onended = function() {
-		$("#videoDiv").hide();
-		$("#contentDiv").show();
-	}
-	videoTag.play();
+		var endIntro = function() {
+			$("#introDiv").hide();
+			$("#content-wrapper").show();
+		};
+
+		try {
+
+			var introAudioSrc;
+			if (ionic.Platform.isAndroid()) {
+				introAudioSrc = '/android_asset/www/intro/intro.mp2';
+			} else {
+				introAudioSrc = 'intro/intro.mp2';
+			}
+
+			var introAudio = new Media(introAudioSrc, null, null, null);
+			introAudio.play();
+
+			setTimeout(function() {
+				endIntro();
+			}, 10000);
+
+		} catch (e) {
+			console.log(e);
+			endIntro();
+		}
+	});
 
 })
 
