@@ -1,61 +1,67 @@
-angular.module('starter.controllers', [])
+angular
+		.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+		.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
-	$scope.pageList = [ {
-		id : 1,
-		name : 'page1'
-	}, {
-		id : 2,
-		name : 'page2'
-	} ];
+			$scope.pageList = [ {
+				id : 1,
+				name : 'page1'
+			}, {
+				id : 2,
+				name : 'page2'
+			} ];
 
-})
+		})
 
-.controller('pageViewCtrl', function($scope, $stateParams) {
-	$scope.pageId = $stateParams.pageId;
-	$scope.pageName = 'Page' + $stateParams.pageId;
-})
+		.controller('pageViewCtrl', function($scope, $stateParams) {
+			$scope.pageId = $stateParams.pageId;
+			$scope.pageName = 'Page' + $stateParams.pageId;
+		})
 
-.controller('introVidCtrl', function($scope, $cordovaMedia) {
+		.controller(
+				'introVidCtrl',
+				function($scope, $cordovaMedia, $state, $ionicViewService) {
 
-	ionic.Platform.ready(function() {
+					ionic.Platform
+							.ready(function() {
 
-		var endIntro = function() {
-			$("#introDiv").hide();
-			$("#content-wrapper").show();
-		};
+								var endIntro = function() {
+									$ionicViewService.nextViewOptions({
+										disableBack : true
+									});
+									$state.transitionTo("app.main");
+								};
 
-		try {
+								try {
 
-			var introAudioSrc;
-			if (ionic.Platform.isAndroid()) {
-				introAudioSrc = '/android_asset/www/intro/intro.mp2';
-			} else {
-				introAudioSrc = 'intro/intro.mp2';
-			}
+									var introAudioSrc;
+									if (ionic.Platform.isAndroid()) {
+										introAudioSrc = '/android_asset/www/intro/intro.mp2';
+									} else {
+										introAudioSrc = 'intro/intro.mp2';
+									}
 
-			var introAudio = new Media(introAudioSrc, null, null, null);
-			introAudio.play();
+									var introAudio = new Media(introAudioSrc,
+											null, null, null);
+									introAudio.play();
 
-			setTimeout(function() {
-				endIntro();
-			}, 10000);
+									setTimeout(function() {
+										endIntro();
+									}, 9000);
 
-		} catch (e) {
-			console.log(e);
-			endIntro();
-		}
-	});
+								} catch (e) {
+									console.log(e);
+									endIntro();
+								}
+							});
+				})
 
-})
-
-.controller('mainCtrl', function($scope, $stateParams) {
-	$scope.mainSlides = [ {
-		title : 'slide1'
-	}, {
-		title : 'slide2'
-	}, {
-		title : 'slide3'
-	} ];
-});
+		.controller('mainCtrl', function($scope, $stateParams) {
+			$scope.mainSlides = [ {
+				title : 'slide1'
+			}, {
+				title : 'slide2'
+			}, {
+				title : 'slide3'
+			} ];
+		});

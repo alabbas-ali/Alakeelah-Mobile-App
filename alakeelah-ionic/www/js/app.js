@@ -30,6 +30,12 @@ angular.module('starter', [ 'ionic', 'starter.controllers', 'ngCordova' ])
 		templateUrl : "templates/menu.html",
 		controller : 'AppCtrl'
 	})
+	
+	.state('intro', {
+		url : "/intro",
+		templateUrl : "templates/intro.html",
+		controller : 'introVidCtrl'
+	})
 
 	.state('app.pageView', {
 		url : "/pageView/:pageId",
@@ -191,5 +197,5 @@ angular.module('starter', [ 'ionic', 'starter.controllers', 'ngCordova' ])
 		}
 	});
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/app/main');
+	$urlRouterProvider.otherwise('/intro');
 });
