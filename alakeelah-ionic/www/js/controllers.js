@@ -20,13 +20,14 @@ angular
 
 		.controller(
 				'introVidCtrl',
-				function($scope, $cordovaMedia, $state, $ionicViewService) {
+				function($scope, $cordovaMedia, $state, $ionicHistory) {
 
 					ionic.Platform
 							.ready(function() {
 
 								var endIntro = function() {
-									$ionicViewService.nextViewOptions({
+									$ionicHistory.nextViewOptions({
+										disableAnimate: true,
 										disableBack : true
 									});
 									$state.transitionTo("app.main");
