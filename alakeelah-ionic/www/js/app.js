@@ -126,51 +126,6 @@ angular
 						}
 					})
 
-					.state('app.speachers', {
-						url : "/speachers",
-						views : {
-							'menuContent' : {
-								templateUrl : "templates/speachers.html",
-							}
-						}
-					})
-
-					.state('app.tales', {
-						url : "/tales",
-						views : {
-							'menuContent' : {
-								templateUrl : "templates/tales.html",
-							}
-						}
-					})
-
-					.state('app.poets', {
-						url : "/poets",
-						views : {
-							'menuContent' : {
-								templateUrl : "templates/poets.html",
-							}
-						}
-					})
-
-					.state('app.commercial', {
-						url : "/commercial",
-						views : {
-							'menuContent' : {
-								templateUrl : "templates/commercial.html",
-							}
-						}
-					})
-
-					.state('app.other', {
-						url : "/other",
-						views : {
-							'menuContent' : {
-								templateUrl : "templates/other.html",
-							}
-						}
-					})
-
 					.state('app.facebook', {
 						url : "/facebook",
 						views : {
