@@ -20,20 +20,29 @@ angular
 
 		.controller(
 				'introVidCtrl',
-				function($scope, $cordovaMedia, $state, $ionicHistory) {
-
-					ionic.Platform
+				function($scope, $cordovaMedia, $state, $ionicHistory,
+						$ionicPlatform) {
+					
+					var endIntro = function() {
+						$ionicHistory.nextViewOptions({
+							disableAnimate : true,
+							disableBack : true
+						});
+						$state.transitionTo("app.main");
+					};
+					
+					var readyCalled = false;
+					
+					setTimeout(function() {
+						if (! readyCalled) {
+							endIntro();
+						}
+					}, 10000);
+					
+					$ionicPlatform
 							.ready(function() {
-								var endIntro = function() {
-									$ionicHistory.nextViewOptions({
-										disableAnimate: true,
-										disableBack : true
-									});
-									$state.transitionTo("app.main");
-								};
-
 								try {
-
+									readyCalled = true;
 									var introAudioSrc;
 									if (ionic.Platform.isAndroid()) {
 										introAudioSrc = '/android_asset/www/intro/intro.mp2';

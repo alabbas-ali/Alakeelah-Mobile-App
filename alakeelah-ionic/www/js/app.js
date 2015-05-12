@@ -11,10 +11,10 @@ angular
 						'pascalprecht.translate' ])
 
 		.run(
-				function($ionicPlatform, $translate) {
+				function($ionicPlatform, $translate, $state, $ionicHistory) {
 					$ionicPlatform.ready(function() {
-						alert('device is ready!');
-						// Hide the accessory bar by default (remove this to
+						// Hide the accessory bar by default (remove
+						// this to
 						// show the
 						// accessory
 						// bar above the keyboard
@@ -34,7 +34,8 @@ angular
 										$translate.use((language.value)
 												.split("-")[0]);
 									}, null);
-						}
+						} 
+
 					});
 
 				})
@@ -192,6 +193,7 @@ angular
 						instagram_msg : "انستاغرام",
 						youtube_msg : "يوتيوب"
 					});
+					
 					$translateProvider.translations("en", {
 						liveBroadcast_msg : "Live Broadcast",
 						live_msg : "Live",
@@ -210,6 +212,7 @@ angular
 						instagram_msg : "Instagram",
 						youtube_msg : "youtube"
 					});
+					
 					$translateProvider.preferredLanguage = "en";
 					$translateProvider.fallbackLanguage = "en";
 				});
