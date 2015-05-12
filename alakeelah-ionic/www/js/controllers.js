@@ -10,7 +10,6 @@ angular
 				id : 2,
 				name : 'page2'
 			} ];
-
 		})
 
 		.controller('pageViewCtrl', function($scope, $stateParams) {
