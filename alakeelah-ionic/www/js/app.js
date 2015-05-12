@@ -13,6 +13,7 @@ angular
 		.run(
 				function($ionicPlatform, $translate) {
 					$ionicPlatform.ready(function() {
+						alert('device is ready!');
 						// Hide the accessory bar by default (remove this to
 						// show the
 						// accessory
