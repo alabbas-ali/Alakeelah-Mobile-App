@@ -28,16 +28,16 @@ angular
 							StatusBar.styleDefault();
 						}
 
-						if (typeof navigator.globalization !== "undefined") {
-							navigator.globalization.getPreferredLanguage(
-									function(language) {
-										$translate.use((language.value)
-												.split("-")[0]);
-									}, null);
-						} 
-
 					});
 
+					if (typeof navigator.globalization !== "undefined") {
+						navigator.globalization.getPreferredLanguage(function(
+								language) {
+							$translate.use((language.value).split("-")[0]);
+						}, null);
+					} else {
+						$translate.use((navigator.language).split("-")[0]);
+					}
 				})
 
 		.config(
@@ -193,7 +193,7 @@ angular
 						instagram_msg : "انستاغرام",
 						youtube_msg : "يوتيوب"
 					});
-					
+
 					$translateProvider.translations("en", {
 						liveBroadcast_msg : "Live Broadcast",
 						live_msg : "Live",
@@ -212,7 +212,7 @@ angular
 						instagram_msg : "Instagram",
 						youtube_msg : "youtube"
 					});
-					
+
 					$translateProvider.preferredLanguage = "en";
 					$translateProvider.fallbackLanguage = "en";
 				});
