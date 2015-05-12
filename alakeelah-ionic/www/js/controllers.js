@@ -45,13 +45,12 @@ angular
 											null, null, null);
 									introAudio.play();
 
+								} catch (e) {
+									console.log(e);
+								} finally {
 									setTimeout(function() {
 										endIntro();
 									}, 9000);
-
-								} catch (e) {
-									console.log(e);
-									endIntro();
 								}
 							});
 				})
