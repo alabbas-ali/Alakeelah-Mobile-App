@@ -219,11 +219,41 @@ angular
 					$urlRouterProvider.otherwise('/intro');
 
 					$translateProvider.translations("ar", {
-						main_msg : "الريسية"
+						liveBroadcast_msg : "البث المباشر",
+						live_msg : "مباشر",
+						frequency_msg : "التردد",
+						broadcastTable_msg : "جدول البث",
+						divisions_msg : "الاقسام",
+						home_msg : "الريسية",
+						news_msg : "الاخبار",
+						videos_msg : "الفيديوهات",
+						sounds_msg : "الصوتيات",
+						gallery_msg : "الصور",
+						pages_msg : "صفحات",
+						socialNetworks_msg : "التواصل الاجتماعي",
+						facebook_msg : "فيسبوك",
+						twitter_msg : "تويتر",
+						instagram_msg : "انستاغرام",
+						youtube_msg : "يوتيوب"
 					});
 					$translateProvider.translations("en", {
-						main_msg : "Main Page"
+						liveBroadcast_msg : "Live Broadcast",
+						live_msg : "Live",
+						frequency_msg : "Frequency",
+						broadcastTable_msg : "Broadcast Scheduler",
+						divisions_msg : "Divisions",
+						home_msg : "Home",
+						news_msg : "News",
+						videos_msg : "Videos",
+						sounds_msg : "Audios",
+						gallery_msg : "Gallery",
+						pages_msg : "Pages",
+						socialNetworks_msg : "Social Networks",
+						facebook_msg : "Facebook",
+						twitter_msg : "Twitter",
+						instagram_msg : "Instagram",
+						youtube_msg : "youtube"
 					});
-					$translateProvider.preferredLanguage = "ar";
+					$translateProvider.preferredLanguage = "en";
 					$translateProvider.fallbackLanguage = "en";
 				});

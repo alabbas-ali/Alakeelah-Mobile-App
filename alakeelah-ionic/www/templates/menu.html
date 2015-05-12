@@ -16,57 +16,57 @@
     <ion-content>
       <ion-list>
       	<ion-item>
- 			<h1 class="sub-title">البث المباشر</h1>
+ 			<h1 class="sub-title">{{ 'liveBroadcast_msg' | translate }}</h1>
  		</ion-item >
         <ion-item nav-clear menu-close href="#/app/liveBroadcast">
-          مباشر
+          {{ 'live_msg' | translate }}
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/frequency">
-          التردد
+          {{ 'frequency_msg' | translate }}
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/broadcastTable">
-          جدول البث
+          {{ 'broadcastTable_msg' | translate }}
         </ion-item>
  		<ion-item>
- 			<h1 class="sub-title">الاقسام</h1>
+ 			<h1 class="sub-title">{{ 'divisions_msg' | translate }}</h1>
  		</ion-item >
         
         <ion-item nav-clear menu-close href="#/app/main">
-          الريسية
+          {{ 'home_msg' | translate }}
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/news">
-          الاخبار
+          {{ 'news_msg' | translate }}
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/videos">
-          الفيديوهات
+          {{ 'videos_msg' | translate }}
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/sounds">
-          الصوتيات
+          {{ 'sounds_msg' | translate }}
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/pictures">
-          الصور
+          {{ 'gallery_msg' | translate }}
         </ion-item>
         
         <ion-item>
- 			<h1 class="sub-title">صفحات</h1>
+ 			<h1 class="sub-title">{{ 'pages_msg' | translate }}</h1>
  		</ion-item >
  		<ion-item nav-clear menu-close ng-repeat="p in pageList" href="#/app/pageView/{{p.id}}" >
           {{ p.name }}
         </ion-item>        
         <ion-item>
- 			<h1 class="sub-title">التواصل الاجتماعي</h1>
+ 			<h1 class="sub-title">{{ 'socialNetworks_msg' | translate }}</h1>
  		</ion-item >
  		<ion-item nav-clear menu-close href="#/app/facebook">
-          فيسبوك
+          {{ 'facebook_msg' | translate }}
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/twitter">
-          تويتر
+          {{ 'twitter_msg' | translate }}
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/instagram">
-          انستاغرام
+          {{ 'instagram_msg' | translate }}
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/youtube">
-          يوتيوب
+          {{ 'youtube_msg' | translate }}
         </ion-item>
       </ion-list>
     </ion-content>
