@@ -38,6 +38,23 @@ angular
 						}
 					}, 5000);
 
+					var initVideoIntro = function() {
+						try {
+							$("#introDiv")
+									.html(
+											'<video id="introVid" src="/intro/intro.m4v" style="width: 100%; height: 100%;" />');
+							var introVidTag = document
+									.getElementById("introVid");
+							introVidTag.addEventListener("ended", function() {
+								endIntro();
+							});
+							introVidTag.play();
+						} catch (e) {
+							console.log(e);
+							endIntro();
+						}
+					};
+
 					$ionicPlatform
 							.ready(function() {
 								readyCalled = true;
@@ -68,19 +85,7 @@ angular
 									}
 								} else {
 									// If not android, play video intro
-									try {
-										$("#introDiv")
-												.html(
-														'<video id="introVid" src="/vid/intro.m4v" style="width: 100%; height: 100%;" />');
-										var introVidTag = $("#introVid");
-										introVidTag.bind("ended", function() {
-											endIntro();
-										});
-										introVidTag.play();
-									} catch (e) {
-										console.log(e);
-										endIntro();
-									}
+									initVideoIntro();
 								}
 							});
 				})
