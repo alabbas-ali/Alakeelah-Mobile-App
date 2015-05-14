@@ -21,7 +21,7 @@ angular
 				'introVidCtrl',
 				function($scope, $cordovaMedia, $state, $ionicHistory,
 						$ionicPlatform) {
-					
+
 					var endIntro = function() {
 						$ionicHistory.nextViewOptions({
 							disableAnimate : true,
@@ -29,36 +29,58 @@ angular
 						});
 						$state.transitionTo("app.main");
 					};
-					
+
 					var readyCalled = false;
-					
+
 					setTimeout(function() {
-						if (! readyCalled) {
+						if (!readyCalled) {
 							endIntro();
 						}
-					}, 10000);
-					
+					}, 5000);
+
 					$ionicPlatform
 							.ready(function() {
-								try {
-									readyCalled = true;
-									var introAudioSrc;
-									if (ionic.Platform.isAndroid()) {
-										introAudioSrc = '/android_asset/www/intro/intro.mp2';
-									} else {
-										introAudioSrc = 'intro/intro.mp2';
+								readyCalled = true;
+								if (ionic.Platform.isAndroid()) {
+									// If android device, display GIF Image and
+									// play sound clip in background.
+									$("#introDiv")
+											.html(
+													'<img id="introImg" src="intro/intro.gif" style="width: 100%; height: 100%;" />');
+									try {
+										var introAudioSrc;
+										if (ionic.Platform.isAndroid()) {
+											introAudioSrc = '/android_asset/www/intro/intro.mp2';
+										} else {
+											introAudioSrc = 'intro/intro.mp2';
+										}
+
+										var introAudio = new Media(
+												introAudioSrc, null, null, null);
+										introAudio.play();
+
+									} catch (e) {
+										console.log(e);
+									} finally {
+										setTimeout(function() {
+											endIntro();
+										}, 9000);
 									}
-
-									var introAudio = new Media(introAudioSrc,
-											null, null, null);
-									introAudio.play();
-
-								} catch (e) {
-									console.log(e);
-								} finally {
-									setTimeout(function() {
+								} else {
+									// If not android, play video intro
+									try {
+										$("#introDiv")
+												.html(
+														'<video id="introVid" src="/vid/intro.m4v" style="width: 100%; height: 100%;" />');
+										var introVidTag = $("#introVid");
+										introVidTag.bind("ended", function() {
+											endIntro();
+										});
+										introVidTag.play();
+									} catch (e) {
+										console.log(e);
 										endIntro();
-									}, 9000);
+									}
 								}
 							});
 				})
