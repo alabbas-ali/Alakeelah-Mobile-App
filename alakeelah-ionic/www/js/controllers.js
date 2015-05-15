@@ -54,6 +54,16 @@ angular
 							endIntro();
 						}
 					};
+					
+					// ********************************
+					// Uncomment this ready block for browser and IOS Simulator
+					// tests. Note: delete www/intro folder for deployment
+
+					// $(document).ready(function() {
+					// initVideoIntro();
+					// readyCalled = true;
+					// });
+					// ********************************
 
 					$ionicPlatform
 							.ready(function() {
