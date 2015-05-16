@@ -42,9 +42,10 @@ angular
 						try {
 							$("#introDiv")
 									.html(
-											'<video id="introVid" src="/intro/intro.m4v" style="width: 100%; height: 100%;" />');
+											'<video id="introVid" style="width: 100%; height: 100%;"></video>');
 							var introVidTag = document
 									.getElementById("introVid");
+							introVidTag.src = "intro/intro.m4v";
 							introVidTag.addEventListener("ended", function() {
 								endIntro();
 							});
@@ -54,15 +55,14 @@ angular
 							endIntro();
 						}
 					};
-					
+
 					// ********************************
 					// Uncomment this ready block for browser and IOS Simulator
-					// tests. Note: delete www/intro folder for deployment
-
-					// $(document).ready(function() {
-					// initVideoIntro();
-					// readyCalled = true;
-					// });
+					// tests. Note: delete www/intro folder on deployment
+					$(document).ready(function() {
+						initVideoIntro();
+						readyCalled = true;
+					});
 					// ********************************
 
 					$ionicPlatform
