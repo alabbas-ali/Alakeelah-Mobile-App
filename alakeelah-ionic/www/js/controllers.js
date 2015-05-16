@@ -27,7 +27,7 @@ angular
 							disableAnimate : true,
 							disableBack : true
 						});
-						$state.transitionTo("app.main");
+						$state.go("app.main");
 					};
 
 					var readyCalled = false;
@@ -48,7 +48,7 @@ angular
 							introVidTag.src = "intro/intro.m4v";
 							introVidTag.addEventListener("ended", function() {
 								endIntro();
-							});
+							}, false);
 							introVidTag.play();
 						} catch (e) {
 							console.log(e);
@@ -75,13 +75,7 @@ angular
 											.html(
 													'<img id="introImg" src="intro/intro.gif" style="width: 100%; height: 100%;" />');
 									try {
-										var introAudioSrc;
-										if (ionic.Platform.isAndroid()) {
-											introAudioSrc = '/android_asset/www/intro/intro.mp2';
-										} else {
-											introAudioSrc = 'intro/intro.mp2';
-										}
-
+										var introAudioSrc = '/android_asset/www/intro/intro.mp2';
 										var introAudio = new Media(
 												introAudioSrc, null, null, null);
 										introAudio.play();
