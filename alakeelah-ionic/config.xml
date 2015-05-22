@@ -19,32 +19,38 @@
 		<param name="android-package" value="com.ionic.keyboard.IonicKeyboard" />
 		<param name="onload" value="true" />
 		<param name="ios-package" value="IonicKeyboard" />
-		<param name="id" value="com.ionic.keyboard" />
-	</feature>
+		
+	<param name="id" value="com.ionic.keyboard" /></feature>
 	<feature name="Console">
 		<param name="ios-package" value="CDVLogger" />
-		<param name="id" value="org.apache.cordova.console" />
-	</feature>
+		
+		<param name="wp-package" value="DebugConsole" />
+	<param name="id" value="org.apache.cordova.console" /></feature>
 
 	<feature name="File">
 		<param name="android-package" value="org.apache.cordova.file.FileUtils" />
 		<param name="onload" value="true" />
 		<param name="ios-package" value="CDVFile" />
+		<param name="wp-package" value="File" />
 	</feature>
 	<feature name="Media">
 		<param name="android-package" value="org.apache.cordova.media.AudioHandler" />
 		<param name="ios-package" value="CDVSound" />
 
-		<param name="id" value="org.apache.cordova.media" />
-	</feature>
+		
+		<param name="wp-package" value="Media" />
+	<param name="id" value="org.apache.cordova.media" /></feature>
 	<feature name="Device">
 		<param name="android-package" value="org.apache.cordova.device.Device" />
 		<param name="ios-package" value="CDVDevice" />
-		<param name="id" value="org.apache.cordova.device" />
-	</feature>
+		
+		<param name="wp-package" value="Device" />
+	<param name="id" value="org.apache.cordova.device" /></feature>
 	<feature name="Globalization">
 		<param name="android-package" value="org.apache.cordova.globalization.Globalization" />
 		<param name="ios-package" value="CDVGlobalization" />
+
 		
+		<param name="wp-package" value="Globalization" />
 	<param name="id" value="org.apache.cordova.globalization" /></feature>
 </widget>

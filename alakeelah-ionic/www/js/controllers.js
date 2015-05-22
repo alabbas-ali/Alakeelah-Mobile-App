@@ -5,10 +5,12 @@ angular
 
 			$scope.pageList = [ {
 				id : 1,
-				name : 'page1'
+				name : 'page1',
+				logo : 'fa-picture-o'
 			}, {
 				id : 2,
-				name : 'page2'
+				name : 'page2',
+				logo : 'fa-picture-o'
 			} ];
 		})
 

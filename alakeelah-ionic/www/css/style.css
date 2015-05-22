@@ -1,1 +1,187 @@
 /* Empty. Add your own CSS if you like */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	color: #fff;
+}
+
+.menu-content {
+	background-image: url('../img/bg.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	color: #fff;
+	text-align: right;
+	background-size: 100% 100%;
+}
+
+.pageView {
+	background-color: transparent !important;
+}
+
+.pageContent {
+	top: 0px;
+}
+
+.bar.bar-stable {
+	background: none;
+}
+
+.slide-button {
+	font-weight: bold !important;
+	color: #fff !important;
+	margin-top: 10px;
+	margin-left: 15px;
+}
+
+.slider-pager {
+	bottom: auto;
+	top: 10px;
+}
+
+.slider-pager .slider-pager-page {
+	color: #27C399;
+	opacity: 0.8;
+	font-size: 12px;
+}
+
+.slider-pager .slider-pager-page.active {
+	color: #636AAE;
+}
+
+.logo {
+	padding: 15px 10px 0px;
+	margin-left: 20px;
+}
+
+.row {
+	padding: 0px;
+}
+
+.col {
+	padding: 0px;
+}
+
+/* card */
+.card {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	background: none;
+}
+
+.card .item-divider {
+	padding: 10px 20px;
+	margin: 0 !important;
+	background-color: rgba(0, 0, 0, 0.3);
+	margin: 5px 0;
+	color: #fff;
+}
+
+.card .item-body {
+	margin-top: 5px;
+	padding: 0px 0px;
+	border-color: transparent !important;
+	background-color: transparent !important;
+	border-style: none;
+}
+
+.card .item-text-wrap {
+	margin-top: 5px;
+	padding: 0px 0px;
+	border-color: transparent !important;
+	background-color: transparent !important;
+	border-style: none;
+}
+
+.card, .list-inset {
+	margin: 10px 5px;
+}
+
+.box img {
+	width: 100%;
+}
+
+.box .title {
+	text-align: center;
+	position: absolute;
+	z-index: 999;
+	bottom: 0px;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 5px 0;
+	color: #fff;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 5px 0 10px;
+}
+
+.box .title p, .box .title h2, .box .title h3, .box .title h4 {
+	margin-top: 5px;
+}
+
+.box .title h4 .fa-newspaper-o {
+	font-size: 25px;
+}
+
+.box .title .main-title {
+	width: 60%;
+	float: left;
+}
+
+.box .title .date {
+	width: 25%;
+	float: left;
+}
+
+.box .title .date h3 {
+	font-size: 10px;
+}
+
+.box .title .main-icon {
+	width: 15%;
+	float: left;
+}
+
+/*** menu ***/
+.menu {
+	background-color: #5A0303;
+	background-image: url('../img/bg.jpg');
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	color: #fff;
+	background-size: 200% 100%;
+	box-shadow: 0 0 15px 3px #000;
+}
+
+.menu .list .item {
+	background-color: transparent;
+	border: none;
+	padding: 7px 10px;
+	color: #fff;
+	font-size: 15px;
+}
+
+.menu .list .item.menu-title {
+	background-color: rgba(255, 255, 255, 0.6);
+	padding: 10px;
+	margin: 0;
+	text-shadow: 0 0 0;
+	font-size: 20px;
+}
+
+.menu .list .item.item-complex {
+	background-color: rgba(255, 255, 255, 0.3);
+	padding: 0px;
+	list-style: none;
+	margin: 5px 15px 5px 0;
+}
+
+.menu .list .item .item-content {
+	background-color: transparent;
+}
+
+.menu .list .item.item-complex .item-content {
+	padding: 10px 49px 10px 16px;
+}
+
+.menu .list .item.item-complex .item-content .icon {
+	width: 14%;
+	float: left;
+}

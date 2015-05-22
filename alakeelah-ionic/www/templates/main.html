@@ -1,15 +1,28 @@
-<ion-view view-title="{{ 'home_msg' | translate }}"> <ion-content>
+<ion-view class="pageView" view-title=""> 
+<ion-content class="pageContent">
 <div class="row">
 	<div class="col">
 		<div class="card">
-			<div class="item item-divider">أبرز الاحداث</div>
+			<div class="item item-divider">
+				{{ 'most_public' | translate }} <i class="fa fa-star"></i>
+			</div>
 			<div class="item item-body">
-				<ion-slide-box show-pager="false"> <ion-slide
-					ng-repeat="s in mainSlides">
-				<div class="box">
-					<h1>{{ s.title }}</h1>
-				</div>
-				</ion-slide> </ion-slide-box>
+				<ion-slide-box show-pager="true"> 
+					<ion-slide ng-repeat="publicNews in mainSlides">
+						<div class="box">
+							<a href="#/app/newsdetials/{{publicNews.id}}" class="link"> 
+								<img src="img/1.jpg" />
+								<div class="title">
+									<div class="main-title"><h2>{{ publicNews.title }}</h2></div>
+									<div class="date">
+										<h3>{{ publicNews.title }}<br>{{ publicNews.title }}</h3>
+									</div>
+									<div class="main-icon"><h4><i class="fa fa-newspaper-o"></i></h4></div>
+								</div>
+							</a>
+						</div>
+					</ion-slide>
+			 	</ion-slide-box>
 			</div>
 		</div>
 	</div>
@@ -17,17 +30,34 @@
 <div class="row">
 	<div class="col">
 		<div class="card">
-			<div class="item item-divider">{{ 'videos_msg' | translate }}</div>
-			<div class="item item-text-wrap">
-				<p>Card1</p>
+			<div class="item item-divider">
+				{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>
+			</div>
+			<div class="item item-text-wrap box">
+				
+							<a href="#" class="ui-link">
+                                <img src="img/1.jpg">
+                                <div class="title">
+                                    <div class="date"><h3>6<br>{{ 'videos_msg' | translate }}</h3></div>
+                                    <div class="main-title"><h3>{{ 'videos_msg' | translate }}</h3></div>
+                                </div>
+                            </a>
 			</div>
 		</div>
 	</div>
 	<div class="col">
 		<div class="card">
-			<div class="item item-divider">{{ 'news_msg' | translate }}</div>
-			<div class="item item-text-wrap">
-				<p>Card2</p>
+			<div class="item item-divider">
+				{{ 'news_msg' | translate }} <i class="fa fa-newspaper-o"></i>
+			</div>
+			<div class="item item-text-wrap box">
+				<a href="#" class="ui-link">
+                                <img src="img/1.jpg">
+                                <div class="title">
+                                    <div class="date"><h3>6<br>{{ 'videos_msg' | translate }}</h3></div>
+                                    <div class="main-title"><h3>{{ 'videos_msg' | translate }}</h3></div>
+                                </div>
+                            </a>
 			</div>
 		</div>
 	</div>
@@ -35,19 +65,36 @@
 <div class="row">
 	<div class="col">
 		<div class="card">
-			<div class="item item-divider">{{ 'gallery_msg' | translate }}</div>
-			<div class="item item-text-wrap">
-				<p>Card3</p>
+			<div class="item item-divider">
+				{{ 'gallery_msg' | translate }} <i class="fa fa-picture-o"></i>
+			</div>
+			<div class="item item-text-wrap box">
+				<a href="#" class="ui-link">
+                                <img src="img/1.jpg">
+                                <div class="title">
+                                    <div class="date"><h3>6<br>{{ 'videos_msg' | translate }}</h3></div>
+                                    <div class="main-title"><h3>{{ 'videos_msg' | translate }}</h3></div>
+                                </div>
+                            </a>
 			</div>
 		</div>
 	</div>
 	<div class="col">
 		<div class="card">
-			<div class="item item-divider">{{ 'sounds_msg' | translate }}</div>
-			<div class="item item-text-wrap">
-				<p>Card4</p>
+			<div class="item item-divider">
+				{{ 'sounds_msg' | translate }} <i class="fa fa-microphone"></i>
+			</div>
+			<div class="item item-text-wrap box">
+				<a href="#" class="ui-link">
+                                <img src="img/1.jpg">
+                                <div class="title">
+                                    <div class="date"><h3>6<br>{{ 'videos_msg' | translate }}</h3></div>
+                                    <div class="main-title"><h3>{{ 'videos_msg' | translate }}</h3></div>
+                                </div>
+                            </a>
 			</div>
 		</div>
 	</div>
 </div>
-</ion-content> </ion-view>
+</ion-content> 
+</ion-view>

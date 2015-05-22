@@ -5,68 +5,72 @@
       </ion-nav-back-button>
 
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        <button class="button button-icon button-clear ion-navicon slide-button" menu-toggle="left">
         </button>
+        
       </ion-nav-buttons>
+      <img src="../img/logo.png" class="logo"/>
     </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
+    <ion-nav-view name="menuContent">
+    
+    </ion-nav-view>
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
     <ion-content>
       <ion-list>
-      	<ion-item>
- 			<h1 class="sub-title">{{ 'liveBroadcast_msg' | translate }}</h1>
+      	<ion-item class="menu-title">
+ 			{{ 'liveBroadcast_msg' | translate }}
  		</ion-item >
         <ion-item nav-clear menu-close href="#/app/liveBroadcast">
-          {{ 'live_msg' | translate }}
+          <div class="icon"><i class="fa fa-desktop"></i> </div> <div class="text"> {{ 'live_msg' | translate }} </div>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/frequency">
-          {{ 'frequency_msg' | translate }}
+          <div class="icon"><i class="fa fa-map-marker"></i> </div> <div class="text">{{ 'frequency_msg' | translate }}  </div>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/broadcastTable">
-          {{ 'broadcastTable_msg' | translate }}
+           <div class="icon"><i class="fa fa-clock-o"></i> </div> <div class="text">{{ 'broadcastTable_msg' | translate }}  </div>
         </ion-item>
- 		<ion-item>
- 			<h1 class="sub-title">{{ 'divisions_msg' | translate }}</h1>
+ 		<ion-item class="menu-title">
+ 			{{ 'divisions_msg' | translate }}
  		</ion-item >
         
         <ion-item nav-clear menu-close href="#/app/main">
-          {{ 'home_msg' | translate }}
+          <div class="icon"><i class="fa fa-home"></i> </div> <div class="text">{{ 'home_msg' | translate }}  </div>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/news">
-          {{ 'news_msg' | translate }}
+          <div class="icon"><i class="fa fa-newspaper-o"></i> </div> <div class="text">{{ 'news_msg' | translate }}  </div>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/videos">
-          {{ 'videos_msg' | translate }}
+          <div class="icon"><i class="fa fa-play-circle-o"></i> </div> <div class="text">{{ 'videos_msg' | translate }}  </div>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/sounds">
-          {{ 'sounds_msg' | translate }}
+          <div class="icon"><i class="fa fa-microphone"></i> </div> <div class="text">{{ 'sounds_msg' | translate }}  </div>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/pictures">
-          {{ 'gallery_msg' | translate }}
+          <div class="icon"><i class="fa fa-picture-o"></i> </div> <div class="text">{{ 'gallery_msg' | translate }}  </div>
         </ion-item>
         
-        <ion-item>
- 			<h1 class="sub-title">{{ 'pages_msg' | translate }}</h1>
+        <ion-item class="menu-title">
+ 			{{ 'pages_msg' | translate }}
  		</ion-item >
  		<ion-item nav-clear menu-close ng-repeat="p in pageList" href="#/app/pageView/{{p.id}}" >
-          {{ p.name }}
+          <div class="icon"><i class="fa {{ p.logo }}"></i> </div>  <div class="text"> {{ p.name }} </div>
         </ion-item>        
-        <ion-item>
- 			<h1 class="sub-title">{{ 'socialNetworks_msg' | translate }}</h1>
+        <ion-item class="menu-title">
+ 			{{ 'socialNetworks_msg' | translate }}
  		</ion-item >
  		<ion-item nav-clear menu-close href="#/app/facebook">
-          {{ 'facebook_msg' | translate }}
+          <div class="icon"><i class="fa fa-facebook-official"></i> </div> <div class="text">{{ 'facebook_msg' | translate }}  </div>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/twitter">
-          {{ 'twitter_msg' | translate }}
+          <div class="icon"><i class="fa fa-twitter-square"></i> </div> <div class="text">{{ 'twitter_msg' | translate }}  </div>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/instagram">
-          {{ 'instagram_msg' | translate }}
+          <div class="icon"><i class="fa fa-instagram"></i> </div> <div class="text">{{ 'instagram_msg' | translate }}  </div>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/youtube">
-          {{ 'youtube_msg' | translate }}
+          <div class="icon"><i class="fa fa-youtube-play"></i> </div> <div class="text">{{ 'youtube_msg' | translate }}  </div>
         </ion-item>
       </ion-list>
     </ion-content>

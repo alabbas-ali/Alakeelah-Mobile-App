@@ -177,6 +177,7 @@ angular
 
 					$translateProvider.translations("ar", {
 						liveBroadcast_msg : "البث المباشر",
+						most_public : "أبرز الأحداث",
 						live_msg : "مباشر",
 						frequency_msg : "التردد",
 						broadcastTable_msg : "جدول البث",
@@ -197,6 +198,7 @@ angular
 					$translateProvider.translations("en", {
 						liveBroadcast_msg : "Live Broadcast",
 						live_msg : "Live",
+						most_public : "Most Public",
 						frequency_msg : "Frequency",
 						broadcastTable_msg : "Broadcast Scheduler",
 						divisions_msg : "Divisions",
