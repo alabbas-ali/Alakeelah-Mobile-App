@@ -58,7 +58,7 @@ angular
 					})
 
 					.state('app.pageView', {
-						url : "/pageView/:pageId",
+						url : "/pageView/:pageId/:pageName",
 						views : {
 							'menuContent' : {
 								templateUrl : "templates/pageView.html",
@@ -68,10 +68,11 @@ angular
 					})
 
 					.state('app.liveBroadcast', {
-						url : "/liveBroadcast",
+						url : "/liveBroadcast/:broadcastURI",
 						views : {
 							'menuContent' : {
-								templateUrl : "templates/liveBroadcast.html"
+								templateUrl : "templates/liveBroadcast.html",
+								controller : "liveBroadcastCtrl"
 							}
 						}
 					})
@@ -80,7 +81,8 @@ angular
 						url : "/frequency",
 						views : {
 							'menuContent' : {
-								templateUrl : "templates/frequency.html"
+								templateUrl : "templates/frequency.html",
+									controller : "frequencyCtrl"
 							}
 						}
 					}).state('app.broadcastTable', {
@@ -88,6 +90,7 @@ angular
 						views : {
 							'menuContent' : {
 								templateUrl : "templates/broadcastTable.html",
+								controller : "broadcastTableCtrl"
 							}
 						}
 					})
@@ -97,6 +100,7 @@ angular
 						views : {
 							'menuContent' : {
 								templateUrl : "templates/news.html",
+								controller : "newsCtrl"
 							}
 						}
 					})
@@ -106,6 +110,7 @@ angular
 						views : {
 							'menuContent' : {
 								templateUrl : "templates/videos.html",
+								controller : "videosCtrl"
 							}
 						}
 					})
@@ -115,6 +120,7 @@ angular
 						views : {
 							'menuContent' : {
 								templateUrl : "templates/sounds.html",
+								controller : "soundsCtrl"
 							}
 						}
 					})
@@ -124,6 +130,7 @@ angular
 						views : {
 							'menuContent' : {
 								templateUrl : "templates/pictures.html",
+								controller : "picturesCtrl"
 							}
 						}
 					})
@@ -192,7 +199,13 @@ angular
 						facebook_msg : "فيسبوك",
 						twitter_msg : "تويتر",
 						instagram_msg : "انستاغرام",
-						youtube_msg : "يوتيوب"
+						youtube_msg : "يوتيوب",
+						commentsHeader_msg : "التعليقات",
+						addCommentHeader_msg : "أضف تعليق ..",
+						addCommentMessage_msg : " التعليقات تمثل رأي أصحابها وقناة العقيلة الفضائية تخلي مسؤوليته عنها",
+						commenterName_msg : "الإسم :",
+						commentContent_msg : "التعليق :",
+						commentCheckbox_msg : "أختر لأضافة التعليق إلى حسابك في تويتر و فيس بوك",
 					});
 
 					$translateProvider.translations("en", {
@@ -212,7 +225,13 @@ angular
 						facebook_msg : "Facebook",
 						twitter_msg : "Twitter",
 						instagram_msg : "Instagram",
-						youtube_msg : "youtube"
+						youtube_msg : "youtube",
+						commentsHeader_msg : "Comments",
+						addCommentHeader_msg : "Add Comment ..",
+						addCommentMessage_msg : "This Comments Represnts Commenrs Thouds Not Our's ...",
+						commenterName_msg : "Name :",
+						commentContent_msg : "Comment :",
+						commentCheckbox_msg : "Add Your Comment Into Facebook Account",
 					});
 
 					$translateProvider.preferredLanguage = "en";

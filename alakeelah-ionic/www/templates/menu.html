@@ -22,7 +22,7 @@
       	<ion-item class="menu-title">
  			{{ 'liveBroadcast_msg' | translate }}
  		</ion-item >
-        <ion-item nav-clear menu-close href="#/app/liveBroadcast">
+        <ion-item nav-clear menu-close href="#/app/liveBroadcast/{{liveBroadcastURI}}">
           <div class="icon"><i class="fa fa-desktop"></i> </div> <div class="text"> {{ 'live_msg' | translate }} </div>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/frequency">
@@ -54,8 +54,8 @@
         <ion-item class="menu-title">
  			{{ 'pages_msg' | translate }}
  		</ion-item >
- 		<ion-item nav-clear menu-close ng-repeat="p in pageList" href="#/app/pageView/{{p.id}}" >
-          <div class="icon"><i class="fa {{ p.logo }}"></i> </div>  <div class="text"> {{ p.name }} </div>
+ 		<ion-item nav-clear menu-close ng-repeat="page in pageList" href="#/app/pageView/{{page.id}}/{{ page.enname }}" >
+          <div class="icon"><i class="fa {{ page.image }}"></i> </div>  <div class="text"> {{ page.enname }} </div>
         </ion-item>        
         <ion-item class="menu-title">
  			{{ 'socialNetworks_msg' | translate }}

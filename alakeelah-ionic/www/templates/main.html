@@ -3,11 +3,11 @@
 <div class="row">
 	<div class="col">
 		<div class="card">
-			<div class="item item-divider">
+			<!-- <div class="item item-divider">
 				{{ 'most_public' | translate }} <i class="fa fa-star"></i>
-			</div>
+			</div> -->
 			<div class="item item-body">
-				<ion-slide-box show-pager="true"> 
+				<ion-slide-box show-pager="true">
 					<ion-slide ng-repeat="publicNews in mainSlides">
 						<div class="box">
 							<a href="#/app/newsdetials/{{publicNews.id}}" class="link"> 
@@ -15,7 +15,7 @@
 								<div class="title">
 									<div class="main-title"><h2>{{ publicNews.title }}</h2></div>
 									<div class="date">
-										<h3>{{ publicNews.title }}<br>{{ publicNews.title }}</h3>
+										<h3>{{ publicNews.date }}<br>{{ publicNews.date }}</h3>
 									</div>
 									<div class="main-icon"><h4><i class="fa fa-newspaper-o"></i></h4></div>
 								</div>
