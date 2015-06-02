@@ -85,7 +85,9 @@ angular
 									controller : "frequencyCtrl"
 							}
 						}
-					}).state('app.broadcastTable', {
+					})
+					
+					.state('app.broadcastTable', {
 						url : "/broadcastTable",
 						views : {
 							'menuContent' : {
@@ -104,6 +106,16 @@ angular
 							}
 						}
 					})
+					
+					.state('app.newsDetials', {
+						url : "/newsDetials/:newsId",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/newsDetials.html",
+								controller : "newsDetialsCtrl"
+							}
+						}
+					})
 
 					.state('app.videos', {
 						url : "/videos",
@@ -111,6 +123,16 @@ angular
 							'menuContent' : {
 								templateUrl : "templates/videos.html",
 								controller : "videosCtrl"
+							}
+						}
+					})
+					
+					.state('app.videoDetials', {
+						url : "/videoDetials/:videoId",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/videoDetials.html",
+								controller : "videoDetialsCtrl"
 							}
 						}
 					})
@@ -124,6 +146,16 @@ angular
 							}
 						}
 					})
+					
+					.state('app.soundDetials', {
+						url : "/soundDetials/:soundId",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/soundDetials.html",
+								controller : "soundDetialsCtrl"
+							}
+						}
+					})
 
 					.state('app.pictures', {
 						url : "/pictures",
@@ -131,6 +163,16 @@ angular
 							'menuContent' : {
 								templateUrl : "templates/pictures.html",
 								controller : "picturesCtrl"
+							}
+						}
+					})
+					
+					.state('app.pictureDetials', {
+						url : "/pictureDetials/:pictureId",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/pictureDetials.html",
+								controller : "pictureDetialsCtrl"
 							}
 						}
 					})

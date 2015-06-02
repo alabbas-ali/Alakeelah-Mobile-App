@@ -3,8 +3,8 @@
 	<h1 class="pageHeader">{{ pageName }}</h1>
 
 
-	<div ng-repeat="user in usersList" >
-		<div ng-class-even="col" >
+	<div ng-repeat="rows in usersList" class="row" >
+		<div ng-repeat="user in rows" class="col">
 			<div class="card">
 				<div class="item item-text-wrap box">
 					<a href="#" class="ui-link"> <img src="img/1.jpg">
