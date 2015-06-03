@@ -72,10 +72,10 @@
         <ion-item class="menu-title">
  			{{ 'language_msg' | translate }}
  		</ion-item >
- 		<ion-item nav-clear menu-close href="#/app/facebook">
+ 		<ion-item nav-clear menu-close ng-click="changeLang('ar')">
           <div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'arabic_msg' | translate }}  </div>
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/facebook">
+        <ion-item nav-clear menu-close ng-click="changeLang('en')">
           <div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'english_msg' | translate }}  </div>
         </ion-item>
         <ion-item class="menu-title">
