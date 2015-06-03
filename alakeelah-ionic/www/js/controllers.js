@@ -24,7 +24,6 @@ angular.module('starter.controllers', [])
 		.controller('mainCtrl', function($scope, $stateParams) {
 				jQuery.get( serverURI + 'News/getAllActive/', function (data) {
 					$scope.mainSlides = data;
-					//console.log( 'data' + $scope.pageList);
 	            });
 		})
 		
@@ -86,6 +85,7 @@ angular.module('starter.controllers', [])
 		.controller('videoDetialsCtrl', function($scope, $stateParams) {
 			jQuery.get(serverURI + 'Video/getByID/' + $stateParams.videoId , function (data) {
 				$scope.video = data[0];
+				console.log( 'data' + data[0].title );
             });
 			$scope.commentsList = [ {name : 'حسن من العراق' , content:"اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ", date :"2015/03/01", time :"11:30 PM" },
 				                    {name : 'حسن من العراق' , content:"اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ", date :"2015/03/01", time :"11:30 PM" },
