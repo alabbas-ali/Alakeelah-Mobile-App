@@ -1,5 +1,8 @@
 var serverURI = 'http://localhost/NewProject/public/';
 
+//menu
+//menu-content
+
 var publicNunber = 5;
 function chunk(arr, size) {
 	  var newArr = [];

@@ -56,7 +56,28 @@
  		</ion-item >
  		<ion-item nav-clear menu-close ng-repeat="page in pageList" href="#/app/pageView/{{page.id}}/{{ page.enname }}" >
           <div class="icon"><i class="fa {{ page.image }}"></i> </div>  <div class="text"> {{ page.enname }} </div>
-        </ion-item>        
+        </ion-item> 
+        <ion-item class="menu-title">
+ 			{{ 'setting_msg' | translate }}
+ 		</ion-item >
+ 		<ion-item nav-clear menu-close href="#/app/facebook">
+          <div class="icon"><i style="color:yellow;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'yellow_msg' | translate }}  </div>
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/facebook">
+          <div class="icon"><i style="color:#ff0000;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'red_msg' | translate }}  </div>
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/facebook">
+          <div class="icon"><i style="color: #00ff00;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'grean_msg' | translate }}  </div>
+        </ion-item>
+        <ion-item class="menu-title">
+ 			{{ 'language_msg' | translate }}
+ 		</ion-item >
+ 		<ion-item nav-clear menu-close href="#/app/facebook">
+          <div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'arabic_msg' | translate }}  </div>
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/facebook">
+          <div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'english_msg' | translate }}  </div>
+        </ion-item>
         <ion-item class="menu-title">
  			{{ 'socialNetworks_msg' | translate }}
  		</ion-item >
