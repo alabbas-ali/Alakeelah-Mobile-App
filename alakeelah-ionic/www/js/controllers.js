@@ -96,7 +96,25 @@ angular
 
 		.controller(
 				'newsCtrl',
-				function($scope, $stateParams) {
+				function($scope, $stateParams, $q) {
+
+					// An example illustrates how to update $scope values after ajax returns
+					// here is the old value of the $scope.testMsg
+					$scope.testMsg = "Hello world news";
+					// now we construct promise object, please note that $q was injected as controller's parameter
+					// resolve is the function that will be passed to promise.then(). you can use whatever parameters you want.
+					var promise = $q(function(resolve, reject) {
+						// the actual ajax call
+						$.get("http://www.google.com", function(data, status) {
+							// now we send the new value to the resolve function
+							resolve('ajax loaded successfully');
+						});
+					});
+					
+					promise.then(function(msg) {
+						// when value comes from ajax call, we update the $scope.testMsg value.
+						$scope.testMsg = msg;
+					}, null);
 
 					jQuery.get(serverURI + 'News/getPublic/' + publicNunber,
 							function(data) {
