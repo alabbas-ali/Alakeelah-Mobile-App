@@ -17,7 +17,8 @@ angular
 
 		.controller(
 				'AppCtrl',
-				function($scope, $ionicModal, $timeout, $translate) {
+				function($scope, $ionicModal, $timeout, $translate,
+						$ionicLoading) {
 					jQuery.get(serverURI + 'Pages/getAllActive',
 							function(data) {
 								$scope.pageList = data;
@@ -33,6 +34,16 @@ angular
 
 					$scope.currentLang = function() {
 						return $translate.use();
+					};
+
+					$scope.showLoading = function() {
+						$ionicLoading.show({
+							templateUrl : '/templates/loading.html',
+							hideOnStateChange : true
+						});
+					};
+					$scope.hideLoading = function() {
+						$ionicLoading.hide();
 					};
 
 					$scope.changeBgColor = function(color) {
@@ -98,33 +109,56 @@ angular
 				'newsCtrl',
 				function($scope, $stateParams, $q) {
 
-					// An example illustrates how to update $scope values after ajax returns
+					// An example illustrates how to update $scope values after
+					// ajax returns
 					// here is the old value of the $scope.testMsg
 					$scope.testMsg = "Hello world news";
-					// now we construct promise object, please note that $q was injected as controller's parameter
-					// resolve is the function that will be passed to promise.then(). you can use whatever parameters you want.
+					// now we construct promise object, please note that $q was
+					// injected as controller's parameter
+					// resolve is the function that will be passed to
+					// promise.then(). you can use whatever parameters you want.
 					var promise = $q(function(resolve, reject) {
+						$scope.showLoading();
 						// the actual ajax call
 						$.get("http://www.google.com", function(data, status) {
 							// now we send the new value to the resolve function
 							resolve('ajax loaded successfully');
+							$scope.hideLoading();
 						});
 					});
-					
+
 					promise.then(function(msg) {
-						// when value comes from ajax call, we update the $scope.testMsg value.
+						// when value comes from ajax call, we update the
+						// $scope.testMsg value.
 						$scope.testMsg = msg;
 					}, null);
 
-					jQuery.get(serverURI + 'News/getPublic/' + publicNunber,
-							function(data) {
-								$scope.publicNewss = data;
-							});
+					// ////////////////end of example
 
-					jQuery.get(serverURI + 'News/getAllActive/',
-							function(data) {
-								$scope.newsList = chunk(data, 2);
-							});
+					var p = $q(function(resolve, reject) {
+						var pn;
+						var nl;
+
+						$.get(serverURI + 'News/getPublic/' + publicNunber,
+								function(data) {
+									pn = data;
+									// $scope.publicNewss = data;
+								});
+
+						$.get(serverURI + 'News/getAllActive/', function(data) {
+							nl = chunk(data, 2);
+							// $scope.newsList = chunk(data, 2);
+						});
+
+						resolve(pn, nl);
+
+					});
+
+					p.then(function(pn, nl) {
+						$scope.publicNewss = pn;
+						$scope.newsList = nl;
+					}, null);
+
 				})
 
 		.controller(
