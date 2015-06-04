@@ -60,13 +60,13 @@
         <ion-item class="menu-title">
  			{{ 'setting_msg' | translate }}
  		</ion-item >
- 		<ion-item nav-clear menu-close href="#/app/facebook">
+ 		<ion-item nav-clear menu-close ng-click="changeBgColor('yellow')">
           <div class="icon"><i style="color:yellow;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'yellow_msg' | translate }}  </div>
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/facebook">
+        <ion-item nav-clear menu-close ng-click="changeBgColor('red')">
           <div class="icon"><i style="color:#ff0000;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'red_msg' | translate }}  </div>
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/facebook">
+        <ion-item nav-clear menu-close ng-click="changeBgColor('green')">
           <div class="icon"><i style="color: #00ff00;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'grean_msg' | translate }}  </div>
         </ion-item>
         <ion-item class="menu-title">

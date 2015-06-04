@@ -31,6 +31,10 @@ angular
 						$translate.use(lang);
 					};
 
+					$scope.changeBgColor = function(color) {
+						alert('changing color to: ' + color);
+					};
+
 				})
 
 		.controller('mainCtrl', function($scope, $stateParams) {
