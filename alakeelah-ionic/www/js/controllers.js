@@ -48,7 +48,6 @@ angular
 
 					$scope.changeBgColor = function(color) {
 						alert('changing color to: ' + color);
-						alert('current lang is: ' + $scope.currentLang());
 					};
 
 				})
