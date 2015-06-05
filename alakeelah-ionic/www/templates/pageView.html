@@ -7,7 +7,10 @@
 		<div ng-repeat="user in rows" class="col">
 			<div class="card">
 				<div class="item item-text-wrap box">
-					<a href="#" class="ui-link"> <img src="{{ getImage(user.photo) }}">
+					<a href="#" class="ui-link"> 
+						<object data="img/defult.png" type="image/png">
+							<img src="{{ user.photo }}">
+						</object>
 						<div class="title">
 							<h3>{{ user.displayName }}</h3>
 						</div>

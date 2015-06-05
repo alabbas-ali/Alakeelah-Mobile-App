@@ -12,8 +12,8 @@
 				<ion-slide-box show-pager="true"> 
 					<ion-slide ng-repeat="publicVideo in publicVideos">
 						<div class="box">
-							<a href="#/app/videoDetials/{{publicVideo.id}}" class="link"> 
-								<img src="{{ getImage(publicVideo.image) }}" />
+							<a href="#/app/videoDetials/{{publicVideo.id}}" class="link">
+								<img ng-src="{{publicVideo.image}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/> 
 								<div class="title">
 									<div class="main-title">
 										<h2>{{ publicVideo.title }}</h2>
@@ -47,7 +47,7 @@
 				</div> -->
 				<div class="item item-text-wrap box">
 					<a href="#/app/videoDetials/{{video.id}}" class="ui-link"> 
-						<img src="{{ getImage(vedio.image) }}">
+						<img ng-src="{{vedio.image}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/> 
 						<div class="title">
 							<div class="date">
 								<h3>

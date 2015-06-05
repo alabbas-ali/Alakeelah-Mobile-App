@@ -4,6 +4,8 @@ var publicNunber = 5;
 
 var publicBroadcastURI = "";
 
+var frequency = "";
+
 function chunk(arr, size) {
 	var newArr = [];
 	for (var i = 0; i < arr.length; i += size) {
@@ -22,6 +24,8 @@ angular.module('starter.controllers', [])
 					
 					jQuery.get(serverURI + 'Settings/getAll/', function(data) {
 						$scope.settingsList = data;
+						publicBroadcastURI = data.livestream;
+						frequency = data.frequency;
 					});
 
 					var s = encodeURI("localhost.mp4");
@@ -54,12 +58,6 @@ angular.module('starter.controllers', [])
 						var objDate = new Date(data);
 						return objDate.getDay();
 					};
-					
-					$scope.getImage = function(url) {
-						//var date="5/7/2012";
-						var newurl = "img/defult.png"
-						return newurl;
-					};
 
 					$scope.showLoading = function() {
 						$ionicLoading.show({
@@ -67,6 +65,10 @@ angular.module('starter.controllers', [])
 							hideOnStateChange : true
 						});
 					};
+					
+					$scope.openOut = function(href){
+						window.open( href , '_blank' , 'location=yes');
+					}
 					
 					$scope.hideLoading = function() {
 						$ionicLoading.hide();
@@ -78,10 +80,19 @@ angular.module('starter.controllers', [])
 					};
 		})
 
-		.controller('mainCtrl', function($scope, $stateParams) {
-					jQuery.get(serverURI + 'News/getAllActive/', function(data) {
-						$scope.mainSlides = data;
+		.controller('mainCtrl', function($scope, $stateParams , $q, $ionicSlideBoxDelegate) {
+					$scope.showLoading();
+					var promise = $q(function(resolve, reject) {
+						$.get(serverURI + 'News/getAllActive/', function(data) {
+							mainSlides = data;
+							resolve(data);
+						});
 					});
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.mainSlides = data;
+						$ionicSlideBoxDelegate.update();
+					}, null);
 		})
 
 		.controller( 'pageViewCtrl', function($scope, $stateParams) {
@@ -103,6 +114,7 @@ angular.module('starter.controllers', [])
 					}
 					
 					$scope.showLoading();
+					var commentsList;
 					var promise = $q(function(resolve, reject) {
 						$.get(serverURI + 'Comments/getActiveComments/broadcast/'+ $stateParams.userID , function(data) {
 							commentsList = data;
@@ -117,6 +129,7 @@ angular.module('starter.controllers', [])
 		
 		.controller('frequencyCtrl', function($scope, $stateParams , $q) {
 					$scope.showLoading();
+					var commentsList;
 					var promise = $q(function(resolve, reject) {
 						$.get(serverURI + 'Comments/getActiveComments/frequency/0', function(data) {
 							commentsList = data;
@@ -131,6 +144,7 @@ angular.module('starter.controllers', [])
 
 		.controller('broadcastTableCtrl', function($scope, $stateParams , $q) {
 					$scope.showLoading();
+					var broadcastTable;
 					var promise = $q(function(resolve, reject) {	
 						$.get(serverURI + 'broadcastTable/get/',function(data) {
 							broadcastTable = data;
@@ -143,7 +157,7 @@ angular.module('starter.controllers', [])
 					}, null);
 		})
 
-		.controller('newsCtrl',function($scope, $stateParams, $q) {
+		.controller('newsCtrl',function($scope, $stateParams, $q , $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var publicNews, newsList;
 					var promise = $q(function(resolve, reject) {
@@ -167,6 +181,7 @@ angular.module('starter.controllers', [])
 						$scope.hideLoading();
 						$scope.publicNewss = publicNews;
 						$scope.newsList = chunk(newsList, 2);
+						$ionicSlideBoxDelegate.update();
 					}, null);
 		})
 
@@ -197,7 +212,7 @@ angular.module('starter.controllers', [])
 					}, null);
 		})
 
-		.controller('videosCtrl', function($scope, $stateParams , $q) {
+		.controller('videosCtrl', function($scope, $stateParams , $q , $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var publicVideos, videosList;
 					var promise = $q(function(resolve, reject) {
@@ -221,6 +236,7 @@ angular.module('starter.controllers', [])
 						$scope.hideLoading();
 						$scope.publicVideos = publicVideos;
 						$scope.videosList = chunk(videosList, 2);
+						$ionicSlideBoxDelegate.update();
 					}, null);
 		})
 
@@ -252,7 +268,7 @@ angular.module('starter.controllers', [])
 					}, null);
 		})
 
-		.controller('soundsCtrl', function($scope, $stateParams , $q) {
+		.controller('soundsCtrl', function($scope, $stateParams , $q , $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var publicSounds, soundsList;
 					var promise = $q(function(resolve, reject) {
@@ -276,6 +292,7 @@ angular.module('starter.controllers', [])
 						$scope.hideLoading();
 						$scope.publicSounds = publicSounds;
 						$scope.soundsList = chunk(soundsList, 2);
+						$ionicSlideBoxDelegate.update();
 					}, null);
 		})
 
@@ -307,7 +324,7 @@ angular.module('starter.controllers', [])
 					}, null);
 		})
 
-		.controller('picturesCtrl', function($scope, $stateParams , $q) {
+		.controller('picturesCtrl', function($scope, $stateParams , $q , $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var publicPictures, picturesList;
 					var promise = $q(function(resolve, reject) {
@@ -331,6 +348,7 @@ angular.module('starter.controllers', [])
 						$scope.hideLoading();
 						$scope.publicPictures = publicPictures;
 						$scope.picturesList = chunk(picturesList, 2);
+						$ionicSlideBoxDelegate.update();
 					}, null);
 		})
 

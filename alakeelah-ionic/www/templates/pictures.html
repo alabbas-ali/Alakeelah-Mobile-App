@@ -13,7 +13,7 @@
 					<ion-slide ng-repeat="publicPicture in publicPictures">
 						<div class="box">
 							<a href="#/app/pictureDetials/{{publicPicture.id}}" class="link"> 
-								<img src="{{ getImage(publicPicture.photo) }}" />
+								<img ng-src="{{publicPicture.photo}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/>
 								<div class="title">
 									<div class="main-title">
 										<h2>{{ publicPicture.title }}</h2>
@@ -46,7 +46,8 @@
 					{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>
 				</div> -->
 				<div class="item item-text-wrap box">
-					<a href="#/app/pictureDetials/{{picture.id}}" class="ui-link"> <img src="{{ getImage(picture.photo) }}">
+					<a href="#/app/pictureDetials/{{picture.id}}" class="ui-link">
+						<img ng-src="{{picture.photo}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/>
 						<div class="title">
 							<div class="date">
 								<h3>

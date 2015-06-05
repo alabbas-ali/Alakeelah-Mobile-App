@@ -10,8 +10,9 @@
 				<ion-slide-box show-pager="true"> <ion-slide
 					ng-repeat="publicNews in mainSlides">
 				<div class="box">
-					<a href="#/app/newsDetials/{{publicNews.id}}" class="link"> <img
-						src="{{ getImage(publicNews.image) }}" />
+					<a href="#/app/newsDetials/{{publicNews.id}}" class="link"> 
+						
+						<img ng-src="{{publicNews.image}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/>
 						<div class="title">
 							<div class="main-title">
 								<h2>{{ publicNews.artitle }}</h2>
@@ -42,8 +43,9 @@
 			</div>
 			<div class="item item-text-wrap box">
 
-				<a href="#" class="ui-link"> <img
-					src="img/1.jpg{{ getImage(publicNews.image) }}">
+				<a href="#" class="ui-link"> 
+				<img ng-src="{{publicNews.image}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/>
+					
 					<div class="title">
 						<div class="date">
 							<h3>
@@ -64,8 +66,8 @@
 				{{ 'news_msg' | translate }} <i class="fa fa-newspaper-o"></i>
 			</div>
 			<div class="item item-text-wrap box">
-				<a href="#" class="ui-link"> <img
-					src="{{ getImage(publicNews.image) }}">
+				<a href="#" class="ui-link">
+				<img ng-src="{{publicNews.image}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/>
 					<div class="title">
 						<div class="date">
 							<h3>
@@ -88,8 +90,8 @@
 				{{ 'gallery_msg' | translate }} <i class="fa fa-picture-o"></i>
 			</div>
 			<div class="item item-text-wrap box">
-				<a href="#" class="ui-link"> <img
-					src="{{ getImage(publicNews.image) }}">
+				<a href="#" class="ui-link">
+				<img ng-src="{{publicNews.image}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/>
 					<div class="title">
 						<div class="date">
 							<h3>
@@ -110,8 +112,8 @@
 				{{ 'sounds_msg' | translate }} <i class="fa fa-microphone"></i>
 			</div>
 			<div class="item item-text-wrap box">
-				<a href="#" class="ui-link"> <img
-					src="{{ getImage(publicNews.image) }}">
+				<a href="#" class="ui-link"> 
+					<img ng-src="{{publicNews.image}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/>
 					<div class="title">
 						<div class="date">
 							<h3>

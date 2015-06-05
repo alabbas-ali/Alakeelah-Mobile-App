@@ -176,42 +176,7 @@ angular
 							}
 						}
 					})
-
-					.state('app.facebook', {
-						url : "/facebook",
-						views : {
-							'menuContent' : {
-								templateUrl : "templates/facebook.html",
-							}
-						}
-					})
-
-					.state('app.twitter', {
-						url : "/twitter",
-						views : {
-							'menuContent' : {
-								templateUrl : "templates/twitter.html",
-							}
-						}
-					})
-
-					.state('app.instagram', {
-						url : "/instagram",
-						views : {
-							'menuContent' : {
-								templateUrl : "templates/instagram.html",
-							}
-						}
-					})
-
-					.state('app.youtube', {
-						url : "/youtube",
-						views : {
-							'menuContent' : {
-								templateUrl : "templates/youtube.html",
-							}
-						}
-					}).state('app.main', {
+					.state('app.main', {
 						url : "/main",
 						views : {
 							'menuContent' : {
