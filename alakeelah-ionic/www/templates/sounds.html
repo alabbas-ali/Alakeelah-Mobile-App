@@ -13,14 +13,14 @@
 					<ion-slide ng-repeat="publicSound in publicSounds">
 						<div class="box">
 							<a href="#/app/soundDetials/{{publicSound.id}}" class="link"> 
-								<img src="img/1.jpg" />
+								<img src="{{ getImage(publicSound.image) }}" />
 								<div class="title">
 									<div class="main-title">
 										<h2>{{ publicSound.title }}</h2>
 									</div>
 									<div class="date">
 										<h3>
-											{{ publicSound.audio_date }}<br>{{ publicSound.audio_date }}
+											{{ getDay(publicSound.audio_date) }} <br> {{ getMunthName(publicSound.audio_date) }}
 										</h3>
 									</div>
 									<div class="main-icon">
@@ -46,11 +46,11 @@
 					{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>
 				</div> -->
 				<div class="item item-text-wrap box">
-					<a href="#/app/soundDetials/{{sound.id}}" class="ui-link"> <img src="img/1.jpg">
+					<a href="#/app/soundDetials/{{sound.id}}" class="ui-link"> <img src="{{ getImage(sound.image) }}">
 						<div class="title">
 							<div class="date">
 								<h3>
-									6<br>{{ sound.audio_date }}
+									{{ getDay(sound.audio_date) }} <br> {{ getMunthName(sound.audio_date) }}
 								</h3>
 							</div>
 							<div class="main-title">

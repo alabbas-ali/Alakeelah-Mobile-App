@@ -1,9 +1,9 @@
 var serverURI = 'http://localhost/NewProject/public/';
 
-// menu
-// menu-content
-
 var publicNunber = 5;
+
+var publicBroadcastURI = "";
+
 function chunk(arr, size) {
 	var newArr = [];
 	for (var i = 0; i < arr.length; i += size) {
@@ -12,18 +12,17 @@ function chunk(arr, size) {
 	return newArr;
 }
 
-angular
-		.module('starter.controllers', [])
+angular.module('starter.controllers', [])
 
-		.controller(
-				'AppCtrl',
-				function($scope, $ionicModal, $timeout, $translate,
-						$ionicLoading) {
-					jQuery.get(serverURI + 'Pages/getAllActive',
-							function(data) {
-								$scope.pageList = data;
-								// console.log( 'data' + $scope.pageList);
-							});
+		.controller( 'AppCtrl', function($scope, $ionicModal, $timeout, $translate,$ionicLoading) {
+
+					jQuery.get(serverURI + 'Pages/getAllActive', function(data) {
+							$scope.pageList = data;
+					});
+					
+					jQuery.get(serverURI + 'Settings/getAll/', function(data) {
+						$scope.settingsList = data;
+					});
 
 					var s = encodeURI("localhost.mp4");
 					$scope.liveBroadcastURI = s;
@@ -35,6 +34,32 @@ angular
 					$scope.currentLang = function() {
 						return $translate.use();
 					};
+					
+					$scope.getMunthName = function(data) {
+						var objDate = new Date(data);
+						var monthNamesEn = ["January", "February", "March", "April", "May", "June",
+						                  "July", "August", "September", "October", "November", "December"
+						                ];
+						var monthNamesAr = ["كانون الثاني", " شباط", "آذار", "نيسان", "أيار", " حزيران",
+						                  "تموز", " آب", "أيلول", "تشرين الأول", "تشرين الثاني", "كانون الأول"
+						                ];
+						if($translate.use() == "en"){
+							return monthNamesEn[objDate.getMonth()];
+						}else{
+							return monthNamesAr[objDate.getMonth()]
+						}
+					};
+					
+					$scope.getDay = function(data) {
+						var objDate = new Date(data);
+						return objDate.getDay();
+					};
+					
+					$scope.getImage = function(url) {
+						//var date="5/7/2012";
+						var newurl = "img/defult.png"
+						return newurl;
+					};
 
 					$scope.showLoading = function() {
 						$ionicLoading.show({
@@ -42,287 +67,301 @@ angular
 							hideOnStateChange : true
 						});
 					};
+					
 					$scope.hideLoading = function() {
 						$ionicLoading.hide();
 					};
 
 					$scope.changeBgColor = function(color) {
-						alert('changing color to: ' + color);
+						$('.menu').css({"backgroundImage": "url(img/bg" + color + ".jpg)"} );
+						$('.menu-content').css({"backgroundImage": "url(img/bg" + color + ".jpg)"});
 					};
-
-				})
+		})
 
 		.controller('mainCtrl', function($scope, $stateParams) {
-			jQuery.get(serverURI + 'News/getAllActive/', function(data) {
-				$scope.mainSlides = data;
-			});
+					jQuery.get(serverURI + 'News/getAllActive/', function(data) {
+						$scope.mainSlides = data;
+					});
 		})
 
-		.controller(
-				'pageViewCtrl',
-				function($scope, $stateParams) {
+		.controller( 'pageViewCtrl', function($scope, $stateParams) {
 					$scope.pageId = $stateParams.pageId;
 					$scope.pageName = $stateParams.pageName;
-					jQuery.get(serverURI + 'Pages/getPageUsers/'
-							+ $stateParams.pageId, function(data) {
+					jQuery.get(serverURI + 'Pages/getPageUsers/'+ $stateParams.pageId, function(data) {
 						$scope.usersList = chunk(data, 2);
 					});
-				})
-
-		.controller(
-				'liveBroadcastCtrl',
-				function($scope, $stateParams) {
-					$scope.broadcastURI = $stateParams.broadcastURI;
-					console.log('$stateParams.broadcastURI : = '
-							+ $stateParams.broadcastURI);
-					$scope.commentsList = [
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							},
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							},
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							} ];
-				})
-
-		.controller('frequencyCtrl', function($scope, $stateParams) {
-
 		})
 
-		.controller('broadcastTableCtrl', function($scope, $stateParams) {
-
-		})
-
-		.controller(
-				'newsCtrl',
-				function($scope, $stateParams, $q) {
-
-					// An example illustrates how to update $scope values after
-					// ajax returns
-					// here is the old value of the $scope.testMsg
-					$scope.testMsg = "Hello world news";
-					// now we construct promise object, please note that $q was
-					// injected as controller's parameter
-					// resolve is the function that will be passed to
-					// promise.then(). you can use whatever parameters you want.
+		.controller('liveBroadcastCtrl', function($scope, $stateParams , $q) {
+					
+					if($stateParams.userID != 0){ 
+						$.get(serverURI + 'Userprofile/getLiveSteam/'+ $stateParams.userID , function(data) {
+							$scope.broadcastURI = data.livestream;
+						});
+					}else{
+						$scope.broadcastURI = publicBroadcastURI;
+					}
+					
+					$scope.showLoading();
 					var promise = $q(function(resolve, reject) {
-						$scope.showLoading();
-						// the actual ajax call
-						$.get("http://www.google.com", function(data, status) {
-							// now we send the new value to the resolve function
-							resolve('ajax loaded successfully');
-							$scope.hideLoading();
+						$.get(serverURI + 'Comments/getActiveComments/broadcast/'+ $stateParams.userID , function(data) {
+							commentsList = data;
+							resolve(data);
 						});
 					});
-
-					promise.then(function(msg) {
-						// when value comes from ajax call, we update the
-						// $scope.testMsg value.
-						$scope.testMsg = msg;
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.commentsList = data;
 					}, null);
+		})
+		
+		.controller('frequencyCtrl', function($scope, $stateParams , $q) {
+					$scope.showLoading();
+					var promise = $q(function(resolve, reject) {
+						$.get(serverURI + 'Comments/getActiveComments/frequency/0', function(data) {
+							commentsList = data;
+							resolve(data);
+						});
+					});
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.commentsList = data;
+					}, null);
+		})
 
-					// ////////////////end of example
+		.controller('broadcastTableCtrl', function($scope, $stateParams , $q) {
+					$scope.showLoading();
+					var promise = $q(function(resolve, reject) {	
+						$.get(serverURI + 'broadcastTable/get/',function(data) {
+							broadcastTable = data;
+							resolve(data);
+						});
+					});
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.broadcastTable = data;
+					}, null);
+		})
 
-					var p = $q(function(resolve, reject) {
-						var pn;
-						var nl;
+		.controller('newsCtrl',function($scope, $stateParams, $q) {
+					$scope.showLoading();
+					var publicNews, newsList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
 
-						$.get(serverURI + 'News/getPublic/' + publicNunber,
-								function(data) {
-									pn = data;
-									// $scope.publicNewss = data;
-								});
+						$.get(serverURI + 'News/getPublic/' + publicNunber,function(data) {
+							publicNews = data;
+							pndone = true;
+							if(nldone) resolve(" ");
+						});
 
 						$.get(serverURI + 'News/getAllActive/', function(data) {
-							nl = chunk(data, 2);
-							// $scope.newsList = chunk(data, 2);
+							newsList = data;
+							nldone = true;
+							if(pndone) resolve(" ");
 						});
-
-						resolve(pn, nl);
-
 					});
 
-					p.then(function(pn, nl) {
-						$scope.publicNewss = pn;
-						$scope.newsList = nl;
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.publicNewss = publicNews;
+						$scope.newsList = chunk(newsList, 2);
 					}, null);
+		})
 
-				})
-
-		.controller(
-				'newsDetialsCtrl',
-				function($scope, $stateParams) {
-					jQuery.get(serverURI + 'News/getByID/'
-							+ $stateParams.newsId, function(data) {
-						$scope.news = data[0];
+		.controller('newsDetialsCtrl', function($scope, $stateParams , $q) {
+					$scope.showLoading();
+					var news, commentsList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+		
+						$.get(serverURI + 'News/getByID/' + $stateParams.newsId,function(data) {
+							news = data;
+							pndone = true;
+							if(nldone) resolve(" ");
+						});
+		
+						$.get(serverURI + 'Comments/getActiveComments/news/'+ $stateParams.newsId, function(data) {
+							commentsList = data;
+							nldone = true;
+							if(pndone) resolve(" ");
+						});
 					});
-					$scope.commentsList = [
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							},
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							},
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							} ];
-				})
+		
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.news = news[0];
+						$scope.commentsList = commentsList;
+					}, null);
+		})
 
-		.controller(
-				'videosCtrl',
-				function($scope, $stateParams) {
-
-					jQuery.get(serverURI + 'Video/getPublic/' + publicNunber,
-							function(data) {
-								$scope.publicVideos = data;
-							});
-
-					jQuery.get(serverURI + 'Video/getAllActive/',
-							function(data) {
-								$scope.videosList = chunk(data, 2);
-							});
-				})
-
-		.controller(
-				'videoDetialsCtrl',
-				function($scope, $stateParams) {
-					jQuery.get(serverURI + 'Video/getByID/'
-							+ $stateParams.videoId, function(data) {
-						$scope.video = data[0];
-						console.log('data' + data[0].title);
+		.controller('videosCtrl', function($scope, $stateParams , $q) {
+					$scope.showLoading();
+					var publicVideos, videosList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+		
+						$.get(serverURI + 'Video/getPublic/' + publicNunber,function(data) {
+							publicVideos = data;
+							pndone = true;
+							if(nldone) resolve(" ");
+						});
+		
+						$.get(serverURI + 'Video/getAllActive/', function(data) {
+							videosList = data;
+							nldone = true;
+							if(pndone) resolve(" ");
+						});
 					});
-					$scope.commentsList = [
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							},
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							},
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							} ];
-				})
+		
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.publicVideos = publicVideos;
+						$scope.videosList = chunk(videosList, 2);
+					}, null);
+		})
 
-		.controller(
-				'soundsCtrl',
-				function($scope, $stateParams) {
+		.controller('videoDetialsCtrl', function($scope, $stateParams, $q) {
 
-					jQuery.get(serverURI + 'Audio/getPublic/' + publicNunber,
-							function(data) {
-								$scope.publicSounds = data;
-							});
-
-					jQuery.get(serverURI + 'Audio/getAllActive/',
-							function(data) {
-								$scope.soundsList = chunk(data, 2);
-							});
-				})
-
-		.controller(
-				'soundDetialsCtrl',
-				function($scope, $stateParams) {
-					jQuery.get(serverURI + 'Audio/getByID/'
-							+ $stateParams.soundId, function(data) {
-						$scope.sound = data[0];
+					$scope.showLoading();
+					var video, commentsList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+		
+						$.get(serverURI + 'Video/getByID/'+ $stateParams.videoId ,function(data) {
+							video = data;
+							pndone = true;
+							if(nldone) resolve(" ");
+						});
+		
+						$.get(serverURI + 'Comments/getActiveComments/video/'+ $stateParams.videoId, function(data) {
+							commentsList = data;
+							nldone = true;
+							if(pndone) resolve(" ");
+						});
 					});
-					$scope.commentsList = [
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							},
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							},
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							} ];
-				})
+		
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.video = video[0];
+						$scope.commentsList = commentsList;
+					}, null);
+		})
 
-		.controller(
-				'picturesCtrl',
-				function($scope, $stateParams) {
-
-					jQuery.get(serverURI + 'Photo/getPublic/' + publicNunber,
-							function(data) {
-								$scope.publicPictures = data;
-							});
-
-					jQuery.get(serverURI + 'Photo/getAllActive/',
-							function(data) {
-								$scope.picturesList = chunk(data, 2);
-							});
-				})
-
-		.controller(
-				'pictureDetialsCtrl',
-				function($scope, $stateParams) {
-					jQuery.get(serverURI + 'Photo/getByID/'
-							+ $stateParams.pictureId, function(data) {
-						$scope.picture = data[0];
-						// console.log( 'data' + data[0].title );
+		.controller('soundsCtrl', function($scope, $stateParams , $q) {
+					$scope.showLoading();
+					var publicSounds, soundsList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+		
+						$.get(serverURI + 'Audio/getPublic/' + publicNunber,function(data) {
+							publicSounds = data;
+							pndone = true;
+							if(nldone) resolve(" ");
+						});
+		
+						$.get(serverURI + 'Audio/getAllActive/', function(data) {
+							soundsList = data;
+							nldone = true;
+							if(pndone) resolve(" ");
+						});
 					});
-					$scope.commentsList = [
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							},
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							},
-							{
-								name : 'حسن من العراق',
-								content : "اتلنايبسلنتايبن انيللانايس ناتياتنلي ناليسناليس نايسنتلي نايسلليذ",
-								date : "2015/03/01",
-								time : "11:30 PM"
-							} ];
-				})
+		
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.publicSounds = publicSounds;
+						$scope.soundsList = chunk(soundsList, 2);
+					}, null);
+		})
 
-		.controller(
-				'introVidCtrl',
-				function($scope, $cordovaMedia, $state, $ionicHistory,
-						$ionicPlatform) {
+		.controller('soundDetialsCtrl', function($scope, $stateParams , $q) {
+					
+					$scope.showLoading();
+					var sound, commentsList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+		
+						$.get(serverURI + 'Audio/getByID/' + $stateParams.soundId ,function(data) {
+							sound = data;
+							pndone = true;
+							if(nldone) resolve(" ");
+						});
+		
+						$.get(serverURI + 'Comments/getActiveComments/audio/'+ $stateParams.soundId, function(data) {
+							commentsList = data;
+							nldone = true;
+							if(pndone) resolve(" ");
+						});
+					});
+		
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.sound = sound[0];
+						$scope.commentsList = commentsList;
+					}, null);
+		})
+
+		.controller('picturesCtrl', function($scope, $stateParams , $q) {
+					$scope.showLoading();
+					var publicPictures, picturesList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+		
+						$.get(serverURI + 'Photo/getPublic/' + publicNunber,function(data) {
+							publicPictures = data;
+							pndone = true;
+							if(nldone) resolve(" ");
+						});
+		
+						$.get(serverURI + 'Photo/getAllActive/', function(data) {
+							picturesList = data;
+							nldone = true;
+							if(pndone) resolve(" ");
+						});
+					});
+		
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.publicPictures = publicPictures;
+						$scope.picturesList = chunk(picturesList, 2);
+					}, null);
+		})
+
+		.controller('pictureDetialsCtrl', function($scope, $stateParams , $q) {
+					$scope.showLoading();
+					var picture, commentsList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+		
+						$.get(serverURI + 'Photo/getByID/'+ $stateParams.pictureId,function(data) {
+							picture = data;
+							pndone = true;
+							if(nldone) resolve(" ");
+						});
+		
+						$.get(serverURI + 'Comments/getActiveComments/photo/'+ $stateParams.pictureId, function(data) {
+							commentsList = data;
+							nldone = true;
+							if(pndone) resolve(" ");
+						});
+					});
+		
+					promise.then(function(data) {
+						$scope.hideLoading();
+						$scope.picture = picture[0];
+						$scope.commentsList = commentsList;
+					}, null);
+		})
+
+		.controller( 'introVidCtrl', function($scope, $cordovaMedia, $state, $ionicHistory,$ionicPlatform) {
 
 					var endIntro = function() {
 						$ionicHistory.nextViewOptions({
@@ -342,9 +381,7 @@ angular
 
 					var initVideoIntro = function() {
 						try {
-							$("#introDiv")
-									.html(
-											'<video id="introVid" style="margin: auto;max-height: 100%;height: 100%;background-color: #48270C;"></video>');
+							$("#introDiv").html('<video id="introVid" style="margin: auto;max-height: 100%;height: 100%;background-color: #48270C;"></video>');
 							var introVidTag = document
 									.getElementById("introVid");
 							introVidTag.src = "intro/intro.m4v";
@@ -367,19 +404,15 @@ angular
 					});
 					// ********************************
 
-					$ionicPlatform
-							.ready(function() {
+					$ionicPlatform.ready(function() {
 								readyCalled = true;
 								if (ionic.Platform.isAndroid()) {
 									// If android device, display GIF Image and
 									// play sound clip in background.
-									$("#introDiv")
-											.html(
-													'<img id="introImg" src="intro/intro.gif" style="margin: auto;max-height: 100%;height: 100%;background-color: #48270C;" />');
+									$("#introDiv").html('<img id="introImg" src="intro/intro.gif" style="margin: auto;max-height: 100%;height: 100%;background-color: #48270C;" />');
 									try {
 										var introAudioSrc = '/android_asset/www/intro/intro.mp2';
-										var introAudio = new Media(
-												introAudioSrc, null, null, null);
+										var introAudio = new Media(introAudioSrc, null, null, null);
 										introAudio.play();
 
 									} catch (e) {

@@ -1,5 +1,58 @@
-<ion-view view-title="{{ 'frequency_msg' | translate }}">
-  <ion-content>
-    <h1>{{ 'frequency_msg' | translate }}</h1>
-  </ion-content>
+<ion-view class="pageView" view-title=""> 
+<ion-content class="pageContent"> <!--  <h1>{{ 'frequency_msg' | translate }}</h1>  -->
+
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<div class="item item-text-wrap box">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="comments">
+
+	<div class="row">
+		<div class="col">
+			<div class="commentsHeader">
+				<h4>{{ 'commentsHeader_msg' | translate }}</h4>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row comment-row" ng-repeat="comment in commentsList">
+		<div class="col" >
+			<div class="item item-divider">
+				{{ comment.name }}
+			</div>
+			<div class="item item-text-wrap">
+				{{ comment.content }}
+			</div>
+			<div class="item item-divider">
+				{{ comment.date }} {{ comment.time }}
+			</div>
+		</div>
+	</div>
+	
+	<form action="" method="post">
+		<div >
+			<h5>{{ 'addCommentHeader_msg' | translate }} </h5> 
+			<p> {{ 'addCommentMessage_msg' | translate }} </p>
+		</div>
+		<div >
+			<span> {{ 'commenterName_msg' | translate }}  </span>
+			<input type="text" class="commenterName" name="commenterName" />
+		</div>
+		<div >
+			<span> {{ 'commentContent_msg' | translate }}  </span>
+			<textarea name="commentContent" class="commentContent"></textarea>
+		</div>
+		<ion-checkbox> {{ 'commentCheckbox_msg' | translate }} </ion-checkbox>
+	</form>
+</div>
+
+</ion-content> 
 </ion-view>

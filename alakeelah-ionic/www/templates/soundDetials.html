@@ -6,11 +6,11 @@
 		<div class="card">
 			<div class="item item-text-wrap box-sounddetials">
 				<img src="img/sound.png">
-				<audio src="intro/intro.mp2" contenteditable="true" controls="controls"></audio>
+				<audio src="{{ sound.audiolink }}" contenteditable="true" controls="controls"></audio>
 				<div class="title">
 					<div class="date">
 						<h3>
-							6<br>{{ sound.audio_date }}
+							{{ getDay(sound.audio_date) }} <br> {{ getMunthName(news.audio_date) }}
 						</h3>
 					</div>
 					<div class="main-title">

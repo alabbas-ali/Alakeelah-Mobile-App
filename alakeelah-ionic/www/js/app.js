@@ -68,7 +68,7 @@ angular
 					})
 
 					.state('app.liveBroadcast', {
-						url : "/liveBroadcast/:broadcastURI",
+						url : "/liveBroadcast/:userID",
 						views : {
 							'menuContent' : {
 								templateUrl : "templates/liveBroadcast.html",

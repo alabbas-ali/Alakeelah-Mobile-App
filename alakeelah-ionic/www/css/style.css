@@ -3,8 +3,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	color: #fff;
 }
 
+.loading-container .loading {
+	background-color: transparent !important;
+	background-image: url("../img/looding.png");
+	background-repeat: no-repeat;
+	background-position: center 20px;
+}
+
 .menu-content {
-	background-image: url('../img/bgYello.jpg');
+	background-image: url('../img/bgYellow.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	color: #fff;
@@ -147,7 +154,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /*** menu ***/
 .menu {
 	background-color: #5A0303;
-	background-image: url('../img/bgYello.jpg');
+	background-image: url('../img/bgYellow.jpg');
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 	color: #fff;
@@ -164,14 +171,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .menu .list .item.menu-title {
-	background-color: rgba(255, 255, 255, 0.6);
-	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.67);
+	padding: 4px;
 	margin: 0;
 	text-shadow: 0 0 0;
-	font-size: 20px;
+	font-size: 16px;
+	text-align: center;
 }
 
-.menu .list .item.item-complex {
+.menu .list .item {
 	background-color: rgba(255, 255, 255, 0.3);
 	padding: 0px;
 	list-style: none;
@@ -182,11 +190,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	background-color: transparent;
 }
 
-.menu .list .item.item-complex .item-content {
+.menu .list .item {
 	padding: 10px 49px 10px 16px;
 }
 
-.menu .list .item.item-complex .item-content .icon {
+.menu .list .item .item-content {
+	padding: 0px;
+}
+
+.menu .list .item .icon {
 	width: 14%;
 	float: left;
 }
@@ -201,11 +213,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /********* comments ************/
 .comments {
 	width: 97%;
-  	padding: 0px 1%;
-  	margin: auto;
+	padding: 0px 1%;
+	margin: auto;
 }
 
-.comments form{
+.comments form {
 	padding: 0px 12px;
 }
 
@@ -254,7 +266,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 /************ newsdetials **************/
-
 .box-newsdetials img {
 	width: 100%;
 }
@@ -287,12 +298,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-size: 10px;
 }
 
-.box-newsdetials .content{
+.box-newsdetials .content {
 	padding: 10px;
-  	background-color: #fff;
+	background-color: #fff;
 }
 
-.box-newsdetials.comments{
+.box-newsdetials.comments {
 	background-color: #5e5e5e;
 	margin-top: -10px;
 }
@@ -312,8 +323,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	margin-top: -4px;
 }
 
-.box-vediodetials .title p, .box-vediodetials .title h2, .box-vediodetials .title h3,
-	.box-newsdetials .title h4 {
+.box-vediodetials .title p, .box-vediodetials .title h2,
+	.box-vediodetials .title h3, .box-newsdetials .title h4 {
 	margin-top: 5px;
 	color: #000;
 }
@@ -332,12 +343,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-size: 10px;
 }
 
-.box-vediodetials .content{
+.box-vediodetials .content {
 	padding: 10px;
-  	background-color: #fff;
+	background-color: #fff;
 }
 
-.box-vediodetials.comments{
+.box-vediodetials.comments {
 	background-color: #5e5e5e;
 	margin-top: -10px;
 }
@@ -356,8 +367,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	margin-top: -4px;
 }
 
-.box-picturedetials .title p, .box-picturedetials .title h2, .box-picturedetials .title h3,
-	.box-newsdetials .title h4 {
+.box-picturedetials .title p, .box-picturedetials .title h2,
+	.box-picturedetials .title h3, .box-newsdetials .title h4 {
 	margin-top: 5px;
 	color: #000;
 }
@@ -376,12 +387,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-size: 10px;
 }
 
-.box-picturedetials .content{
+.box-picturedetials .content {
 	padding: 10px;
-  	background-color: #fff;
+	background-color: #fff;
 }
 
-.box-picturedetials.comments{
+.box-picturedetials.comments {
 	background-color: #5e5e5e;
 	margin-top: -10px;
 }
@@ -406,8 +417,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	margin-top: -4px;
 }
 
-.box-sounddetials .title p, .box-sounddetials .title h2, .box-sounddetials .title h3,
-	.box-newsdetials .title h4 {
+.box-sounddetials .title p, .box-sounddetials .title h2,
+	.box-sounddetials .title h3, .box-newsdetials .title h4 {
 	margin-top: 5px;
 	color: #000;
 }
@@ -426,13 +437,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-size: 10px;
 }
 
-.box-sounddetials .content{
+.box-sounddetials .content {
 	padding: 10px;
-  	background-color: #fff;
+	background-color: #fff;
 }
 
-.box-sounddetials.comments{
+.box-sounddetials.comments {
 	background-color: #5e5e5e;
 	margin-top: -10px;
 }
-

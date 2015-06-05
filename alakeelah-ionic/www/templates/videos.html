@@ -13,14 +13,14 @@
 					<ion-slide ng-repeat="publicVideo in publicVideos">
 						<div class="box">
 							<a href="#/app/videoDetials/{{publicVideo.id}}" class="link"> 
-								<img src="img/1.jpg" />
+								<img src="{{ getImage(publicVideo.image) }}" />
 								<div class="title">
 									<div class="main-title">
 										<h2>{{ publicVideo.title }}</h2>
 									</div>
 									<div class="date">
 										<h3>
-											{{ publicVideo.date }}<br>{{ publicVideo.date }}
+											{{ getDay(publicVideo.vedio_date) }} <br> {{ getMunthName(publicVideo.vedio_date) }}
 										</h3>
 									</div>
 									<div class="main-icon">
@@ -46,11 +46,12 @@
 					{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>
 				</div> -->
 				<div class="item item-text-wrap box">
-					<a href="#/app/videoDetials/{{video.id}}" class="ui-link"> <img src="img/1.jpg">
+					<a href="#/app/videoDetials/{{video.id}}" class="ui-link"> 
+						<img src="{{ getImage(vedio.image) }}">
 						<div class="title">
 							<div class="date">
 								<h3>
-									6<br>{{ video.date }}
+									{{ getDay(vedio.vedio_date) }} <br> {{ getMunthName(vedio.vedio_date) }}
 								</h3>
 							</div>
 							<div class="main-title">

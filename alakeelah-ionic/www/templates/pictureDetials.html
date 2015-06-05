@@ -5,11 +5,11 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box-picturedetials">
-				<img src="img/1.jpg">
+				<img src="{{ getImage(picture.photo) }}">
 				<div class="title">
 					<div class="date">
 						<h3>
-							6<br>{{ picture.photo_date }}
+							{{ getDay(picture.photo_date) }} <br> {{ getMunthName(picture.photo_date) }}
 						</h3>
 					</div>
 					<div class="main-title">

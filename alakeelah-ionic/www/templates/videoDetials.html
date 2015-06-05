@@ -5,11 +5,11 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box-vediodetials">
-				<video src="intro/intro.m4v" controls="controls" ></video>
+				<video src="{{ vedio.videolink }}" controls="controls" ></video>
 				<div class="title">
 					<div class="date">
 						<h3>
-							6<br>{{ vedio.vedio_date }}
+							{{ getDay(vedio.vedio_date) }} <br> {{ getMunthName(vedio.vedio_date) }}
 						</h3>
 					</div>
 					<div class="main-title">

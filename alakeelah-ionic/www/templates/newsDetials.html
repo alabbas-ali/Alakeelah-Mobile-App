@@ -5,11 +5,11 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box-newsdetials">
-				<img src="img/1.jpg">
+				<img src="{{ getImage(news.image) }}">
 				<div class="title">
 					<div class="date">
 						<h3>
-							6<br>{{ news.news_date }}
+							{{ getDay(news.news_date) }} <br> {{ getMunthName(news.news_date) }}
 						</h3>
 					</div>
 					<div class="main-title">
@@ -37,13 +37,13 @@
 	<div class="row comment-row" ng-repeat="comment in commentsList">
 		<div class="col" >
 			<div class="item item-divider">
-				{{ comment.name }}
+				{{ comment.username }}
 			</div>
 			<div class="item item-text-wrap">
 				{{ comment.content }}
 			</div>
 			<div class="item item-divider">
-				{{ comment.date }} {{ comment.time }}
+				{{ comment.comment_date }} {{ comment.time }}
 			</div>
 		</div>
 	</div>
@@ -64,16 +64,6 @@
 		<ion-checkbox> {{ 'commentCheckbox_msg' | translate }} </ion-checkbox>
 	</form>
 </div>
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/><br/>
 
 </ion-content> 
 </ion-view>
