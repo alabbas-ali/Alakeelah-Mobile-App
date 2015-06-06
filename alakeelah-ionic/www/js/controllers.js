@@ -142,10 +142,10 @@ angular.module('starter.controllers', [])
 						
 						var first , secand;
 						
-						if( news.length > 3) first = 3; else fisrt = news.length;
+						if( news.length > 3) first = 3; else first = news.length;
 						if( vedios.length > 3) secand = 3; else secand = vedios.length;
 						
-						var mainSlider = new Array( fisrt + secand );
+						var mainSlider = new Array( first + secand );
 						if(news[0]) {
 							mainSlider[0] = news[0];
 							mainSlider[0].type = "news";
@@ -175,13 +175,38 @@ angular.module('starter.controllers', [])
 							mainSlider[5] = vedios[2];
 							mainSlider[5].type = "video";
 						}
-						
-						if( news.length > 3 ) $scope.news = news.slice(3, news.length); else $scope.news = new Array(0);
-						if(vedios.length > 3 ) $scope.videos = vedios.slice(3, vedios.length); else $scope.videos = new Array(0);
-						$scope.sounds = sounds.slice(0, 2);
-						$scope.pictures = sounds.slice(0, 2);
-						
 						$scope.mainSlides = mainSlider;
+						
+						var newNews = new Array(3);
+						var newVideo = new Array(3);
+						var newpicture = new Array(2);
+						var newSound = new Array(2);
+						
+						var j = 0;
+						if( news.length > 3 )
+							for(i = 3 ; i<news.lenght & i <6; i++){
+								newNews[j] = news[j]; j++;
+								alert(news[j]);
+							}
+						$scope.news = newNews;
+						//alert($scope.news);
+						
+						j = 0;
+						if( vedios.length > 3 )
+							for(i = 3 ; i< vedios.lenght & i <6; i++){
+								newVideo[j] = vedios[j]; j++;
+							}
+						$scope.videos = newVideo;
+						
+						for(i = 0 ; i< sounds.lenght & i <2; i++){
+							newSound[i] = sounds[i]; 
+						}
+						$scope.sounds = newSound;
+						
+						for(i = 0 ; i< pictures.lenght & i <2; i++){
+							newpicture[i] = pictures[i]; 
+						}
+						$scope.pictures = newpicture;
 						$ionicSlideBoxDelegate.update();
 					}, null);
 		})
