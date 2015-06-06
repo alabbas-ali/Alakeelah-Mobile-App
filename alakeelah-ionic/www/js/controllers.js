@@ -136,16 +136,47 @@ angular.module('starter.controllers', [])
 
 					promise.then(function(data) {
 						$scope.hideLoading();
+						
 						var first , secand;
-						if(news.length > 3) first = 3; else fisrt= news.length;
-						if(vedios.length > 3) secand = 3; else secand = vedios.length;
-						var mainSlider = new Array( first + secand );
-						//if(news[0]) mainSlider[0] = news[0];
-						//if(vedios[0]) mainSlider[1] = vedios[0];
-						//if(news[1]) mainSlider[2] = news[1];
-						//if(vedios[1]) mainSlider[3] = vedios[1];
-						//if(news[2]) mainSlider[4] = news[2];
-						//if(vedios[2]) mainSlider[5] = vedios[2];
+						
+						if( news.length > 3) first = 3; else fisrt = news.length;
+						if( vedios.length > 3) secand = 3; else secand = vedios.length;
+						
+						var mainSlider = new Array( fisrt + secand );
+						if(news[0]) {
+							mainSlider[0] = news[0];
+							mainSlider[0].type = "news";
+						}
+						
+						if(vedios[0]) {
+							mainSlider[1] = vedios[0];
+							mainSlider[1].type = "video";
+						}
+						
+						if(news[1]) {
+							mainSlider[2] = news[1];
+							mainSlider[2].type = "news";
+						}
+						
+						if(vedios[1]) {
+							mainSlider[3] = vedios[1];
+							mainSlider[3].type = "video";
+						}
+						
+						if(news[2]) {
+							mainSlider[4] = news[2];
+							mainSlider[4].type = "news";
+						}
+						
+						if(vedios[2]) {
+							mainSlider[5] = vedios[2];
+							mainSlider[5].type = "video";
+						}
+						
+						if( news.length > 3 ) $scope.news = news.slice(3, news.length); else $scope.news = new Array(0);
+						if(vedios.length > 3 ) $scope.videos = vedios.slice(3, vedios.length); else $scope.videos = new Array(0);
+						$scope.sounds = sounds.slice(0, 2);
+						$scope.pictures = sounds.slice(0, 2);
 						
 						$scope.mainSlides = mainSlider;
 						$ionicSlideBoxDelegate.update();
