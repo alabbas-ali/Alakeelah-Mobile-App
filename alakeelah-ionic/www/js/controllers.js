@@ -14,6 +14,12 @@ function chunk(arr, size) {
 	return newArr;
 }
 
+var cahngColor = function (color) {
+	$('.menu').css({"backgroundImage": "url(img/bg" + color + ".jpg)"} );
+	$('.menu-content').css({"backgroundImage": "url(img/bg" + color + ".jpg)"});
+	localStorage.setItem("color", color);
+};
+
 angular
 		.module('starter.controllers', [])
 
@@ -22,6 +28,12 @@ angular
 				function($scope, $ionicModal, $timeout, $translate,
 						$ionicLoading) {
 
+				if(localStorage.language)
+					$translate.use(localStorage.language);
+				
+				if(localStorage.color)
+					cahngColor(localStorage.color);
+					
 					jQuery.get(serverURI + 'Pages/getAllActive',
 							function(data) {
 								$scope.pageList = data;
@@ -38,6 +50,7 @@ angular
 
 					$scope.changeLang = function(lang) {
 						$translate.use(lang);
+						localStorage.setItem("language", lang);
 					};
 
 					$scope.currentLang = function() {
@@ -80,14 +93,8 @@ angular
 						$ionicLoading.hide();
 					};
 
-					$scope.changeBgColor = function(color) {
-						$('.menu').css({
-							"backgroundImage" : "url(img/bg" + color + ".jpg)"
-						});
-						$('.menu-content').css({
-							"backgroundImage" : "url(img/bg" + color + ".jpg)"
-						});
-					};
+					$scope.changeBgColor = cahngColor;
+					
 				})
 
 		.controller('mainCtrl',
