@@ -17,7 +17,7 @@ function chunk(arr, size) {
 var cahngColor = function (color) {
 	$('.menu').css({"backgroundImage": "url(img/bg" + color + ".jpg)"} );
 	$('.menu-content').css({"backgroundImage": "url(img/bg" + color + ".jpg)"});
-	localStorage.setItem("color", color); 
+	localStorage.setItem("color", color);
 };
 
 angular.module('starter.controllers', [])
