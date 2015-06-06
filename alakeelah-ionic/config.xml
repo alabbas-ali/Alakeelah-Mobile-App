@@ -58,5 +58,10 @@
 		<param name="wp-package" value="Globalization" />
 		<param name="id" value="org.apache.cordova.globalization" />
 	</feature>
+	<feature name="InAppBrowser">
+		<param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+		<param name="ios-package" value="CDVInAppBrowser" />
+		
+	<param name="id" value="org.apache.cordova.inappbrowser" /></feature>
 	<icon src="/res/icons/icon.png" />
 </widget>
