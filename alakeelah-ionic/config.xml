@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.alakeela" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
 	xmlns:cdv="http://cordova.apache.org/ns/1.0">
-	<name>Alakeelah</name>
-	<description>Alakeelah TV</description>
+	<name>Alaqila</name>
+	<description>Alaqila TV</description>
 	<author email="yahya.alfayad@gmail.com" href="">Yahya Alfayad
 	</author>
 	<content src="index.html" />
@@ -19,13 +19,15 @@
 		<param name="android-package" value="com.ionic.keyboard.IonicKeyboard" />
 		<param name="onload" value="true" />
 		<param name="ios-package" value="IonicKeyboard" />
-		
-	<param name="id" value="com.ionic.keyboard" /></feature>
+
+		<param name="id" value="com.ionic.keyboard" />
+	</feature>
 	<feature name="Console">
 		<param name="ios-package" value="CDVLogger" />
-		
+
 		<param name="wp-package" value="DebugConsole" />
-	<param name="id" value="org.apache.cordova.console" /></feature>
+		<param name="id" value="org.apache.cordova.console" />
+	</feature>
 
 	<feature name="File">
 		<param name="android-package" value="org.apache.cordova.file.FileUtils" />
@@ -37,20 +39,24 @@
 		<param name="android-package" value="org.apache.cordova.media.AudioHandler" />
 		<param name="ios-package" value="CDVSound" />
 
-		
+
 		<param name="wp-package" value="Media" />
-	<param name="id" value="org.apache.cordova.media" /></feature>
+		<param name="id" value="org.apache.cordova.media" />
+	</feature>
 	<feature name="Device">
 		<param name="android-package" value="org.apache.cordova.device.Device" />
 		<param name="ios-package" value="CDVDevice" />
-		
+
 		<param name="wp-package" value="Device" />
-	<param name="id" value="org.apache.cordova.device" /></feature>
+		<param name="id" value="org.apache.cordova.device" />
+	</feature>
 	<feature name="Globalization">
 		<param name="android-package" value="org.apache.cordova.globalization.Globalization" />
 		<param name="ios-package" value="CDVGlobalization" />
 
-		
+
 		<param name="wp-package" value="Globalization" />
-	<param name="id" value="org.apache.cordova.globalization" /></feature>
+		<param name="id" value="org.apache.cordova.globalization" />
+	</feature>
+	<icon src="/res/icons/icon.png" />
 </widget>
