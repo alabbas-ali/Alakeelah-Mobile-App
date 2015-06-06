@@ -446,3 +446,21 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	background-color: #5e5e5e;
 	margin-top: -10px;
 }
+
+/************ frequency ******************/
+.frequency {
+	background-image: url("../img/frec.png");
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 100%;
+	height: 185px;
+	max-height: 185px;
+	overflow: hidden;
+	padding: 53px 36px !important;
+	color: #fff;
+}
+
+.frequency div {
+	width: 200px;
+	float: right;
+}

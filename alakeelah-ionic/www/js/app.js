@@ -40,8 +40,7 @@ angular
 					}
 				})
 
-		.config(
-				function($stateProvider, $urlRouterProvider, $translateProvider) {
+		.config( function($stateProvider, $urlRouterProvider, $translateProvider) {
 					$stateProvider
 
 					.state('app', {
@@ -204,8 +203,9 @@ angular
 						pages_msg : "صفحات",
 						setting_msg : "الإعدادت",
 						yellow_msg : "ذهبي",
-						red_msg : "أحمر",
-						grean_msg : "أحضر",
+						blue_msg : "ازرق",
+						green_msg : "أحضر",
+						neal_msg : "كحلي",
 						language_msg : "اللغة",
 						arabic_msg : "العربية",
 						english_msg : "English",
@@ -236,9 +236,10 @@ angular
 						gallery_msg : "Gallery",
 						pages_msg : "Pages",
 						setting_msg : "Setting",
-						yellow_msg : "Yello",
-						red_msg : "Red",
-						grean_msg : "Grean",
+						yellow_msg : "Yellow",
+						neal_msg : "neal",
+						blue_msg : "Blue",
+						green_msg : "Grean",
 						language_msg : "Language",
 						arabic_msg : "العربية",
 						english_msg : "English",
