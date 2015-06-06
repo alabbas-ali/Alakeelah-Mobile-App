@@ -482,7 +482,7 @@ angular
 						try {
 							$("#introDiv")
 									.html(
-											'<video id="introVid" style="margin: auto;max-height: 100%;height: 100%;background-color: #48270C;"></video>');
+											'<video id="introVid" style="margin: auto;max-height: 100%;width: 100%;background-color: #48270C;"></video>');
 							var introVidTag = document
 									.getElementById("introVid");
 							introVidTag.src = "intro/intro.m4v";
@@ -513,7 +513,7 @@ angular
 									// play sound clip in background.
 									$("#introDiv")
 											.html(
-													'<img id="introImg" src="intro/intro.gif" style="margin: auto;max-height: 100%;height: 100%;background-color: #48270C;" />');
+													'<img id="introImg" src="intro/intro.gif" style="margin: auto;max-height: 100%;width: 100%;background-color: #48270C;" />');
 									try {
 										var introAudioSrc = '/android_asset/www/intro/intro.mp2';
 										var introAudio = new Media(
