@@ -4,8 +4,11 @@ var serverURI = 'http://localhost/NewProject/public/';
 var publicNunber = 5;
 
 var settingsList = "";
-try{  settingsList = JSON.parse( localStorage.settingsList ); }catch(ex){ console.error(ex); }
-
+try {
+	settingsList = JSON.parse(localStorage.settingsList);
+} catch (ex) {
+	console.error(ex);
+}
 
 function chunk(arr, size) {
 	var newArr = [];
@@ -86,7 +89,7 @@ angular.module('starter.controllers', [])
 					};
 
 					$scope.openOut = function(href) {
-						window.open(href, '_blank', 'location=yes');
+						window.open(href, '_system', 'location=yes');
 					}
 
 					$scope.hideLoading = function() {
