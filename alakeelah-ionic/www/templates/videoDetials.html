@@ -67,11 +67,17 @@
 			<span> {{ 'commenterName_msg' | translate }}  </span>
 			<input type="text" class="commenterName" name="commenterName" />
 		</div>
-		<div >
+		<div>
 			<span> {{ 'commentContent_msg' | translate }}  </span>
 			<textarea name="commentContent" class="commentContent"></textarea>
 		</div>
-		<ion-checkbox> {{ 'commentCheckbox_msg' | translate }} </ion-checkbox>
+		<div>
+			 <input type="checkbox" name="checkbox"> {{ 'commentCheckbox_msg' | translate }}
+		</div>
+		<button id="button-1" type="submit" class="button">{{ 'addComment_msg' | translate }}</button>
+		<br/>
+		<br/>
+		<br/>
 	</form>
 </div>
 <br />

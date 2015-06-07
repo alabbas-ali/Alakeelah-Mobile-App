@@ -23,6 +23,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	background-color: transparent !important;
 }
 
+.item.item-checkbox {
+	background: none;
+	border: none;
+	color: #fff;
+	direction: rtl;
+}
+
 .pageContent {
 	top: 0px;
 }
@@ -53,7 +60,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	color: #636AAE;
 }
 
-.bar-stable .button.button-clear{
+.bar-stable .button.button-clear {
 	color: #fff;
 	padding: 5px;
 }
@@ -108,14 +115,14 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .box img {
 	width: 100%;
-	max-height : 170px;
+	max-height: 170px;
 	display: block;
 }
 
 .box video {
 	width: 100%;
 	height: 100%;
-	max-height : 170px;
+	max-height: 170px;
 	display: block;
 }
 
@@ -222,8 +229,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /********* comments ************/
 .comments {
 	width: 97%;
-	padding: 0px 1%;
 	margin: auto;
+	padding: 10px 0px;
 }
 
 .comments form {
@@ -274,11 +281,23 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	color: #fff;
 }
 
+.formComment {
+	direction: rtl;
+}
+
+.formComment .button {
+	background: none;
+	color: #fff;
+	border: 2px solid #fff;
+	padding: 0px 15px;
+	float: left;
+}
+
 /************ newsdetials **************/
 .box-newsdetials img {
 	width: 100%;
-	max-height : 170px;
-	display:block;
+	max-height: 170px;
+	display: block;
 }
 
 .box-newsdetials .title {
@@ -323,7 +342,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .box-vediodetials video {
 	width: 100%;
 	max-height: 170px;
-	display:block;
+	display: block;
 	background-color: #250001;
 }
 
@@ -369,8 +388,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .box-picturedetials img {
 	width: 100%;
 	background-color: #250001;
-	max-height : 170px;
-	display:block;
+	max-height: 170px;
+	display: block;
 }
 
 .box-picturedetials .title {
@@ -415,8 +434,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .box-sounddetials img {
 	width: 100%;
 	background-color: #250001;
-	max-height : 170px;
-	display:block;
+	max-height: 170px;
+	display: block;
 }
 
 .box-sounddetials audio {
@@ -480,3 +499,4 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	width: 200px;
 	float: right;
 }
+

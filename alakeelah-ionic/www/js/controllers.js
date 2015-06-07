@@ -1,5 +1,5 @@
-//var serverURI = 'http://localhost/NewProject/public/';
-var serverURI = 'http://alaqila.tv/admin528/public/';
+var serverURI = 'http://localhost/NewProject/public/';
+//var serverURI = 'http://alaqila.tv/admin528/public/';
 
 var publicNunber = 5;
 
@@ -148,34 +148,41 @@ angular.module('starter.controllers', [])
 						if( vedios.length > 3) secand = 3; else secand = vedios.length;
 						
 						var mainSlider = new Array( first + secand );
+						var j = 0;
 						if(news[0]) {
-							mainSlider[0] = news[0];
-							mainSlider[0].type = "news";
+							mainSlider[j] = news[0];
+							mainSlider[j].type = "news";
+							j++;
 						}
 						
 						if(vedios[0]) {
-							mainSlider[1] = vedios[0];
-							mainSlider[1].type = "video";
+							mainSlider[j] = vedios[0];
+							mainSlider[j].type = "video";
+							j++;
 						}
 						
 						if(news[1]) {
-							mainSlider[2] = news[1];
-							mainSlider[2].type = "news";
+							mainSlider[j] = news[1];
+							mainSlider[j].type = "news";
+							j++
 						}
 						
 						if(vedios[1]) {
-							mainSlider[3] = vedios[1];
-							mainSlider[3].type = "video";
+							mainSlider[j] = vedios[1];
+							mainSlider[j].type = "video";
+							j++;
 						}
 						
 						if(news[2]) {
-							mainSlider[4] = news[2];
-							mainSlider[4].type = "news";
+							mainSlider[j] = news[2];
+							mainSlider[j].type = "news";
+							j++;
 						}
 						
 						if(vedios[2]) {
-							mainSlider[5] = vedios[2];
-							mainSlider[5].type = "video";
+							mainSlider[j] = vedios[2];
+							mainSlider[j].type = "video";
+							j++;
 						}
 						$scope.mainSlides = mainSlider;
 						$scope.videos=vedios;
@@ -199,6 +206,110 @@ angular.module('starter.controllers', [])
 						$scope.hideLoading();
 						$scope.usersList = chunk(data, 2);
 						$scope.pageName = $stateParams.pageName;
+						$ionicSlideBoxDelegate.update();
+					}, null);
+		})
+		
+		.controller('pageViewDetialsCtrl',function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+					$scope.userId = $stateParams.userId;
+					$scope.showLoading();
+					
+					var news, vedios , sounds , pictures , user;
+					
+					var promise = $q(function(resolve, reject) {
+						var ndone = false;
+						var vdone = false;
+						var sdone = false;
+						var pdone = false;
+						var udone = false;
+						
+						$.get(serverURI + 'News/getByUser/' + $stateParams.userId, function(data) {
+							user = data;
+							udone = true;
+							if (vdone && sdone && pdone && ndone)
+								resolve(" ");
+						});
+						
+						$.get(serverURI + 'News/getByUser/' + $stateParams.userId, function(data) {
+							news = data;
+							ndone = true;
+							if (vdone && sdone && pdone && udone)
+								resolve(" ");
+						});
+						$.get(serverURI + 'Video/getByUser/' + $stateParams.userId, function(data) {
+							vedios = data;
+							vdone = true;
+							if (ndone && sdone && pdone && udone)
+								resolve(" ");
+						});
+						$.get(serverURI + 'Audio/getByUser/' + $stateParams.userId, function(data) {
+							sounds = data;
+							sdone = true;
+							if (vdone && ndone && pdone && udone)
+								resolve(" ");
+						});
+						$.get(serverURI + 'Photo/getByUser/' + $stateParams.userId, function(data) {
+							pictures = data;
+							pdone = true;
+							if (vdone && ndone && sdone && udone)
+								resolve(" ");
+						});
+					});
+
+					promise.then(function(data) {
+						$scope.hideLoading();
+						
+						var first , secand;
+						
+						if( news.length > 3) first = 3; else first = news.length;
+						if( vedios.length > 3) secand = 3; else secand = vedios.length;
+						
+						var mainSlider = new Array( first + secand );
+						
+						var j = 0;
+						if(news[0]) {
+							mainSlider[j] = news[0];
+							mainSlider[j].type = "news";
+							j++;
+						}
+						
+						if(vedios[0]) {
+							mainSlider[j] = vedios[0];
+							mainSlider[j].type = "video";
+							j++;
+						}
+						
+						if(news[1]) {
+							mainSlider[j] = news[1];
+							mainSlider[j].type = "news";
+							j++
+						}
+						
+						if(vedios[1]) {
+							mainSlider[j] = vedios[1];
+							mainSlider[j].type = "video";
+							j++;
+						}
+						
+						if(news[2]) {
+							mainSlider[j] = news[2];
+							mainSlider[j].type = "news";
+							j++;
+						}
+						
+						if(vedios[2]) {
+							mainSlider[j] = vedios[2];
+							mainSlider[j].type = "video";
+							j++;
+						}
+						
+						//objLog(mainSlider);
+						$scope.mainSlides = mainSlider;
+						$scope.videos=vedios;
+						$scope.news=news;
+						$scope.sounds=sounds;
+						$scope.pictures=pictures;
+						$scope.user = user;
 						$ionicSlideBoxDelegate.update();
 					}, null);
 		})

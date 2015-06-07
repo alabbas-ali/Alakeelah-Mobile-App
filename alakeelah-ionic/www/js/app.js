@@ -65,6 +65,16 @@ angular
 							}
 						}
 					})
+					
+					.state('app.pageViewDetials', {
+						url : "/pageViewDetials/:userId",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/pageViewDetials.html",
+								controller : "pageViewDetialsCtrl"
+							}
+						}
+					})
 
 					.state('app.liveBroadcast', {
 						url : "/liveBroadcast/:userID",
@@ -220,6 +230,7 @@ angular
 						commenterName_msg : "الإسم :",
 						commentContent_msg : "التعليق :",
 						commentCheckbox_msg : "أختر لأضافة التعليق إلى حسابك في تويتر و فيس بوك",
+						addComment_msg : "إضافة تعليق",
 					});
 
 					$translateProvider.translations("en", {
@@ -254,6 +265,7 @@ angular
 						commenterName_msg : "Name :",
 						commentContent_msg : "Comment :",
 						commentCheckbox_msg : "Add Your Comment Into Facebook Account",
+						addComment_msg : "Add Comment",
 					});
 
 					$translateProvider.preferredLanguage = "en";
