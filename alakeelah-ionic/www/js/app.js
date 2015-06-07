@@ -205,7 +205,7 @@ angular
 						frequency_msg : "التردد",
 						broadcastTable_msg : "جدول البث",
 						divisions_msg : "الاقسام",
-						home_msg : "الريسية",
+						home_msg : "الرئيسية",
 						news_msg : "الاخبار",
 						videos_msg : "الفيديوهات",
 						sounds_msg : "الصوتيات",
