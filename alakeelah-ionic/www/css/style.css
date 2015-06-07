@@ -38,26 +38,34 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	background: none;
 }
 
+.slider {
+	padding-top: 18px;
+}
+
 .slide-button {
 	font-weight: bold !important;
 	color: #fff !important;
 	margin-top: 10px;
 	margin-left: 15px;
+	padding: 1px 10px;
 }
 
 .slider-pager {
 	bottom: auto;
-	top: 10px;
+	top: -4px;
 }
 
 .slider-pager .slider-pager-page {
-	color: #27C399;
-	opacity: 0.8;
-	font-size: 12px;
+	color: #FFFFFF;
+	opacity: 1.8;
+	font-size: 9px;
+	padding: 0px;
+	margin: 0px;
+	float: right;
 }
 
 .slider-pager .slider-pager-page.active {
-	color: #636AAE;
+	color: rgba(255, 255, 255, 0.67);;
 }
 
 .bar-stable .button.button-clear {
@@ -94,7 +102,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .card .item-body {
-	margin-top: 5px;
+	margin: 0px;
 	padding: 0px 0px;
 	border-color: transparent !important;
 	background-color: transparent !important;
@@ -107,10 +115,33 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	border-color: transparent !important;
 	background-color: transparent !important;
 	border-style: none;
+	box-shadow: none;
+	box-sizing: initial;
+	border: none;
 }
 
 .card, .list-inset {
 	margin: 10px 5px;
+}
+
+.box {
+	display: block;
+	min-height: 127px;
+	box-shadow: none;
+	border: none;
+	padding: 0px !important;
+	margin: 0px !important;
+	border-radius: 0px;
+	-webkit-transition: all 500ms;
+	-moz-transition: all 500ms;
+	-ms-transition: all 500ms;
+	-o-transition: all 500ms;
+	transition: all 500ms;
+	border: none;
+	padding: 0px !important;
+	margin: 0px !important;
+	border-radius: 0px;
+	margin: 0px !important;
 }
 
 .box img {
@@ -130,6 +161,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	text-align: center;
 	position: absolute;
 	z-index: 999;
+	max-height: 45px;
 	bottom: 0px;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
@@ -140,12 +172,19 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	padding: 5px 0 10px;
 }
 
+.box .title .main-title h2 {
+	font-size: 14px;
+}
+
 .box .title p, .box .title h2, .box .title h3, .box .title h4 {
 	margin-top: 5px;
 }
 
-.box .title h4 .fa-newspaper-o {
-	font-size: 25px;
+.box .title h4 .fa {
+	font-size: 18px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.39);
 }
 
 .box .title .main-title {
@@ -486,12 +525,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .frequency {
 	background-image: url("../img/frec.png");
 	background-repeat: no-repeat;
-	background-position: right;
+	background-position: right top;
 	background-size: 100%;
-	height: 185px;
-	max-height: 185px;
+	height: 83px;
+	max-height: 86px;
 	overflow: hidden;
-	padding: 53px 36px !important;
+	padding: 38px 28px 0px 0px !important;
 	color: #fff;
 }
 
@@ -499,4 +538,3 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	width: 200px;
 	float: right;
 }
-
