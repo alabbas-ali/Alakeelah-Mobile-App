@@ -8,9 +8,7 @@
 			<div class="card">
 				<div class="item item-text-wrap box">
 					<a href="#" class="ui-link"> 
-						<object data="img/defult.png" type="image/png">
-							<img src="{{ user.photo }}">
-						</object>
+						<img ng-src="{{ user.photo }}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/>
 						<div class="title">
 							<h3>{{ user.displayName }}</h3>
 						</div>

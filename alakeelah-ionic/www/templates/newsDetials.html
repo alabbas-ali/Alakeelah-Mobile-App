@@ -14,11 +14,23 @@
 						</h3>
 					</div>
 					<div class="main-title">
-						<h3>{{ news.title }}</h3>
+						
+										<div ng-if=" currentLang() == 'en'">
+											<h2>{{ news.title }}</h2>
+											
+										</div>
+										<div ng-if=" currentLang() == 'ar'">
+											<h2>{{ news.artitle }}</h2>
+										</div>
 					</div>
 				</div>
 				<div class="content">
-				{{ news.content }}
+										<div ng-if=" currentLang() == 'en'">
+											<p ng-bind-html="news.content"></p>
+										</div>
+										<div ng-if=" currentLang() == 'ar'">
+											<p ng-bind-html="news.arcontent"></p>
+										</div>
 				</div>
 			</div>
 		</div>

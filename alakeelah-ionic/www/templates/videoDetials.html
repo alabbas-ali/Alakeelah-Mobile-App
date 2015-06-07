@@ -5,19 +5,29 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box-vediodetials">
-				<video src="{{ vedio.videolink }}" controls="controls" ></video>
+				<video src="{{ video.videolink }}" controls="controls" ></video>
 				<div class="title">
 					<div class="date">
 						<h3>
-							{{ getDay(vedio.video_date) }} <br> {{ getMunthName(vedio.video_date) }}
+							{{ getDay(video.video_date) }} <br> {{ getMunthName(video.video_date) }}
 						</h3>
 					</div>
 					<div class="main-title">
-						<h3>{{ vedio.title }}</h3>
+						<div ng-if=" currentLang() == 'en'">
+											<h2>{{ video.title }}</h2>
+										</div>
+										<div ng-if=" currentLang() == 'ar'">
+											<h2>{{ video.artitle }}</h2>
+										</div>
 					</div>
 				</div>
 				<div class="content">
-				{{ news.content }}
+										<div ng-if=" currentLang() == 'en'">
+											<p ng-bind-html="video.content"></p>
+										</div>
+										<div ng-if=" currentLang() == 'ar'">
+											<p ng-bind-html="video.arcontent"></p>
+										</div>
 				</div>
 			</div>
 		</div>

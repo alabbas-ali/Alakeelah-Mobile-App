@@ -16,7 +16,12 @@
 								<img ng-src="{{publicNews.image }}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/> 
 								<div class="title">
 									<div class="main-title">
-										<h2>{{ publicNews.title }}</h2>
+										<div ng-if=" currentLang() == 'en'">
+											<h2>{{ publicNews.title }}</h2>
+										</div>
+										<div ng-if=" currentLang() == 'ar'">
+											<h2>{{ publicNews.artitle }}</h2>
+										</div>
 									</div>
 									<div class="date">
 										<h3>
@@ -55,7 +60,12 @@
 								</h3>
 							</div>
 							<div class="main-title">
-								<h3>{{ news.title }}</h3>
+								<div ng-if=" currentLang() == 'en'">
+											<h2>{{ news.title }}</h2>
+										</div>
+										<div ng-if=" currentLang() == 'ar'">
+											<h2>{{ news.artitle }}</h2>
+										</div>
 							</div>
 						</div>
 					</a>
@@ -64,6 +74,10 @@
 		</div>
 </div>
 
-
+<br />
+<br />
+<br />
+<br />
+<br />
 </ion-content> 
 </ion-view>

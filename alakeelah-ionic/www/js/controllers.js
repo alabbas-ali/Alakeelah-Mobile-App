@@ -76,9 +76,11 @@ angular.module('starter.controllers', [])
 						}
 					};
 
-					$scope.getDay = function(data) {
-						var objDate = new Date(data);
-						return objDate.getDay();
+					$scope.getDay = function(date) {
+						//date = "2015-06-10";
+						var objDate = new Date(date);
+						//console.log ( date + " day : " + objDate.getUTCDate() );
+						return objDate.getUTCDate();
 					};
 
 					$scope.showLoading = function() {
@@ -181,36 +183,6 @@ angular.module('starter.controllers', [])
 						$scope.sounds=sounds;
 						$scope.pictures=pictures;
 						
-//						var newNews = new Array(3);
-//						var newVideo = new Array(3);
-//						var newpicture = new Array(2);
-//						var newSound = new Array(2);
-//						
-//						var j = 0;
-//						if( news.length > 3 )
-//							for(i = 3 ; i<news.lenght & i <6; i++){
-//								newNews[j] = news[j]; j++;
-//								alert(news[j]);
-//							}
-//						$scope.news = newNews;
-						//alert($scope.news);
-						
-//						j = 0;
-//						if( vedios.length > 3 )
-//							for(i = 3 ; i< vedios.lenght & i <6; i++){
-//								newVideo[j] = vedios[j]; j++;
-//							}
-//						$scope.videos = newVideo;
-//						
-//						for(i = 0 ; i< sounds.lenght & i <2; i++){
-//							newSound[i] = sounds[i]; 
-//						}
-//						$scope.sounds = newSound;
-//						
-//						for(i = 0 ; i< pictures.lenght & i <2; i++){
-//							newpicture[i] = pictures[i]; 
-//						}
-//						$scope.pictures = newpicture;
 						$ionicSlideBoxDelegate.update();
 					}, null);
 		})
@@ -231,7 +203,7 @@ angular.module('starter.controllers', [])
 					}, null);
 		})
 
-		.controller('liveBroadcastCtrl',function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+		.controller('liveBroadcastCtrl',function($scope, $sce, $stateParams, $q, $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var commentsList , broadcastURI;
 					var promise = $q(function(resolve, reject) {
@@ -263,9 +235,13 @@ angular.module('starter.controllers', [])
 					promise.then(function(data) {
 						$scope.hideLoading();
 						$scope.commentsList = commentsList;
-						$scope.broadcastURI = "'"+ broadcastURI + "'";
+						$scope.broadcastURI = broadcastURI;
 						$ionicSlideBoxDelegate.update();
 					}, null);
+					
+					$scope.trustSrc = function(src) {
+					    return $sce.trustAsResourceUrl(src);
+					}
 		})
 
 		.controller('frequencyCtrl',function($scope, $stateParams, $q) {

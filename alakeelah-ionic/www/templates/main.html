@@ -8,8 +8,8 @@
 			</div> -->
 
 			<div class="item item-body">
-				<ion-slide-box show-pager="true"> <ion-slide
-					ng-repeat="publicNews in mainSlides">
+				<ion-slide-box show-pager="true"> 
+				<ion-slide ng-repeat="publicNews in mainSlides">
 				<div ng-if="publicNews.type == 'news'">
 					<div class="box">
 						<a href="#/app/newsDetials/{{publicNews.id}}" class="link"> <img
@@ -17,12 +17,17 @@
 							onerror="this.src = $(this).attr('altSrc')" />
 							<div class="title">
 								<div class="main-title">
-									<h2>{{ publicNews.artitle }}</h2>
+									<div ng-if=" currentLang() == 'en'">
+										<h2>{{ publicNews.title }}</h2>
+									</div>
+									<div ng-if=" currentLang() == 'ar'">
+										<h2>{{ publicNews.artitle }}</h2>
+									</div>
 								</div>
 								<div class="date">
 									<h3>
 										{{ getDay(publicNews.news_date) }} <br>
-										{{getMunthName(publicNews.news_date) }}
+										{{ getMunthName(publicNews.news_date) }}
 									</h3>
 								</div>
 								<div class="main-icon">
@@ -42,12 +47,17 @@
 							onerror="this.src = $(this).attr('altSrc')" />
 							<div class="title">
 								<div class="main-title">
-									<h2>{{ publicNews.title }}</h2>
+									<div ng-if=" currentLang() == 'en'">
+										<h2>{{ publicNews.title }}</h2>
+									</div>
+									<div ng-if=" currentLang() == 'ar'">
+										<h2>{{ publicNews.artitle }}</h2>
+									</div>
 								</div>
 								<div class="date">
 									<h3>
-										{{ getDay(publicNews.video_date) }} <br> {{
-										getMunthName(publicNews.video_date) }}
+										{{ getDay(publicNews.video_date) }} <br> 
+										{{ getMunthName(publicNews.video_date) }}
 									</h3>
 								</div>
 								<div class="main-icon">
@@ -76,19 +86,24 @@
 			</div>
 
 			<div class="item item-text-wrap box" ng-repeat="video in videos" ng-if="$index >= 3 && $index <= 5">
-				<a href="#/app/videoDetials/{{video.id}}" class="ui-link"> <img
-					ng-src="{{video.image}}" altSrc="img/defult.png"
+				<a href="#/app/videoDetials/{{video.id}}" class="ui-link"> 
+				<img ng-src="{{video.image}}" altSrc="img/defult.png"
 					onerror="this.src = $(this).attr('altSrc')" />
 
 					<div class="title">
 						<div class="date">
 							<h3>
 								{{ getDay(video.video_date) }} <br>
-								{{getMunthName(video.video_date) }}
+								{{ getMunthName(video.video_date) }}
 							</h3>
 						</div>
 						<div class="main-title">
-							<h3>{{ video.title }}</h3>
+							<div ng-if=" currentLang() == 'en'">
+										<h2>{{ video.title }}</h2>
+									</div>
+									<div ng-if=" currentLang() == 'ar'">
+										<h2>{{ video.artitle }}</h2>
+									</div>
 						</div>
 					</div>
 				</a>
@@ -109,18 +124,23 @@
 			</div>
 
 			<div class="item item-text-wrap box" ng-repeat="newss in news" ng-if="$index >= 3 && $index <= 5">
-				<a href="#/app/newsDetials/{{newss.id}}" class="ui-link"> <img
-					ng-src="{{newss.image}}" altSrc="img/defult.png"
+				<a href="#/app/newsDetials/{{newss.id}}" class="ui-link"> 
+					<img ng-src="{{newss.image}}" altSrc="img/defult.png"
 					onerror="this.src = $(this).attr('altSrc')" />
 					<div class="title">
 						<div class="date">
 							<h3>
 								{{ getDay(newss.news_date) }} <br>
-								{{getMunthName(newss.news_date) }}
+								{{ getMunthName(newss.news_date) }}
 							</h3>
 						</div>
 						<div class="main-title">
-							<h3>{{ newss.title }}</h3>
+							<div ng-if=" currentLang() == 'en'">
+										<h2>{{ newss.title }}</h2>
+									</div>
+									<div ng-if=" currentLang() == 'ar'">
+										<h2>{{ newss.artitle }}</h2>
+									</div>
 						</div>
 					</div>
 				</a>
@@ -147,11 +167,16 @@
 						<div class="date">
 							<h3>
 								{{ getDay(picture.photo_date) }} <br>
-								{{getMunthName(picture.photo_date) }}
+								{{ getMunthName(picture.photo_date) }}
 							</h3>
 						</div>
 						<div class="main-title">
-							<h3>{{ picture.title }}</h3>
+							<div ng-if=" currentLang() == 'en'">
+										<h2>{{ picture.title }}</h2>
+									</div>
+									<div ng-if=" currentLang() == 'ar'">
+										<h2>{{ picture.artitle }}</h2>
+									</div>
 						</div>
 					</div>
 				</a>
@@ -173,12 +198,17 @@
 					<div class="title">
 						<div class="date">
 							<h3>
-								{{ getDay(sound.audio_date) }} <br> {{
-								getMunthName(sound.audio_date) }}
+								{{ getDay(sound.audio_date) }} <br> 
+								{{ getMunthName(sound.audio_date) }}
 							</h3>
 						</div>
 						<div class="main-title">
-							<h3>{{ sound.title }}</h3>
+							<div ng-if=" currentLang() == 'en'">
+										<h2>{{ sound.title }}</h2>
+									</div>
+									<div ng-if=" currentLang() == 'ar'">
+										<h2>{{ sound.artitle }}</h2>
+									</div>
 						</div>
 					</div>
 				</a>

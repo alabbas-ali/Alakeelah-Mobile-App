@@ -14,11 +14,23 @@
 						</h3>
 					</div>
 					<div class="main-title">
-						<h3>{{ sound.title }}</h3>
+						
+						<div ng-if=" currentLang() == 'en'">
+											<h2>{{ sound.title }}</h2>
+										</div>
+										<div ng-if=" currentLang() == 'ar'">
+											<h2>{{ sound.artitle }}</h2>
+										</div>
 					</div>
 				</div>
 				<div class="content">
-				{{ sound.content }}
+								
+										<div ng-if=" currentLang() == 'en'">
+											<p ng-bind-html="sound.content"></p>
+										</div>
+										<div ng-if=" currentLang() == 'ar'">
+											<p ng-bind-html="sound.arcontent"></p>
+										</div>
 				</div>
 			</div>
 		</div>
