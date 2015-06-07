@@ -676,7 +676,7 @@ angular.module('starter.controllers', [])
 
 					$ionicPlatform.ready(function() {
 								readyCalled = true;
-								if (ionic.Platform.isAndroid()) {
+//								if (ionic.Platform.isAndroid()) {
 									// If android device, display GIF Image and
 									// play sound clip in background.
 									$("#introDiv").html('<img id="introImg" src="intro/intro.gif" style="margin: auto;max-height: 100%;width: 100%;background-color: #48270C;" />');
@@ -693,9 +693,9 @@ angular.module('starter.controllers', [])
 											endIntro();
 										}, 9000);
 									}
-								} else {
-									// If not android, play video intro
-									initVideoIntro();
-								}
+//								} else {
+//									// If not android, play video intro
+//									initVideoIntro();
+//								}
 							});
 				});
