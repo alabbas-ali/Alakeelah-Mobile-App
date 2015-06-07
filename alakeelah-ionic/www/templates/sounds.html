@@ -10,7 +10,7 @@
 			</div> -->
 			<div class="item item-body">
 				<ion-slide-box show-pager="true"> 
-					<ion-slide ng-repeat="publicSound in publicSounds">
+					<ion-slide ng-repeat="publicSound in publicSounds" ng-if="$index < 5">
 						<div class="box">
 							<a href="#/app/soundDetials/{{publicSound.id}}" class="link"> 
 

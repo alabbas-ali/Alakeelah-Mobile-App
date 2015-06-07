@@ -9,7 +9,7 @@
 			</div> -->
 			<div class="item item-body">
 				<ion-slide-box show-pager="true"> 
-					<ion-slide ng-repeat="publicNews in publicNewss">
+					<ion-slide ng-repeat="publicNews in publicNewss" ng-if="$index < 5">
 						<div class="box">
 							<a href="#/app/newsDetials/{{publicNews.id}}" class="link">
 								
