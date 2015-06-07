@@ -223,7 +223,7 @@ angular.module('starter.controllers', [])
 						var pdone = false;
 						var udone = false;
 						
-						$.get(serverURI + 'News/getByUser/' + $stateParams.userId, function(data) {
+						$.get(serverURI + 'Userprofile/getByID/'+ $stateParams.userId, function(data) {
 							user = data;
 							udone = true;
 							if (vdone && sdone && pdone && ndone)
@@ -328,8 +328,8 @@ angular.module('starter.controllers', [])
 						});
 						
 						if ($stateParams.userID != 0) {
-							$.get(serverURI + 'Userprofile/getLiveSteam/'+ $stateParams.userID, function(data) {
-								broadcastURI = data[0].livestream;
+							$.get(serverURI + 'Userprofile/getByID/'+ $stateParams.userID, function(data) {
+								broadcastURI = data.livestream;
 								nldone = true;
 								if (pndone)
 									resolve(" ");

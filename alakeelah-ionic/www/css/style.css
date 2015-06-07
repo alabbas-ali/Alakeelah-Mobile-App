@@ -539,3 +539,36 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	width: 200px;
 	float: right;
 }
+
+/************** tttt ********************/
+.item.item-body .iconlinks {
+	display: block;
+	height: 28px;
+	width: 39px;
+	position: absolute;
+	top: 20px;
+	background-color: rgba(48, 38, 38, 0.82);
+	padding: 4px 10px;
+	color: #bbb;
+}
+
+.item.item-body .iconlinks.link1{
+	top: 50px;
+}
+
+.item.item-body .iconlinks.link2{
+	top: 80px;
+}
+
+.item.item-body .iconlinks.link3{
+	top : 110px;
+}
+
+
+
+
+
+
+
+
+
