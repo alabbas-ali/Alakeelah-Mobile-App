@@ -71,24 +71,24 @@
 
 		<div class="card">
 
-			<div class="item item-divider">
+			<div class="item item-divider" ng-if="videos.length > 3">
 				{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>
 			</div>
 
-			<div class="item item-text-wrap box" ng-repeat="video in videos">
+			<div class="item item-text-wrap box" ng-repeat="video in videos" ng-if="$index >= 3 && $index <= 5">
 				<a href="#/app/videoDetials/{{video.id}}" class="ui-link"> <img
-					ng-src="{{videos.image}}" altSrc="img/defult.png"
+					ng-src="{{video.image}}" altSrc="img/defult.png"
 					onerror="this.src = $(this).attr('altSrc')" />
 
 					<div class="title">
 						<div class="date">
 							<h3>
-								{{ getDay(videos.video_date) }} <br>
-								{{getMunthName(videos.video_date) }}
+								{{ getDay(video.video_date) }} <br>
+								{{getMunthName(video.video_date) }}
 							</h3>
 						</div>
 						<div class="main-title">
-							<h3>{{ videos.title }}</h3>
+							<h3>{{ video.title }}</h3>
 						</div>
 					</div>
 				</a>
@@ -104,11 +104,11 @@
 
 		<div class="card">
 
-			<div class="item item-divider">
+			<div class="item item-divider" ng-if="news.length > 3">
 				{{ 'news_msg' | translate }} <i class="fa fa-newspaper-o"></i>
 			</div>
 
-			<div class="item item-text-wrap box" ng-repeat="newss in news">
+			<div class="item item-text-wrap box" ng-repeat="newss in news" ng-if="$index >= 3 && $index <= 5">
 				<a href="#/app/newsDetials/{{newss.id}}" class="ui-link"> <img
 					ng-src="{{newss.image}}" altSrc="img/defult.png"
 					onerror="this.src = $(this).attr('altSrc')" />
@@ -135,11 +135,11 @@
 
 		<div class="card">
 
-			<div class="item item-divider">
+			<div class="item item-divider" ng-if="pictures.length > 0">
 				{{ 'gallery_msg' | translate }} <i class="fa fa-picture-o"></i>
 			</div>
 
-			<div class="item item-text-wrap box" ng-repeat="picture in pictures">
+			<div class="item item-text-wrap box" ng-repeat="picture in pictures" ng-if="$index <= 2">
 				<a href="#/app/pictureDetials/{{picture.id}}" class="ui-link"> <img
 					ng-src="{{picture.photo}}" altSrc="img/defult.png"
 					onerror="this.src = $(this).attr('altSrc')" />
@@ -162,11 +162,11 @@
 	<div class="col">
 
 		<div class="card">
-			<div class="item item-divider">
+			<div class="item item-divider" ng-if="sounds.length > 0">
 				{{ 'sounds_msg' | translate }} <i class="fa fa-microphone"></i>
 			</div>
 
-			<div class="item item-text-wrap box" ng-repeat="sound in sounds">
+			<div class="item item-text-wrap box" ng-repeat="sound in sounds" ng-if="$index <= 2">
 				<a href="#/app/soundDetials/{{sound.id}}" class="ui-link"> <img
 					ng-src="{{sound.image}}" altSrc="img/defult.png"
 					onerror="this.src = $(this).attr('altSrc')" />
@@ -187,4 +187,9 @@
 
 	</div>
 </div>
+<br />
+<br />
+<br />
+<br />
+<br />
 </ion-content> </ion-view>

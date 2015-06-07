@@ -1,5 +1,5 @@
-var serverURI = 'http://localhost/NewProject/public/';
-	//'http://alaqila.tv/admin528/public/';
+//var serverURI = 'http://localhost/NewProject/public/';
+var serverURI = 'http://alaqila.tv/admin528/public/';
 
 var publicNunber = 5;
 
@@ -176,37 +176,41 @@ angular.module('starter.controllers', [])
 							mainSlider[5].type = "video";
 						}
 						$scope.mainSlides = mainSlider;
+						$scope.videos=vedios;
+						$scope.news=news;
+						$scope.sounds=sounds;
+						$scope.pictures=pictures;
 						
-						var newNews = new Array(3);
-						var newVideo = new Array(3);
-						var newpicture = new Array(2);
-						var newSound = new Array(2);
-						
-						var j = 0;
-						if( news.length > 3 )
-							for(i = 3 ; i<news.lenght & i <6; i++){
-								newNews[j] = news[j]; j++;
-								alert(news[j]);
-							}
-						$scope.news = newNews;
+//						var newNews = new Array(3);
+//						var newVideo = new Array(3);
+//						var newpicture = new Array(2);
+//						var newSound = new Array(2);
+//						
+//						var j = 0;
+//						if( news.length > 3 )
+//							for(i = 3 ; i<news.lenght & i <6; i++){
+//								newNews[j] = news[j]; j++;
+//								alert(news[j]);
+//							}
+//						$scope.news = newNews;
 						//alert($scope.news);
 						
-						j = 0;
-						if( vedios.length > 3 )
-							for(i = 3 ; i< vedios.lenght & i <6; i++){
-								newVideo[j] = vedios[j]; j++;
-							}
-						$scope.videos = newVideo;
-						
-						for(i = 0 ; i< sounds.lenght & i <2; i++){
-							newSound[i] = sounds[i]; 
-						}
-						$scope.sounds = newSound;
-						
-						for(i = 0 ; i< pictures.lenght & i <2; i++){
-							newpicture[i] = pictures[i]; 
-						}
-						$scope.pictures = newpicture;
+//						j = 0;
+//						if( vedios.length > 3 )
+//							for(i = 3 ; i< vedios.lenght & i <6; i++){
+//								newVideo[j] = vedios[j]; j++;
+//							}
+//						$scope.videos = newVideo;
+//						
+//						for(i = 0 ; i< sounds.lenght & i <2; i++){
+//							newSound[i] = sounds[i]; 
+//						}
+//						$scope.sounds = newSound;
+//						
+//						for(i = 0 ; i< pictures.lenght & i <2; i++){
+//							newpicture[i] = pictures[i]; 
+//						}
+//						$scope.pictures = newpicture;
 						$ionicSlideBoxDelegate.update();
 					}, null);
 		})
