@@ -652,9 +652,8 @@ angular.module('starter.controllers', [])
 
 					var initVideoIntro = function() {
 						try {
-							$("#introDiv").html('<video id="introVid" style="margin: auto;max-height: 100%;width: 100%;background-color: #48270C;"></video>');
-							var introVidTag = document
-									.getElementById("introVid");
+							$("#introDiv").html('<video id="introVid" style="margin: auto;max-height: 100%;width: 100%;background-color: #48270C;" preload="auto" onplaying="this.controls=false"></video>');
+							var introVidTag = document.getElementById("introVid");
 							introVidTag.src = "intro/intro.m4v";
 							introVidTag.addEventListener("ended", function() {
 								endIntro();

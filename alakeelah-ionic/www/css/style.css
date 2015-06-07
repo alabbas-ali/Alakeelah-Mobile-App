@@ -94,10 +94,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .card .item-divider {
-	padding: 10px 20px;
+	padding: 6px 14px;
 	margin: 0 !important;
 	background-color: rgba(0, 0, 0, 0.3);
 	margin: 5px 0;
+	font-size: 14px;
 	color: #fff;
 }
 
