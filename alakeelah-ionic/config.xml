@@ -12,12 +12,14 @@
 	<preference name="DisallowOverscroll" value="true" />
 	<preference name="BackupWebStorage" value="none" />
 	<preference name="orientation" value="portrait" />
-	<preference name="splashScreenDelay" value="1" />
 	
+	<preference name="splashscreen" value="splash" />
+	<preference name="splashScreenDelay" value="1" />
+
 	<feature name="StatusBar">
 		<param name="ios-package" value="CDVStatusBar" onload="true" />
 	</feature>
-	
+
 	<feature name="Console">
 		<param name="ios-package" value="CDVLogger" />
 		<param name="wp-package" value="DebugConsole" />
@@ -30,40 +32,51 @@
 		<param name="ios-package" value="CDVFile" />
 		<param name="wp-package" value="File" />
 	</feature>
-	
+
 	<feature name="Media">
 		<param name="android-package" value="org.apache.cordova.media.AudioHandler" />
 		<param name="ios-package" value="CDVSound" />
 		<param name="wp-package" value="Media" />
 		<param name="id" value="org.apache.cordova.media" />
 	</feature>
-	
+
 	<feature name="Device">
 		<param name="android-package" value="org.apache.cordova.device.Device" />
 		<param name="ios-package" value="CDVDevice" />
 		<param name="wp-package" value="Device" />
 		<param name="id" value="org.apache.cordova.device" />
 	</feature>
-	
+
 	<feature name="Globalization">
 		<param name="android-package" value="org.apache.cordova.globalization.Globalization" />
 		<param name="ios-package" value="CDVGlobalization" />
 		<param name="wp-package" value="Globalization" />
 		<param name="id" value="org.apache.cordova.globalization" />
 	</feature>
-	
+
 	<feature name="InAppBrowser">
 		<param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
-		<param name="ios-package" value="CDVInAppBrowser" />		
-	<param name="id" value="org.apache.cordova.inappbrowser" />
+		<param name="ios-package" value="CDVInAppBrowser" />
+		<param name="id" value="org.apache.cordova.inappbrowser" />
 	</feature>
-	
+
 	<feature name="Keyboard">
 		<param name="android-package" value="com.ionic.keyboard.IonicKeyboard" />
 		<param name="onload" value="true" />
 		<param name="ios-package" value="IonicKeyboard" />
 		<param name="id" value="com.ionic.keyboard" />
 	</feature>
+	<feature name="SplashScreen">
+		<param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+		<param name="onload" value="true" />
+		<param name="ios-package" value="CDVSplashScreen" />
+	</feature>
 	
+	<feature name="Splashscreen">
+		<param name="id" value="org.apache.cordova.splashscreen" />
+		<param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+		<param name="ios-package" value="CDVSplashScreen" />
+	</feature>
+
 	<icon src="/res/icons/icon.png" />
 </widget>
