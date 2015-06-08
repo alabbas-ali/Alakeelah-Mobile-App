@@ -708,8 +708,7 @@ angular
 
 		.controller(
 				'introVidCtrl',
-				function($scope, $cordovaMedia, $state, $ionicHistory,
-						$ionicPlatform) {
+				function($scope, $cordovaMedia, $state, $ionicHistory) {
 
 					var endIntro = function() {
 						$ionicHistory.nextViewOptions({
@@ -727,7 +726,7 @@ angular
 						}
 					}, 5000);
 
-					$ionicPlatform
+					ionic.Platform
 							.ready(function() {
 								readyCalled = true;
 								alert('ionic ready called!');
@@ -752,7 +751,6 @@ angular
 											var introAudio = $cordovaMedia
 													.newMedia(introAudioSrc);
 											introAudio.play(iOSPlayOptions);
-
 										}
 
 									} catch (e) {
