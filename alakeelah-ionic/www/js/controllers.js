@@ -724,7 +724,7 @@ angular
 						if (!readyCalled) {
 							endIntro();
 						}
-					}, 5000);
+					}, 6000);
 
 					ionic.Platform
 							.ready(function() {
@@ -754,6 +754,7 @@ angular
 
 									} catch (e) {
 										console.log(e);
+										alert(e);
 									} finally {
 										setTimeout(function() {
 											$("#introImg").hide();
