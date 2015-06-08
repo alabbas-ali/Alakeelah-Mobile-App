@@ -3,6 +3,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	color: #fff;
 }
 
+[nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"]
+	{
+	background-color: transparent !important;
+}
+
 .loading-container .loading {
 	background-color: transparent !important;
 	background-image: url("../img/looding.png");
@@ -574,31 +579,35 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	text-decoration: none;
 	color: #fff;
 	font-size: 0.9em;
-	background-color: rgba(255, 255, 255, 0.36);
- 	border-radius: 7px;;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 7px;;
 	display: block;
 	overflow: hidden;
-	height: 44px;
+	height: 55px;
 }
 
 .topbarNews .logo {
-	background-color: rgba(255, 255, 255, 0.56);
+	background-color: rgba(255, 255, 255, 0.38);
 	background-image: url(../img/logo_w.png);
+	background-position: center;
 	border-top-right-radius: 5px;
+	background-size: 100%;
+	background-repeat: no-repeat;
 	border-bottom-right-radius: 5px;
-	height: 44px;
-	width: 44px;
+	height: 57px;
+	width: 50px;
 	float: right;
 }
 
 .topbarNews p {
 	padding: 0px;
-	padding-top: 1px;
+	padding-top: 4px;
 	margin: 0px;
 	text-align: center;
 	color: #fff;
 }
 
+/**************** swiper  ************************/
 .swiper-container {
 	margin: 5px !important;
 	overflow: hidden !important;
@@ -609,6 +618,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	display: none;
 }
 
-[nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"]{
-	background-color: transparent !important;
+.swiper-slide:nth-child(2n) {
+	width: 40%;
+}
+
+.swiper-slide:nth-child(3n) {
+	width: 20%;
 }
