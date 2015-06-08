@@ -727,58 +727,45 @@ angular
 						}
 					}, 5000);
 
-					var initVideoIntro = function() {
-						try {
-							$("#introDiv")
-									.html(
-											'<video id="introVid" style="margin: auto;max-height: 100%;width: 100%;background-color: #48270C;" preload="auto" onplaying="this.controls=false"></video>');
-							var introVidTag = document
-									.getElementById("introVid");
-							introVidTag.src = "intro/intro.m4v";
-							introVidTag.addEventListener("ended", function() {
-								endIntro();
-							}, false);
-							introVidTag.play();
-						} catch (e) {
-							console.log(e);
-							endIntro();
-						}
-					};
-
-					// ********************************
-					// Uncomment this ready block for browser and IOS Simulator
-					// tests. Note: delete www/intro folder on deployment
-					$(document).ready(function() {
-						initVideoIntro();
-						readyCalled = true;
-					});
-					// ********************************
-
 					$ionicPlatform
 							.ready(function() {
 								readyCalled = true;
-								if (ionic.Platform.isAndroid()) {
-									// If android device, display GIF Image and
-									// play sound clip in background.
-									$("#introDiv")
-											.html(
-													'<img id="introImg" src="intro/intro.gif" style="margin: auto;max-height: 100%;width: 100%;background-color: #48270C;" />');
+								alert('ionic ready called!');
+								$("#introDiv")
+										.html(
+												'<img id="introImg" src="intro/intro.gif" style="margin: auto; max-height: 100%; width: 100%; background-color: #48270C;" />');
+								var initIntroSplash = function() {
 									try {
-										var introAudioSrc = '/android_asset/www/intro/intro.mp2';
-										var introAudio = new Media(
-												introAudioSrc, null, null, null);
-										introAudio.play();
+
+										var introAudioSrc = null;
+										if (ionic.Platform.isAndroid()) {
+											introAudioSrc = '/android_asset/www/intro/intro.mp2';
+											var introAudio = $cordovaMedia
+													.newMedia(introAudioSrc);
+											introAudio.play();
+										} else if (ionic.Platform.isIOS()) {
+											introAudioSrc = 'intro/intro.mp2';
+											var iOSPlayOptions = {
+												numberOfLoops : 1,
+												playAudioWhenScreenIsLocked : false
+											};
+											var introAudio = $cordovaMedia
+													.newMedia(introAudioSrc);
+											introAudio.play(iOSPlayOptions);
+
+										}
 
 									} catch (e) {
 										console.log(e);
+										alert('error playing intro ' + e);
 									} finally {
 										setTimeout(function() {
+											$("#introImg").hide();
 											endIntro();
 										}, 9000);
 									}
-								} else {
-									// If not android, play video intro
-									initVideoIntro();
-								}
+								};
+								initIntroSplash();
+
 							});
 				});
