@@ -109,6 +109,10 @@ angular
 					$scope.hideLoading = function() {
 						$ionicLoading.hide();
 					};
+					
+					$.get(serverURI + 'News/getResentNews/', function(data) {
+						$scope.resentNews = data;
+					});
 
 					$scope.changeBgColor = cahngColor;
 
