@@ -1,5 +1,5 @@
-var serverURI = 'http://localhost/NewProject/public/';
-//var serverURI = 'http://alaqila.tv/admin528/public/';
+//var serverURI = 'http://localhost/NewProject/public/';
+var serverURI = 'http://alaqila.tv/admin528/public/';
 
 var publicNunber = 5;
 
