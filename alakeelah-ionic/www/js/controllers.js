@@ -729,7 +729,6 @@ angular
 					ionic.Platform
 							.ready(function() {
 								readyCalled = true;
-								alert('ionic ready called!');
 								$("#introDiv")
 										.html(
 												'<img id="introImg" src="intro/intro.gif" style="margin: auto; max-height: 100%; width: 100%; background-color: #48270C;" />');
@@ -755,7 +754,6 @@ angular
 
 									} catch (e) {
 										console.log(e);
-										alert('error playing intro ' + e);
 									} finally {
 										setTimeout(function() {
 											$("#introImg").hide();
