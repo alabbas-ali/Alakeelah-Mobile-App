@@ -1,5 +1,5 @@
-//var serverURI = 'http://localhost/NewProject/public/';
-var serverURI = 'http://alaqila.tv/admin528/public/';
+var serverURI = 'http://localhost/NewProject/public/';
+//var serverURI = 'http://alaqila.tv/admin528/public/';
 
 var publicNunber = 5;
 
@@ -32,7 +32,7 @@ var cahngColor = function (color) {
 
 angular.module('starter.controllers', [])
 
-		.controller('AppCtrl',function($scope, $ionicModal, $timeout, $translate,$ionicLoading) {
+		.controller('AppCtrl',function($scope, $ionicModal, $timeout, $translate, $ionicLoading) {
 
 					if(localStorage.language)
 						$translate.use(localStorage.language);
@@ -97,6 +97,10 @@ angular.module('starter.controllers', [])
 					$scope.hideLoading = function() {
 						$ionicLoading.hide();
 					};
+					
+					$.get(serverURI + 'News/getResentNews/', function(data) {
+						$scope.resentNews = data;
+					});
 
 					$scope.changeBgColor = cahngColor;
 					

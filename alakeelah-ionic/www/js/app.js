@@ -8,7 +8,7 @@ angular
 		.module(
 				'starter',
 				[ 'ionic', 'starter.controllers', 'ngCordova',
-						'pascalprecht.translate' ])
+						'pascalprecht.translate' , 'ksSwiper' ])
 
 		.run(
 				function($ionicPlatform, $translate, $state, $ionicHistory) {
@@ -231,6 +231,7 @@ angular
 						commentContent_msg : "التعليق :",
 						commentCheckbox_msg : "أختر لأضافة التعليق إلى حسابك في تويتر و فيس بوك",
 						addComment_msg : "إضافة تعليق",
+						newsCountry_msg : "اخبار",
 					});
 
 					$translateProvider.translations("en", {
@@ -266,6 +267,7 @@ angular
 						commentContent_msg : "Comment :",
 						commentCheckbox_msg : "Add Your Comment Into Facebook Account",
 						addComment_msg : "Add Comment",
+						newsCountry_msg : "News",
 					});
 
 					$translateProvider.preferredLanguage = "en";
