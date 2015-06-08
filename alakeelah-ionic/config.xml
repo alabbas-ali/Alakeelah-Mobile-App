@@ -13,9 +13,6 @@
 	<preference name="BackupWebStorage" value="none" />
 	<preference name="orientation" value="portrait" />
 	
-	<preference name="splashscreen" value="splash" />
-	<preference name="splashScreenDelay" value="1" />
-
 	<feature name="StatusBar">
 		<param name="ios-package" value="CDVStatusBar" onload="true" />
 	</feature>
@@ -66,15 +63,10 @@
 		<param name="ios-package" value="IonicKeyboard" />
 		<param name="id" value="com.ionic.keyboard" />
 	</feature>
+	
 	<feature name="SplashScreen">
 		<param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
-		<param name="onload" value="true" />
-		<param name="ios-package" value="CDVSplashScreen" />
-	</feature>
-	
-	<feature name="Splashscreen">
-		<param name="id" value="org.apache.cordova.splashscreen" />
-		<param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+		<param name="onload" value="false" />
 		<param name="ios-package" value="CDVSplashScreen" />
 	</feature>
 
