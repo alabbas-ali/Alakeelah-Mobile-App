@@ -13,10 +13,10 @@
 											<div ng-if=" currentLang() == 'ar'">
 												<p>{{ resent.artitle }}</p>
 											</div>
-											<div ng-if=" currentLang() == 'en'">
+											<div ng-if="currentLang() == 'en' && resent.country.id != 1">
 												<p>{{ resent.country.name }} {{ 'newsCountry_msg' | translate }}</p>
 											</div>
-											<div ng-if=" currentLang() == 'ar'">
+											<div ng-if="currentLang() == 'ar' && resent.country.id != 1">
 												<p>{{ 'newsCountry_msg' | translate }} {{ resent.country.arname }}</p>
 											</div>
                                         </div>
@@ -28,7 +28,7 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box-vediodetials">
-				<video src="{{ video.videolink }}" controls="controls" ></video>
+				<video src="{{ trustSrc(video.videolink) }}" onpagehide="this.stop()" controls="controls" ></video>
 				<div class="title">
 					<div class="date">
 						<h3>

@@ -28,7 +28,7 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box">
-				<video src="{{ trustSrc(broadcastURI) }}" controls="controls"></video>
+				<video src="{{ trustSrc(broadcastURI) }}" onpagehide="this.stop()" controls="controls"></video>
 			</div>
 		</div>
 	</div>

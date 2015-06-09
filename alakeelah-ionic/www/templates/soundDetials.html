@@ -7,16 +7,16 @@
                                         <div>
                                             <div class="logo"></div>
                                             
-                                            <div ng-if=" currentLang() == 'en'">
+                                            <div ng-if="currentLang() == 'en'">
 												<p>{{ resent.title }}</p>
 											</div>
-											<div ng-if=" currentLang() == 'ar'">
+											<div ng-if="currentLang() == 'ar'">
 												<p>{{ resent.artitle }}</p>
 											</div>
-											<div ng-if=" currentLang() == 'en'">
+											<div ng-if="currentLang() == 'en' && resent.country.id != 1">
 												<p>{{ resent.country.name }} {{ 'newsCountry_msg' | translate }}</p>
 											</div>
-											<div ng-if=" currentLang() == 'ar'">
+											<div ng-if="currentLang() == 'ar' && resent.country.id != 1">
 												<p>{{ 'newsCountry_msg' | translate }} {{ resent.country.arname }}</p>
 											</div>
                                         </div>
@@ -29,7 +29,7 @@
 		<div class="card">
 			<div class="item item-text-wrap box-sounddetials">
 				<img src="img/sound.png">
-				<audio src="{{ sound.audiolink }}" contenteditable="true" controls="controls"></audio>
+				<audio src="{{ trustSrc(sound.audiolink) }}" onpagehide="this.stop()" contenteditable="true" controls="controls"></audio>
 				<div class="title">
 					<div class="date">
 						<h3>

@@ -54,7 +54,7 @@
         <ion-item class="menu-title">
  			{{ 'pages_msg' | translate }}
  		</ion-item >
- 		<ion-item nav-clear menu-close ng-repeat="page in pageList" href="#/app/pageView/{{page.id}}/{{ page.enname }}" >
+ 		<ion-item nav-clear menu-close ng-repeat="page in pageList" href="#/app/pageView/{{page.id}}/{{ page.name }}" >
           <div class="icon"><i class="fa {{ page.image }}"></i> </div>  <div class="text">
           							<div ng-if=" currentLang() == 'en'">
 										{{ page.enname }} 

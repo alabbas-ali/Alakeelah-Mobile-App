@@ -40,14 +40,17 @@ angular
 		.controller(
 				'AppCtrl',
 				function($scope, $ionicModal, $timeout, $translate,
-						$ionicLoading) {
-
-					if (localStorage.language)
-						$translate.use(localStorage.language);
-
-					if (localStorage.color)
-						cahngColor(localStorage.color);
-
+						$ionicLoading, $sce) {
+					
+					$scope.showLoading = function() {
+						$ionicLoading.show({
+							templateUrl : 'templates/loading.html',
+							hideOnStateChange : true
+						});
+					};
+					
+					$scope.showLoading();
+					
 					jQuery.get(serverURI + 'Settings/getAll/', function(data) {
 						localStorage.setItem('settingsList', JSON
 								.stringify(data[0]));
@@ -57,10 +60,23 @@ angular
 						// );
 					});
 
-					jQuery.get(serverURI + 'Pages/getAllActive',
-							function(data) {
+					jQuery.get(serverURI + 'Pages/getAllActive', function(data) {
 								$scope.pageList = data;
-							});
+					});
+					
+					$.get(serverURI + 'News/getResentNews/', function(data) {
+						$scope.resentNews = data;
+					});
+					
+					if (localStorage.language)
+						$translate.use(localStorage.language);
+
+					if (localStorage.color)
+						cahngColor(localStorage.color);
+					
+					$scope.trustSrc = function(src) {
+						return $sce.trustAsResourceUrl(src);
+					}
 
 					$scope.changeLang = function(lang) {
 						$translate.use(lang);
@@ -95,12 +111,7 @@ angular
 						return objDate.getUTCDate();
 					};
 
-					$scope.showLoading = function() {
-						$ionicLoading.show({
-							templateUrl : 'templates/loading.html',
-							hideOnStateChange : true
-						});
-					};
+					
 
 					$scope.openOut = function(href) {
 						window.open(href, '_system', 'location=yes');
@@ -109,10 +120,6 @@ angular
 					$scope.hideLoading = function() {
 						$ionicLoading.hide();
 					};
-					
-					$.get(serverURI + 'News/getResentNews/', function(data) {
-						$scope.resentNews = data;
-					});
 
 					$scope.changeBgColor = cahngColor;
 
@@ -121,9 +128,9 @@ angular
 		.controller(
 				'mainCtrl',
 				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
-
+					
 					$scope.showLoading();
-
+					
 					var news, vedios, sounds, pictures;
 					var promise = $q(function(resolve, reject) {
 						var ndone = false;
@@ -162,8 +169,7 @@ angular
 					});
 
 					promise.then(function(data) {
-						$scope.hideLoading();
-
+						
 						var first, secand;
 
 						if (news.length > 3)
@@ -219,6 +225,8 @@ angular
 						$scope.pictures = pictures;
 
 						$ionicSlideBoxDelegate.update();
+						
+						$scope.hideLoading();
 					}, null);
 				})
 
@@ -234,10 +242,11 @@ angular
 						});
 					});
 					promise.then(function(data) {
-						$scope.hideLoading();
+						
 						$scope.usersList = chunk(data, 2);
 						$scope.pageName = $stateParams.pageName;
 						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
 					}, null);
 				})
 
@@ -295,7 +304,7 @@ angular
 					});
 
 					promise.then(function(data) {
-						$scope.hideLoading();
+						
 
 						var first, secand;
 
@@ -355,12 +364,13 @@ angular
 						$scope.pictures = pictures;
 						$scope.user = user;
 						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
 					}, null);
 				})
 
 		.controller(
 				'liveBroadcastCtrl',
-				function($scope, $sce, $stateParams, $q, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var commentsList, broadcastURI;
 					var promise = $q(function(resolve, reject) {
@@ -394,15 +404,13 @@ angular
 
 					});
 					promise.then(function(data) {
-						$scope.hideLoading();
 						$scope.commentsList = commentsList;
 						$scope.broadcastURI = broadcastURI;
 						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
 					}, null);
 
-					$scope.trustSrc = function(src) {
-						return $sce.trustAsResourceUrl(src);
-					}
+					
 				})
 
 		.controller(
@@ -419,9 +427,9 @@ angular
 								});
 					});
 					promise.then(function(data) {
-						$scope.hideLoading();
 						$scope.frequency = settingsList.frequency;
 						$scope.commentsList = data;
+						$scope.hideLoading();
 					}, null);
 				})
 
@@ -435,8 +443,8 @@ angular
 				});
 			});
 			promise.then(function(data) {
-				$scope.hideLoading();
 				$scope.broadcastTable = data;
+				$scope.hideLoading();
 			}, null);
 		})
 
@@ -466,10 +474,10 @@ angular
 					});
 
 					promise.then(function(data) {
-						$scope.hideLoading();
 						$scope.publicNewss = publicNews;
 						$scope.newsList = chunk(newsList, 2);
 						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
 					}, null);
 				})
 
@@ -501,9 +509,9 @@ angular
 					});
 
 					promise.then(function(data) {
-						$scope.hideLoading();
 						$scope.news = news[0];
 						$scope.commentsList = commentsList;
+						$scope.hideLoading();
 					}, null);
 				})
 
@@ -534,10 +542,10 @@ angular
 					});
 
 					promise.then(function(data) {
-						$scope.hideLoading();
 						$scope.publicVideos = publicVideos;
 						$scope.videosList = chunk(videosList, 2);
 						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
 					}, null);
 				})
 
@@ -569,9 +577,9 @@ angular
 					});
 
 					promise.then(function(data) {
-						$scope.hideLoading();
 						$scope.video = video[0];
 						$scope.commentsList = commentsList;
+						$scope.hideLoading();
 					}, null);
 				})
 
@@ -602,10 +610,10 @@ angular
 					});
 
 					promise.then(function(data) {
-						$scope.hideLoading();
 						$scope.publicSounds = publicSounds;
 						$scope.soundsList = chunk(soundsList, 2);
 						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
 					}, null);
 				})
 
@@ -637,9 +645,9 @@ angular
 					});
 
 					promise.then(function(data) {
-						$scope.hideLoading();
 						$scope.sound = sound[0];
 						$scope.commentsList = commentsList;
+						$scope.hideLoading();
 					}, null);
 				})
 
@@ -670,10 +678,10 @@ angular
 					});
 
 					promise.then(function(data) {
-						$scope.hideLoading();
 						$scope.publicPictures = publicPictures;
 						$scope.picturesList = chunk(picturesList, 2);
 						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
 					}, null);
 				})
 
@@ -707,6 +715,7 @@ angular
 						$scope.hideLoading();
 						$scope.picture = picture[0];
 						$scope.commentsList = commentsList;
+						$scope.hideLoading();
 					}, null);
 				})
 
