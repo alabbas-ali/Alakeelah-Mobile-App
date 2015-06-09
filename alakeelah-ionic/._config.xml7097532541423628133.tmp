@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<widget id="com.alaqila" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
+	xmlns:cdv="http://cordova.apache.org/ns/1.0">
+	<name>Alaqila</name>
+	<description>Alaqila TV</description>
+	<author email="yahya.alfayad@gmail.com" href="">Yahya Alfayad
+	</author>
+	<content src="index.html" />
+	<access origin="*" />
+	<preference name="webviewbounce" value="false" />
+	<preference name="UIWebViewBounce" value="false" />
+	<preference name="DisallowOverscroll" value="true" />
+	<preference name="BackupWebStorage" value="none" />
+	<preference name="orientation" value="portrait" />
+
+	<feature name="StatusBar">
+		<param name="ios-package" value="CDVStatusBar" onload="true" />
+	</feature>
+
+	<feature name="Console">
+		<param name="ios-package" value="CDVLogger" />
+		<param name="wp-package" value="DebugConsole" />
+		<param name="id" value="org.apache.cordova.console" />
+	</feature>
+
+	<feature name="File">
+		<param name="android-package" value="org.apache.cordova.file.FileUtils" />
+		<param name="onload" value="true" />
+		<param name="ios-package" value="CDVFile" />
+		<param name="wp-package" value="File" />
+	</feature>
+
+	<feature name="Media">
+		<param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+		<param name="ios-package" value="CDVSound" />
+		<param name="wp-package" value="Media" />
+		<param name="id" value="org.apache.cordova.media" />
+	</feature>
+
+	<feature name="Device">
+		<param name="android-package" value="org.apache.cordova.device.Device" />
+		<param name="ios-package" value="CDVDevice" />
+		<param name="wp-package" value="Device" />
+		<param name="id" value="org.apache.cordova.device" />
+	</feature>
+
+	<feature name="Globalization">
+		<param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+		<param name="ios-package" value="CDVGlobalization" />
+		<param name="wp-package" value="Globalization" />
+		<param name="id" value="org.apache.cordova.globalization" />
+	</feature>
+
+	<feature name="InAppBrowser">
+		<param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+		<param name="ios-package" value="CDVInAppBrowser" />
+		<param name="id" value="org.apache.cordova.inappbrowser" />
+	</feature>
+
+	<feature name="Keyboard">
+		<param name="android-package" value="com.ionic.keyboard.IonicKeyboard" />
+		<param name="onload" value="true" />
+		<param name="ios-package" value="IonicKeyboard" />
+		<param name="id" value="com.ionic.keyboard" />
+	</feature>
+
+	<icon src="/res/icons/icon.png" />
+</widget>
