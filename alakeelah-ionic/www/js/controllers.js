@@ -26,10 +26,10 @@ function objLog(op) {
 
 var cahngColor = function(color) {
 	$('.menu').css({
-		"backgroundImage" : "url(img/bg" + color + ".jpg)"
+		"backgroundImage" : "url(img/bg" + color + ".png)"
 	});
 	$('.menu-content').css({
-		"backgroundImage" : "url(img/bg" + color + ".jpg)"
+		"backgroundImage" : "url(img/bg" + color + ".png)"
 	});
 	localStorage.setItem("color", color);
 };
