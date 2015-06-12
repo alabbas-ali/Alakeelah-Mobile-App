@@ -267,7 +267,7 @@ angular
 
 						$.get(serverURI + 'Userprofile/getByID/'
 								+ $stateParams.userId, function(data) {
-							user = data;
+							user = data[0];
 							udone = true;
 							if (vdone && sdone && pdone && ndone)
 								resolve(" ");

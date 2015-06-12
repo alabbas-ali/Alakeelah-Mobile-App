@@ -551,10 +551,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .item.item-body .iconlinks {
 	display: block;
 	height: 28px;
-	width: 39px;
+	width: 60px;
 	position: absolute;
 	top: 20px;
-	background-color: rgba(48, 38, 38, 0.82);
+	background-color: rgba(0, 0, 0, 0.57);
 	padding: 4px 10px;
 	color: #bbb;
 }
@@ -625,4 +625,17 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .swiper-slide:nth-child(3n) {
 	width: 20%;
+}
+
+.userName{
+	direction: rtl;
+  position: absolute;
+  top: -5px;
+  right: 95px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.userName span {
+	color: #f8b80b;
 }
