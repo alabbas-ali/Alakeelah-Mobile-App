@@ -79,8 +79,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .logo {
-	padding: 15px 10px 0px;
-	margin-left: 5px;
+	padding: 7px 7px 0px;
+	margin-left: 0px;
+	width: 95px;
 }
 
 .row {
@@ -591,7 +592,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	background-image: url(../img/logo_w.png);
 	background-position: center;
 	border-top-right-radius: 5px;
-	background-size: 100%;
+	background-size: 90%;
 	background-repeat: no-repeat;
 	border-bottom-right-radius: 5px;
 	height: 57px;

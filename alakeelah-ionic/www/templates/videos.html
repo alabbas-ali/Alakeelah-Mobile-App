@@ -3,29 +3,6 @@
 
 <!-- <h1>{{ 'videos_msg' | translate }}</h1>  -->
 
-<ks-swiper-container ng-if="resentNews.length > 0" class="topbarNews" initial-slide="1" loop="true" show-nav-buttons="false" slides-per-view="2" autoplay="100" space-between="20" pagination-clickable="false">
-	    <ks-swiper-slide class="swiper-slide" ng-repeat="resent in resentNews">
-	        						<a href="#/app/newsDetials/{{publicNews.id}}">
-                                        <div>
-                                            <div class="logo"></div>
-                                            
-                                            <div ng-if=" currentLang() == 'en'">
-												<p>{{ resent.title }}</p>
-											</div>
-											<div ng-if=" currentLang() == 'ar'">
-												<p>{{ resent.artitle }}</p>
-											</div>
-											<div ng-if="currentLang() == 'en' && resent.country.id != 1">
-												<p>{{ resent.country.name }} {{ 'newsCountry_msg' | translate }}</p>
-											</div>
-											<div ng-if="currentLang() == 'ar' && resent.country.id != 1">
-												<p>{{ 'newsCountry_msg' | translate }} {{ resent.country.arname }}</p>
-											</div>
-                                        </div>
-                                    </a>
-	    </ks-swiper-slide>
-	</ks-swiper-container>
-
 <div class="row">
 	<div class="col">
 		<div class="card">
