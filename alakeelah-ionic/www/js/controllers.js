@@ -52,13 +52,14 @@ angular
 					$scope.showLoading();
 					
 					jQuery.get(serverURI + 'Settings/getAll/', function(data) {
-						localStorage.setItem('settingsList', JSON
-								.stringify(data[0]));
+						localStorage.setItem('settingsList', JSON.stringify(data[0]));
 						settingsList = JSON.parse(localStorage.settingsList);
 						$scope.settingsList = settingsList;
 						// console.log( "losd sdsd : " + settingsList.livestream
 						// );
-					});
+					}).fail(function() {
+					    //alert( "error" );
+					  });
 
 					jQuery.get(serverURI + 'Pages/getAllActive', function(data) {
 								$scope.pageList = data;
