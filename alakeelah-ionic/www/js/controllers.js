@@ -1,14 +1,9 @@
-//var serverURI = 'http://localhost/NewProject/public/';
-var serverURI = 'http://alaqila.tv/admin528/public/';
+var serverURI = 'http://localhost/NewProject/public/';
+//var serverURI = 'http://alaqila.tv/admin528/public/';
 
 var publicNunber = 5;
 
 var settingsList = "";
-try {
-	settingsList = JSON.parse(localStorage.settingsList);
-} catch (ex) {
-	console.error(ex);
-}
 
 function chunk(arr, size) {
 	var newArr = [];
@@ -25,12 +20,8 @@ function objLog(op) {
 }
 
 var cahngColor = function(color) {
-	$('.menu').css({
-		"backgroundImage" : "url(img/bg" + color + ".png)"
-	});
-	$('.menu-content').css({
-		"backgroundImage" : "url(img/bg" + color + ".png)"
-	});
+	$('.body').css({"backgroundImage" : "url(img/bg" + color + ".png) "});
+	
 	localStorage.setItem("color", color);
 };
 
@@ -49,40 +40,63 @@ angular
 						});
 					};
 					
+					$scope.changeLang = function(lang) {
+						$translate.use(lang);
+						if(lang == "ar"){
+							$('.body').addClass("ar");
+						}else{
+							$('.body').removeClass("ar");
+						}
+						localStorage.setItem("language", lang);
+					};
+					
 					$scope.showLoading();
 					
 					jQuery.get(serverURI + 'Settings/getAll/', function(data) {
-						localStorage.setItem('settingsList', JSON.stringify(data[0]));
-						settingsList = JSON.parse(localStorage.settingsList);
+						settingsList = data[0]
 						$scope.settingsList = settingsList;
-						// console.log( "losd sdsd : " + settingsList.livestream
-						// );
+						localStorage.setItem('settingsList', JSON.stringify(settingsList));
 					}).fail(function() {
-					    //alert( "error" );
-					  });
+						try {
+							settingsList = JSON.parse(localStorage.settingsList);
+							$scope.settingsList = settingsList;
+						} catch (ex) {
+							//Redirect To Error Page No Connection And No Data 
+						}
+					});
 
 					jQuery.get(serverURI + 'Pages/getAllActive', function(data) {
-								$scope.pageList = data;
+						$scope.pageList = data;
+						localStorage.setItem('pageList', JSON.stringify(data));
+					}).fail(function() {
+						try {
+							$scope.pageList = JSON.parse(localStorage.pageList);
+						} catch (ex) {
+							//Redirect To Error Page No Connection And No Data 
+						}
 					});
 					
 					$.get(serverURI + 'News/getResentNews/', function(data) {
 						$scope.resentNews = data;
+						localStorage.setItem('resentNews', JSON.stringify(data));
+					}).fail(function() {
+						try {
+							$scope.resentNews = JSON.parse(localStorage.resentNews);
+						} catch (ex) {
+							//Redirect To Error Page No Connection And No Data 
+						}
 					});
 					
 					if (localStorage.language)
-						$translate.use(localStorage.language);
-
+						$scope.changeLang(localStorage.language);
+					
+					
 					if (localStorage.color)
 						cahngColor(localStorage.color);
 					
 					$scope.trustSrc = function(src) {
 						return $sce.trustAsResourceUrl(src);
 					}
-
-					$scope.changeLang = function(lang) {
-						$translate.use(lang);
-						localStorage.setItem("language", lang);
-					};
 
 					$scope.currentLang = function() {
 						return $translate.use();
@@ -126,9 +140,7 @@ angular
 
 				})
 
-		.controller(
-				'mainCtrl',
-				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+		.controller('mainCtrl', function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
 					
 					$scope.showLoading();
 					
@@ -142,31 +154,78 @@ angular
 						$.get(serverURI + 'News/getPublic/' + publicNunber,
 								function(data) {
 									news = data;
+									localStorage.setItem('homeNews', JSON.stringify(data));
 									ndone = true;
 									if (vdone && sdone && pdone)
 										resolve(" ");
-								});
+						}).fail(function() {
+							try {
+								news = JSON.parse(localStorage.homeNews);
+								ndone = true;
+								if (vdone && sdone && pdone)
+									resolve(" ");
+							} catch (ex) {
+								//Redirect To Error Page No Connection And No Data 
+								console.log("This is EX in Fitching Home News From Local Storage , No Internet Connection And No News ..");
+							}
+						});
+						
 						$.get(serverURI + 'Video/getPublic/' + publicNunber,
 								function(data) {
 									vedios = data;
+									localStorage.setItem('homeVedios', JSON.stringify(data));
 									vdone = true;
 									if (ndone && sdone && pdone)
 										resolve(" ");
-								});
+						}).fail(function() {
+							try {
+								vedios = JSON.parse(localStorage.homeVedios);
+								vdone = true;
+								if (ndone && sdone && pdone)
+									resolve(" ");
+							} catch (ex) {
+								//Redirect To Error Page No Connection And No Data 
+								console.log("This is EX in Fitching Home Videos From Local Storage , No Internet Connection And No News ..");
+							}
+						});
+						
 						$.get(serverURI + 'Audio/getPublic/' + publicNunber,
 								function(data) {
 									sounds = data;
+									localStorage.setItem('homeSounds', JSON.stringify(data));
 									sdone = true;
 									if (vdone && ndone && pdone)
 										resolve(" ");
-								});
+						}).fail(function() {
+							try {
+								sounds = JSON.parse(localStorage.homeSounds);
+								sdone = true;
+								if (vdone && ndone && pdone)
+									resolve(" ");
+							} catch (ex) {
+								//Redirect To Error Page No Connection And No Data 
+								console.log("This is EX in Fitching Home Sounds From Local Storage , No Internet Connection And No News ..");
+							}
+						});
+						
 						$.get(serverURI + 'Photo/getPublic/' + publicNunber,
 								function(data) {
 									pictures = data;
+									localStorage.setItem('homePictures', JSON.stringify(data));
 									pdone = true;
 									if (vdone && ndone && sdone)
 										resolve(" ");
-								});
+						}).fail(function() {
+							try {
+								pictures = JSON.parse(localStorage.homePictures);
+								pdone = true;
+								if (vdone && ndone && sdone)
+									resolve(" ");
+							} catch (ex) {
+								//Redirect To Error Page No Connection And No Data 
+								console.log("This is EX in Fitching Home Pictures From Local Storage , No Internet Connection And No News ..");
+							}
+						});
 					});
 
 					promise.then(function(data) {
@@ -224,9 +283,7 @@ angular
 						$scope.news = news;
 						$scope.sounds = sounds;
 						$scope.pictures = pictures;
-
 						$ionicSlideBoxDelegate.update();
-						
 						$scope.hideLoading();
 					}, null);
 				})
@@ -234,16 +291,22 @@ angular
 		.controller(
 				'pageViewCtrl',
 				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
-					$scope.pageId = $stateParams.pageId;
+					var pageID  = $stateParams.pageId;
 					$scope.showLoading();
 					var promise = $q(function(resolve, reject) {
 						$.get(serverURI + 'Pages/getPageUsers/'
-								+ $stateParams.pageId, function(data) {
+								+ pageID, function(data) {
+							localStorage.setItem('PageUsers' + pageID , JSON.stringify(data));
 							resolve(data);
+						}).fail(function() {
+							try {
+								resolve( JSON.parse(localStorage.getItem('PageUsers'+pageID)) );
+							} catch (ex) {
+								//Redirect To Error Page No Connection And No Data 
+							}
 						});
 					});
 					promise.then(function(data) {
-						
 						$scope.usersList = chunk(data, 2);
 						$scope.pageName = $stateParams.pageName;
 						$ionicSlideBoxDelegate.update();
@@ -251,14 +314,14 @@ angular
 					}, null);
 				})
 
-		.controller(
-				'pageViewDetialsCtrl',
+		.controller('pageViewDetialsCtrl',
 				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
 					$scope.userId = $stateParams.userId;
 					$scope.showLoading();
 
 					var news, vedios, sounds, pictures, user;
-
+					
+					var userID = $stateParams.userId;
 					var promise = $q(function(resolve, reject) {
 						var ndone = false;
 						var vdone = false;
@@ -267,41 +330,101 @@ angular
 						var udone = false;
 
 						$.get(serverURI + 'Userprofile/getByID/'
-								+ $stateParams.userId, function(data) {
+								+ userID, function(data) {
 							user = data[0];
+							localStorage.setItem('user'+ userID, JSON.stringify(data[0]));
 							udone = true;
 							if (vdone && sdone && pdone && ndone)
 								resolve(" ");
+						}).fail(function() {
+							try {
+								user = JSON.parse(localStorage.getItem('user'+ userID));
+								udone = true;
+								if (vdone && sdone && pdone && ndone)
+									resolve(" ");
+							} catch (ex) {
+								//Redirect To Error Page No Connection And No Data 
+								console.log("This is EX in Fitching User From Local Storage , No Internet Connection And No News ..");
+							}
 						});
 
-						$.get(serverURI + 'News/getByUser/'
-								+ $stateParams.userId, function(data) {
-							news = data;
-							ndone = true;
-							if (vdone && sdone && pdone && udone)
-								resolve(" ");
+						$.get(serverURI + 'News/getByUser/' + userID,
+								function(data) {
+									news = data;
+									localStorage.setItem('userNews'+ userID, JSON.stringify(data));
+									ndone = true;
+									if (vdone && sdone && pdone && udone)
+										resolve(" ");
+						}).fail(function() {
+							try {
+								news = JSON.parse(localStorage.getItem('userNews'+ userID));
+								ndone = true;
+								if (vdone && sdone && pdone && udone)
+									resolve(" ");
+							} catch (ex) {
+								//Redirect To Error Page No Connection And No Data 
+								console.log("This is EX in Fitching User News From Local Storage , No Internet Connection And No News ..");
+							}
 						});
-						$.get(serverURI + 'Video/getByUser/'
-								+ $stateParams.userId, function(data) {
-							vedios = data;
-							vdone = true;
-							if (ndone && sdone && pdone && udone)
-								resolve(" ");
+						
+						$.get(serverURI + 'Video/getByUser/' + userID,
+								function(data) {
+									vedios = data;
+									localStorage.setItem('userVedios' + userID, JSON.stringify(data));
+									vdone = true;
+									if (ndone && sdone && pdone && udone)
+										resolve(" ");
+						}).fail(function() {
+							try {
+								vedios = JSON.parse(localStorage.getItem('userVedios' + userID));
+								vdone = true;
+								if (ndone && sdone && pdone && udone)
+									resolve(" ");
+							} catch (ex) {
+								//Redirect To Error Page No Connection And No Data 
+								console.log("This is EX in Fitching User Videos From Local Storage , No Internet Connection And No News ..");
+							}
 						});
-						$.get(serverURI + 'Audio/getByUser/'
-								+ $stateParams.userId, function(data) {
-							sounds = data;
-							sdone = true;
-							if (vdone && ndone && pdone && udone)
-								resolve(" ");
+						
+						$.get(serverURI + 'Audio/getByUser/' + userID,
+								function(data) {
+									sounds = data;
+									localStorage.setItem('userSounds' + userID, JSON.stringify(data));
+									sdone = true;
+									if (vdone && ndone && pdone && udone)
+										resolve(" ");
+						}).fail(function() {
+							try {
+								sounds = JSON.parse(localStorage.getItem('userSounds' + userID));
+								sdone = true;
+								if (vdone && ndone && pdone && udone)
+									resolve(" ");
+							} catch (ex) {
+								//Redirect To Error Page No Connection And No Data 
+								console.log("This is EX in Fitching User Sounds From Local Storage , No Internet Connection And No News ..");
+							}
 						});
-						$.get(serverURI + 'Photo/getByUser/'
-								+ $stateParams.userId, function(data) {
-							pictures = data;
-							pdone = true;
-							if (vdone && ndone && sdone && udone)
-								resolve(" ");
+						
+						$.get(serverURI + 'Photo/getByUser/' + userID,
+								function(data) {
+									pictures = data;
+									localStorage.setItem('userPictures' + userID, JSON.stringify(data));
+									pdone = true;
+									if (vdone && ndone && sdone && udone)
+										resolve(" ");
+						}).fail(function() {
+							try {
+								pictures = JSON.parse(localStorage.getItem('userPictures' + userID));
+								pdone = true;
+								if (vdone && ndone && sdone && udone)
+									resolve(" ");
+							} catch (ex) {
+								//Redirect To Error Page No Connection And No Data 
+								console.log("This is EX in Fitching User Pictures From Local Storage , No Internet Connection And No News ..");
+							}
 						});
+						
+						
 					});
 
 					promise.then(function(data) {

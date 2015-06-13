@@ -5,7 +5,7 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box-sounddetials">
-				<img src="img/sound.png">
+				<img ng-src="{{sound.image}}" altSrc="img/sound.png" onerror="this.src = $(this).attr('altSrc')"/>
 				<audio src="{{ trustSrc(sound.audiolink) }}" onpagehide="this.stop()" contenteditable="true" controls="controls"></audio>
 				<div class="title">
 					<div class="date">
@@ -83,6 +83,7 @@
 		<br/>
 	</form>
 </div>
+<br />
 <br />
 <br />
 <br />
