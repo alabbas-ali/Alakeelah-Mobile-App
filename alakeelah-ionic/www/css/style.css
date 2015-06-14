@@ -8,14 +8,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	background-color: transparent !important;
 }
 
-#introVid::-webkit-media-controls {
-	display: none !important;
-}
-
-#introVid::-webkit-media-controls-enclosure {
-	display: none !important;
-}
-
 .loading-container .loading {
 	background-color: transparent !important;
 	background-image: url("../img/looding.png");
@@ -447,7 +439,7 @@ ion-side-menu {
 	width: 100%;
 	background-color: #d5d5d5;
 	padding: 5px 0 8px;
-	margin-top: -4px;
+	margin-top: 0px;
 }
 
 .box-vediodetials .title p, .box-vediodetials .title h2,

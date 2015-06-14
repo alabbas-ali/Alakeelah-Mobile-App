@@ -6,7 +6,16 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box">
-				<video src="{{ trustSrc(broadcastURI) }}" onpagehide="this.stop()" controls="controls"></video>
+				
+				<video style="display: none;" id="video-livebroadcast" class="video-js vjs-default-skin"
+					controls preload="auto" 
+					poster="{{video.image}}"
+					onpagehide="this.stop()"
+					data-setup="{}" src="{{ trustSrc(broadcastURI) }}">
+					<source src="{{ trustSrc(broadcastURI) }}"
+						type='video/mp4' />
+				</video>
+				
 			</div>
 		</div>
 	</div>

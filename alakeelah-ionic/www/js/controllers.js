@@ -1,5 +1,5 @@
-var serverURI = 'http://localhost/NewProject/public/';
-//var serverURI = 'http://alaqila.tv/admin528/public/';
+//var serverURI = 'http://localhost/NewProject/public/';
+var serverURI = 'http://alaqila.tv/admin528/public/';
 
 var publicNunber = 5;
 
@@ -494,7 +494,7 @@ angular
 
 		.controller(
 				'liveBroadcastCtrl',
-				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q, $timeout, $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var commentsList, broadcastURI;
 					var promise = $q(function(resolve, reject) {
@@ -531,6 +531,11 @@ angular
 						$scope.commentsList = commentsList;
 						$scope.broadcastURI = broadcastURI;
 						$ionicSlideBoxDelegate.update();
+						$timeout(function() {
+							videojs("video-livebroadcast");
+							$("#video-livebroadcast").css({"display" : "block"});
+							$("#video-livebroadcast video").css({"display" : "block"});
+						});
 						$scope.hideLoading();
 					}, null);
 
@@ -675,7 +680,7 @@ angular
 
 		.controller(
 				'videoDetialsCtrl',
-				function($scope, $stateParams, $q) {
+				function($scope, $timeout ,$stateParams, $q) {
 
 					$scope.showLoading();
 					var video, commentsList;
@@ -703,6 +708,11 @@ angular
 					promise.then(function(data) {
 						$scope.video = video[0];
 						$scope.commentsList = commentsList;
+						$timeout(function() {
+							videojs("video-" +  video[0].id );
+							$("#video-" +  video[0].id).css({"display" : "block"});
+							$("#video-" +  video[0].id +" video").css({"display" : "block"});
+						});
 						$scope.hideLoading();
 					}, null);
 				})

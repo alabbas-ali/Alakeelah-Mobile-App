@@ -9,7 +9,10 @@
 <link href="lib/ionic/css/ionic.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
-<link href="css/swiper.css" rel="stylesheet"/>
+<link href="css/swiper.css" rel="stylesheet" />
+<!-- Chang URLs to wherever Video.js files will be hosted -->
+<link href="css/video-js.css" rel="stylesheet" />
+
 <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -23,6 +26,17 @@
 
 <script type="text/javascript" src="js/swiper.js"></script>
 <script type="text/javascript" src="js/angular-swiper.js"></script>
+
+
+<!-- video.js must be in the <head> for older IEs to work. -->
+<script type="text/javascript" src="js/video.js"></script>
+
+<script type="text/javascript" src="js/angular-video.js"></script>
+
+<!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+<script>
+    videojs.options.flash.swf = "video-js.swf";
+  </script>
 
 <!-- your app's js -->
 <script src="js/app.js"></script>
