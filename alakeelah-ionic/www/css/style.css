@@ -16,13 +16,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 ion-side-menu, ion-side-menu-content, ion-nav-bar, ion-side-menus,
-	ion-view, ion-content{
+	ion-view, ion-content {
 	background: transparent !important;
 }
 
- ion-nav-view {
- 	background: transparent;
- }
+ion-nav-view {
+	background: transparent;
+}
 
 ion-side-menu {
 	display: none;
@@ -33,7 +33,7 @@ ion-side-menu {
 }
 
 .body {
-	background-image: url('../img/bgYellow.png') ;
+	background-image: url('../img/bgYellow.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	color: #fff;
@@ -127,7 +127,7 @@ ion-side-menu {
 	padding-bottom: 1px;
 	background: none;
 	box-size: initial;
-	box-shadow : none !important;
+	box-shadow: none !important;
 }
 
 .card .item-divider {
@@ -160,10 +160,10 @@ ion-side-menu {
 
 .card, .list-inset {
 	margin: 10px 5px;
-	border-radius : 0px;
+	border-radius: 0px;
 }
 
-.scroll{
+.scroll {
 	padding-bottom: 20px;
 }
 
@@ -209,7 +209,7 @@ ion-side-menu {
 	text-align: center;
 	position: absolute;
 	z-index: 999;
-	max-height: 45px;
+	max-height: 50px;
 	bottom: 0px;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
@@ -225,7 +225,7 @@ ion-side-menu {
 }
 
 .box .title p, .box .title h2, .box .title h3, .box .title h4 {
-	margin-top: 5px;
+	margin-top: 3px;
 }
 
 .box .title h4 .fa {
@@ -236,12 +236,12 @@ ion-side-menu {
 }
 
 .box .title .main-title {
-	width: 60%;
+	width: 65%;
 	float: left;
 }
 
 .box .title .date {
-	width: 25%;
+	width: 20%;
 	float: left;
 }
 
@@ -255,8 +255,7 @@ ion-side-menu {
 }
 
 /*** menu ***/
-
-.sidemenu{
+.sidemenu {
 	width: 210px !important;
 	text-align: left;
 }
@@ -293,13 +292,12 @@ ion-side-menu {
 	float: left;
 	font-size: 20px;
 	width: 20px;
-  	text-align: center;
+	text-align: center;
 }
 
-.menu .list .item .text{
+.menu .list .item .text {
 	margin-left: 26px;
 }
-
 
 .pageHeader {
 	background-color: rgba(0, 0, 0, 0.45);
@@ -647,6 +645,7 @@ ion-side-menu {
 	margin: 0px;
 	text-align: center;
 	color: #fff;
+	font-size: 10px;
 }
 
 /**************** swiper  ************************/
@@ -682,18 +681,26 @@ ion-side-menu {
 	color: #f8b80b;
 }
 
+.subtitle p {
+	font-size: 9px;
+}
+
+.box .title .main-title .subtitle p {
+	font-size: 10px;
+	margin-top: 1px;
+	color: #fff;
+}
 
 /*************************************************/
-
-.ar .sidemenu{
+.ar .sidemenu {
 	text-align: right;
 }
 
-.ar .menu .list .item .icon{
+.ar .menu .list .item .icon {
 	float: right;
 }
 
-.ar .menu .list .item .text{
+.ar .menu .list .item .text {
 	margin-left: initial !important;
 	margin-right: 26px;
 }

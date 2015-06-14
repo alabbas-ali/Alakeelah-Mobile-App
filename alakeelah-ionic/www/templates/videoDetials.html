@@ -5,15 +5,13 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box-vediodetials">
-				
 
-				<video style="display: none;" id="video-{{video.id}}" class="video-js vjs-default-skin"
-					controls preload="auto" 
-					poster="{{video.image}}"
-					onpagehide="this.stop()"
-					data-setup="{}" src="{{ trustSrc(video.videolink) }}">
-					<source src="{{ trustSrc(video.videolink) }}"
-						type='video/mp4' />
+
+				<video style="display: none;" id="video-{{video.id}}"
+					class="video-js vjs-default-skin" controls preload="auto"
+					poster="{{video.image}}" onpagehide="this.stop()" data-setup="{}"
+					src="{{ trustSrc(video.videolink) }}">
+					<source src="{{ trustSrc(video.videolink) }}" type='video/mp4' />
 				</video>
 
 				<div class="title">
@@ -29,6 +27,12 @@
 						</div>
 						<div ng-if=" currentLang() == 'ar'">
 							<h2>{{ video.artitle }}</h2>
+						</div>
+						<div ng-if="currentLang() == 'en'" class="subtitle">
+							<p>{{ video.subtitle }}</p>
+						</div>
+						<div ng-if="currentLang() == 'ar'" class="subtitle">
+							<p>{{ video.subartitle }}</p>
 						</div>
 					</div>
 				</div>

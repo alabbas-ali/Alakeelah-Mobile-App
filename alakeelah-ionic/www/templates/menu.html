@@ -23,11 +23,11 @@
 											<div ng-if=" currentLang() == 'ar'">
 												<p>{{ resent.artitle }}</p>
 											</div>
-											<div ng-if="currentLang() == 'en' && resent.country.id != 1">
-												<p>{{ resent.country.name }} {{ 'newsCountry_msg' | translate }}</p>
+											<div ng-if="currentLang() == 'en'" class="subtitle">
+												<p>{{ resent.subtitle }} </p>
 											</div>
-											<div ng-if="currentLang() == 'ar' && resent.country.id != 1">
-												<p>{{ 'newsCountry_msg' | translate }} {{ resent.country.arname }}</p>
+											<div ng-if="currentLang() == 'ar'" class="subtitle">
+												<p>{{ resent.subartitle }} </p>
 											</div>
                                         </div>
                                     </a>

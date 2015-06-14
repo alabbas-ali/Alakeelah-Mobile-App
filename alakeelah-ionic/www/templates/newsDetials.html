@@ -1,36 +1,44 @@
-<ion-view class="pageView" view-title=""> 
-<ion-content class="pageContent"> <!-- <h1>{{ 'news_msg' | translate }}</h1>  -->
-	
+<ion-view class="pageView" view-title=""> <ion-content
+	class="pageContent"> <!-- <h1>{{ 'news_msg' | translate }}</h1>  -->
+
 <div class="row">
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box-newsdetials">
 
-						<img ng-src="{{news.image}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/> 
+				<img ng-src="{{news.image}}" altSrc="img/defult.png"
+					onerror="this.src = $(this).attr('altSrc')" />
 				<div class="title">
 					<div class="date">
 						<h3>
-							{{ getDay(news.news_date) }} <br> {{ getMunthName(news.news_date) }}
+							{{ getDay(news.news_date) }} <br> {{
+							getMunthName(news.news_date) }}
 						</h3>
 					</div>
 					<div class="main-title">
-						
-										<div ng-if=" currentLang() == 'en'">
-											<h2>{{ news.title }}</h2>
-											
-										</div>
-										<div ng-if=" currentLang() == 'ar'">
-											<h2>{{ news.artitle }}</h2>
-										</div>
+
+						<div ng-if=" currentLang() == 'en'">
+							<h2>{{ news.title }}</h2>
+
+						</div>
+						<div ng-if=" currentLang() == 'ar'">
+							<h2>{{ news.artitle }}</h2>
+						</div>
+						<div ng-if="currentLang() == 'en'" class="subtitle">
+							<p>{{ news.subtitle }}</p>
+						</div>
+						<div ng-if="currentLang() == 'ar'" class="subtitle">
+							<p>{{ news.subartitle }}</p>
+						</div>
 					</div>
 				</div>
 				<div class="content">
-										<div ng-if=" currentLang() == 'en'">
-											<p ng-bind-html="news.content"></p>
-										</div>
-										<div ng-if=" currentLang() == 'ar'">
-											<p ng-bind-html="news.arcontent"></p>
-										</div>
+					<div ng-if=" currentLang() == 'en'">
+						<p ng-bind-html="news.content"></p>
+					</div>
+					<div ng-if=" currentLang() == 'ar'">
+						<p ng-bind-html="news.arcontent"></p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -46,41 +54,36 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="row comment-row" ng-repeat="comment in commentsList">
-		<div class="col" >
-			<div class="item item-divider">
-				{{ comment.username }}
-			</div>
-			<div class="item item-text-wrap">
-				{{ comment.content }}
-			</div>
-			<div class="item item-divider">
-				{{ comment.comment_date }} {{ comment.time }}
-			</div>
+		<div class="col">
+			<div class="item item-divider">{{ comment.username }}</div>
+			<div class="item item-text-wrap">{{ comment.content }}</div>
+			<div class="item item-divider">{{ comment.comment_date }} {{
+				comment.time }}</div>
 		</div>
 	</div>
-	
+
 	<form action="" method="post" class="formComment">
-		<div >
-			<h5>{{ 'addCommentHeader_msg' | translate }} </h5> 
-			<p> {{ 'addCommentMessage_msg' | translate }} </p>
-		</div>
-		<div >
-			<span> {{ 'commenterName_msg' | translate }}  </span>
-			<input type="text" class="commenterName" name="commenterName" />
+		<div>
+			<h5>{{ 'addCommentHeader_msg' | translate }}</h5>
+			<p>{{ 'addCommentMessage_msg' | translate }}</p>
 		</div>
 		<div>
-			<span> {{ 'commentContent_msg' | translate }}  </span>
+			<span> {{ 'commenterName_msg' | translate }} </span> <input
+				type="text" class="commenterName" name="commenterName" />
+		</div>
+		<div>
+			<span> {{ 'commentContent_msg' | translate }} </span>
 			<textarea name="commentContent" class="commentContent"></textarea>
 		</div>
 		<div>
-			 <input type="checkbox" name="checkbox"> {{ 'commentCheckbox_msg' | translate }}
+			<input type="checkbox" name="checkbox"> {{
+			'commentCheckbox_msg' | translate }}
 		</div>
-		<button id="button-1" type="submit" class="button">{{ 'addComment_msg' | translate }}</button>
-		<br/>
-		<br/>
-		<br/>
+		<button id="button-1" type="submit" class="button">{{
+			'addComment_msg' | translate }}</button>
+		<br /> <br /> <br />
 	</form>
 </div>
 <br />
@@ -89,5 +92,4 @@
 <br />
 <br />
 <br />
-</ion-content> 
-</ion-view>
+</ion-content> </ion-view>
