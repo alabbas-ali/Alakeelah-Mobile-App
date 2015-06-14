@@ -137,6 +137,8 @@ angular
 					};
 
 					$scope.changeBgColor = cahngColor;
+					
+					
 
 				})
 
@@ -871,14 +873,16 @@ angular
 						if (!readyCalled) {
 							endIntro();
 						}
-					}, 6000);
-
+					}, 3500);
+						
+					
 					ionic.Platform
 							.ready(function() {
 								readyCalled = true;
+								//alert("this is me !!!! ...");
 								$("#introDiv")
 										.html(
-												'<img id="introImg" src="intro/intro.gif" style="margin: auto; max-height: 100%; width: 100%; background-color: #48270C;" />');
+												'<img id="introImg" src="intro/hd.gif" style="margin: auto; max-height: 100%; width: 100%; background-color: #48270C;" />');
 								var initIntroSplash = function() {
 									try {
 
@@ -906,7 +910,7 @@ angular
 										setTimeout(function() {
 											$("#introImg").hide();
 											endIntro();
-										}, 9000);
+										}, 3500);
 									}
 								};
 								initIntroSplash();
