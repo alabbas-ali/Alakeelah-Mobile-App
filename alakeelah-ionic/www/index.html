@@ -11,8 +11,7 @@
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 <link href="css/swiper.css" rel="stylesheet" />
-<!-- Chang URLs to wherever Video.js files will be hosted -->
-<link href="css/video-js.css" rel="stylesheet" />
+
 
 <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -20,32 +19,28 @@
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <!-- ionic/angularjs js -->
 <script src="lib/ionic/js/ionic.bundle.js"></script>
-
 <script type="text/javascript" src="js/ng-cordova.min.js"></script>
-
 <script type="text/javascript" src="js/angular-translate.min.js"></script>
-
 <script type="text/javascript" src="js/swiper.js"></script>
 <script type="text/javascript" src="js/angular-swiper.js"></script>
 
+	<!-- cordova script (this will be a 404 during development) -->
+	<script src="cordova.js"></script>
 
-<!-- video.js must be in the <head> for older IEs to work. -->
-<script type="text/javascript" src="js/video.js"></script>
-
-<!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
-<script>
-    videojs.options.flash.swf = "video-js.swf";
-  </script>
+		<script src="lib/angular/angular.min.js"></script>
+		<script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+		<script src="lib/videogular/videogular.js"></script>
+		<script src="lib/videogular-controls/vg-controls.js"></script>
+		<script src="lib/videogular-overlay-play/vg-overlay-play.js"></script>
+		<script src="lib/videogular-poster/vg-poster.js"></script>
+		<script src="lib/videogular-buffering/vg-buffering.js"></script>
 
 <!-- your app's js -->
 <script src="js/app.js"></script>
 <script src="js/controllers.js"></script>
-
 </head>
 
 <body ng-app="starter">
 	<ion-nav-view class="body"></ion-nav-view>
-	<!-- cordova script (this will be a 404 during development) -->
-	<script src="cordova.js"></script>
 </body>
 </html>
