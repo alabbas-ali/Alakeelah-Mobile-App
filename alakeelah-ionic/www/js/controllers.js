@@ -1027,16 +1027,16 @@ angular
 						$state.go("app.main");
 					};
 
-					var readyCalled = false;
+					// var readyCalled = false;
 
 					setTimeout(function() {
-						if (!readyCalled) {
-							endIntro();
-						}
-					}, 3500);
+						// if (!readyCalled) {
+						endIntro();
+						// }
+					}, 9000);
 
 					ionic.Platform.ready(function() {
-						readyCalled = true;
+						// readyCalled = true;
 						// alert("this is ionic ready");
 						// $("#introDiv")
 						// .html(
