@@ -1,34 +1,21 @@
 <ion-view class="pageView" view-title=""> 
 <ion-content class="pageContent"> <!--  <h1>{{ 'liveBroadcast_msg' | translate }}</h1>  -->
 
-<ks-swiper-container ng-if="resentNews.length > 0" class="topbarNews" initial-slide="1" loop="true" show-nav-buttons="false" slides-per-view="2" autoplay="100" space-between="20" pagination-clickable="false">
-	    <ks-swiper-slide class="swiper-slide" ng-repeat="resent in resentNews">
-	        						<a href="#/app/newsDetials/{{publicNews.id}}">
-                                        <div>
-                                            <div class="logo"></div>
-                                            
-                                            <div ng-if=" currentLang() == 'en'">
-												<p>{{ resent.title }}</p>
-											</div>
-											<div ng-if=" currentLang() == 'ar'">
-												<p>{{ resent.artitle }}</p>
-											</div>
-											<div ng-if=" currentLang() == 'en'">
-												<p>{{ resent.country.name }} {{ 'newsCountry_msg' | translate }}</p>
-											</div>
-											<div ng-if=" currentLang() == 'ar'">
-												<p>{{ 'newsCountry_msg' | translate }} {{ resent.country.arname }}</p>
-											</div>
-                                        </div>
-                                    </a>
-	    </ks-swiper-slide>
-	</ks-swiper-container>
 	
 <div class="row">
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box">
-				<video src="{{ trustSrc(broadcastURI) }}" onpagehide="this.stop()" controls="controls"></video>
+				
+				<video style="display: none;" id="video-livebroadcast" class="video-js vjs-default-skin"
+					controls preload="auto" 
+					poster="{{video.image}}"
+					onpagehide="this.stop()"
+					data-setup="{}" src="{{ trustSrc(broadcastURI) }}">
+					<source src="{{ trustSrc(broadcastURI) }}"
+						type='video/mp4' />
+				</video>
+				
 			</div>
 		</div>
 	</div>
@@ -82,6 +69,7 @@
 		<br/>
 	</form>
 </div>
+<br />
 <br />
 <br />
 <br />

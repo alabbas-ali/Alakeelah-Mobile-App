@@ -57,7 +57,7 @@
                         slidesPerView: slidesPerView,
                         slidesPerColumn: slidesPerColumn,
                         paginationClickable: paginationClickable,
-                        spaceBetween: 30,
+                        spaceBetween: 10,
                         autoplay : 10,
                         autoplayDisableOnInteraction : false,
                         speed : 18000,

@@ -1,30 +1,5 @@
-<ion-view class="pageView" view-title=""> 
-<ion-content class="pageContent"> 
-
-<!-- <h1>{{ 'sounds_msg' | translate }}</h1>  -->
-
-<ks-swiper-container ng-if="resentNews.length > 0" class="topbarNews" initial-slide="1" loop="true" show-nav-buttons="false" slides-per-view="2" autoplay="100" space-between="20" pagination-clickable="false">
-	    <ks-swiper-slide class="swiper-slide" ng-repeat="resent in resentNews">
-	        						<a href="#/app/newsDetials/{{publicNews.id}}">
-                                        <div>
-                                            <div class="logo"></div>
-                                            
-                                            <div ng-if=" currentLang() == 'en'">
-												<p>{{ resent.title }}</p>
-											</div>
-											<div ng-if=" currentLang() == 'ar'">
-												<p>{{ resent.artitle }}</p>
-											</div>
-											<div ng-if="currentLang() == 'en' && resent.country.id != 1">
-												<p>{{ resent.country.name }} {{ 'newsCountry_msg' | translate }}</p>
-											</div>
-											<div ng-if="currentLang() == 'ar' && resent.country.id != 1">
-												<p>{{ 'newsCountry_msg' | translate }} {{ resent.country.arname }}</p>
-											</div>
-                                        </div>
-                                    </a>
-	    </ks-swiper-slide>
-	</ks-swiper-container>
+<ion-view class="pageView" view-title=""> <ion-content
+	class="pageContent"> <!-- <h1>{{ 'sounds_msg' | translate }}</h1>  -->
 
 <div class="row">
 	<div class="col">
@@ -33,70 +8,78 @@
 				{{ 'most_public' | translate }} <i class="fa fa-star"></i>
 			</div> -->
 			<div class="item item-body">
-				<ion-slide-box show-pager="true"> 
-					<ion-slide ng-repeat="publicSound in publicSounds" ng-if="$index < 5">
-						<div class="box">
-							<a href="#/app/soundDetials/{{publicSound.id}}" class="link"> 
-
-								<img ng-src="{{publicSound.image}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/> 
-								<div class="title">
-									<div class="main-title">
-										<div ng-if=" currentLang() == 'en'">
-											<h2>{{ publicSound.title }}</h2>
-										</div>
-										<div ng-if=" currentLang() == 'ar'">
-											<h2>{{ publicSound.artitle }}</h2>
-										</div>
-									</div>
-									<div class="date">
-										<h3>
-											{{ getDay(publicSound.audio_date) }} <br> {{ getMunthName(publicSound.audio_date) }}
-										</h3>
-									</div>
-									<div class="main-icon">
-										<h4>
-											<i class="fa fa-microphone"></i>
-										</h4>
-									</div>
+				<ion-slide-box show-pager="true"> <ion-slide
+					ng-repeat="publicSound in publicSounds" ng-if="$index < 5">
+				<div class="box">
+					<a href="#/app/soundDetials/{{publicSound.id}}" class="link"> <img
+						ng-src="{{publicSound.image}}" altSrc="img/defult.png"
+						onerror="this.src = $(this).attr('altSrc')" />
+						<div class="title">
+							<div class="main-title">
+								<div ng-if=" currentLang() == 'en'">
+									<h2>{{ publicSound.title }}</h2>
 								</div>
-							</a>
+								<div ng-if=" currentLang() == 'ar'">
+									<h2>{{ publicSound.artitle }}</h2>
+								</div>
+								<div ng-if="currentLang() == 'en'" class="subtitle">
+									<p>{{ publicSound.subtitle }}</p>
+								</div>
+								<div ng-if="currentLang() == 'ar'" class="subtitle">
+									<p>{{ publicSound.subartitle }}</p>
+								</div>
+							</div>
+							<div class="date">
+								<h3>
+									{{ getDay(publicSound.audio_date) }} <br> {{
+									getMunthName(publicSound.audio_date) }}
+								</h3>
+							</div>
+							<div class="main-icon">
+								<h4>
+									<i class="fa fa-microphone"></i>
+								</h4>
+							</div>
 						</div>
-					</ion-slide> 
-				</ion-slide-box>
+					</a>
+				</div>
+				</ion-slide> </ion-slide-box>
 			</div>
 		</div>
 	</div>
 </div>
 
 
-<div ng-repeat="rows in soundsList" class="row" >
-		<div ng-repeat="sound in rows" class="col">
-			<div class="card">
-				<!-- <div class="item item-divider">
+<div ng-repeat="rows in soundsList" class="row">
+	<div ng-repeat="sound in rows" class="col">
+		<div class="card">
+			<!-- <div class="item item-divider">
 					{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>
 				</div> -->
-				<div class="item item-text-wrap box">
-					<a href="#/app/soundDetials/{{sound.id}}" class="ui-link"> 
-						<img ng-src="{{sound.image}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/> 
-						<div class="title">
-							<div class="date">
-								<h3>
-									{{ getDay(sound.audio_date) }} <br> {{ getMunthName(sound.audio_date) }}
-								</h3>
+			<div class="item item-text-wrap box">
+				<a href="#/app/soundDetials/{{sound.id}}" class="ui-link"> <img
+					ng-src="{{sound.image}}" altSrc="img/defult.png"
+					onerror="this.src = $(this).attr('altSrc')" />
+					<div class="title">
+						<div class="date">
+							<h3>
+								{{ getDay(sound.audio_date) }} <br> {{
+								getMunthName(sound.audio_date) }}
+							</h3>
+						</div>
+						<div class="main-title">
+							<div ng-if=" currentLang() == 'en'">
+								<h2>{{ sound.title }}</h2>
 							</div>
-							<div class="main-title">
-								<div ng-if=" currentLang() == 'en'">
-											<h2>{{ sound.title }}</h2>
-										</div>
-										<div ng-if=" currentLang() == 'ar'">
-											<h2>{{ sound.artitle }}</h2>
-										</div>
+							<div ng-if=" currentLang() == 'ar'">
+								<h2>{{ sound.artitle }}</h2>
 							</div>
 						</div>
-					</a>
-				</div>
+					</div>
+				</a>
 			</div>
 		</div>
+	</div>
 </div>
 
 <br />
@@ -104,6 +87,6 @@
 <br />
 <br />
 <br />
-</ion-content> 
-</ion-view>
+<br />
+</ion-content> </ion-view>
 

@@ -10,13 +10,37 @@
         
       </ion-nav-buttons>
       <img src="img/logo.png" class="logo"/>
+      
+      <ks-swiper-container ng-if="resentNews.length > 0" class="topbarNews" initial-slide="1" loop="true" show-nav-buttons="false" slides-per-view="2" autoplay="100" space-between="20" pagination-clickable="false">
+	    <ks-swiper-slide class="swiper-slide" ng-repeat="resent in resentNews">
+	        						<a href="#/app/newsDetials/{{resent.id}}">
+                                        <div>
+                                            <div class="sliderlogo"></div>
+                                            
+                                            <div ng-if=" currentLang() == 'en'">
+												<p>{{ resent.title }}</p>
+											</div>
+											<div ng-if=" currentLang() == 'ar'">
+												<p>{{ resent.artitle }}</p>
+											</div>
+											<div ng-if="currentLang() == 'en'" class="subtitle">
+												<p>{{ resent.subtitle }} </p>
+											</div>
+											<div ng-if="currentLang() == 'ar'" class="subtitle">
+												<p>{{ resent.subartitle }} </p>
+											</div>
+                                        </div>
+                                    </a>
+	    </ks-swiper-slide>
+	</ks-swiper-container>
+      
     </ion-nav-bar>
     <ion-nav-view name="menuContent">
     
     </ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
+  <ion-side-menu side="left" class="sidemenu">
     <ion-content>
       <ion-list>
       	<ion-item class="menu-title">
