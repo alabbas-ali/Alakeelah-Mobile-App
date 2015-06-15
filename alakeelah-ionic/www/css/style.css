@@ -24,8 +24,13 @@ ion-nav-view {
 	background: transparent;
 }
 
+.menu-animated{
+	  transition: transform 549ms ease !important;
+}
+
 ion-side-menu {
 	display: none;
+	transition: 549ms ease !important;
 }
 
 .menu-open ion-side-menu {
@@ -267,7 +272,7 @@ ion-side-menu {
 	font-size: 15px;
 	list-style: none;
 	padding: 10px 14px 10px 14px;
-	margin: 5px 15px 5px 0;
+	margin: 5px 10px 5px 0;
 }
 
 .menu .list .item.menu-title {
@@ -291,7 +296,7 @@ ion-side-menu {
 .menu .list .item .icon {
 	float: left;
 	font-size: 20px;
-	width: 20px;
+	width: 25px;
 	text-align: center;
 }
 
@@ -691,6 +696,10 @@ ion-side-menu {
 	color: #fff;
 }
 
+.frequancy{
+	top:50px;
+}
+
 /*************************************************/
 .ar .sidemenu {
 	text-align: right;
@@ -702,5 +711,5 @@ ion-side-menu {
 
 .ar .menu .list .item .text {
 	margin-left: initial !important;
-	margin-right: 26px;
+	margin-right: 30px;
 }
