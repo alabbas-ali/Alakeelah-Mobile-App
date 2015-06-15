@@ -787,6 +787,7 @@ control positioning and full window mode. **
   position: relative;
   padding: 0;
   width:100% !important;
+  min-height : 170px !important;
   /* Start with 10px for base font size so other dimensions can be em based and
      easily calculable. */
 

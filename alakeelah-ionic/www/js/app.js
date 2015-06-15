@@ -8,7 +8,7 @@ angular
 		.module(
 				'starter',
 				[ 'ionic', 'starter.controllers', 'ngCordova',
-						'pascalprecht.translate' , 'ksSwiper' ])
+						'pascalprecht.translate' , 'ksSwiper'])
 
 		.run(
 				function($ionicPlatform, $translate, $state, $ionicHistory) {
