@@ -496,7 +496,7 @@ angular
 
 		.controller(
 				'liveBroadcastCtrl',
-				function($scope, $stateParams, $q, $timeout, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q , $sce, $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var commentsList, broadcastURI;
 					var promise = $q(function(resolve, reject) {
@@ -532,16 +532,15 @@ angular
 					promise.then(function(data) {
 						$scope.commentsList = commentsList;
 						$scope.broadcastURI = broadcastURI;
+						$scope.theme = "lib/videogular-themes-default/videogular.css";
+						$scope.poster = "/img/defult.png";
+						$scope.sources = [{src: $sce.trustAsResourceUrl(broadcastURI), type: "video/mp4"} ,
+						                  {src: $sce.trustAsResourceUrl(broadcastURI), type: "video/m4a"} ,
+						                  {src: $sce.trustAsResourceUrl(broadcastURI), type: "video/webm"} ,
+						                  {src: $sce.trustAsResourceUrl(broadcastURI), type: "video/ogg"} ] ;
 						$ionicSlideBoxDelegate.update();
-						$timeout(function() {
-							videojs("video-livebroadcast");
-							$("#video-livebroadcast").css({"display" : "block"});
-							$("#video-livebroadcast video").css({"display" : "block"});
-						});
 						$scope.hideLoading();
 					}, null);
-
-					
 				})
 
 		.controller(
@@ -682,7 +681,7 @@ angular
 
 		.controller(
 				'videoDetialsCtrl',
-				function($scope, $timeout ,$stateParams, $q) {
+				function($scope ,$sce,$stateParams, $q) {
 
 					$scope.showLoading();
 					var video, commentsList;
@@ -710,11 +709,11 @@ angular
 					promise.then(function(data) {
 						$scope.video = video[0];
 						$scope.commentsList = commentsList;
-						$timeout(function() {
-							videojs("video-" +  video[0].id );
-							$("#video-" +  video[0].id).css({"display" : "block"});
-							$("#video-" +  video[0].id +" video").css({"display" : "block"});
-						});
+						$scope.theme = "lib/videogular-themes-default/videogular.css";
+						$scope.sources = [{src: $sce.trustAsResourceUrl(video[0].videolink), type: "video/mp4"} ,
+						                  {src: $sce.trustAsResourceUrl(video[0].videolink), type: "video/m4a"} ,
+						                  {src: $sce.trustAsResourceUrl(video[0].videolink), type: "video/webm"} ,
+						                  {src: $sce.trustAsResourceUrl(video[0].videolink), type: "video/ogg"} ] ;
 						$scope.hideLoading();
 					}, null);
 				})
