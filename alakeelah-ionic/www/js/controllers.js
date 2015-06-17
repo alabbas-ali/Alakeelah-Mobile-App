@@ -32,8 +32,7 @@ angular
 
 		.controller(
 				'AppCtrl',
-				function($scope, $ionicModal, $translate,
-						$ionicLoading, $sce) {
+				function($scope, $ionicModal, $translate, $ionicLoading, $sce) {
 
 					$scope.showLoading = function() {
 						$ionicLoading.show({
@@ -159,7 +158,7 @@ angular
 
 		.controller(
 				'mainCtrl',
-				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q,$state, $ionicSlideBoxDelegate) {
 
 					$scope.showLoading();
 
@@ -193,8 +192,9 @@ angular
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
-												console
-														.log("This is EX in Fitching Home News From Local Storage , No Internet Connection And No News ..");
+												$scope.hideLoading();
+												$state.go("app.error");
+												console.log("This is EX in Fitching Home News From Local Storage , No Internet Connection And No News ..");
 											}
 										});
 
@@ -221,8 +221,9 @@ angular
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
-												console
-														.log("This is EX in Fitching Home Videos From Local Storage , No Internet Connection And No News ..");
+												$scope.hideLoading();
+												$state.go("app.error");
+												console.log("This is EX in Fitching Home Videos From Local Storage , No Internet Connection And No News ..");
 											}
 										});
 
@@ -249,8 +250,9 @@ angular
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
-												console
-														.log("This is EX in Fitching Home Sounds From Local Storage , No Internet Connection And No News ..");
+												$scope.hideLoading();
+												$state.go("app.error");
+												console.log("This is EX in Fitching Home Sounds From Local Storage , No Internet Connection And No News ..");
 											}
 										});
 
@@ -278,8 +280,9 @@ angular
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
-												console
-														.log("This is EX in Fitching Home Pictures From Local Storage , No Internet Connection And No News ..");
+												$scope.hideLoading();
+												$state.go("app.error");
+												console.log("This is EX in Fitching Home Pictures From Local Storage , No Internet Connection And No News ..");
 											}
 										});
 					});
@@ -346,7 +349,7 @@ angular
 
 		.controller(
 				'pageViewCtrl',
-				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q,$state, $ionicSlideBoxDelegate) {
 					var pageID = $stateParams.pageId;
 					$scope.showLoading();
 					var promise = $q(function(resolve, reject) {
@@ -366,6 +369,8 @@ angular
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
+												$scope.hideLoading();
+												$state.go("app.error");
 											}
 										});
 					});
@@ -379,7 +384,7 @@ angular
 
 		.controller(
 				'pageViewDetialsCtrl',
-				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q,$state, $ionicSlideBoxDelegate) {
 					$scope.userId = $stateParams.userId;
 					$scope.showLoading();
 
@@ -420,8 +425,9 @@ angular
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
-												console
-														.log("This is EX in Fitching User From Local Storage , No Internet Connection And No News ..");
+												$scope.hideLoading();
+												$state.go("app.error");
+												console.log("This is EX in Fitching User From Local Storage , No Internet Connection And No News ..");
 											}
 										});
 
@@ -451,8 +457,9 @@ angular
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
-												console
-														.log("This is EX in Fitching User News From Local Storage , No Internet Connection And No News ..");
+												$scope.hideLoading();
+												$state.go("app.error");
+												console.log("This is EX in Fitching User News From Local Storage , No Internet Connection And No News ..");
 											}
 										});
 
@@ -483,8 +490,9 @@ angular
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
-												console
-														.log("This is EX in Fitching User Videos From Local Storage , No Internet Connection And No News ..");
+												$scope.hideLoading();
+												$state.go("app.error");
+												console.log("This is EX in Fitching User Videos From Local Storage , No Internet Connection And No News ..");
 											}
 										});
 
@@ -515,8 +523,9 @@ angular
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
-												console
-														.log("This is EX in Fitching User Sounds From Local Storage , No Internet Connection And No News ..");
+												$scope.hideLoading();
+												$state.go("app.error");
+												console.log("This is EX in Fitching User Sounds From Local Storage , No Internet Connection And No News ..");
 											}
 										});
 
@@ -547,8 +556,9 @@ angular
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
-												console
-														.log("This is EX in Fitching User Pictures From Local Storage , No Internet Connection And No News ..");
+												$scope.hideLoading();
+												$state.go("app.error");
+												console.log("This is EX in Fitching User Pictures From Local Storage , No Internet Connection And No News ..");
 											}
 										});
 
@@ -620,7 +630,7 @@ angular
 
 		.controller(
 				'liveBroadcastCtrl',
-				function($scope, $stateParams, $q, $sce, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q, $sce,$state, $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var commentsList, broadcastURI;
 					var promise = $q(function(resolve, reject) {
@@ -721,9 +731,7 @@ angular
 			}, null);
 		})
 
-		.controller(
-				'newsCtrl',
-				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+		.controller('newsCtrl',function($scope, $stateParams, $state, $q, $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var publicNews, newsList;
 					var promise = $q(function(resolve, reject) {
@@ -733,16 +741,44 @@ angular
 						$.get(serverURI + 'News/getPublic/' + publicNunber,
 								function(data) {
 									publicNews = data;
+									localStorage.setItem('publicNews', JSON
+											.stringify(data));
 									pndone = true;
 									if (nldone)
 										resolve(" ");
-								});
+						}).fail(function() {
+								try {
+									publicNews = JSON.parse(localStorage.getItem('publicNews'));
+									pndone = true;
+									if (nldone)
+										resolve(" ");
+								} catch (ex) {
+									// Redirect To Error Page No Connection And No Data
+									$scope.hideLoading();
+									$state.go("app.error");
+									console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+								}
+						});
 
 						$.get(serverURI + 'News/getAllActive/', function(data) {
 							newsList = data;
+							localStorage.setItem('newsList', JSON
+									.stringify(data));
 							nldone = true;
 							if (pndone)
 								resolve(" ");
+						}).fail(function() {
+							try {
+								newsList = JSON.parse(localStorage.getItem('newsList'));
+								nldone = true;
+								if (pndone)
+									resolve(" ");
+							} catch (ex) {
+								// Redirect To Error Page No Connection And No Data
+								$scope.hideLoading();
+								$state.go("app.error");
+								console.log("This is EX in Fitching News List From Local Storage , No Internet Connection And No News ..");
+							}
 						});
 					});
 
@@ -756,8 +792,9 @@ angular
 
 		.controller(
 				'newsDetialsCtrl',
-				function($scope, $stateParams, $q) {
+				function($scope, $stateParams, $q, $state,$ionicLoading) {
 					$scope.showLoading();
+					
 					var news, commentsList;
 					var promise = $q(function(resolve, reject) {
 						var pndone = false;
@@ -786,11 +823,25 @@ angular
 						$scope.commentsList = commentsList;
 						$scope.hideLoading();
 					}, null);
+					
+						$scope.comment = {
+						    'Name' : '',
+						    'Content' : '',
+						    'checkbox' : '',
+						};
+						
+						$scope.commentfunc = function(form) {
+						    $ionicLoading.show({ template: 'Submitting...'});
+						    if(form.$valid) {
+						        alert('form have been submited')
+						    }
+						    $ionicLoading.hide();
+						}
 				})
 
 		.controller(
 				'videosCtrl',
-				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q, $state, $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var publicVideos, videosList;
 					var promise = $q(function(resolve, reject) {
@@ -800,17 +851,45 @@ angular
 						$.get(serverURI + 'Video/getPublic/' + publicNunber,
 								function(data) {
 									publicVideos = data;
+									localStorage.setItem('publicVideos' , JSON
+											.stringify(data));
 									pndone = true;
 									if (nldone)
 										resolve(" ");
+								}).fail(function() {
+									try {
+										publicVideos = JSON.parse(localStorage.getItem('publicVideos'));
+										pndone = true;
+										if (nldone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching publicVideos From Local Storage , No Internet Connection And No News ..");
+									}
 								});
 
 						$.get(serverURI + 'Video/getAllActive/',
 								function(data) {
 									videosList = data;
+									localStorage.setItem('videosList',JSON
+											.stringify(data));
 									nldone = true;
 									if (pndone)
 										resolve(" ");
+								}).fail(function() {
+									try {
+										videosList = JSON.parse(localStorage.getItem('videosList'));
+										nldone = true;
+										if (pndone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching News List From Local Storage , No Internet Connection And No News ..");
+									}
 								});
 					});
 
@@ -824,7 +903,7 @@ angular
 
 		.controller(
 				'videoDetialsCtrl',
-				function($scope, $sce, $stateParams, $q) {
+				function($scope, $sce, $state, $stateParams, $q) {
 
 					$scope.showLoading();
 					var video, commentsList;
@@ -882,7 +961,7 @@ angular
 
 		.controller(
 				'soundsCtrl',
-				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q, $state, $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var publicSounds, soundsList;
 					var promise = $q(function(resolve, reject) {
@@ -892,17 +971,44 @@ angular
 						$.get(serverURI + 'Audio/getPublic/' + publicNunber,
 								function(data) {
 									publicSounds = data;
+									localStorage.setItem('publicSounds', JSON
+											.stringify(data));
 									pndone = true;
 									if (nldone)
 										resolve(" ");
+								}).fail(function() {
+									try {
+										publicSounds = JSON.parse(localStorage.getItem('publicSounds'));
+										pndone = true;
+										if (nldone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching publicVideos From Local Storage , No Internet Connection And No News ..");
+									}
 								});
 
 						$.get(serverURI + 'Audio/getAllActive/',
 								function(data) {
 									soundsList = data;
+									localStorage.setItem('soundsList' , JSON.stringify(data));
 									nldone = true;
 									if (pndone)
 										resolve(" ");
+								}).fail(function() {
+									try {
+										soundsList = JSON.parse(localStorage.getItem('soundsList'));
+										nldone = true;
+										if (pndone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching News List From Local Storage , No Internet Connection And No News ..");
+									}
 								});
 					});
 
@@ -916,7 +1022,7 @@ angular
 
 		.controller(
 				'soundDetialsCtrl',
-				function($scope, $stateParams, $q) {
+				function($scope, $stateParams, $state, $q) {
 
 					$scope.showLoading();
 					var sound, commentsList;
@@ -950,7 +1056,7 @@ angular
 
 		.controller(
 				'picturesCtrl',
-				function($scope, $stateParams, $q, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q, $state, $ionicSlideBoxDelegate) {
 					$scope.showLoading();
 					var publicPictures, picturesList;
 					var promise = $q(function(resolve, reject) {
@@ -960,17 +1066,43 @@ angular
 						$.get(serverURI + 'Photo/getPublic/' + publicNunber,
 								function(data) {
 									publicPictures = data;
+									localStorage.setItem('publicPictures' , JSON.stringify(data));
 									pndone = true;
 									if (nldone)
 										resolve(" ");
+								}).fail(function() {
+									try {
+										publicSounds = JSON.parse(localStorage.getItem('publicPictures'));
+										pndone = true;
+										if (nldone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching publicVideos From Local Storage , No Internet Connection And No News ..");
+									}
 								});
 
 						$.get(serverURI + 'Photo/getAllActive/',
 								function(data) {
 									picturesList = data;
+									localStorage.setItem('picturesList' , JSON.stringify(data));
 									nldone = true;
 									if (pndone)
 										resolve(" ");
+								}).fail(function() {
+									try {
+										picturesList = JSON.parse(localStorage.getItem('picturesList'));
+										nldone = true;
+										if (pndone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching News List From Local Storage , No Internet Connection And No News ..");
+									}
 								});
 					});
 
@@ -984,7 +1116,7 @@ angular
 
 		.controller(
 				'pictureDetialsCtrl',
-				function($scope, $stateParams, $q) {
+				function($scope, $stateParams, $state, $q) {
 					$scope.showLoading();
 					var picture, commentsList;
 					var promise = $q(function(resolve, reject) {

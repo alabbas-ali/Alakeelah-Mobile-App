@@ -64,25 +64,23 @@
 		</div>
 	</div>
 
-	<form action="" method="post" class="formComment">
+	<form action="" method="post" name="CommentForm" ng-submit="comment(CommentForm)" class="formComment">
 		<div>
 			<h5>{{ 'addCommentHeader_msg' | translate }}</h5>
 			<p>{{ 'addCommentMessage_msg' | translate }}</p>
 		</div>
 		<div>
-			<span> {{ 'commenterName_msg' | translate }} </span> <input
-				type="text" class="commenterName" name="commenterName" />
+			<span> {{ 'commenterName_msg' | translate }} </span> 
+			<input ng-model="comment.Name" type="text" class="commenterName" name="commenterName" />
 		</div>
 		<div>
 			<span> {{ 'commentContent_msg' | translate }} </span>
-			<textarea name="commentContent" class="commentContent"></textarea>
+			<textarea ng-model="comment.Content" name="commentContent" class="commentContent"></textarea>
 		</div>
 		<div>
-			<input type="checkbox" name="checkbox"> {{
-			'commentCheckbox_msg' | translate }}
+			<input ng-model="comment.checkbox" type="checkbox" name="checkbox"> {{ 'commentCheckbox_msg' | translate }}
 		</div>
-		<button id="button-1" type="submit" class="button">{{
-			'addComment_msg' | translate }}</button>
+		<button id="button-1" ng-click="submit()" class="button">{{'addComment_msg' | translate }}</button>
 		<br /> <br /> <br />
 	</form>
 </div>

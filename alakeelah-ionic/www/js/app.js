@@ -55,6 +55,12 @@ angular
 						templateUrl : "templates/menu.html",
 						controller : 'AppCtrl'
 					})
+					
+					.state('app.error', {
+						url : "/error",
+						templateUrl : "templates/error.html",
+						controller : 'errorCtrl'
+					})
 
 					.state('intro', {
 						url : "/intro",
@@ -237,6 +243,7 @@ angular
 						commentCheckbox_msg : "أختر لأضافة التعليق إلى حسابك في تويتر و فيس بوك",
 						addComment_msg : "إضافة تعليق",
 						newsCountry_msg : "اخبار",
+						error_msg : "حدث حطأ أثناء تحميل اليبيانات , لا يوجد إتصال بالإنترنت يرجى المحاولة لاحقاً",
 					});
 
 						$translateProvider.translations("en", {
@@ -273,6 +280,7 @@ angular
 						commentCheckbox_msg : "Add Your Comment Into Facebook Account",
 						addComment_msg : "Add Comment",
 						newsCountry_msg : "News",
+						error_msg : "Error in Looding data, Try agin latter ",
 					});
 
 					$translateProvider.preferredLanguage = "en";

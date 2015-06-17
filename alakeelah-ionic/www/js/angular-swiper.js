@@ -55,15 +55,18 @@
 
                     var params = {
                         slidesPerView: slidesPerView,
+                        loop : true,
+                        slidesPerViewFit : false,
+                        roundLengths : false,
+                        grabCursor: false,
                         slidesPerColumn: slidesPerColumn,
                         paginationClickable: paginationClickable,
                         spaceBetween: 10,
                         autoplay : 10,
                         autoplayDisableOnInteraction : false,
-                        speed : 18000,
-                        centeredSlides: true,
+                        speed : 15000,
+                        centeredSlides: false,
                         freeModeMomentum : true,
-                        loop: loop,
                         initialSlide: initialSlide,
                         pagination: '#paginator-' + $scope.swiper_uuid
                     };
