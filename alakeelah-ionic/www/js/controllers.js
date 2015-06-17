@@ -30,7 +30,7 @@ angular
 
 		.controller(
 				'AppCtrl',
-				function($scope, $ionicModal, $timeout, $translate,
+				function($scope, $ionicModal, $translate,
 						$ionicLoading, $sce) {
 					
 					$scope.showLoading = function() {
