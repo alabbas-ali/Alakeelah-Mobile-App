@@ -8,7 +8,7 @@ angular
 		.module(
 				'starter',
 				[ 'ionic', 'starter.controllers', 'ngCordova',
-						'pascalprecht.translate' , 'ksSwiper' ,
+						'pascalprecht.translate', 'ngMessages', 'ksSwiper' ,
 						"ngSanitize",
 						"com.2fdevs.videogular",
 						"com.2fdevs.videogular.plugins.controls",
@@ -244,6 +244,12 @@ angular
 						addComment_msg : "إضافة تعليق",
 						newsCountry_msg : "اخبار",
 						error_msg : "حدث حطأ أثناء تحميل اليبيانات , لا يوجد إتصال بالإنترنت يرجى المحاولة لاحقاً",
+						required_msg : "هذا الحقل مطلوب !",
+						minimum_msg : "اقل عدد من المحارف لهذا الحقل هو 3 !",
+						maximum_msg : "أكبر عدد من المحارف المسموحة لهذا الحقل هو 20 !",
+						submiting_msg : "يتم الإرسال ...",
+						submitingdone_msg : "تم اضافة تعليقك , بانتظار موافقة الإدارة ...",
+						submitingerror_msg : "حذث خطأ في ارسال البيانات ...",
 					});
 
 						$translateProvider.translations("en", {
@@ -281,6 +287,12 @@ angular
 						addComment_msg : "Add Comment",
 						newsCountry_msg : "News",
 						error_msg : "Error in Looding data, Try agin latter ",
+						required_msg : "This field is required!",
+						minimum_msg : "Minimum length of this field is 3 characters!",
+						maximum_msg : "Maximum length of this field is 20 characters!",
+						submiting_msg : "Submiting ...",
+						submitingdone_msg : "Your Comment Has Been Added , Waiting For admin approve...",
+						submitingerror_msg : "Error in Submiting Data ...",
 					});
 
 					$translateProvider.preferredLanguage = "en";

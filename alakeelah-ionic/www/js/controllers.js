@@ -1,5 +1,5 @@
-//var serverURI = 'http://localhost/NewProject/public/';
-var serverURI = 'http://alaqila.tv/admin528/public/';
+var serverURI = 'http://localhost/NewProject/public/';
+//var serverURI = 'http://alaqila.tv/admin528/public/';
 
 var publicNunber = 5;
 
@@ -7,9 +7,10 @@ var settingsList = "";
 
 function chunk(arr, size) {
 	var newArr = [];
-	for (var i = 0; i < arr.length; i += size) {
-		newArr.push(arr.slice(i, i + size));
-	}
+	if(arr != null)
+		for (var i = 0; i < arr.length; i += size) {
+			newArr.push(arr.slice(i, i + size));
+		}
 	return newArr;
 }
 
@@ -32,7 +33,7 @@ angular
 
 		.controller(
 				'AppCtrl',
-				function($scope, $ionicModal, $translate, $ionicLoading, $sce) {
+				function($scope, $ionicModal, $translate, $ionicLoading, $sce , $timeout) {
 
 					$scope.showLoading = function() {
 						$ionicLoading.show({
@@ -40,7 +41,11 @@ angular
 							hideOnStateChange : true
 						});
 					};
-
+					
+					$scope.hideLoading = function() {
+						$timeout( function(){ $ionicLoading.hide(); }, 1000);
+					};
+					
 					$scope.changeLang = function(lang) {
 						$translate.use(lang);
 						if (lang == "ar") {
@@ -52,9 +57,33 @@ angular
 					};
 
 					$scope.showLoading();
+						
+					$scope.comment = {
+							'type_id' : '',
+							'type' : '',
+							'username' : '',
+						    'title' : '',
+						    'content' : '',
+						    'checkbox' : '',
+					};
+					
+					$scope.commentfunc = function(form , form_name) {
+						    $ionicLoading.show({ template: $translate('submiting_msg') , duration: 1500});
+						    if(form.$valid) {
+						    	$scope.comment.type_id = $('#' + form_name + ' input[name=type_id]').val();
+						    	$scope.comment.type =  $('#'+ form_name + ' input[name=type]').val();
+						        $.post( serverURI + 'Comment/add/', $scope.comment ).
+						        success(function(data, status, headers, config) {
+						        	$ionicLoading.hide();
+						        	$ionicLoading.show({ template: $translate('submitingdone_msg')  , duration: 3000});
+						        }).error(function(data, status) {
+						        	$ionicLoading.hide();
+						        	$ionicLoading.show({ template: $translate('submitingerror_msg')  , duration: 3000});
+						        });
+						    }
+					}
 
-					jQuery.get(
-							serverURI + 'Settings/getAll/',
+					jQuery.get(serverURI + 'Settings/getAll/',
 							function(data) {
 								settingsList = data[0]
 								$scope.settingsList = settingsList;
@@ -72,8 +101,7 @@ angular
 								}
 							});
 
-					jQuery.get(
-							serverURI + 'Pages/getAllActive',
+					jQuery.get(serverURI + 'Pages/getAllActive',
 							function(data) {
 								$scope.pageList = data;
 								localStorage.setItem('pageList', JSON
@@ -89,8 +117,7 @@ angular
 								}
 							});
 
-					$.get(
-							serverURI + 'News/getResentNews/',
+					$.get(serverURI + 'News/getResentNews/',
 							function(data) {
 								$scope.resentNews = data;
 								localStorage.setItem('resentNews', JSON
@@ -147,11 +174,7 @@ angular
 					$scope.openOut = function(href) {
 						window.open(href, '_system', 'location=yes');
 					}
-
-					$scope.hideLoading = function() {
-						$ionicLoading.hide();
-					};
-
+					
 					$scope.changeBgColor = cahngColor;
 
 				})
@@ -169,23 +192,17 @@ angular
 						var sdone = false;
 						var pdone = false;
 
-						$
-								.get(
-										serverURI + 'News/getPublic/'
-												+ publicNunber,
+						$.get(serverURI + 'News/getHomePublic/' + publicNunber,
 										function(data) {
 											news = data;
-											localStorage.setItem('homeNews',
-													JSON.stringify(data));
+											localStorage.setItem('homeNews',JSON.stringify(data));
 											ndone = true;
 											if (vdone && sdone && pdone)
 												resolve(" ");
 										})
-								.fail(
-										function() {
+								.fail(function() {
 											try {
-												news = JSON
-														.parse(localStorage.homeNews);
+												news = JSON.parse(localStorage.homeNews);
 												ndone = true;
 												if (vdone && sdone && pdone)
 													resolve(" ");
@@ -198,23 +215,17 @@ angular
 											}
 										});
 
-						$
-								.get(
-										serverURI + 'Video/getPublic/'
-												+ publicNunber,
+						$.get(serverURI + 'Video/getHomePublic/' + publicNunber,
 										function(data) {
 											vedios = data;
-											localStorage.setItem('homeVedios',
-													JSON.stringify(data));
+											localStorage.setItem('homeVedios',JSON.stringify(data));
 											vdone = true;
 											if (ndone && sdone && pdone)
 												resolve(" ");
 										})
-								.fail(
-										function() {
+								.fail(function() {
 											try {
-												vedios = JSON
-														.parse(localStorage.homeVedios);
+												vedios = JSON.parse(localStorage.homeVedios);
 												vdone = true;
 												if (ndone && sdone && pdone)
 													resolve(" ");
@@ -227,10 +238,7 @@ angular
 											}
 										});
 
-						$
-								.get(
-										serverURI + 'Audio/getPublic/'
-												+ publicNunber,
+						$.get(serverURI + 'Audio/getHomePublic/' + publicNunber,
 										function(data) {
 											sounds = data;
 											localStorage.setItem('homeSounds',
@@ -239,11 +247,9 @@ angular
 											if (vdone && ndone && pdone)
 												resolve(" ");
 										})
-								.fail(
-										function() {
+								.fail(function() {
 											try {
-												sounds = JSON
-														.parse(localStorage.homeSounds);
+												sounds = JSON.parse(localStorage.homeSounds);
 												sdone = true;
 												if (vdone && ndone && pdone)
 													resolve(" ");
@@ -256,24 +262,17 @@ angular
 											}
 										});
 
-						$
-								.get(
-										serverURI + 'Photo/getPublic/'
-												+ publicNunber,
+						$.get(serverURI + 'Photo/getHomePublic/' + publicNunber,
 										function(data) {
 											pictures = data;
-											localStorage.setItem(
-													'homePictures', JSON
-															.stringify(data));
+											localStorage.setItem('homePictures', JSON.stringify(data));
 											pdone = true;
 											if (vdone && ndone && sdone)
 												resolve(" ");
 										})
-								.fail(
-										function() {
+								.fail(function() {
 											try {
-												pictures = JSON
-														.parse(localStorage.homePictures);
+												pictures = JSON.parse(localStorage.homePictures);
 												pdone = true;
 												if (vdone && ndone && sdone)
 													resolve(" ");
@@ -353,26 +352,20 @@ angular
 					var pageID = $stateParams.pageId;
 					$scope.showLoading();
 					var promise = $q(function(resolve, reject) {
-						$.get(
-								serverURI + 'Pages/getPageUsers/' + pageID,
+						$.get(serverURI + 'Pages/getPageUsers/' + pageID,
 								function(data) {
-									localStorage.setItem('PageUsers' + pageID,
-											JSON.stringify(data));
+									localStorage.setItem('PageUsers' + pageID, JSON.stringify(data));
 									resolve(data);
-								})
-								.fail(
-										function() {
+								}).fail(function() {
 											try {
-												resolve(JSON.parse(localStorage
-														.getItem('PageUsers'
-																+ pageID)));
+												resolve(JSON.parse(localStorage.getItem('PageUsers'+ pageID)));
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
 												$scope.hideLoading();
 												$state.go("app.error");
 											}
-										});
+								});
 					});
 					promise.then(function(data) {
 						$scope.usersList = chunk(data, 2);
@@ -398,9 +391,7 @@ angular
 						var pdone = false;
 						var udone = false;
 
-						$
-								.get(
-										serverURI + 'Userprofile/getByID/'
+						$.get(serverURI + 'Userprofile/getByID/'
 												+ userID,
 										function(data) {
 											user = data[0];
@@ -412,15 +403,11 @@ angular
 													&& ndone)
 												resolve(" ");
 										})
-								.fail(
-										function() {
+								.fail(function() {
 											try {
-												user = JSON.parse(localStorage
-														.getItem('user'
-																+ userID));
+												user = JSON.parse(localStorage.getItem('user'+ userID));
 												udone = true;
-												if (vdone && sdone && pdone
-														&& ndone)
+												if (vdone && sdone && pdone && ndone)
 													resolve(" ");
 											} catch (ex) {
 												// Redirect To Error Page No
@@ -431,9 +418,7 @@ angular
 											}
 										});
 
-						$
-								.get(
-										serverURI + 'News/getByUser/' + userID,
+						$.get(serverURI + 'News/getByUser/' + userID,
 										function(data) {
 											news = data;
 											localStorage.setItem('userNews'
@@ -447,12 +432,9 @@ angular
 								.fail(
 										function() {
 											try {
-												news = JSON.parse(localStorage
-														.getItem('userNews'
-																+ userID));
+												news = JSON.parse(localStorage.getItem('userNews' + userID));
 												ndone = true;
-												if (vdone && sdone && pdone
-														&& udone)
+												if (vdone && sdone && pdone && udone)
 													resolve(" ");
 											} catch (ex) {
 												// Redirect To Error Page No
@@ -463,9 +445,7 @@ angular
 											}
 										});
 
-						$
-								.get(
-										serverURI + 'Video/getByUser/' + userID,
+						$.get(serverURI + 'Video/getByUser/' + userID,
 										function(data) {
 											vedios = data;
 											localStorage.setItem('userVedios'
@@ -475,14 +455,9 @@ angular
 											if (ndone && sdone && pdone
 													&& udone)
 												resolve(" ");
-										})
-								.fail(
-										function() {
+							}).fail(function() {
 											try {
-												vedios = JSON
-														.parse(localStorage
-																.getItem('userVedios'
-																		+ userID));
+												vedios = JSON.parse(localStorage.getItem('userVedios'+ userID));
 												vdone = true;
 												if (ndone && sdone && pdone
 														&& udone)
@@ -496,9 +471,7 @@ angular
 											}
 										});
 
-						$
-								.get(
-										serverURI + 'Audio/getByUser/' + userID,
+						$.get(serverURI + 'Audio/getByUser/' + userID,
 										function(data) {
 											sounds = data;
 											localStorage.setItem('userSounds'
@@ -508,14 +481,9 @@ angular
 											if (vdone && ndone && pdone
 													&& udone)
 												resolve(" ");
-										})
-								.fail(
-										function() {
+							}).fail(function() {
 											try {
-												sounds = JSON
-														.parse(localStorage
-																.getItem('userSounds'
-																		+ userID));
+												sounds = JSON.parse(localStorage.getItem('userSounds'+ userID));
 												sdone = true;
 												if (vdone && ndone && pdone
 														&& udone)
@@ -527,11 +495,9 @@ angular
 												$state.go("app.error");
 												console.log("This is EX in Fitching User Sounds From Local Storage , No Internet Connection And No News ..");
 											}
-										});
+							});
 
-						$
-								.get(
-										serverURI + 'Photo/getByUser/' + userID,
+						$.get(serverURI + 'Photo/getByUser/' + userID,
 										function(data) {
 											pictures = data;
 											localStorage.setItem('userPictures'
@@ -636,8 +602,7 @@ angular
 					var promise = $q(function(resolve, reject) {
 						var pndone = false;
 						var nldone = false;
-						$.get(serverURI
-								+ 'Comments/getActiveComments/broadcast/'
+						$.get(serverURI + 'Comments/getActiveComments/broadcast/'
 								+ $stateParams.userID, function(data) {
 							commentsList = data;
 							pndone = true;
@@ -668,10 +633,10 @@ angular
 									function(data) {
 										$scope.commentsList = commentsList;
 										$scope.broadcastURI = broadcastURI;
+										$scope.userID = $stateParams.userID;
 										$scope.theme = "lib/videogular-themes-default/videogular.css";
 										$scope.poster = "/img/defult.png";
-										$scope.sources = [
-												{
+										$scope.sources = [{
 													src : $sce
 															.trustAsResourceUrl(broadcastURI),
 													type : "video/mp4"
@@ -696,18 +661,23 @@ angular
 									}, null);
 				})
 
-		.controller(
-				'frequencyCtrl',
-				function($scope, $stateParams, $q) {
+		.controller('frequencyCtrl', function($scope, $stateParams, $q) {
 					$scope.showLoading();
 					var commentsList;
 					var promise = $q(function(resolve, reject) {
-						$.get(serverURI
-								+ 'Comments/getActiveComments/frequency/0',
-								function(data) {
+							$.get(serverURI + 'Comments/getActiveComments/frequency/' + 0,function(data) {
 									commentsList = data;
+									localStorage.setItem('frequencyComments', JSON.stringify(data));
 									resolve(data);
-								});
+							}).fail(function() {
+								try {
+									commentsList = JSON.parse(localStorage.getItem('frequencyComments'));
+									resolve(commentsList);
+								} catch (ex) {
+									// Redirect To Error Page No Connection And No Data
+									$scope.hideLoading();
+								}
+							});
 					});
 					promise.then(function(data) {
 						$scope.frequency = settingsList.frequency;
@@ -762,8 +732,7 @@ angular
 
 						$.get(serverURI + 'News/getAllActive/', function(data) {
 							newsList = data;
-							localStorage.setItem('newsList', JSON
-									.stringify(data));
+							localStorage.setItem('newsList', JSON.stringify(data));
 							nldone = true;
 							if (pndone)
 								resolve(" ");
@@ -792,7 +761,7 @@ angular
 
 		.controller(
 				'newsDetialsCtrl',
-				function($scope, $stateParams, $q, $state,$ionicLoading) {
+				function($scope, $stateParams, $q, $state ) {
 					$scope.showLoading();
 					
 					var news, commentsList;
@@ -800,43 +769,56 @@ angular
 						var pndone = false;
 						var nldone = false;
 
-						$.get(
-								serverURI + 'News/getByID/'
-										+ $stateParams.newsId, function(data) {
+						$.get( serverURI + 'News/getByID/' + $stateParams.newsId, function(data) {
 									news = data;
+									localStorage.setItem('news'+  $stateParams.newsId , JSON.stringify(data));
 									pndone = true;
 									if (nldone)
 										resolve(" ");
-								});
+						}).fail(function() {
+									try {
+										news = JSON.parse(localStorage.getItem('news'+  $stateParams.newsId));
+										pndone = true;
+										if (nldone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+									}
+						});
 
 						$.get(serverURI + 'Comments/getActiveComments/news/'
 								+ $stateParams.newsId, function(data) {
 							commentsList = data;
+							localStorage.setItem('newsComments'+  $stateParams.newsId , JSON.stringify(data));
 							nldone = true;
 							if (pndone)
 								resolve(" ");
+						}).fail(function() {
+							try {
+								commentsList = JSON.parse(localStorage.getItem('newsComments'+  $stateParams.newsId));
+								nldone = true;
+								if (pndone)
+									resolve(" ");
+							} catch (ex) {
+								// Redirect To Error Page No Connection And No Data
+								$scope.hideLoading();
+								$state.go("app.error");
+								console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+							}
 						});
 					});
 
 					promise.then(function(data) {
-						$scope.news = news[0];
-						$scope.commentsList = commentsList;
+						if(news != null){
+							$scope.news = news[0];
+							$scope.commentsList = commentsList;
+						}
 						$scope.hideLoading();
 					}, null);
 					
-						$scope.comment = {
-						    'Name' : '',
-						    'Content' : '',
-						    'checkbox' : '',
-						};
-						
-						$scope.commentfunc = function(form) {
-						    $ionicLoading.show({ template: 'Submitting...'});
-						    if(form.$valid) {
-						        alert('form have been submited')
-						    }
-						    $ionicLoading.hide();
-						}
 				})
 
 		.controller(
@@ -851,8 +833,7 @@ angular
 						$.get(serverURI + 'Video/getPublic/' + publicNunber,
 								function(data) {
 									publicVideos = data;
-									localStorage.setItem('publicVideos' , JSON
-											.stringify(data));
+									localStorage.setItem('publicVideos' , JSON.stringify(data));
 									pndone = true;
 									if (nldone)
 										resolve(" ");
@@ -873,8 +854,7 @@ angular
 						$.get(serverURI + 'Video/getAllActive/',
 								function(data) {
 									videosList = data;
-									localStorage.setItem('videosList',JSON
-											.stringify(data));
+									localStorage.setItem('videosList',JSON.stringify(data));
 									nldone = true;
 									if (pndone)
 										resolve(" ");
@@ -914,47 +894,75 @@ angular
 						$.get(serverURI + 'Video/getByID/'
 								+ $stateParams.videoId, function(data) {
 							video = data;
+							localStorage.setItem('video'+  $stateParams.videoId , JSON.stringify(data));
 							pndone = true;
 							if (nldone)
 								resolve(" ");
+						}).fail(function() {
+							try {
+								video = JSON.parse(localStorage.getItem('video'+  $stateParams.videoId));
+								pndone = true;
+								if (nldone)
+									resolve(" ");
+							} catch (ex) {
+								// Redirect To Error Page No Connection And No Data
+								$scope.hideLoading();
+								$state.go("app.error");
+								console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+							}
 						});
 
-						$.get(serverURI + 'Comments/getActiveComments/video/'
-								+ $stateParams.videoId, function(data) {
+						$.get(serverURI + 'Comments/getActiveComments/video/' + $stateParams.videoId, function(data) {
 							commentsList = data;
+							localStorage.setItem('videoComments'+  $stateParams.videoId , JSON.stringify(data));
 							nldone = true;
 							if (pndone)
 								resolve(" ");
+						}).fail(function() {
+							try {
+								commentsList = JSON.parse(localStorage.getItem('videoComments'+  $stateParams.videoId));
+								nldone = true;
+								if (pndone)
+									resolve(" ");
+							} catch (ex) {
+								// Redirect To Error Page No Connection And No Data
+								$scope.hideLoading();
+								$state.go("app.error");
+								console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+							}
 						});
 					});
 
 					promise
 							.then(
 									function(data) {
-										$scope.video = video[0];
+										if(video != null){
+											$scope.video = video[0];
+											
+											$scope.theme = "lib/videogular-themes-default/videogular.css";
+											$scope.sources = [
+													{
+														src : $sce
+																.trustAsResourceUrl(video[0].videolink),
+														type : "video/mp4"
+													},
+													{
+														src : $sce
+																.trustAsResourceUrl(video[0].videolink),
+														type : "video/m4a"
+													},
+													{
+														src : $sce
+																.trustAsResourceUrl(video[0].videolink),
+														type : "video/webm"
+													},
+													{
+														src : $sce
+																.trustAsResourceUrl(video[0].videolink),
+														type : "video/ogg"
+													} ];
+										}
 										$scope.commentsList = commentsList;
-										$scope.theme = "lib/videogular-themes-default/videogular.css";
-										$scope.sources = [
-												{
-													src : $sce
-															.trustAsResourceUrl(video[0].videolink),
-													type : "video/mp4"
-												},
-												{
-													src : $sce
-															.trustAsResourceUrl(video[0].videolink),
-													type : "video/m4a"
-												},
-												{
-													src : $sce
-															.trustAsResourceUrl(video[0].videolink),
-													type : "video/webm"
-												},
-												{
-													src : $sce
-															.trustAsResourceUrl(video[0].videolink),
-													type : "video/ogg"
-												} ];
 										$scope.hideLoading();
 									}, null);
 				})
@@ -1030,25 +1038,50 @@ angular
 						var pndone = false;
 						var nldone = false;
 
-						$.get(serverURI + 'Audio/getByID/'
-								+ $stateParams.soundId, function(data) {
+						$.get(serverURI + 'Audio/getByID/' + $stateParams.soundId, function(data) {
 							sound = data;
+							localStorage.setItem('sound'+  $stateParams.soundId , JSON.stringify(data));
 							pndone = true;
 							if (nldone)
 								resolve(" ");
+						}).fail(function() {
+							try {
+								sound = JSON.parse(localStorage.getItem('sound'+  $stateParams.soundId));
+								pndone = true;
+								if (nldone)
+									resolve(" ");
+							} catch (ex) {
+								// Redirect To Error Page No Connection And No Data
+								$scope.hideLoading();
+								$state.go("app.error");
+								console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+							}
 						});
 
-						$.get(serverURI + 'Comments/getActiveComments/audio/'
-								+ $stateParams.soundId, function(data) {
+						$.get(serverURI + 'Comments/getActiveComments/audio/' + $stateParams.soundId, function(data) {
 							commentsList = data;
+							localStorage.setItem('soundComments'+  $stateParams.soundId , JSON.stringify(data));
 							nldone = true;
 							if (pndone)
 								resolve(" ");
+						}).fail(function() {
+							try {
+								commentsList = JSON.parse(localStorage.getItem('soundComments'+  $stateParams.soundId));
+								nldone = true;
+								if (pndone)
+									resolve(" ");
+							} catch (ex) {
+								// Redirect To Error Page No Connection And No Data
+								$scope.hideLoading();
+								$state.go("app.error");
+								console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+							}
 						});
 					});
 
 					promise.then(function(data) {
-						$scope.sound = sound[0];
+						if(sound != null)
+							$scope.sound = sound[0];
 						$scope.commentsList = commentsList;
 						$scope.hideLoading();
 					}, null);
@@ -1123,30 +1156,57 @@ angular
 						var pndone = false;
 						var nldone = false;
 
-						$.get(serverURI + 'Photo/getByID/'
-								+ $stateParams.pictureId, function(data) {
+						$.get(serverURI + 'Photo/getByID/' + $stateParams.pictureId, function(data) {
 							picture = data;
+							localStorage.setItem('picture'+  $stateParams.pictureId , JSON.stringify(data));
 							pndone = true;
 							if (nldone)
 								resolve(" ");
+						}).fail(function() {
+							try {
+								sound = JSON.parse(localStorage.getItem('picture'+  $stateParams.pictureId));
+								pndone = true;
+								if (nldone)
+									resolve(" ");
+							} catch (ex) {
+								// Redirect To Error Page No Connection And No Data
+								$scope.hideLoading();
+								$state.go("app.error");
+								console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+							}
 						});
-
-						$.get(serverURI + 'Comments/getActiveComments/photo/'
-								+ $stateParams.pictureId, function(data) {
+						
+						$.get(serverURI + 'Comments/getActiveComments/photo/' + $stateParams.pictureId, function(data) {
 							commentsList = data;
+							localStorage.setItem('pictureComments'+  $stateParams.pictureId , JSON.stringify(data));
 							nldone = true;
 							if (pndone)
 								resolve(" ");
+						}).fail(function() {
+							try {
+								commentsList = JSON.parse(localStorage.getItem('pictureComments'+  $stateParams.pictureId));
+								nldone = true;
+								if (pndone)
+									resolve(" ");
+							} catch (ex) {
+								// Redirect To Error Page No Connection And No Data
+								$scope.hideLoading();
+								$state.go("app.error");
+								console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+							}
 						});
 					});
 
 					promise.then(function(data) {
-						$scope.hideLoading();
-						$scope.picture = picture[0];
+						if(picture != null)
+							$scope.picture = picture[0];
 						$scope.commentsList = commentsList;
 						$scope.hideLoading();
 					}, null);
 				})
+		.controller('errorCtrl',function(){
+			
+		})
 
 		.controller('introVidCtrl',
 				function($scope, $cordovaMedia, $state, $ionicHistory) {

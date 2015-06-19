@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .loading-container .loading {
 	background-color: transparent !important;
-	background-image: url("../img/looding.png");
+	/*  background-image: url("../img/looding.png");  */
 	background-repeat: no-repeat;
 	background-position: center 20px;
 }
@@ -48,7 +48,7 @@ ion-side-menu {
 	-ms-transition: all 500ms;
 	-o-transition: all 500ms;
 	transition: all 500ms;
-	text-align: right;
+	text-align: left;
 }
 
 .content img {
@@ -142,6 +142,7 @@ ion-side-menu {
 	margin: 5px 0;
 	font-size: 14px;
 	color: #fff;
+	direction: rtl;
 }
 
 .card .item-body {
@@ -369,7 +370,7 @@ ion-side-menu {
 }
 
 .formComment {
-	direction: rtl;
+	direction: ltr;
 }
 
 .formComment .button {
@@ -699,19 +700,6 @@ ion-side-menu {
 	top: 50px;
 }
 
-/*************************************************/
-.ar .sidemenu {
-	text-align: right;
-}
-
-.ar .menu .list .item .icon {
-	float: right;
-}
-
-.ar .menu .list .item .text {
-	margin-left: initial !important;
-	margin-right: 30px;
-}
 
 /* Empty. Add your own CSS if you like */
 .videogular-container {
@@ -740,4 +728,82 @@ ion-side-menu {
 		width: 728px;
 		height: 409.5px;
 	}
+}
+
+/*********************************************************/
+
+.error-container {
+  margin: 5px 0;
+}
+
+.error-container:last-child {
+    margin: 5px 0 0;
+}
+
+.error {
+  padding: 0px 0px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.error i {
+  font-size: 20px;
+  color: #B83E2C;  
+  vertical-align: middle;
+}
+
+.last-error-container > .error {
+  padding: 5px 5px 0;
+}
+
+.has-errors {
+  border-bottom: 3px solid #B83E2C;
+}
+
+.no-errors {
+  border-bottom: 3px solid green;
+}
+
+/*************************************************/
+
+.ar .body{
+	text-align: right;
+}
+
+.ar .card .item-divider{
+	direction: rtl;
+}
+
+.ar .sidemenu {
+	text-align: right;
+}
+
+.ar .menu .list .item .icon {
+	float: right;
+}
+
+.ar .menu .list .item .text {
+	margin-left: initial !important;
+	margin-right: 30px;
+}
+
+.ar .commentsHeader{
+	text-align: right;
+}
+
+.ar .formComment{
+	text-align: right;
+	direction: rtl;
+}
+
+.ar .content{
+	direction: rtl;
+	text-align: right;
+}
+
+.ar .comments .comment-row{
+	direction: rtl;
+	text-align: right;
 }
