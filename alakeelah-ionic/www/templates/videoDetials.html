@@ -34,6 +34,12 @@
 							{{ getDay(video.video_date) }} <br> {{
 							getMunthName(video.video_date) }}
 						</h3>
+						<div ng-if=" currentLang() == 'en'">
+							<button class="sharebtn" ng-click="shareAnywhere(  getDay(video.video_date) + ' ' + getMunthName(video.video_date) + '\n' + video.title + '\n' + video.subtitle , video.image)"><i class="fa fa-external-link " ></i></button>
+						</div>
+						<div ng-if=" currentLang() == 'ar'">
+							<button class="sharebtn" ng-click="shareAnywhere(  getDay(video.video_date) + ' ' + getMunthName(video.video_date) + '\n' + video.artitle + '\n' + video.subartitle , video.image)"><i class="fa fa-external-link " ></i></button>
+						</div>
 					</div>
 					<div class="main-title">
 						<div ng-if=" currentLang() == 'en'">
