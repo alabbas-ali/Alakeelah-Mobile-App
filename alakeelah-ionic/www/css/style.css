@@ -700,7 +700,6 @@ ion-side-menu {
 	top: 50px;
 }
 
-
 /* Empty. Add your own CSS if you like */
 .videogular-container {
 	width: 100%;
@@ -731,48 +730,61 @@ ion-side-menu {
 }
 
 /*********************************************************/
-
 .error-container {
-  margin: 5px 0;
+	margin: 5px 0;
 }
 
 .error-container:last-child {
-    margin: 5px 0 0;
+	margin: 5px 0 0;
 }
 
 .error {
-  padding: 0px 0px;
-  font-size: 11px;
-  text-transform: uppercase;
-  color: #fff;
-  vertical-align: middle;
+	padding: 0px 0px;
+	font-size: 11px;
+	text-transform: uppercase;
+	color: #fff;
+	vertical-align: middle;
 }
 
 .error i {
-  font-size: 20px;
-  color: #B83E2C;  
-  vertical-align: middle;
+	font-size: 20px;
+	color: #B83E2C;
+	vertical-align: middle;
 }
 
-.last-error-container > .error {
-  padding: 5px 5px 0;
+.last-error-container>.error {
+	padding: 5px 5px 0;
 }
 
 .has-errors {
-  border-bottom: 3px solid #B83E2C;
+	border-bottom: 3px solid #B83E2C;
 }
 
 .no-errors {
-  border-bottom: 3px solid green;
+	border-bottom: 3px solid green;
+}
+
+/************************************/
+.advertisment {
+	padding: 1px 10px;
+}
+
+.advertisment .title {
+	padding: 0px 16px;
+	font-size: 19px;
+}
+
+.advertisment img {
+	border: 4px solid #fff;
+	border-radius: 5px;
 }
 
 /*************************************************/
-
-.ar .body{
+.ar .body {
 	text-align: right;
 }
 
-.ar .card .item-divider{
+.ar .card .item-divider {
 	direction: rtl;
 }
 
@@ -789,21 +801,26 @@ ion-side-menu {
 	margin-right: 30px;
 }
 
-.ar .commentsHeader{
+.ar .commentsHeader {
 	text-align: right;
 }
 
-.ar .formComment{
+.ar .formComment {
 	text-align: right;
 	direction: rtl;
 }
 
-.ar .content{
+.ar .content {
 	direction: rtl;
 	text-align: right;
 }
 
-.ar .comments .comment-row{
+.ar .comments .comment-row {
 	direction: rtl;
 	text-align: right;
+}
+
+.ar .advertisment .title {
+	direction: rtl;
+	text-align: start;
 }

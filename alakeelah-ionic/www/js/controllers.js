@@ -1,5 +1,5 @@
-var serverURI = 'http://localhost/NewProject/public/';
-//var serverURI = 'http://alaqila.tv/admin528/public/';
+//var serverURI = 'http://localhost/NewProject/public/';
+var serverURI = 'http://alaqila.tv/admin528/public/';
 
 var publicNunber = 5;
 
@@ -24,7 +24,6 @@ var cahngColor = function(color) {
 	$('.body').css({
 		"backgroundImage" : "url(img/bg" + color + ".png) "
 	});
-
 	localStorage.setItem("color", color);
 };
 
@@ -164,10 +163,7 @@ angular
 					};
 
 					$scope.getDay = function(date) {
-						// date = "2015-06-10";
 						var objDate = new Date(date);
-						// console.log ( date + " day : " + objDate.getUTCDate()
-						// );
 						return objDate.getUTCDate();
 					};
 
@@ -176,8 +172,7 @@ angular
 					}
 					
 					$scope.changeBgColor = cahngColor;
-
-				})
+		})
 
 		.controller(
 				'mainCtrl',
@@ -1164,7 +1159,7 @@ angular
 								resolve(" ");
 						}).fail(function() {
 							try {
-								sound = JSON.parse(localStorage.getItem('picture'+  $stateParams.pictureId));
+								picture = JSON.parse(localStorage.getItem('picture'+  $stateParams.pictureId));
 								pndone = true;
 								if (nldone)
 									resolve(" ");
@@ -1207,7 +1202,34 @@ angular
 		.controller('errorCtrl',function(){
 			
 		})
+		
+		.controller('advertismentCtrl',function($scope, $stateParams, $state, $q){
+			$scope.dataLoaded = false;			
+			var advertisments;
+			var promise = $q(function(resolve, reject) {
+				$.get(serverURI + 'Advertisement/getAllActive/', function(data) {
+					advertisments = data;
+					localStorage.setItem('advertisments' , JSON.stringify(data));
+					resolve(" ");
+				}).fail(function() {
+					try {
+						advertisments = JSON.parse(localStorage.getItem('advertisments'));
+						resolve(" ");
+					} catch (ex) {
+						// Redirect To Error Page No Connection And No Data
+						$scope.hideLoading();
+						$state.go("app.error");
+						console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+					}
+				});
+			});
 
+			promise.then(function(data) {
+				$scope.advertisments = advertisments;
+				$scope.hideLoading();
+			}, null);
+		})
+		
 		.controller('introVidCtrl',
 				function($scope, $cordovaMedia, $state, $ionicHistory) {
 

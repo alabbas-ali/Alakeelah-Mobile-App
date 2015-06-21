@@ -187,7 +187,17 @@ angular
 							}
 						}
 					})
-
+					
+					.state('app.advertisment', {
+						url : "/advertisment",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/advertisment.html",
+								controller : "advertismentCtrl"
+							}
+						}
+					})
+					
 					.state('app.pictureDetials', {
 						url : "/pictureDetials/:pictureId",
 						views : {
@@ -223,6 +233,7 @@ angular
 						gallery_msg : "الصور",
 						pages_msg : "صفحات",
 						setting_msg : "الإعدادت",
+						advertisment_msg : "اعلانات",
 						yellow_msg : "ذهبي",
 						blue_msg : "ازرق",
 						green_msg : "أحضر",
@@ -250,6 +261,7 @@ angular
 						submiting_msg : "يتم الإرسال ...",
 						submitingdone_msg : "تم اضافة تعليقك , بانتظار موافقة الإدارة ...",
 						submitingerror_msg : "حذث خطأ في ارسال البيانات ...",
+						advertismenttitle_msg : "الإعلانات التجارية ...",
 					});
 
 						$translateProvider.translations("en", {
@@ -266,6 +278,7 @@ angular
 						gallery_msg : "Gallery",
 						pages_msg : "Pages",
 						setting_msg : "Setting",
+						advertisment_msg : "Advertising",
 						yellow_msg : "Yellow",
 						neal_msg : "Neal",
 						blue_msg : "Blue",
@@ -293,6 +306,7 @@ angular
 						submiting_msg : "Submiting ...",
 						submitingdone_msg : "Your Comment Has Been Added , Waiting For admin approve...",
 						submitingerror_msg : "Error in Submiting Data ...",
+						advertismenttitle_msg : "Commercial Ads ...",
 					});
 
 					$translateProvider.preferredLanguage = "en";

@@ -1,0 +1,22 @@
+<ion-view class="pageView" view-title=""> 
+<ion-content ng-show="dataLoaded === true" class="pageContent advertisment">
+
+<p class="title">{{'advertismenttitle_msg' | translate}}</p>
+
+<div ng-repeat="advertisment in advertisments" class="row">
+	<div class="col">
+		<div class="card">
+			<div class="item item-text-wrap box">
+				 <img ng-src="{{advertisment.image}}" altSrc="img/defult.png"
+					onerror="this.src = $(this).attr('altSrc')" />
+			</div>
+		</div>
+	</div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</ion-content> </ion-view>
