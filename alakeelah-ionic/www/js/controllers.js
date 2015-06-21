@@ -101,7 +101,8 @@ angular
 							});
 					
 					$scope.shareAnywhere = function( massage , image ) {
-						if(!settingsList.shareURL || settingsList.shareURL === "") settingsList.shareURL = "http://alaqila.tv"
+						if(!settingsList.shareURL || settingsList.shareURL === "") 
+							settingsList.shareURL = "http://alaqila.tv";
 							$cordovaSocialSharing.share( massage , $translate('appname_msg'), image , settingsList.shareURL );
 				    }
 

@@ -63,14 +63,13 @@
 		<param name="ios-package" value="SocialSharing" />
 		<param name="onload" value="true" />
 		<param name="wp-package" value="SocialSharing" />
-		<param name="id" value="nl.x-services.plugins.socialsharing" />
-		<param name="url"
-			value="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" />
-	</feature>
+		
+		
+	<param name="url" value="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" /><param name="id" value="nl.x-services.plugins.socialsharing" /></feature>
 
 	<!-- for iOS -->
-	
-	
+
+
 
 	<platform name="android">
 		<icon src="/res/icons/ldpi.png" density="ldpi" />
