@@ -32,7 +32,7 @@ angular
 
 		.controller(
 				'AppCtrl',
-				function($scope, $ionicModal, $translate, $ionicLoading, $sce , $timeout) {
+				function($scope, $ionicModal, $translate, $ionicLoading, $sce , $cordovaSocialSharing , $timeout) {
 
 					$scope.showLoading = function() {
 						$ionicLoading.show({
@@ -81,7 +81,7 @@ angular
 						        });
 						    }
 					}
-
+					
 					jQuery.get(serverURI + 'Settings/getAll/',
 							function(data) {
 								settingsList = data[0]
@@ -99,6 +99,11 @@ angular
 									// No Data
 								}
 							});
+					
+					$scope.shareAnywhere = function( massage , image ) {
+						if(!settingsList.shareURL || settingsList.shareURL === "") settingsList.shareURL = "http://alaqila.tv"
+							$cordovaSocialSharing.share( massage , $translate('appname_msg'), image , settingsList.shareURL );
+				    }
 
 					jQuery.get(serverURI + 'Pages/getAllActive',
 							function(data) {

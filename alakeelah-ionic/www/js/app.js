@@ -220,6 +220,7 @@ angular
 					$urlRouterProvider.otherwise('/intro');
 
 					$translateProvider.translations("ar", {
+						appname_msg : "قناه العقيلة",
 						liveBroadcast_msg : "البث المباشر",
 						most_public : "أبرز الأحداث",
 						live_msg : "مباشر",
@@ -265,6 +266,7 @@ angular
 					});
 
 						$translateProvider.translations("en", {
+							appname_msg : "Alaqila TV",
 						liveBroadcast_msg : "Live Broadcast",
 						live_msg : "Live",
 						most_public : "Most Public",
