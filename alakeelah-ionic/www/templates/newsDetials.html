@@ -15,10 +15,10 @@
 							getMunthName(news.news_date) }}
 						</h3>
 						<div ng-if=" currentLang() == 'en'">
-							<button class="sharebtn" ng-click="shareAnywhere( news.title + news.subtitle + getDay(news.news_date) + getMunthName(news.news_date), news.image)"><i class="fa fa-external-link " ></i></button>
+							<button class="sharebtn" ng-click="shareAnywhere(  getDay(news.news_date) + ' ' + getMunthName(news.news_date) + '\n' + news.title + '\n' + news.subtitle , news.image)"><i class="fa fa-external-link " ></i></button>
 						</div>
 						<div ng-if=" currentLang() == 'ar'">
-							<button class="sharebtn" ng-click="shareAnywhere( news.artitle + news.subartitle + getDay(news.news_date) + getMunthName(news.news_date), news.image)"><i class="fa fa-external-link " ></i></button>
+							<button class="sharebtn" ng-click="shareAnywhere(  getDay(news.news_date) + ' ' + getMunthName(news.news_date) + '\n' + news.artitle + '\n' + news.subartitle , news.image)"><i class="fa fa-external-link " ></i></button>
 						</div>
 						
 					</div>
