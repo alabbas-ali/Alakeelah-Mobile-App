@@ -1,6 +1,11 @@
 /* Empty. Add your own CSS if you like */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	color: #fff;
+	text-decoration: none;
+}
+
+a{
+	text-decoration: none !important;
 }
 
 [nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"]
@@ -40,12 +45,18 @@ ion-nav-view {
 }
 
 ion-side-menu {
-	display: none;
-	transition: 549ms ease !important;
+	/* display: none;
+	transition: 549ms ease !important; */
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 .menu-open ion-side-menu {
-	display: block;
+	/* display: block; */
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
 }
 
 .body {
@@ -79,7 +90,7 @@ ion-side-menu {
 }
 
 .pageContent {
-	top: 0px;
+	top: 0px !important;
 }
 
 .bar.bar-stable {
