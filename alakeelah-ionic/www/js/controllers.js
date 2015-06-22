@@ -177,6 +177,35 @@ angular
 						window.open(href, '_system', 'location=yes');
 					}
 					
+					$scope.changContentLinks = function(html){
+						var pattern1 = /(?:http?s?:\/\/)?(?:www\.)?(?:vimeo\.com)\/?(.+)/g;
+				        var pattern2 = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g;
+				        var pattern3 = /([-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?(?:jpg|jpeg|gif|png))/gi;
+
+				        if(pattern1.test(html)){
+				           var replacement = '<iframe width="100" height="175" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+				           html = html.replace(pattern1, replacement);
+				           alert(html);
+				        }
+
+
+				        if(pattern2.test(html)){
+				              var replacement = '<iframe width="100" height="175" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>';
+				              html = html.replace(pattern2, replacement);
+				        } 
+
+
+				        if(pattern3.test(html)){
+				            var replacement = '<a href="$1" target="_blank"><img class="sml" src="$1" /></a><br />';
+				            html = html.replace(pattern3, replacement);
+				        }          
+				        return html;
+						
+						//if(text){
+						//	return  text.replace(  , '<iframe width="100%" height="175" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>');
+						//}
+					}
+					
 					$scope.changeBgColor = cahngColor;
 		})
 
