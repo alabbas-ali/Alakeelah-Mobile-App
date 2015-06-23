@@ -20,6 +20,10 @@ a{
 	border-radius: 10px;
 }
 
+.item p{
+	color: inherit !important;	
+}
+
 .sharebtn:ACTIVE {
 	box-shadow: 0px 0px 24px rgba(100, 100, 100, 0.5);
 }
@@ -238,7 +242,7 @@ ion-side-menu {
 	text-align: center;
 	position: absolute;
 	z-index: 999;
-	max-height: 50px;
+	max-height: 60px;
 	bottom: 0px;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
@@ -251,6 +255,12 @@ ion-side-menu {
 
 .box .title .main-title h2 {
 	font-size: 14px;
+	  padding: 0px 5px;
+}
+
+.box .title .main-title div{
+	max-height: 50px;
+	overflow: hidden;
 }
 
 .box .title p, .box .title h2, .box .title h3, .box .title h4 {
@@ -606,13 +616,15 @@ ion-side-menu {
 	height: 83px;
 	max-height: 86px;
 	overflow: hidden;
-	padding: 38px 28px 0px 0px !important;
+	padding: 45px 28px 0px 0px !important;
 	color: #fff;
 }
 
 .frequency div {
 	width: 200px;
 	float: right;
+	text-align: start;
+	color: #fff;
 }
 
 /************** tttt ********************/
@@ -706,6 +718,10 @@ ion-side-menu {
 
 .userName span {
 	color: #f8b80b;
+}
+
+.subtitle{
+	padding: 0px 5px;
 }
 
 .subtitle p {
