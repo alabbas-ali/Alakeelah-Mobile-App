@@ -38,10 +38,10 @@
 				</div>
 				<div class="content">
 					<div ng-if=" currentLang() == 'en'">
-						<p ng-bind-html="picture.content"></p>
+						<p ng-bind-html="changContentLinks(picture.content)"></p>
 					</div>
 					<div ng-if=" currentLang() == 'ar'">
-						<p ng-bind-html="picturenews.arcontent"></p>
+						<p ng-bind-html="changContentLinks(picturenews.arcontent)"></p>
 					</div>
 				</div>
 			</div>

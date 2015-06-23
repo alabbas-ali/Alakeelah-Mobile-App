@@ -41,10 +41,10 @@
 				<div class="content">
 
 					<div ng-if=" currentLang() == 'en'">
-						<p ng-bind-html="sound.content"></p>
+						<p ng-bind-html="changContentLinks(sound.content)"></p>
 					</div>
 					<div ng-if=" currentLang() == 'ar'">
-						<p ng-bind-html="sound.arcontent"></p>
+						<p ng-bind-html="changContentLinks(sound.arcontent)"></p>
 					</div>
 				</div>
 			</div>
