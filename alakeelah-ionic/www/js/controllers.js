@@ -1,5 +1,5 @@
-var serverURI = 'http://localhost/NewProject/public/';
-//var serverURI = 'http://alaqila.tv/admin528/public/';
+//var serverURI = 'http://localhost/NewProject/public/';
+var serverURI = 'http://alaqila.tv/admin528/public/';
 
 var publicNunber = 5;
 
@@ -1238,7 +1238,7 @@ angular
 		})
 		
 		.controller('advertismentCtrl',function($scope, $stateParams, $state, $q){
-			$scope.dataLoaded = false;			
+						
 			var advertisments;
 			var promise = $q(function(resolve, reject) {
 				$.get(serverURI + 'Advertisement/getAllActive/', function(data) {
@@ -1261,6 +1261,7 @@ angular
 			promise.then(function(data) {
 				$scope.advertisments = advertisments;
 				$scope.hideLoading();
+				
 			}, null);
 		})
 		
