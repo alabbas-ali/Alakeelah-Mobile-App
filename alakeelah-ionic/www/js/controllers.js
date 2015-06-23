@@ -199,11 +199,7 @@ angular
 				            var replacement = '<a href="$1" target="_blank"><img class="sml" src="$1" /></a><br />';
 				            html = html.replace(pattern3, replacement);
 				        }          
-				        return html;
-						
-						//if(text){
-						//	return  text.replace(  , '<iframe width="100%" height="175" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>');
-						//}
+				        return $sce.trustAsHtml(html);
 					}
 					
 					$scope.changeBgColor = cahngColor;
