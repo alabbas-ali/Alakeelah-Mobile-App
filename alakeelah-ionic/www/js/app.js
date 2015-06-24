@@ -7,7 +7,7 @@
 angular
 		.module(
 				'starter',
-				[ 'ionic', 'starter.controllers', 'ngCordova',
+				[ 'ionic', 'starter.controllers', 'ngCordova', 'ui.router' ,
 						'pascalprecht.translate', 'ngMessages', 'ksSwiper' ,
 						"ngSanitize",
 						"com.2fdevs.videogular",
@@ -56,16 +56,20 @@ angular
 						controller : 'AppCtrl'
 					})
 					
-					.state('app.error', {
-						url : "/error",
-						templateUrl : "templates/error.html",
-						controller : 'errorCtrl'
-					})
-
 					.state('intro', {
 						url : "/intro",
 						templateUrl : "templates/intro.html",
 						controller : 'introVidCtrl'
+					})
+					
+					.state('app.error', {
+						url : "/error",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/error.html",
+								controller : 'errorCtrl'
+							}
+						}
 					})
 
 					.state('app.pageView', {
@@ -206,7 +210,9 @@ angular
 								controller : "pictureDetialsCtrl"
 							}
 						}
-					}).state('app.main', {
+					})
+					
+					.state('app.main', {
 						url : "/main",
 						views : {
 							'menuContent' : {
@@ -263,6 +269,7 @@ angular
 						submitingdone_msg : "تم اضافة تعليقك , بانتظار موافقة الإدارة ...",
 						submitingerror_msg : "حذث خطأ في ارسال البيانات ...",
 						advertismenttitle_msg : "الإعلانات التجارية ...",
+						gohome_msg : "العودة للرئسية",
 					});
 
 						$translateProvider.translations("en", {
@@ -309,6 +316,7 @@ angular
 						submitingdone_msg : "Your Comment Has Been Added , Waiting For admin approve...",
 						submitingerror_msg : "Error in Submiting Data ...",
 						advertismenttitle_msg : "Commercial Ads ...",
+						gohome_msg : "Back To Home",
 					});
 
 					$translateProvider.preferredLanguage = "en";

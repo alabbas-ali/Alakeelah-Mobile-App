@@ -8,6 +8,14 @@ a{
 	text-decoration: none !important;
 }
 
+.errorpage{
+  padding: 0px 0px;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 50px;
+}
+
 [nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"]
 	{
 	background-color: transparent !important;

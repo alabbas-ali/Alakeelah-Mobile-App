@@ -32,8 +32,9 @@ angular
 
 		.controller(
 				'AppCtrl',
-				function($scope, $ionicModal, $translate, $ionicLoading, $sce , $cordovaSocialSharing , $timeout) {
-
+				function($scope, $ionicModal, $ionicHistory ,$translate, $ionicLoading, $sce , $cordovaSocialSharing , $timeout) {
+					$ionicHistory.clearCache();
+					
 					$scope.showLoading = function() {
 						$ionicLoading.show({
 							templateUrl : 'templates/loading.html',
@@ -232,6 +233,9 @@ angular
 								.fail(function() {
 											try {
 												news = JSON.parse(localStorage.homeNews);
+												if(news === null) {
+													$state.go("app.error");
+												}
 												ndone = true;
 												if (vdone && sdone && pdone)
 													resolve(" ");
@@ -255,6 +259,9 @@ angular
 								.fail(function() {
 											try {
 												vedios = JSON.parse(localStorage.homeVedios);
+												if(vedios === null) {
+													$state.go("app.error");
+												}
 												vdone = true;
 												if (ndone && sdone && pdone)
 													resolve(" ");
@@ -279,6 +286,9 @@ angular
 								.fail(function() {
 											try {
 												sounds = JSON.parse(localStorage.homeSounds);
+												if(sounds === null) {
+													$state.go("app.error");
+												}
 												sdone = true;
 												if (vdone && ndone && pdone)
 													resolve(" ");
@@ -302,6 +312,9 @@ angular
 								.fail(function() {
 											try {
 												pictures = JSON.parse(localStorage.homePictures);
+												if(pictures === null) {
+													$state.go("app.error");
+												}
 												pdone = true;
 												if (vdone && ndone && sdone)
 													resolve(" ");
@@ -387,7 +400,11 @@ angular
 									resolve(data);
 								}).fail(function() {
 											try {
-												resolve(JSON.parse(localStorage.getItem('PageUsers'+ pageID)));
+												var da = JSON.parse(localStorage.getItem('PageUsers'+ pageID))
+												if(da === null) {
+													$state.go("app.error");
+												}
+												resolve(da);
 											} catch (ex) {
 												// Redirect To Error Page No
 												// Connection And No Data
@@ -435,6 +452,9 @@ angular
 								.fail(function() {
 											try {
 												user = JSON.parse(localStorage.getItem('user'+ userID));
+												if(user === null) {
+													$state.go("app.error");
+												}
 												udone = true;
 												if (vdone && sdone && pdone && ndone)
 													resolve(" ");
@@ -462,6 +482,9 @@ angular
 										function() {
 											try {
 												news = JSON.parse(localStorage.getItem('userNews' + userID));
+												if(news === null) {
+													$state.go("app.error");
+												}
 												ndone = true;
 												if (vdone && sdone && pdone && udone)
 													resolve(" ");
@@ -487,6 +510,9 @@ angular
 							}).fail(function() {
 											try {
 												vedios = JSON.parse(localStorage.getItem('userVedios'+ userID));
+												if(vedios === null) {
+													$state.go("app.error");
+												}
 												vdone = true;
 												if (ndone && sdone && pdone
 														&& udone)
@@ -513,6 +539,9 @@ angular
 							}).fail(function() {
 											try {
 												sounds = JSON.parse(localStorage.getItem('userSounds'+ userID));
+												if(sounds === null) {
+													$state.go("app.error");
+												}
 												sdone = true;
 												if (vdone && ndone && pdone
 														&& udone)
@@ -544,6 +573,9 @@ angular
 														.parse(localStorage
 																.getItem('userPictures'
 																		+ userID));
+												if(pictures === null) {
+													$state.go("app.error");
+												}
 												pdone = true;
 												if (vdone && ndone && sdone
 														&& udone)
@@ -701,6 +733,7 @@ angular
 							}).fail(function() {
 								try {
 									commentsList = JSON.parse(localStorage.getItem('frequencyComments'));
+									
 									resolve(commentsList);
 								} catch (ex) {
 									// Redirect To Error Page No Connection And No Data
@@ -748,6 +781,9 @@ angular
 						}).fail(function() {
 								try {
 									publicNews = JSON.parse(localStorage.getItem('publicNews'));
+									if(publicNews === null) {
+										$state.go("app.error");
+									}
 									pndone = true;
 									if (nldone)
 										resolve(" ");
@@ -768,6 +804,9 @@ angular
 						}).fail(function() {
 							try {
 								newsList = JSON.parse(localStorage.getItem('newsList'));
+								if(newsList === null) {
+									$state.go("app.error");
+								}
 								nldone = true;
 								if (pndone)
 									resolve(" ");
@@ -790,7 +829,7 @@ angular
 
 		.controller(
 				'newsDetialsCtrl',
-				function($scope, $stateParams, $q, $state ) {
+				function($scope, $stateParams, $q, $state, $location, $ionicViewService) {
 					$scope.showLoading();
 					
 					var news, commentsList;
@@ -807,6 +846,9 @@ angular
 						}).fail(function() {
 									try {
 										news = JSON.parse(localStorage.getItem('news'+  $stateParams.newsId));
+										if(news === null) {
+											$state.go("app.error");
+										}
 										pndone = true;
 										if (nldone)
 											resolve(" ");
@@ -869,6 +911,9 @@ angular
 								}).fail(function() {
 									try {
 										publicVideos = JSON.parse(localStorage.getItem('publicVideos'));
+										if(publicVideos === null) {
+											$state.go("app.error");
+										}
 										pndone = true;
 										if (nldone)
 											resolve(" ");
@@ -890,6 +935,9 @@ angular
 								}).fail(function() {
 									try {
 										videosList = JSON.parse(localStorage.getItem('videosList'));
+										if(videosList === null) {
+											$state.go("app.error");
+										}
 										nldone = true;
 										if (pndone)
 											resolve(" ");
@@ -930,6 +978,9 @@ angular
 						}).fail(function() {
 							try {
 								video = JSON.parse(localStorage.getItem('video'+  $stateParams.videoId));
+								if(video === null) {
+									$state.go("app.error");
+								}
 								pndone = true;
 								if (nldone)
 									resolve(" ");
@@ -1016,6 +1067,9 @@ angular
 								}).fail(function() {
 									try {
 										publicSounds = JSON.parse(localStorage.getItem('publicSounds'));
+										if(publicSounds === null) {
+											$state.go("app.error");
+										}
 										pndone = true;
 										if (nldone)
 											resolve(" ");
@@ -1037,6 +1091,9 @@ angular
 								}).fail(function() {
 									try {
 										soundsList = JSON.parse(localStorage.getItem('soundsList'));
+										if(soundsList === null) {
+											$state.go("app.error");
+										}
 										nldone = true;
 										if (pndone)
 											resolve(" ");
@@ -1076,6 +1133,9 @@ angular
 						}).fail(function() {
 							try {
 								sound = JSON.parse(localStorage.getItem('sound'+  $stateParams.soundId));
+								if(sound === null) {
+									$state.go("app.error");
+								}
 								pndone = true;
 								if (nldone)
 									resolve(" ");
@@ -1134,7 +1194,10 @@ angular
 										resolve(" ");
 								}).fail(function() {
 									try {
-										publicSounds = JSON.parse(localStorage.getItem('publicPictures'));
+										publicPictures = JSON.parse(localStorage.getItem('publicPictures'));
+										if(publicPictures === null) {
+											$state.go("app.error");
+										}
 										pndone = true;
 										if (nldone)
 											resolve(" ");
@@ -1156,6 +1219,9 @@ angular
 								}).fail(function() {
 									try {
 										picturesList = JSON.parse(localStorage.getItem('picturesList'));
+										if(picturesList === null) {
+											$state.go("app.error");
+										}
 										nldone = true;
 										if (pndone)
 											resolve(" ");
@@ -1194,6 +1260,9 @@ angular
 						}).fail(function() {
 							try {
 								picture = JSON.parse(localStorage.getItem('picture'+  $stateParams.pictureId));
+								if(picture === null) {
+									$state.go("app.error");
+								}
 								pndone = true;
 								if (nldone)
 									resolve(" ");
@@ -1233,8 +1302,20 @@ angular
 						$scope.hideLoading();
 					}, null);
 				})
-		.controller('errorCtrl',function(){
-			
+		.controller('errorCtrl',function($scope , $state , $ionicHistory, $ionicNavBarDelegate){
+			$ionicHistory.clearCache();
+			$ionicNavBarDelegate.showBackButton(false);
+				//$scope.$on('$ionicView.enter', function() {
+				//  $ionicHistory.clearHistory();
+				//});
+			$scope.backhome = function (){
+				$ionicNavBarDelegate.showBackButton(true);
+				$ionicHistory.nextViewOptions({
+					disableAnimate : true,
+					disableBack : true
+				});
+				$state.go("app.main");
+			}
 		})
 		
 		.controller('advertismentCtrl',function($scope, $stateParams, $state, $q){
@@ -1248,6 +1329,9 @@ angular
 				}).fail(function() {
 					try {
 						advertisments = JSON.parse(localStorage.getItem('advertisments'));
+						if(advertisments === null) {
+							$state.go("app.error");
+						}
 						resolve(" ");
 					} catch (ex) {
 						// Redirect To Error Page No Connection And No Data

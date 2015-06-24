@@ -1,5 +1,8 @@
-<ion-view> <ion-content>
-
-{{ 'error_msg' | translate }}
-
-</ion-content> </ion-view>
+	<ion-content hide-back-button="true" class="pageContent">
+<!--     	<h1>{{ 'broadcastTable_msg' | translate }}</h1> -->
+			<div class="errorpage"> 
+			<div>{{ 'error_msg' | translate }}</div>
+			<a ng-click="backhome()">{{ 'gohome_msg' | translate }}</a>
+			</div>
+  	</ion-content>
+</ion-view>
