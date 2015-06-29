@@ -6,7 +6,7 @@
 		<div class="card">
 			<div class="item item-text-wrap box-picturedetials">
 
-				<img ng-src="{{picture.photo}}" altSrc="img/defult.png"
+				<img ng-src="{{changImageUrl(picture.photo)}}" altSrc="img/defult.png"
 					onerror="this.src = $(this).attr('altSrc')" />
 				<div class="title">
 					<div class="date">
@@ -15,10 +15,10 @@
 							getMunthName(picture.photo_date) }}
 						</h3>
 						<div ng-if=" currentLang() == 'en'">
-							<button class="sharebtn" ng-click="shareAnywhere(  getDay(picture.photo_date) + ' ' + getMunthName(picture.photo_date) + '\n' + picture.title + '\n' + picture.subtitle , picture.photo)"><i class="fa fa-external-link " ></i></button>
+							<button class="sharebtn" ng-click="shareAnywhere(  getDay(picture.photo_date) + ' ' + getMunthName(picture.photo_date) + '\n' + picture.title + '\n' + picture.subtitle , changImageUrl(picture.photo))"><i class="fa fa-external-link " ></i></button>
 						</div>
 						<div ng-if=" currentLang() == 'ar'">
-							<button class="sharebtn" ng-click="shareAnywhere(  getDay(picture.photo_date) + ' ' + getMunthName(picture.photo_date) + '\n' + picture.artitle + '\n' + picture.subartitle , picture.photo)"><i class="fa fa-external-link " ></i></button>
+							<button class="sharebtn" ng-click="shareAnywhere(  getDay(picture.photo_date) + ' ' + getMunthName(picture.photo_date) + '\n' + picture.artitle + '\n' + picture.subartitle , changImageUrl(picture.photo))"><i class="fa fa-external-link " ></i></button>
 						</div>
 					</div>
 					<div class="main-title">

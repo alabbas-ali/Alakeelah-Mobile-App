@@ -16,10 +16,10 @@
 							getMunthName(sound.audio_date) }}
 						</h3>
 						<div ng-if=" currentLang() == 'en'">
-							<button class="sharebtn" ng-click="shareAnywhere(  getDay(sound.audio_date) + ' ' + getMunthName(sound.audio_date) + '\n' + sound.title + '\n' + sound.subtitle , sound.audiolink)"><i class="fa fa-external-link " ></i></button>
+							<button class="sharebtn" ng-click="shareAnywhere(  getDay(sound.audio_date) + ' ' + getMunthName(sound.audio_date) + '\n' + sound.title + '\n' + sound.subtitle , changImageUrl(sound.audiolink))"><i class="fa fa-external-link " ></i></button>
 						</div>
 						<div ng-if=" currentLang() == 'ar'">
-							<button class="sharebtn" ng-click="shareAnywhere(  getDay(sound.audio_date) + ' ' + getMunthName(sound.audio_date) + '\n' + sound.artitle + '\n' + sound.subartitle , sound.audiolink)"><i class="fa fa-external-link " ></i></button>
+							<button class="sharebtn" ng-click="shareAnywhere(  getDay(sound.audio_date) + ' ' + getMunthName(sound.audio_date) + '\n' + sound.artitle + '\n' + sound.subartitle , changImageUrl(sound.audiolink))"><i class="fa fa-external-link " ></i></button>
 						</div>
 					</div>
 					<div class="main-title">

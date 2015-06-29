@@ -230,6 +230,7 @@ ion-side-menu {
 .box img {
 	width: 100%;
 	max-height: 190px;
+	height: 190px;
 	display: block;
 	min-height: 136px;
 }

@@ -27,8 +27,7 @@ var cahngColor = function(color) {
 	localStorage.setItem("color", color);
 };
 
-angular
-		.module('starter.controllers', [])
+angular.module('starter.controllers', [])
 
 		.controller(
 				'AppCtrl',
@@ -158,10 +157,10 @@ angular
 						var monthNamesEn = [ "January", "February", "March",
 								"April", "May", "June", "July", "August",
 								"September", "October", "November", "December" ];
-						var monthNamesAr = [ "كانون الثاني", " شباط", "آذار",
-								"نيسان", "أيار", " حزيران", "تموز", " آب",
-								"أيلول", "تشرين الأول", "تشرين الثاني",
-								"كانون الأول" ];
+						var monthNamesAr = [ "يناير", " فبراير", "مارس",
+								"ابريل", "مايو", "يونيو", "يوليو", "اغسطس",
+								"سبتمبر", "اكتوبر", "نوفمبر",
+								"ديسمبر" ];
 						if ($translate.use() == "en") {
 							return monthNamesEn[objDate.getMonth()];
 						} else {
@@ -176,6 +175,10 @@ angular
 
 					$scope.openOut = function(href) {
 						window.open(href, '_system', 'location=yes');
+					}
+					
+					$scope.changImageUrl = function(href) {
+						return href.replace('orginal', '700-350');
 					}
 					
 					$scope.changContentLinks = function(html){

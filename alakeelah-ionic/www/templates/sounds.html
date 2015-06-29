@@ -12,7 +12,7 @@
 					ng-repeat="publicSound in publicSounds" ng-if="$index < 5">
 				<div class="box">
 					<a href="#/app/soundDetials/{{publicSound.id}}" class="link"> <img
-						ng-src="{{publicSound.image}}" altSrc="img/defult.png"
+						ng-src="{{changImageUrl(publicSound.image)}}" altSrc="img/defult.png"
 						onerror="this.src = $(this).attr('altSrc')" />
 						<div class="title">
 							<div class="main-title">
@@ -58,7 +58,7 @@
 				</div> -->
 			<div class="item item-text-wrap box">
 				<a href="#/app/soundDetials/{{sound.id}}" class="ui-link"> <img
-					ng-src="{{sound.image}}" altSrc="img/defult.png"
+					ng-src="{{changImageUrl(sound.image)}}" altSrc="img/defult.png"
 					onerror="this.src = $(this).attr('altSrc')" />
 					<div class="title">
 						<div class="date">
