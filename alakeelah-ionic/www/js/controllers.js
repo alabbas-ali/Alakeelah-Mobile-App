@@ -172,18 +172,28 @@ angular.module('starter.controllers', [])
 						var objDate = new Date(date);
 						return objDate.getUTCDate();
 					};
+					
+					$scope.getTime = function(date) {
+						var objDate = new Date(date);
+						//alert(objDate.getHours() + ":" + objDate.getMinutes());
+						return objDate.getHours() + ":" + objDate.getMinutes();
+					};
 
 					$scope.openOut = function(href) {
 						window.open(href, '_system', 'location=yes');
 					}
 					
 					$scope.changImageUrl = function(href) {
-						return href.replace('orginal', '700-350');
+						if(href){
+							return href.replace('orginal', '700-350');
+						}else{
+							return "";
+						}
 					}
 					
 					$scope.changContentLinks = function(html){
-						var pattern1 = /(?:http?s?:\/\/)?(?:www\.)?(?:vimeo\.com)\/?(.+)/g;
-				        var pattern2 = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g;
+						var pattern1 = /(?:http?s?:\/\/)?(?:www\.)?(?:vimeo\.com)\/?([0-9a-zA-Z-]+)/g;
+				        var pattern2 = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?([0-9a-zA-Z-]+)/g;
 				        var pattern3 = /([-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?(?:jpg|jpeg|gif|png))/gi;
 				        
 				        
@@ -753,17 +763,38 @@ angular.module('starter.controllers', [])
 
 		.controller('broadcastTableCtrl', function($scope, $stateParams, $q) {
 			$scope.showLoading();
-			var broadcastTable;
+			var programList;
 			var promise = $q(function(resolve, reject) {
-				$.get(serverURI + 'broadcastTable/get/', function(data) {
-					broadcastTable = data;
+				$.get(serverURI + 'Programs/getAllActive', function(data) {
+					programList = data;
+					localStorage.setItem('programList', JSON.stringify(data));
 					resolve(data);
+				}).fail(function(){
+					try{
+						programList = JSON.parse(localStorage.getItem('programList'));
+						if(programList === null) {
+							$state.go("app.error");
+						}
+					}catch(ex){
+						$scope.hideLoading();
+						$state.go("app.error");
+					}
 				});
 			});
 			promise.then(function(data) {
-				$scope.broadcastTable = data;
+				$scope.programList = programList;
+				//alert(programList);
 				$scope.hideLoading();
 			}, null);
+			
+			$scope.programDay = {program_day:'1'};
+			$scope.changelist = function(day){
+				if(day==='today'){
+					$scope.programDay = {program_day:'1'};
+				}else{
+					$scope.programDay = {program_day:'2'};
+				}
+			}
 		})
 
 		.controller('newsCtrl',function($scope, $stateParams, $state, $q, $ionicSlideBoxDelegate) {

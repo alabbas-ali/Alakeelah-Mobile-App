@@ -10,7 +10,7 @@
 			<div class="item item-body">
 				<ion-slide-box show-pager="true"> <ion-slide
 					ng-repeat="publicNews in publicNewss" ng-if="$index < 5">
-				<div class="box">
+				<div class="box sliderimg">
 					<a href="#/app/newsDetials/{{publicNews.id}}" class="link"> <img
 						ng-src="{{changImageUrl(publicNews.image)}}" altSrc="img/defult.png"
 						onerror="this.src = $(this).attr('altSrc')" />

@@ -270,6 +270,8 @@ angular
 						submitingerror_msg : "حذث خطأ في ارسال البيانات ...",
 						advertismenttitle_msg : "الإعلانات التجارية ...",
 						gohome_msg : "العودة للرئسية",
+						today_programs : "اليوم",
+						tomorow_programs : "غدا",
 					});
 
 						$translateProvider.translations("en", {
@@ -317,6 +319,8 @@ angular
 						submitingerror_msg : "Error in Submiting Data ...",
 						advertismenttitle_msg : "Commercial Ads ...",
 						gohome_msg : "Back To Home",
+						today_programs : "Today",
+						tomorow_programs : "Tomorrow",
 					});
 
 					$translateProvider.preferredLanguage = "en";
