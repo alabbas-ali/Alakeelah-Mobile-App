@@ -1,6 +1,22 @@
-<ion-view view-title="" name="error" class="pageView" > 
-	<ion-content class="pageContent">
-<!--     	<h1>{{ 'broadcastTable_msg' | translate }}</h1> -->
-
-  	</ion-content>
+<ion-view view-title="" name="error" class="pageView"> 
+<ion-content class="pageContent"> 
+	<h1 class="pageHeader" style="height: 63px;">
+		<a ng-click="changelist('today')" class="daylink">{{ 'today_programs' | translate }} </a> 
+		<a ng-click="changelist('tomorow')" class="daylink">{{ 'tomorow_programs' | translate }} </a> 
+	</h1>
+	<ion-list> 
+		<ion-item ng-repeat="program in programList | filter:programDay" class="programList">
+				<div class="time">
+					{{ getTime(program.start_date) }} <br>
+					{{ getTime(program.duration) }}
+				</div>
+				<div  class="programtitle" ng-if=" currentLang() == 'en'">
+					{{ program.enname }} 
+				</div>
+				<div class="programtitle" ng-if=" currentLang() == 'ar'">
+					{{ program.name }}
+				</div>
+		</ion-item> 
+	</ion-list> 
+</ion-content> 
 </ion-view>
