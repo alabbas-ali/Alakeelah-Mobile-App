@@ -192,31 +192,33 @@ angular.module('starter.controllers', [])
 					}
 					
 					$scope.changContentLinks = function(html){
+						
+						var div = document.createElement("div");
+						div.innerHTML = html;
+						var text = div.textContent || div.innerText || "";
+						
 						var pattern1 = /(?:http?s?:\/\/)?(?:www\.)?(?:vimeo\.com)\/?([0-9a-zA-Z-]+)/g;
 				        var pattern2 = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?([0-9a-zA-Z-]+)/g;
 				        var pattern3 = /([-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?(?:jpg|jpeg|gif|png))/gi;
-				        
-				        
-				        
-				        if(pattern1.test(html)){
-				           var replacement = '<iframe width="100%" height="175" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
-				           
-				           html = html.replace(pattern1, replacement);
+
+				        if(pattern1.test(text)){
+				        	var replacement = '<div style="text-align:center"><iframe width="90%" height="175" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>';
+				        	text = text.replace(pattern1, replacement);
 				        }
 
+				        if(pattern2.test(text)){
+				            var replacement = '<div style="text-align:center"><iframe width="90%" height="175" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div>';
+				            text = text.replace(pattern2, replacement);
+				        }
 
-				        if(pattern2.test(html)){
-				              var replacement = '<iframe width="100%" height="175" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>';
-				              html = html.replace(pattern2, replacement);
-				              //alert(html);
-				        } 
-
-
-				        if(pattern3.test(html)){
-				            var replacement = '<a href="$1" target="_blank"><img class="sml" src="$1" /></a><br />';
-				            html = html.replace(pattern3, replacement);
-				        }          
-				        return $sce.trustAsHtml(html);
+				        if(pattern3.test(text)){
+				            var replacement = '<img class="sml" src="$1" /><br />';
+				            text = text.replace(pattern3, replacement);
+				        }
+				        
+				        text = text.replace(/\n/g, "<br />");
+				        
+				        return $sce.trustAsHtml(text);
 					}
 					
 					$scope.changeBgColor = cahngColor;
@@ -1053,28 +1055,37 @@ angular.module('starter.controllers', [])
 										if(video != null){
 											$scope.video = video[0];
 											
-											$scope.theme = "lib/videogular-themes-default/videogular.css";
-											$scope.sources = [
-													{
-														src : $sce
-																.trustAsResourceUrl(video[0].videolink),
-														type : "video/mp4"
-													},
-													{
-														src : $sce
-																.trustAsResourceUrl(video[0].videolink),
-														type : "video/m4a"
-													},
-													{
-														src : $sce
-																.trustAsResourceUrl(video[0].videolink),
-														type : "video/webm"
-													},
-													{
-														src : $sce
-																.trustAsResourceUrl(video[0].videolink),
-														type : "video/ogg"
-													} ];
+//											$scope.theme = "lib/videogular-themes-default/videogular.css";
+//											$scope.tryplayer = $sce.trustAsResourceUrl(video[0].videolink);
+//											$scope.sources = [
+//													{
+//														src : $sce
+//																.trustAsResourceUrl(video[0].videolink),
+//														type : "video/mp4"
+//													},
+//													{
+//														src : $sce
+//																.trustAsResourceUrl(video[0].videolink),
+//														type : "video/m4a"
+//													},
+//													{
+//														src : $sce
+//																.trustAsResourceUrl(video[0].videolink),
+//														type : "video/webm"
+//													},
+//													{
+//														src : $sce
+//																.trustAsResourceUrl(video[0].videolink),
+//														type : "video/ogg"
+//													} ];
+											
+											$scope.options = {
+									    		file: video[0].videolink,
+									    		image: video[0].image,
+									    		height: 150,
+									    		width: "100%",
+												primary: "html5"
+											};
 										}
 										$scope.commentsList = commentsList;
 										$scope.hideLoading();
