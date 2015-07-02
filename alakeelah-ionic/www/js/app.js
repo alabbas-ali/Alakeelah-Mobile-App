@@ -8,12 +8,8 @@ angular
 		.module(
 				'starter',
 				[ 'ionic', 'starter.controllers', 'ngCordova', 'ui.router' ,
-						'pascalprecht.translate', 'ngMessages', 'ksSwiper' ,
-						"ngSanitize",
-						"com.2fdevs.videogular",
-						"com.2fdevs.videogular.plugins.controls",
-						"com.2fdevs.videogular.plugins.overlayplay",
-						"com.2fdevs.videogular.plugins.poster"])
+						'pascalprecht.translate', 'ngMessages', 'ksSwiper' , 
+						'ngSanitize' ,'angular-jwplayer'])
 
 		.run(
 				function($ionicPlatform, $translate, $state, $ionicHistory) {

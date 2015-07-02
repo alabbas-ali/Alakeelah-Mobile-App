@@ -1055,28 +1055,37 @@ angular.module('starter.controllers', [])
 										if(video != null){
 											$scope.video = video[0];
 											
-											$scope.theme = "lib/videogular-themes-default/videogular.css";
-											$scope.sources = [
-													{
-														src : $sce
-																.trustAsResourceUrl(video[0].videolink),
-														type : "video/mp4"
-													},
-													{
-														src : $sce
-																.trustAsResourceUrl(video[0].videolink),
-														type : "video/m4a"
-													},
-													{
-														src : $sce
-																.trustAsResourceUrl(video[0].videolink),
-														type : "video/webm"
-													},
-													{
-														src : $sce
-																.trustAsResourceUrl(video[0].videolink),
-														type : "video/ogg"
-													} ];
+//											$scope.theme = "lib/videogular-themes-default/videogular.css";
+//											$scope.tryplayer = $sce.trustAsResourceUrl(video[0].videolink);
+//											$scope.sources = [
+//													{
+//														src : $sce
+//																.trustAsResourceUrl(video[0].videolink),
+//														type : "video/mp4"
+//													},
+//													{
+//														src : $sce
+//																.trustAsResourceUrl(video[0].videolink),
+//														type : "video/m4a"
+//													},
+//													{
+//														src : $sce
+//																.trustAsResourceUrl(video[0].videolink),
+//														type : "video/webm"
+//													},
+//													{
+//														src : $sce
+//																.trustAsResourceUrl(video[0].videolink),
+//														type : "video/ogg"
+//													} ];
+											
+											$scope.options = {
+									    		file: video[0].videolink,
+									    		image: video[0].image,
+									    		height: 150,
+									    		width: "100%",
+												primary: "html5"
+											};
 										}
 										$scope.commentsList = commentsList;
 										$scope.hideLoading();
