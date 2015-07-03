@@ -999,6 +999,25 @@ angular.module('starter.controllers', [])
 				function($scope, $sce, $state, $stateParams, $q) {
 
 					$scope.showLoading();
+					$scope.viewPlayer=false;
+					var ppr=$q(function(resolve, reject){
+						$scope.playerId='random_player_' + Math.floor((Math.random() * 999999999) + 1);
+						resolve($scope.playerId);
+					});
+					ppr.then(function(pid){
+						
+					
+					
+//					$("#jwplayer_container").html("<div id='"+playerId+"'></div>");
+					
+//					$scope.options = {
+//				    		file: '',
+//				    		image: '',
+//				    		height: 150,
+//				    		width: '100%',
+//							primary: 'html5'
+//						};
+					
 					var video, commentsList;
 					var promise = $q(function(resolve, reject) {
 						var pndone = false;
@@ -1079,17 +1098,29 @@ angular.module('starter.controllers', [])
 //														type : "video/ogg"
 //													} ];
 											
-											$scope.options = {
+//											$scope.options = {
+//									    		file: video[0].videolink,
+//									    		image: video[0].image,
+//									    		height: 150,
+//									    		width: '100%',
+//												primary: 'html5'
+//											};
+											console.log('promise called');
+//											var playerId='random_player_' + Math.floor((Math.random() * 999999999) + 1);
+											
+											jwplayer($scope.playerId).setup({
 									    		file: video[0].videolink,
 									    		image: video[0].image,
 									    		height: 150,
-									    		width: "100%",
-												primary: "html5"
-											};
+									    		width: '100%',
+												primary: 'html5'
+											});
 										}
 										$scope.commentsList = commentsList;
+										$scope.viewPlayer=true;
 										$scope.hideLoading();
 									}, null);
+					},null);
 				})
 
 		.controller(
