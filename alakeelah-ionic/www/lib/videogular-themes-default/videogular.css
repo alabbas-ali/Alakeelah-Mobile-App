@@ -97,7 +97,17 @@ videogular, [videogular] {
   videogular vg-poster img.pause,
   videogular vg-poster img.play, [videogular] vg-poster img.pause,
   [videogular] vg-poster img.play {
-    display: none; }
+    display: none; 
+    visibility: hidden;
+	opacity: 0;
+	}
+	
+	 videogular vg-poster img.pause, videogular vg-poster img.play{
+		display: none; 
+    visibility: hidden;
+	opacity: 0;
+	}
+	
   videogular vg-poster img.stop, [videogular] vg-poster img.stop {
     display: block; }
   videogular vg-overlay-play, [videogular] vg-overlay-play {

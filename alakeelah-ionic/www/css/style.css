@@ -96,6 +96,10 @@ ion-side-menu {
 	text-align: left;
 }
 
+.content div{
+	text-align:justify;
+}
+
 .content img {
 	max-width: 100%;
 	width: 100%;
