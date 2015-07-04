@@ -1049,9 +1049,7 @@ angular.module('starter.controllers', [])
 						});
 					});
 
-					promise
-							.then(
-									function(data) {
+					promise.then(function(data) {
 										if(video != null){
 											$scope.video = video[0];
 											
@@ -1078,16 +1076,12 @@ angular.module('starter.controllers', [])
 //																.trustAsResourceUrl(video[0].videolink),
 //														type : "video/ogg"
 //													} ];
-											
-											$scope.options = {
-									    		file: video[0].videolink,
-									    		image: video[0].image,
-									    		height: 150,
-									    		width: "100%",
-												primary: "html5"
-											};
+//											$scope.file = $sce.trustAsResourceUrl(video[0].videolink);
+//											$scope.poster =	$sce.trustAsResourceUrl(video[0].image);
+
 										}
 										$scope.commentsList = commentsList;
+										$scope.last = true;
 										$scope.hideLoading();
 									}, null);
 				})
