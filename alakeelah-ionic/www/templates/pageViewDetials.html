@@ -1,7 +1,14 @@
 <ion-view class="pageView" view-title=""> <ion-content
 	class="pageContent">
 	
-	
+				<div class="userName"> 
+					<div class="icon" ></div> {{ user.displayName }} 
+					<span>::</span> {{ 'news_msg' | translate }}
+					<span>::</span> {{ 'videos_msg' | translate }}
+					<span>::</span> {{ 'sounds_msg' | translate }} 
+					<span>::</span> {{ 'gallery_msg' | translate }} 
+				</div>
+				
 <div class="row" ng-if="mainSlides.length > 0">
 	<div class="col">
 		<div class="card">
@@ -10,6 +17,7 @@
 			</div> -->
 
 			<div class="item item-body">
+
 				<ion-slide-box show-pager="true"> 
 				<ion-slide ng-repeat="publicNews in mainSlides">
 				<div ng-if="publicNews.type == 'news'">
@@ -72,17 +80,26 @@
 					</div>
 				</div>
 				</ion-slide> </ion-slide-box>
-					
-					<div class="userName"> <span>::</span> {{ user.displayName }} </div>	
-		          
-		          <div class="iconlinks" ng-click="openOut(user.facebook)"><i class="fa fa-facebook-official"></i> </div> 
+				
+					<a href="#/app/userDetials/{{}}" class="proflink"> 
+						<div class="prof" ></div>
+					</a>
 
-		          <div class="iconlinks link1" ng-click="openOut(user.twitter)"><i class="fa fa-twitter-square"></i> </div> 
+		          <div class="iconlinks" ng-click="openOut(user.facebook)">
+		          	<div class="face"></div>
+		          </div>
 
-		          <div class="iconlinks link2" ng-click="openOut(user.instagram)"><i class="fa fa-instagram"></i> </div> 
+		          <div class="iconlinks link1" ng-click="openOut(user.twitter)">
+		          		<div class="twit"></div>
+		          </div> 
 
-		          <a class="iconlinks link3" href="#/app/liveBroadcast/{{user.id}}"><i class="fa fa-desktop"></i> </a>
-		        
+		          <div class="iconlinks link2" ng-click="openOut(user.instagram)">
+		          		<div class="inst"></div>
+		          </div> 
+
+		          <a class="iconlinks link3" href="#/app/liveBroadcast/{{user.id}}">
+		          		<div class="live"></div>
+		          </a>
 			</div>
 		</div>
 	</div>
