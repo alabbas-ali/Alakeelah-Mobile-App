@@ -37,6 +37,7 @@ a {
 	background-color: transparent;
 	padding: 5px;
 	border-radius: 10px;
+	font-size: 20px;
 }
 
 .item p {
@@ -96,8 +97,8 @@ ion-side-menu {
 	text-align: left;
 }
 
-.content div{
-	text-align:justify;
+.content div {
+	text-align: justify;
 }
 
 .content img {
@@ -250,7 +251,7 @@ ion-side-menu {
 	min-height: 136px;
 }
 
-.box.sliderimg img{
+.box.sliderimg img {
 	height: 190px;
 }
 
@@ -314,6 +315,12 @@ ion-side-menu {
 
 .box .title .date h3 {
 	font-size: 10px;
+	float: right;
+	width: 100%;
+}
+
+.box .title .date div {
+	float: right;
 }
 
 .box .title .main-icon {
@@ -474,6 +481,8 @@ ion-side-menu {
 
 .box-newsdetials .title .date h3 {
 	font-size: 10px;
+	float: right;
+	width: 67px;
 }
 
 .box-newsdetials .content {
@@ -525,6 +534,8 @@ ion-side-menu {
 
 .box-vediodetials .title .date h3 {
 	font-size: 10px;
+	float: right;
+	width: 67px;
 }
 
 .box-vediodetials .content {
@@ -571,6 +582,8 @@ ion-side-menu {
 
 .box-picturedetials .title .date h3 {
 	font-size: 10px;
+	float: right;
+	width: 67px;
 }
 
 .box-picturedetials .content {
@@ -623,6 +636,8 @@ ion-side-menu {
 
 .box-sounddetials .title .date h3 {
 	font-size: 10px;
+	float: right;
+	width: 67px;
 }
 
 .box-sounddetials .content {
@@ -862,10 +877,9 @@ ion-side-menu {
 	display: block;
 	float: left;
 	width: 78px;
-	/* vertical-align: middle; */
 	height: 100%;
 	padding-top: 11px;
-	text-align: center;
+	padding-left: 15px;
 	background-color: rgba(255, 255, 255, 0.54);
 }
 
@@ -923,4 +937,45 @@ ion-side-menu {
 .ar .advertisment .title {
 	direction: rtl;
 	text-align: start;
+}
+
+/*********** jwplyer ************************/
+.jwmain {
+	transition: all 7s ease;
+}
+
+.jwdisplayIcon {
+	background: none !important;
+}
+
+.jwplayer .jwuniform {
+	background-size: 100% 100% !important;
+}
+
+.jwicon {
+	background-size: 57px 100px !important;
+	width: 64px !important;
+}
+
+.jwcapLeft {
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.jwcapRight {
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.jwcontrolbar {
+	display: block !important;
+	opacity: 1 !important;
+	height: 40px !important;
+}
+
+.jwbackground {
+	background-image: none !important;
+	background-color: rgba(0, 0, 0, 0.62) !important;
 }

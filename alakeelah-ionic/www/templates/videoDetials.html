@@ -5,7 +5,7 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box-vediodetials">
-					<div class="videogular-container">
+<!-- 					<div class="videogular-container"> -->
 <!-- 						<videogular vg-theme="theme"> -->
 <!-- 							<vg-media vg-src="sources" > -->
 <!-- 							</vg-media> -->
@@ -27,10 +27,15 @@
 							
 <!-- 							<vg-poster vg-url='changImageUrl(video.image)'></vg-poster> -->
 <!-- 						</videogular> -->
+<!-- 					</div> -->
 
-						<jwplayer player-id="myplayer" file="video.videolink" poster="video.image" hieght="190" width="100%" primary="html5" > </jwplayer>
-						
-					</div>
+
+
+<!-- 			<jwplayer player-id="myplayer" file="video.videolink" poster="video.image" hieght="190" width="100%" primary="html5" > </jwplayer> -->
+<!-- 			<jwplayer player-id="myplayer" setup="options" ng-show='{{ viewPlayer }}'></jwplayer> -->
+				<div id="{{ playerId }}">
+					<img ng-src="{{changImageUrl(video.image)}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/>
+				</div>
 
 				<div class="title">
 					<div class="date">
