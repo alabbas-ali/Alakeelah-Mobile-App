@@ -448,6 +448,38 @@ ion-side-menu {
 	float: left;
 }
 
+/************ userdetials **************/
+.box-userdetials img {
+	width: 100%;
+	max-height: 190px;
+	display: block;
+}
+
+.box-userdetials .title {
+	text-align: center;
+	width: 100%;
+	background-color: #d5d5d5;
+	padding: 5px 0 8px;
+	margin-top: 0px;
+}
+
+.box-userdetials .title p, .box-userdetials .title h2, .box-userdetials .title h3,
+	.box-userdetials .title h4 {
+	margin-top: 5px;
+	color: #000;
+}
+
+.box-userdetials .title .main-title {
+	width: 100%;
+	padding-bottom: 10px;
+}
+
+.box-userdetials .content {
+	padding: 10px;
+	background-color: #fff;
+}
+
+
 /************ newsdetials **************/
 .box-newsdetials img {
 	width: 100%;

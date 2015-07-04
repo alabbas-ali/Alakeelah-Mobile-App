@@ -438,10 +438,10 @@ angular.module('starter.controllers', [])
 						$scope.hideLoading();
 					}, null);
 				})
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 		.controller(
 				'pageViewDetialsCtrl',
-				function($scope, $stateParams, $q,$state, $ionicSlideBoxDelegate) {
+				function($scope, $stateParams, $q,$state, $ionicSlideBoxDelegate , userService) {
 					$scope.userId = $stateParams.userId;
 					$scope.showLoading();
 
@@ -668,6 +668,7 @@ angular.module('starter.controllers', [])
 						$scope.sounds = sounds;
 						$scope.pictures = pictures;
 						$scope.user = user;
+						userService.setUser(user);
 						$ionicSlideBoxDelegate.update();
 						$scope.hideLoading();
 					}, null);
@@ -1377,6 +1378,17 @@ angular.module('starter.controllers', [])
 				$scope.hideLoading();
 				
 			}, null);
+		})
+		
+		.controller('userDetialsCtrl',function($scope, $stateParams, $state, $q , userService){
+			$scope.user = userService.user;
+		})
+		
+		.service('userService', function() {
+			  var user = [{}];
+			  this.setUser = function(data) {
+			        this.user = data;
+			  };
 		})
 		
 		.controller('introVidCtrl',

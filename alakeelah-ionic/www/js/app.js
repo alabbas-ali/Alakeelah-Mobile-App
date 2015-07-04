@@ -208,6 +208,16 @@ angular
 						}
 					})
 					
+					.state('app.userDetials', {
+						url : "/userDetials/:userId",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/userDetials.html",
+								controller : "userDetialsCtrl"
+							}
+						}
+					})
+					
 					.state('app.main', {
 						url : "/main",
 						views : {
