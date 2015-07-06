@@ -15,6 +15,9 @@
 							{{ getDay(sound.audio_date) }} <br> {{
 							getMunthName(sound.audio_date) }}
 						</h3>
+						
+					</div>
+					<div class="share">
 						<div ng-if=" currentLang() == 'en'">
 							<button class="sharebtn" ng-click="shareAnywhere(  getDay(sound.audio_date) + ' ' + getMunthName(sound.audio_date) + '\n' + sound.title + '\n' + sound.subtitle , changImageUrl(sound.audiolink))"><i class="fa fa-external-link " ></i></button>
 						</div>

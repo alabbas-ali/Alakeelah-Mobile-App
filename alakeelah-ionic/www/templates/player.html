@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width">
+<style type="text/css">
+html, body {
+	margin: 0px 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+video {
+	display: block;
+	width: 100%;
+	height: 94%;
+	margin: 13px 0px;
+	padding: 0px;
+	position: absolute;
+	top: 0px;
+	background-color: #000;
+}
+</style>
+</head>
+<body>
+
+	<video controls="controls" contenteditable="true" id="plyer"></video>
+
+	<script type="text/javascript">
+		function addSourceToVideo(element, src , type) {
+			var source = document.createElement('source');
+			source.src = src;
+		    source.type = type;
+			element.appendChild(source);
+		}
+		var video = window.document.getElementById('plyer');
+		var src = window.parent.document.getElementById('videoURI').getAttribute('value');
+		var poster = window.parent.document.getElementById('videoPoster').getAttribute('value');
+		
+		addSourceToVideo( video, src ,"video/mp4");
+		video.setAttribute('poster', poster);
+		//video.play();
+	</script>
+</body>
+</html>

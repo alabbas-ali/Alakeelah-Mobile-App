@@ -313,6 +313,10 @@ ion-side-menu {
 	float: left;
 }
 
+.title .share{
+	float: right;
+}
+
 .box .title .date h3 {
 	font-size: 10px;
 	float: right;
@@ -507,14 +511,14 @@ ion-side-menu {
 }
 
 .box-newsdetials .title .date {
-	width: 25%;
+	width: 15%;
 	float: right;
 }
 
 .box-newsdetials .title .date h3 {
 	font-size: 10px;
 	float: right;
-	width: 67px;
+	width: 100%;
 }
 
 .box-newsdetials .content {
@@ -545,7 +549,7 @@ ion-side-menu {
 	width: 100%;
 	background-color: #d5d5d5;
 	padding: 5px 0 8px;
-	margin-top: 0px;
+	margin-top: -3px;
 }
 
 .box-vediodetials .title p, .box-vediodetials .title h2,
@@ -560,14 +564,14 @@ ion-side-menu {
 }
 
 .box-vediodetials .title .date {
-	width: 25%;
+	width: 15%;
 	float: right;
 }
 
 .box-vediodetials .title .date h3 {
 	font-size: 10px;
 	float: right;
-	width: 67px;
+	width: 100%;
 }
 
 .box-vediodetials .content {
@@ -608,14 +612,14 @@ ion-side-menu {
 }
 
 .box-picturedetials .title .date {
-	width: 25%;
+	width: 15%;
 	float: right;
 }
 
 .box-picturedetials .title .date h3 {
 	font-size: 10px;
 	float: right;
-	width: 67px;
+	width: 100%;
 }
 
 .box-picturedetials .content {
@@ -662,14 +666,14 @@ ion-side-menu {
 }
 
 .box-sounddetials .title .date {
-	width: 25%;
+	width: 15%;
 	float: right;
 }
 
 .box-sounddetials .title .date h3 {
 	font-size: 10px;
 	float: right;
-	width: 67px;
+	width: 100%;
 }
 
 .box-sounddetials .content {

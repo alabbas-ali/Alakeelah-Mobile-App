@@ -28,21 +28,25 @@
 <!-- 							<vg-poster vg-url='changImageUrl(video.image)'></vg-poster> -->
 <!-- 						</videogular> -->
 <!-- 					</div> -->
-
-
-
 <!-- 			<jwplayer player-id="myplayer" file="video.videolink" poster="video.image" hieght="190" width="100%" primary="html5" > </jwplayer> -->
 <!-- 			<jwplayer player-id="myplayer" setup="options" ng-show='{{ viewPlayer }}'></jwplayer> -->
-				<div id="{{ playerId }}">
-					<img ng-src="{{changImageUrl(video.image)}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/>
-				</div>
+<!-- 				<div id="{{ playerId }}"> -->
+<!-- 					<img ng-src="{{changImageUrl(video.image)}}" altSrc="img/defult.png" onerror="this.src = $(this).attr('altSrc')"/> -->
+<!-- 				</div> -->
+<!-- 				<iframe id='videoframe' class="youtube-player" type="text/html" width="100%" height="210" ng-src="" allowfullscreen frameborder="0"></iframe> -->
 
+				<input type="hidden" id="videoURI" value="{{trustSrc(video.videolink)}}" />
+				<input type="hidden" id="videoPoster" value="{{trustSrc(changImageUrl(video.image))}}" />
+				<div id="myplayer"></div>
+				
 				<div class="title">
 					<div class="date">
 						<h3>
 							{{ getDay(video.video_date) }} <br> {{
 							getMunthName(video.video_date) }}
 						</h3>
+					</div>
+					<div class="share">
 						<div ng-if=" currentLang() == 'en'">
 							<button class="sharebtn" ng-click="shareAnywhere(  getDay(video.video_date) + ' ' + getMunthName(video.video_date) + '\n' + video.title + '\n' + video.subtitle , changImageUrl(video.image))"><i class="fa fa-external-link " ></i></button>
 						</div>

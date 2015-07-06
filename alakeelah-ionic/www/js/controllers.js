@@ -205,12 +205,12 @@ angular.module('starter.controllers', [])
 				        var pattern3 = /([-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?(?:jpg|jpeg|gif|png))/gi;
 
 				        if(pattern1.test(text)){
-				        	var replacement = '<div style="text-align:center"><iframe width="90%" height="175" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>';
+				        	var replacement = '<div style="text-align:center"><iframe width="95%" height="200" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>';
 				        	text = text.replace(pattern1, replacement);
 				        }
-
+				     
 				        if(pattern2.test(text)){
-				            var replacement = '<div style="text-align:center"><iframe width="90%" height="175" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div>';
+				            var replacement = '<div style="text-align:center"><iframe width="95%" height="200" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div>';
 				            text = text.replace(pattern2, replacement);
 				        }
 
@@ -720,14 +720,14 @@ angular.module('starter.controllers', [])
 											$scope.broadcastURI = broadcastURI;
 											$scope.userID = $stateParams.userID;
 
-											jwplayer($scope.playerId).setup({
-									    		file: broadcastURI,
-									    		image: '/img/defult.png',
-									    		height: 215,
-									    		width: '100%',
-									    		skin: 'glow',
-												primary: 'html5'
-											});
+//											jwplayer($scope.playerId).setup({
+//									    		file: broadcastURI,
+//									    		image: '/img/defult.png',
+//									    		height: 215,
+//									    		width: '100%',
+//									    		skin: 'glow',
+//												primary: 'html5'
+//											});
 											
 											$scope.viewPlayer=true;
 											$scope.hideLoading();
@@ -994,25 +994,16 @@ angular.module('starter.controllers', [])
 				})
 
 		.controller('videoDetialsCtrl',
-				function($scope, $sce, $state, $stateParams, $q) {
+				function($scope, $state, $stateParams, $q , $interval) {
 
 					$scope.showLoading();
-					$scope.viewPlayer=false;
-					
-					var ppr=$q(function(resolve, reject){
-						$scope.playerId='random_player_' + Math.floor((Math.random() * 999999999) + 1);
-						resolve($scope.playerId);
-					});
-					
-					ppr.then(function(pid){
-					
+
 							var video, commentsList;
 							var promise = $q(function(resolve, reject) {
 								var pndone = false;
 								var nldone = false;
 		
-								$.get(serverURI + 'Video/getByID/'
-										+ $stateParams.videoId, function(data) {
+								$.get(serverURI + 'Video/getByID/' + $stateParams.videoId, function(data) {
 									video = data;
 									localStorage.setItem('video'+  $stateParams.videoId , JSON.stringify(data));
 									pndone = true;
@@ -1058,24 +1049,27 @@ angular.module('starter.controllers', [])
 
 							promise.then(function(data) {
 										if(video != null){
-											$scope.video = video[0];
-											
-											console.log('promise called');
-											
-											jwplayer($scope.playerId).setup({
-									    		file: video[0].videolink,
-									    		image: video[0].image || '/img/defult.png',
-									    		height: 215,
-									    		width: '100%',
-									    		skin: 'glow',
-												primary: 'html5'
-											});
+											var prefix = 'http://';
+											var prefix2 = 'https://';
+											if (video[0].videolink.substr(0, prefix.length) !== prefix && video[0].videolink.substr(0, prefix2.length) !== prefix2 ){
+												video[0].videolink = prefix + video[0].videolink;
+											}
+
+											var pattern2 = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?([0-9a-zA-Z-]+)/g;
+									        if(pattern2.test(video[0].videolink)){
+									            var replacement = 'http://www.youtube.com/embed/$1';
+									            video[0].videolink = video[0].videolink.replace(pattern2, replacement);
+									            $scope.video = video[0];
+									            $('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="' + video[0].videolink + '" allowfullscreen frameborder="0"></iframe>');
+									        }else{
+									        	//{{trustSrc(video.videolink)}}
+									        	$scope.video = video[0];
+									        	$('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="templates/player.html" allowfullscreen frameborder="0"></iframe>');
+									        }
 										}
 										$scope.commentsList = commentsList;
-										$scope.viewPlayer=true;
 										$scope.hideLoading();
 							}, null);
-					},null);
 				})
 
 		.controller(
