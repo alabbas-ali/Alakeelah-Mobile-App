@@ -1,0 +1,94 @@
+<ion-view class="pageView" view-title=""> <ion-content
+	class="pageContent"> <!-- <h1>{{ 'gallery_msg' | translate }}</h1>  -->
+
+
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<!-- <div class="item item-divider">
+				{{ 'most_public' | translate }} <i class="fa fa-star"></i>
+			</div> -->
+			<div class="item item-body">
+				<ion-slide-box show-pager="true"> <ion-slide
+					ng-repeat="publicPicture in publicPictures" ng-if="$index < 5">
+				<div class="box sliderimg">
+					<a href="#/app/pictureDetials/{{publicPicture.id}}" class="link">
+						<img ng-src="{{changImageUrl(publicPicture.photo)}}" altSrc="img/defult.png"
+						onerror="this.src = $(this).attr('altSrc')" />
+						<div class="title">
+							<div class="main-title">
+								<div ng-if=" currentLang() == 'en'">
+									<h2>{{ publicPicture.title }}</h2>
+								</div>
+								<div ng-if=" currentLang() == 'ar'">
+									<h2>{{ publicPicture.artitle }}</h2>
+								</div>
+								<div ng-if="currentLang() == 'en'" class="subtitle">
+									<p>{{ publicPicture.subtitle }}</p>
+								</div>
+								<div ng-if="currentLang() == 'ar'" class="subtitle">
+									<p>{{ publicPicture.subartitle }}</p>
+								</div>
+							</div>
+							<div class="date">
+								<h3>
+									{{ getDay(publicPicture.photo_date) }} <br> {{
+									getMunthName(publicPicture.photo_date) }}
+								</h3>
+							</div>
+							<div class="main-icon">
+								<h4>
+									<i class="fa fa-picture-o"></i>
+								</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+				</ion-slide> </ion-slide-box>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div ng-repeat="rows in picturesList" class="row">
+	<div ng-repeat="picture in rows" class="col">
+		<div class="card">
+			<!-- <div class="item item-divider">
+					{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>
+				</div> -->
+			<div class="item item-text-wrap box">
+				<a href="#/app/pictureDetials/{{picture.id}}" class="ui-link"> <img
+					ng-src="{{changImageUrl(picture.photo)}}" altSrc="img/defult.png"
+					onerror="this.src = $(this).attr('altSrc')" />
+					<div class="title">
+						<div class="date">
+							<h3>
+								{{ getDay(picture.photo_date) }} <br> {{
+								getMunthName(picture.photo_date) }}
+							</h3>
+						</div>
+						<div class="main-title">
+							<div ng-if=" currentLang() == 'en'">
+								<h2>{{ picture.title }}</h2>
+							</div>
+							<div ng-if=" currentLang() == 'ar'">
+								<h2>{{ picture.artitle }}</h2>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</ion-content> </ion-view>
+
+

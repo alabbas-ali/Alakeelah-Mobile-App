@@ -1343,7 +1343,7 @@ angular.module('starter.controllers', [])
 			}
 		})
 		
-		.controller('advertismentCtrl',function($scope, $stateParams, $state, $q){
+		.controller('advertismentCtrl',function($scope, $state, $q){
 						
 			var advertisments;
 			var promise = $q(function(resolve, reject) {
@@ -1445,4 +1445,260 @@ angular.module('starter.controllers', [])
 						// initIntroSplash();
 
 					});
+				})
+/////////////////////// Starting User Conrolers //////////////////////////
+				.controller('usernewsCtrl',
+						function($scope, $stateParams, $stateParams , $state, $q, $ionicSlideBoxDelegate) {
+					$scope.showLoading();
+					var publicNews, newsList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+
+						$.get(serverURI + 'News/getUserPublic/' +  $stateParams.userId ,
+								function(data) {
+									publicNews = data;
+									localStorage.setItem('publicUserNews'+ $stateParams.userId , JSON.stringify(data));
+									pndone = true;
+									if (nldone)
+										resolve(" ");
+						}).fail(function() {
+								try {
+									publicNews = JSON.parse(localStorage.getItem('publicUserNews' + $stateParams.userId));
+									if(publicNews === null) {
+										$state.go("app.error");
+									}
+									pndone = true;
+									if (nldone)
+										resolve(" ");
+								} catch (ex) {
+									// Redirect To Error Page No Connection And No Data
+									$scope.hideLoading();
+									$state.go("app.error");
+									console.log("This is EX in Fitching Public News From Local Storage , No Internet Connection And No News ..");
+								}
+						});
+
+						$.get(serverURI + 'News/getAllUserActive/' + $stateParams.userId, function(data) {
+							newsList = data;
+							localStorage.setItem('newsUserList' + $stateParams.userId, JSON.stringify(data));
+							nldone = true;
+							if (pndone)
+								resolve(" ");
+						}).fail(function() {
+							try {
+								newsList = JSON.parse(localStorage.getItem('newsUserList' + $stateParams.userId));
+								if(newsList === null) {
+									$state.go("app.error");
+								}
+								nldone = true;
+								if (pndone)
+									resolve(" ");
+							} catch (ex) {
+								// Redirect To Error Page No Connection And No Data
+								$scope.hideLoading();
+								$state.go("app.error");
+								console.log("This is EX in Fitching News List From Local Storage , No Internet Connection And No News ..");
+							}
+						});
+					});
+
+					promise.then(function(data) {
+						$scope.publicNewss = publicNews;
+						$scope.newsList = chunk(newsList, 2);
+						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
+					}, null);
+				})
+				.controller('uservideosCtrl',
+				function($scope, $stateParams, $q, $state, $stateParams, $ionicSlideBoxDelegate) {
+					$scope.showLoading();
+					var publicVideos, videosList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+
+						$.get(serverURI + 'Video/getUserPublic/' + $stateParams.userId,
+								function(data) {
+									publicVideos = data;
+									localStorage.setItem('publicUserVideos' + $stateParams.userId, JSON.stringify(data));
+									pndone = true;
+									if (nldone)
+										resolve(" ");
+								}).fail(function() {
+									try {
+										publicVideos = JSON.parse(localStorage.getItem('publicUserVideos' + $stateParams.userId));
+										if(publicVideos === null) {
+											$state.go("app.error");
+										}
+										pndone = true;
+										if (nldone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching publicVideos From Local Storage , No Internet Connection And No News ..");
+									}
+								});
+
+						$.get(serverURI + 'Video/getAllUserActive/' + $stateParams.userId,
+								function(data) {
+									videosList = data;
+									localStorage.setItem('videosUserList' + $stateParams.userId ,JSON.stringify(data));
+									nldone = true;
+									if (pndone)
+										resolve(" ");
+								}).fail(function() {
+									try {
+										videosList = JSON.parse(localStorage.getItem('videosUserList' + $stateParams.userId));
+										if(videosList === null) {
+											$state.go("app.error");
+										}
+										nldone = true;
+										if (pndone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching News List From Local Storage , No Internet Connection And No News ..");
+									}
+								});
+					});
+
+					promise.then(function(data) {
+						$scope.publicVideos = publicVideos;
+						$scope.videosList = chunk(videosList, 2);
+						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
+					}, null);
+				})
+				.controller( 'usersoundsCtrl',
+				function($scope, $stateParams, $q, $state , $stateParams , $ionicSlideBoxDelegate) {
+					$scope.showLoading();
+					var publicSounds, soundsList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+
+						$.get(serverURI + 'Audio/getUserPublic/' + $stateParams.userId,
+								function(data) {
+									publicSounds = data;
+									localStorage.setItem('publicUserSounds' + $stateParams.userId, JSON.stringify(data));
+									pndone = true;
+									if (nldone)
+										resolve(" ");
+								}).fail(function() {
+									try {
+										publicSounds = JSON.parse(localStorage.getItem('publicUserSounds' + $stateParams.userId));
+										if(publicSounds === null) {
+											$state.go("app.error");
+										}
+										pndone = true;
+										if (nldone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching publicVideos From Local Storage , No Internet Connection And No News ..");
+									}
+								});
+
+						$.get(serverURI + 'Audio/getAllUserActive/' + $stateParams.userId,
+								function(data) {
+									soundsList = data;
+									localStorage.setItem('soundsUserList' + $stateParams.userId, JSON.stringify(data));
+									nldone = true;
+									if (pndone)
+										resolve(" ");
+								}).fail(function() {
+									try {
+										soundsList = JSON.parse(localStorage.getItem('soundsUserList' + $stateParams.userId));
+										if(soundsList === null) {
+											$state.go("app.error");
+										}
+										nldone = true;
+										if (pndone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching News List From Local Storage , No Internet Connection And No News ..");
+									}
+								});
+					});
+
+					promise.then(function(data) {
+						$scope.publicSounds = publicSounds;
+						$scope.soundsList = chunk(soundsList, 2);
+						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
+					}, null);
+				})
+				.controller( 'userpicturesCtrl',
+				function($scope, $stateParams, $q, $state, $stateParams, $ionicSlideBoxDelegate) {
+					$scope.showLoading();
+					var publicPictures, picturesList;
+					var promise = $q(function(resolve, reject) {
+						var pndone = false;
+						var nldone = false;
+
+						$.get(serverURI + 'Photo/getUserPublic/' + $stateParams.userId,
+								function(data) {
+									publicPictures = data;
+									localStorage.setItem('publicUserPictures' + $stateParams.userId , JSON.stringify(data));
+									pndone = true;
+									if (nldone)
+										resolve(" ");
+								}).fail(function() {
+									try {
+										publicPictures = JSON.parse(localStorage.getItem('publicUserPictures' + $stateParams.userId));
+										if(publicPictures === null) {
+											$state.go("app.error");
+										}
+										pndone = true;
+										if (nldone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching publicVideos From Local Storage , No Internet Connection And No News ..");
+									}
+								});
+
+						$.get(serverURI + 'Photo/getAllUserActive/' + $stateParams.userId,
+								function(data) {
+									picturesList = data;
+									localStorage.setItem('picturesUserList' + $stateParams.userId , JSON.stringify(data));
+									nldone = true;
+									if (pndone)
+										resolve(" ");
+								}).fail(function() {
+									try {
+										picturesList = JSON.parse(localStorage.getItem('picturesUserList' + $stateParams.userId));
+										if(picturesList === null) {
+											$state.go("app.error");
+										}
+										nldone = true;
+										if (pndone)
+											resolve(" ");
+									} catch (ex) {
+										// Redirect To Error Page No Connection And No Data
+										$scope.hideLoading();
+										$state.go("app.error");
+										console.log("This is EX in Fitching News List From Local Storage , No Internet Connection And No News ..");
+									}
+								});
+					});
+
+					promise.then(function(data) {
+						$scope.publicPictures = publicPictures;
+						$scope.picturesList = chunk(picturesList, 2);
+						$ionicSlideBoxDelegate.update();
+						$scope.hideLoading();
+					}, null);
 				});

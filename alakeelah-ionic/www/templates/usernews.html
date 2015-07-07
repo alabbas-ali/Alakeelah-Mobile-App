@@ -1,0 +1,91 @@
+<ion-view class="pageView" view-title=""> <ion-content
+	class="pageContent"> <!-- <h1>{{ 'news_msg' | translate }}</h1>  -->
+
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<!-- <div class="item item-divider">
+				{{ 'most_public' | translate }} <i class="fa fa-star"></i>
+			</div> -->
+			<div class="item item-body">
+				<ion-slide-box show-pager="true"> <ion-slide
+					ng-repeat="publicNews in publicNewss" ng-if="$index < 5">
+				<div class="box sliderimg">
+					<a href="#/app/newsDetials/{{publicNews.id}}" class="link"> <img
+						ng-src="{{changImageUrl(publicNews.image)}}" altSrc="img/defult.png"
+						onerror="this.src = $(this).attr('altSrc')" />
+						<div class="title">
+							<div class="main-title">
+								<div ng-if=" currentLang() == 'en'">
+									<h2>{{ publicNews.title }}</h2>
+								</div>
+								<div ng-if=" currentLang() == 'ar'">
+									<h2>{{ publicNews.artitle }}</h2>
+								</div>
+								<div ng-if="currentLang() == 'en'" class="subtitle">
+									<p>{{ publicNews.subtitle }}</p>
+								</div>
+								<div ng-if="currentLang() == 'ar'" class="subtitle">
+									<p>{{ publicNews.subartitle }}</p>
+								</div>
+							</div>
+							<div class="date">
+								<h3>
+									{{ getDay(publicNews.news_date) }} <br> {{
+									getMunthName(publicNews.news_date) }}
+								</h3>
+							</div>
+							<div class="main-icon">
+								<h4>
+									<i class="fa fa-newspaper-o"></i>
+								</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+				</ion-slide> </ion-slide-box>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div ng-repeat="rows in newsList" class="row">
+	<div ng-repeat="news in rows" class="col">
+		<div class="card">
+			<!-- <div class="item item-divider">
+					{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>
+				</div> -->
+			<div class="item item-text-wrap box">
+				<a href="#/app/newsDetials/{{news.id}}" class="ui-link"> <img
+					ng-src="{{changImageUrl(news.image)}}" altSrc="img/defult.png"
+					onerror="this.src = $(this).attr('altSrc')" />
+					<div class="title">
+						<div class="date">
+							<h3>
+								{{ getDay(news.news_date) }} <br> {{
+								getMunthName(news.news_date) }}
+							</h3>
+						</div>
+						<div class="main-title">
+							<div ng-if=" currentLang() == 'en'">
+								<h2>{{ news.title }}</h2>
+							</div>
+							<div ng-if=" currentLang() == 'ar'">
+								<h2>{{ news.artitle }}</h2>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</ion-content> </ion-view>

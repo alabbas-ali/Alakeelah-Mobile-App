@@ -3,10 +3,10 @@
 	
 				<div class="userName"> 
 					<div class="icon" ></div> {{ user.displayName }} 
-					<span>::</span> {{ 'news_msg' | translate }}
-					<span>::</span> {{ 'videos_msg' | translate }}
-					<span>::</span> {{ 'sounds_msg' | translate }} 
-					<span>::</span> {{ 'gallery_msg' | translate }} 
+					<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/usernews/{{user.id}}"> {{ 'news_msg' | translate }} </a>
+					<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/uservideos/{{user.id}}"> {{ 'videos_msg' | translate }} </a>
+					<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/usersounds/{{user.id}}"> {{ 'sounds_msg' | translate }} </a>
+					<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/userpictures/{{user.id}}"> {{ 'gallery_msg' | translate }} </a>
 				</div>
 				
 <div class="row" ng-if="mainSlides.length > 0">

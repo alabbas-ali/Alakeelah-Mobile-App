@@ -126,6 +126,16 @@ angular
 							}
 						}
 					})
+					
+					.state('app.usernews', {
+						url : "/usernews/:userId",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/usernews.html",
+								controller : "usernewsCtrl"
+							}
+						}
+					})
 
 					.state('app.newsDetials', {
 						url : "/newsDetials/:newsId",
@@ -143,6 +153,16 @@ angular
 							'menuContent' : {
 								templateUrl : "templates/videos.html",
 								controller : "videosCtrl"
+							}
+						}
+					})
+					
+					.state('app.uservideos', {
+						url : "/uservideos/:userId",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/uservideos.html",
+								controller : "uservideosCtrl"
 							}
 						}
 					})
@@ -166,6 +186,16 @@ angular
 							}
 						}
 					})
+					
+					.state('app.usersounds', {
+						url : "/usersounds/:userId",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/usersounds.html",
+								controller : "usersoundsCtrl"
+							}
+						}
+					})
 
 					.state('app.soundDetials', {
 						url : "/soundDetials/:soundId",
@@ -183,6 +213,16 @@ angular
 							'menuContent' : {
 								templateUrl : "templates/pictures.html",
 								controller : "picturesCtrl"
+							}
+						}
+					})
+					
+					.state('app.userpictures', {
+						url : "/userpictures/:userId",
+						views : {
+							'menuContent' : {
+								templateUrl : "templates/userpictures.html",
+								controller : "userpicturesCtrl"
 							}
 						}
 					})

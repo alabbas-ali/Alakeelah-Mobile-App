@@ -1,0 +1,92 @@
+<ion-view class="pageView" view-title=""> <ion-content
+	class="pageContent"> <!-- <h1>{{ 'sounds_msg' | translate }}</h1>  -->
+
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<!-- <div class="item item-divider">
+				{{ 'most_public' | translate }} <i class="fa fa-star"></i>
+			</div> -->
+			<div class="item item-body">
+				<ion-slide-box show-pager="true"> <ion-slide
+					ng-repeat="publicSound in publicSounds" ng-if="$index < 5">
+				<div class="box sliderimg">
+					<a href="#/app/soundDetials/{{publicSound.id}}" class="link"> <img
+						ng-src="{{changImageUrl(publicSound.image)}}" altSrc="img/defult.png"
+						onerror="this.src = $(this).attr('altSrc')" />
+						<div class="title">
+							<div class="main-title">
+								<div ng-if=" currentLang() == 'en'">
+									<h2>{{ publicSound.title }}</h2>
+								</div>
+								<div ng-if=" currentLang() == 'ar'">
+									<h2>{{ publicSound.artitle }}</h2>
+								</div>
+								<div ng-if="currentLang() == 'en'" class="subtitle">
+									<p>{{ publicSound.subtitle }}</p>
+								</div>
+								<div ng-if="currentLang() == 'ar'" class="subtitle">
+									<p>{{ publicSound.subartitle }}</p>
+								</div>
+							</div>
+							<div class="date">
+								<h3>
+									{{ getDay(publicSound.audio_date) }} <br> {{
+									getMunthName(publicSound.audio_date) }}
+								</h3>
+							</div>
+							<div class="main-icon">
+								<h4>
+									<i class="fa fa-microphone"></i>
+								</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+				</ion-slide> </ion-slide-box>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div ng-repeat="rows in soundsList" class="row">
+	<div ng-repeat="sound in rows" class="col">
+		<div class="card">
+			<!-- <div class="item item-divider">
+					{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>
+				</div> -->
+			<div class="item item-text-wrap box">
+				<a href="#/app/soundDetials/{{sound.id}}" class="ui-link"> <img
+					ng-src="{{changImageUrl(sound.image)}}" altSrc="img/defult.png"
+					onerror="this.src = $(this).attr('altSrc')" />
+					<div class="title">
+						<div class="date">
+							<h3>
+								{{ getDay(sound.audio_date) }} <br> {{
+								getMunthName(sound.audio_date) }}
+							</h3>
+						</div>
+						<div class="main-title">
+							<div ng-if=" currentLang() == 'en'">
+								<h2>{{ sound.title }}</h2>
+							</div>
+							<div ng-if=" currentLang() == 'ar'">
+								<h2>{{ sound.artitle }}</h2>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</ion-content> </ion-view>
+
