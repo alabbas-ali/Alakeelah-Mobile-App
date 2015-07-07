@@ -10,21 +10,29 @@ html, body {
 	overflow: hidden;
 }
 
-video {
-	display: block;
-	width: 100%;
-	height: 94%;
-	margin: 13px 0px;
-	padding: 0px;
-	position: absolute;
-	top: 0px;
-	background-color: #000;
-}
+
+/* video.loading { */
+/*   background: black url(../img/loadi.gif) center center no-repeat; */
+/*   background-size: 50px 5px;  */
+/* } */
+
 </style>
+
+  <!-- Chang URLs to wherever Video.js files will be hosted -->
+  <link href="../css/video-js.css" rel="stylesheet" type="text/css">
+  
+  <!-- video.js must be in the <head> for older IEs to work. -->
+  <script src="../js/video.js"></script>
+
+  <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+  <script>
+    	videojs.options.flash.swf = "video-js.swf";
+  </script>
+
 </head>
 <body>
 
-	<video controls="controls" contenteditable="true" id="plyer"></video>
+	<video controls="controls" class="video-js vjs-default-skin" width="100%" height="100%" data-setup="{}" contenteditable="true" preload="none" id="plyer"></video>
 
 	<script type="text/javascript">
 		function addSourceToVideo(element, src , type) {
@@ -39,7 +47,18 @@ video {
 		
 		addSourceToVideo( video, src ,"video/mp4");
 		video.setAttribute('poster', poster);
-		//video.play();
+		
+// 		$('#plyer').on('loadstart', function (event) {
+// 			video.setAttribute('poster', 'data:image/gif,AAAA');
+// 			//alert('asdasds');
+// 		    $(this).addClass('loading');
+// 		});
+// 		$('#plyer').on('canplay', function (event) {
+// 			$(this).setAttribute('poster' , poster);
+// 			//alert('asdasds');
+// 		  	$(this).removeClass('loading');
+// 		});
+// 		video.play();
 	</script>
 </body>
 </html>
