@@ -1,6 +1,6 @@
 //var serverURI = 'http://localhost/NewProject/public/';
 var serverURI = 'http://alaqila.tv/admin528/public/';
-
+var appStoreURL = 'https://play.google.com/store/apps/details?id=com.alaqila';
 var publicNunber = 5;
 
 var settingsList = "";
@@ -101,9 +101,9 @@ angular.module('starter.controllers', [])
 							});
 					
 					$scope.shareAnywhere = function( massage , image ) {
-						if(!settingsList.shareURL || settingsList.shareURL === "") 
-							settingsList.shareURL = "http://alaqila.tv";
-							$cordovaSocialSharing.share( massage , $translate('appname_msg'), image , settingsList.shareURL );
+							//if(!settingsList.shareURL || settingsList.shareURL === "") 
+							//settingsList.shareURL = "http://alaqila.tv";
+						$cordovaSocialSharing.share( massage , $translate('appname_msg'), image , appStoreURL );
 				    }
 
 					jQuery.get(serverURI + 'Pages/getAllActive',

@@ -35,7 +35,7 @@
 	</ks-swiper-container>
       
     </ion-nav-bar>
-    <ion-nav-view name="menuContent">
+    <ion-nav-view name="menuContent" class="navViewer"> 
     
     </ion-nav-view>
   </ion-side-menu-content>
@@ -93,44 +93,56 @@
           <div class="icon"><i class="fa fa-bullhorn"></i> </div> <div class="text">{{ 'advertisment_msg' | translate }}  </div>
         </ion-item>
         
-        <ion-item class="menu-title">
+        <ion-item class="menu-title" ng-if="settingsList.facebook || settingsList.twitter || settingsList.instagram || settingsList.youtube">
  			{{ 'socialNetworks_msg' | translate }}
  		</ion-item >
- 		<ion-item nav-clear menu-close ng-click="openOut(settingsList.facebook)">
+ 		<ion-item nav-clear menu-close ng-if="settingsList.facebook" ng-click="openOut(settingsList.facebook)">
           <div class="icon"><i class="fa fa-facebook-official"></i> </div> <div class="text">{{ 'facebook_msg' | translate }}  </div>
         </ion-item>
-        <ion-item nav-clear menu-close ng-click="openOut(settingsList.twitter)">
+        <ion-item nav-clear menu-close ng-if="settingsList.twitter"  ng-click="openOut(settingsList.twitter)">
           <div class="icon"><i class="fa fa-twitter-square"></i> </div> <div class="text">{{ 'twitter_msg' | translate }}  </div>
         </ion-item>
-        <ion-item nav-clear menu-close ng-click="openOut(settingsList.instagram)">
+        <ion-item nav-clear menu-close ng-if="settingsList.instagram"  ng-click="openOut(settingsList.instagram)">
           <div class="icon"><i class="fa fa-instagram"></i> </div> <div class="text">{{ 'instagram_msg' | translate }}  </div>
         </ion-item>
-        <ion-item nav-clear menu-close ng-click="openOut(settingsList.youtube)">
+        <ion-item nav-clear menu-close ng-if="settingsList.youtube"  ng-click="openOut(settingsList.youtube)">
           <div class="icon"><i class="fa fa-youtube-play"></i> </div> <div class="text">{{ 'youtube_msg' | translate }}  </div>
         </ion-item>
         <ion-item class="menu-title">
  			{{ 'setting_msg' | translate }}
  		</ion-item >
  		<ion-item nav-clear menu-close ng-click="changeBgColor('Yellow')">
+ 		<div class="item-content">
           <div class="icon"><i style="color:yellow;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'yellow_msg' | translate }}  </div>
+        </div>
         </ion-item>
         <ion-item nav-clear menu-close ng-click="changeBgColor('Blue')">
+        <div class="item-content">
           <div class="icon"><i style="color:#1b2b66;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'blue_msg' | translate }}  </div>
+        </div>
         </ion-item>
         <ion-item nav-clear menu-close ng-click="changeBgColor('Green')">
+        <div class="item-content">
           <div class="icon"><i style="color: #2f9474;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'green_msg' | translate }}  </div>
+        </div>
         </ion-item>
         <ion-item nav-clear menu-close ng-click="changeBgColor('Neal')">
+        <div class="item-content">
           <div class="icon"><i style="color: #641c88;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'neal_msg' | translate }}  </div>
+        	</div>
         </ion-item>
         <ion-item class="menu-title">
  			{{ 'language_msg' | translate }}
  		</ion-item >
  		<ion-item nav-clear menu-close ng-click="changeLang('ar')">
-          <div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'arabic_msg' | translate }}  </div>
+ 			<div class="item-content">
+ 				<div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'arabic_msg' | translate }}  </div>
+ 			</div>
         </ion-item>
         <ion-item nav-clear menu-close ng-click="changeLang('en')">
-          <div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'english_msg' | translate }}  </div>
+        	<div class="item-content">
+          		<div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'english_msg' | translate }}  </div>
+          	</div>
         </ion-item>
       </ion-list>
     </ion-content>
