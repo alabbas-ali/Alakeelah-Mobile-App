@@ -313,7 +313,7 @@ ion-side-menu {
 	float: left;
 }
 
-.title .share{
+.title .share {
 	float: right;
 }
 
@@ -482,7 +482,6 @@ ion-side-menu {
 	padding: 10px;
 	background-color: #fff;
 }
-
 
 /************ newsdetials **************/
 .box-newsdetials img {
@@ -700,10 +699,11 @@ ion-side-menu {
 }
 
 .frequency div {
-	width: 200px;
+	/* width: 200px; */
 	float: right;
-	text-align: start;
+	text-align: right;
 	color: #fff;
+	font-size: 14px;
 }
 
 /************** tttt ********************/

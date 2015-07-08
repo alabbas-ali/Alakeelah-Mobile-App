@@ -29,9 +29,14 @@
 <!-- 						</videogular> -->
 <!-- 					</div> -->
 
-				<div id="{{ playerId }}">
-					<img ng-src="img/defult.png"/>
-				</div>
+<!-- 				<div id="{{ playerId }}"> -->
+<!-- 					<img ng-src="img/defult.png"/> -->
+<!-- 				</div> -->
+
+				<input type="hidden" id="videoURI" value="{{trustSrc(broadcastURI)}}" />
+				<input type="hidden" id="videoPoster" value="img/defult.png" />
+				<div id="myplayer"></div>
+				
 			</div>
 		</div>
 	</div>
