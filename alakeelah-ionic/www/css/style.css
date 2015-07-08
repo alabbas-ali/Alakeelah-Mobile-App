@@ -169,11 +169,11 @@ ion-side-menu {
 }
 
 .row {
-	padding: 0px;
+	padding: 5px 0px;
 }
 
 .col {
-	padding: 0px;
+	padding: 5px 0px;
 }
 
 /* card */
@@ -218,11 +218,9 @@ ion-side-menu {
 	margin: 10px 5px;
 	border-radius: 0px;
 }
-
-.scroll {
-	padding-bottom: 35px;
+.navViewer{
+	height: 77%;
 }
-
 .box {
 	display: block;
 	min-height: 127px;
@@ -318,7 +316,7 @@ ion-side-menu {
 }
 
 .box .title .date h3 {
-	font-size: 10px;
+	font-size: 12px;
 	float: right;
 	width: 100%;
 }
@@ -344,7 +342,7 @@ ion-side-menu {
 	color: #fff;
 	font-size: 15px;
 	list-style: none;
-	padding: 10px 14px 10px 14px;
+	padding: 0px;
 	margin: 5px 10px 5px 0;
 }
 
@@ -360,10 +358,7 @@ ion-side-menu {
 
 .menu .list .item .item-content {
 	background-color: transparent;
-}
-
-.menu .list .item .item-content {
-	padding: 0px;
+	padding: 9px 10px 9px 10px;
 }
 
 .menu .list .item .icon {
@@ -515,7 +510,7 @@ ion-side-menu {
 }
 
 .box-newsdetials .title .date h3 {
-	font-size: 10px;
+	font-size: 12px;
 	float: right;
 	width: 100%;
 }
@@ -568,7 +563,7 @@ ion-side-menu {
 }
 
 .box-vediodetials .title .date h3 {
-	font-size: 10px;
+	font-size: 12px;
 	float: right;
 	width: 100%;
 }
@@ -616,7 +611,7 @@ ion-side-menu {
 }
 
 .box-picturedetials .title .date h3 {
-	font-size: 10px;
+	font-size: 12px;
 	float: right;
 	width: 100%;
 }
@@ -670,7 +665,7 @@ ion-side-menu {
 }
 
 .box-sounddetials .title .date h3 {
-	font-size: 10px;
+	font-size: 12px;
 	float: right;
 	width: 100%;
 }
@@ -709,49 +704,19 @@ ion-side-menu {
 /************** tttt ********************/
 .item.item-body .iconlinks {
 	display: block;
-	height: 28px;
-	width: 40px;
-	position: absolute;
-	top: 20px;
+	height: 24px;
+	width: 33px;
 	background-color: rgba(0, 0, 0, 0.57);
 	padding: 0px 5px;
 	color: #bbb;
-}
-
-.item.item-body .iconlinks.link1 {
-	top: 50px;
-}
-
-.item.item-body .iconlinks.link2 {
-	top: 80px;
-}
-
-.item.item-body .iconlinks.link3 {
-	top: 110px;
-}
-
-.item.item-body .proflink {
-	display: block;
-	height: 36px;
-	width: 40px;
-	position: absolute;
-	top: 20px;
-	right: 5px;
-}
-
-.item.item-body .proflink div {
-	background-image: url("../img/prof.png");
-	background-size: 100%;
-	display: block;
-	height: 36px;
-	width: 31px;
+	margin-bottom: 5px;
 }
 
 .item.item-body .iconlinks div {
 	background-size: 100%;
 	display: block;
-	height: 28px;
-	width: 28px;
+	height: 23px;
+	width: 23px;
 }
 
 .item.item-body .iconlinks .face {
@@ -806,7 +771,7 @@ ion-side-menu {
 	margin: 0px;
 	text-align: center;
 	color: #fff;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 /**************** swiper  ************************/
@@ -851,16 +816,38 @@ ion-side-menu {
 	color: #f8b80b;
 }
 
+.userName .userheader{
+	margin-right: 35px;
+}
+
+.userName .proflink {
+		display: block;
+	  height: 30px;
+	  width: 30px;
+	  /* float: right; */
+	  position: absolute;
+	  top: 0px;
+	  right: 0px;
+}
+
+.userName .proflink div {
+	  background-image: url("../img/prof.png");
+  background-size: 100%;
+  display: block;
+  height: 30px;
+  width: 23px;
+}
+
 .subtitle {
 	padding: 0px 5px;
 }
 
 .subtitle p {
-	font-size: 9px;
+	font-size: 12px;
 }
 
 .box .title .main-title .subtitle p {
-	font-size: 10px;
+	font-size: 12px;
 	margin-top: 1px;
 	color: #fff;
 }
@@ -1035,6 +1022,14 @@ ion-side-menu {
 	background-image: url("../img/tt.png");
 	float: right;
 }
+
+.ar .userName .userheader{
+	margin-left: 35px;
+}
+
+.ar .userName .proflink {
+	left:0px;
+	}
 
 /*********** jwplyer ************************/
 .jwmain {
