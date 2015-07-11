@@ -55,20 +55,18 @@
 
                     var params = {
                         slidesPerView: slidesPerView,
-                        loop : true,
                         slidesPerViewFit : false,
-                        roundLengths : false,
-                        grabCursor: false,
-                        slidesPerColumn: slidesPerColumn,
                         paginationClickable: paginationClickable,
+                        initialSlide: initialSlide,
+                        pagination: '#paginator-' + $scope.swiper_uuid,
                         spaceBetween: 10,
+                        loop : true,
                         autoplay : 1,
                         autoplayDisableOnInteraction : false,
-                        speed : 15000,
-                        centeredSlides: false,
-                        freeModeMomentum : true,
-                        initialSlide: initialSlide,
-                        pagination: '#paginator-' + $scope.swiper_uuid
+                        speed: 9000,
+                        auto: 30,
+                        continuous: true,
+                        
                     };
 
                     if (showNavButtons === true) {

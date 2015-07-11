@@ -1,6 +1,6 @@
 //var serverURI = 'http://localhost/NewProject/public/';
 var serverURI = 'http://alaqila.tv/admin528/public/';
-
+var appStoreURL = 'https://play.google.com/store/apps/details?id=com.alaqila';
 var publicNunber = 5;
 
 var settingsList = "";
@@ -101,9 +101,9 @@ angular.module('starter.controllers', [])
 							});
 					
 					$scope.shareAnywhere = function( massage , image ) {
-						if(!settingsList.shareURL || settingsList.shareURL === "") 
-							settingsList.shareURL = "http://alaqila.tv";
-							$cordovaSocialSharing.share( massage , $translate('appname_msg'), image , settingsList.shareURL );
+							//if(!settingsList.shareURL || settingsList.shareURL === "") 
+							//settingsList.shareURL = "http://alaqila.tv";
+						$cordovaSocialSharing.share( massage , $translate('appname_msg'), image , appStoreURL );
 				    }
 
 					jQuery.get(serverURI + 'Pages/getAllActive',
@@ -717,17 +717,25 @@ angular.module('starter.controllers', [])
 						});
 						promise.then(function(data) {
 											$scope.commentsList = commentsList;
-											$scope.broadcastURI = broadcastURI;
 											$scope.userID = $stateParams.userID;
 
-//											jwplayer($scope.playerId).setup({
-//									    		file: broadcastURI,
-//									    		image: '/img/defult.png',
-//									    		height: 215,
-//									    		width: '100%',
-//									    		skin: 'glow',
-//												primary: 'html5'
-//											});
+											var prefix = 'http://';
+											var prefix2 = 'https://';
+											if (broadcastURI.substr(0, prefix.length) !== prefix && broadcastURI.substr(0, prefix2.length) !== prefix2 ){
+												broadcastURI = prefix + broadcastURI;
+											}
+
+											var pattern2 = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?([0-9a-zA-Z-]+)/g;
+									        if(pattern2.test(broadcastURI)){
+									            var replacement = 'http://www.youtube.com/embed/$1';
+									            broadcastURI = broadcastURI.replace(pattern2, replacement);
+									            $scope.broadcastURI = broadcastURI;
+									            $('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="' + broadcastURI + '" allowfullscreen frameborder="0"></iframe>');
+									        }else{
+									        	//{{trustSrc(video.videolink)}}
+									        	$scope.broadcastURI = broadcastURI;
+									        	$('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="templates/player.html" allowfullscreen frameborder="0"></iframe>');
+									        }
 											
 											$scope.viewPlayer=true;
 											$scope.hideLoading();

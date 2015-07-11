@@ -436,3 +436,7 @@
     transform: rotate(360deg);
   }
 }
+
+.swiper-wrapper {
+	transition-timing-function:linear;
+}

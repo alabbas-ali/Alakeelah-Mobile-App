@@ -1,12 +1,19 @@
-<ion-view class="pageView" view-title=""> <ion-content
+<ion-view class="pageView" view-title=""> 
+<ion-content overflow-scroll="true"
 	class="pageContent">
 	
 				<div class="userName"> 
-					<div class="icon" ></div> {{ user.displayName }} 
-					<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/usernews/{{user.id}}"> {{ 'news_msg' | translate }} </a>
-					<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/uservideos/{{user.id}}"> {{ 'videos_msg' | translate }} </a>
-					<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/usersounds/{{user.id}}"> {{ 'sounds_msg' | translate }} </a>
-					<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/userpictures/{{user.id}}"> {{ 'gallery_msg' | translate }} </a>
+					<div class="icon" ></div> 
+					<div class="userheader">
+						{{ user.displayName }} 
+						<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/usernews/{{user.id}}"> {{ 'news_msg' | translate }} </a>
+						<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/uservideos/{{user.id}}"> {{ 'videos_msg' | translate }} </a>
+						<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/usersounds/{{user.id}}"> {{ 'sounds_msg' | translate }} </a>
+						<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/userpictures/{{user.id}}"> {{ 'gallery_msg' | translate }} </a>
+					</div>
+					<a href="#/app/userDetials/{{user.id}}" class="proflink"> 
+						<div class="prof" ></div>
+					</a>
 				</div>
 				
 <div class="row" ng-if="mainSlides.length > 0">
@@ -80,26 +87,20 @@
 					</div>
 				</div>
 				</ion-slide> </ion-slide-box>
-				
-					<a href="#/app/userDetials/{{user.id}}" class="proflink"> 
-						<div class="prof" ></div>
-					</a>
-
-		          <div class="iconlinks" ng-click="openOut(user.facebook)">
-		          	<div class="face"></div>
-		          </div>
-
-		          <div class="iconlinks link1" ng-click="openOut(user.twitter)">
-		          		<div class="twit"></div>
-		          </div> 
-
-		          <div class="iconlinks link2" ng-click="openOut(user.instagram)">
-		          		<div class="inst"></div>
-		          </div> 
-
-		          <a class="iconlinks link3" href="#/app/liveBroadcast/{{user.id}}">
-		          		<div class="live"></div>
-		          </a>
+				<div style="position: absolute;top: 20px;">
+			          <div class="iconlinks" ng-if="user.facebook" ng-click="openOut(user.facebook)">
+			          	<div class="face"></div>
+			          </div>
+			          <div class="iconlinks link1" ng-if="user.twitter" ng-click="openOut(user.twitter)">
+			          		<div class="twit"></div>
+			          </div> 
+			          <div class="iconlinks link2" ng-if="user.instagram" ng-click="openOut(user.instagram)">
+			          		<div class="inst"></div>
+			          </div>
+			          <a class="iconlinks link3" href="#/app/liveBroadcast/{{user.id}}">
+			          		<div class="live"></div>
+			          </a>
+		         </div>
 			</div>
 		</div>
 	</div>
@@ -246,10 +247,5 @@
 
 	</div>
 </div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
 </ion-content> </ion-view>
