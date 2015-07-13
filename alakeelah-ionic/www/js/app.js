@@ -349,7 +349,7 @@ angular
 						youtube_msg : "Youtube",
 						commentsHeader_msg : "Comments",
 						addCommentHeader_msg : "Add Comment ..",
-						addCommentMessage_msg : "This Comments Represnts Commenrs Thouds Not Our's ...",
+						addCommentMessage_msg : "Comments represent the opinion of owners not ours ...",
 						commenterName_msg : "Name :",
 						commentContent_msg : "Comment :",
 						commentCheckbox_msg : "Add Your Comment Into Facebook Account",

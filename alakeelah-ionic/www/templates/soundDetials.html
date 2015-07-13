@@ -1,10 +1,10 @@
-<ion-view class="pageView" view-title=""> <ion-content overflow-scroll="true"
-	class="pageContent"> <!-- <h1>{{ 'sound_msg' | translate }}</h1>  -->
+<ion-view class="pageView" view-title=""> 
+<ion-content class="pageContent"> <!-- <h1>{{ 'sound_msg' | translate }}</h1>  -->
 
 <div class="row">
 	<div class="col">
 		<div class="card">
-			<div class="item item-text-wrap box-sounddetials">
+			<div class="item item-text-wrap box-newsdetials">
 				<img ng-src="{{sound.image}}" altSrc="img/sound.png"
 					onerror="this.src = $(this).attr('altSrc')" />
 				<audio src="{{ trustSrc(sound.audiolink) }}"
@@ -17,27 +17,23 @@
 						</h3>
 						
 					</div>
+					
+					<div class="main-title">
+						<div ng-if=" currentLang() == 'en'">
+							<h2>{{ sound.title }}</h2>
+							<p>{{ sound.subtitle }}</p>
+						</div>
+						<div ng-if=" currentLang() == 'ar'">
+							<h2>{{ sound.artitle }}</h2>
+							<p>{{ sound.subartitle }}</p>
+						</div>
+					</div>
 					<div class="share">
 						<div ng-if=" currentLang() == 'en'">
 							<button class="sharebtn" ng-click="shareAnywhere(  getDay(sound.audio_date) + ' ' + getMunthName(sound.audio_date) + '\n' + sound.title + '\n' + sound.subtitle , changImageUrl(sound.audiolink))"><i class="fa fa-external-link " ></i></button>
 						</div>
 						<div ng-if=" currentLang() == 'ar'">
 							<button class="sharebtn" ng-click="shareAnywhere(  getDay(sound.audio_date) + ' ' + getMunthName(sound.audio_date) + '\n' + sound.artitle + '\n' + sound.subartitle , changImageUrl(sound.audiolink))"><i class="fa fa-external-link " ></i></button>
-						</div>
-					</div>
-					<div class="main-title">
-
-						<div ng-if=" currentLang() == 'en'">
-							<h2>{{ sound.title }}</h2>
-						</div>
-						<div ng-if=" currentLang() == 'ar'">
-							<h2>{{ sound.artitle }}</h2>
-						</div>
-						<div ng-if="currentLang() == 'en'" class="subtitle">
-							<p>{{ sound.subtitle }}</p>
-						</div>
-						<div ng-if="currentLang() == 'ar'" class="subtitle">
-							<p>{{ sound.subartitle }}</p>
 						</div>
 					</div>
 				</div>
@@ -55,7 +51,7 @@
 	</div>
 </div>
 
-<div class="box-sounddetials comments">
+<div class="box-newsdetials comments">
 
 	<div class="row">
 		<div class="col">
@@ -73,34 +69,38 @@
 		</div>
 	</div>
 
-	<form method="post" novalidate="" ng-submit="commentfunc(soundcommentForm , 'soundcommentForm')" id="soundcommentForm" name="soundcommentForm" class="formComment">
-		<input type="hidden" ng-model="comment.type_id" name="type_id" value="{{sound.id}}"/>
-		<input type="hidden" na-model="comment.type" name="type" value="audio"/> 
-		<div>
-			<h5>{{ 'addCommentHeader_msg' | translate }}</h5>
-			<p>{{ 'addCommentMessage_msg' | translate }}</p>
+	<div class="row">
+		<div class="col">
+			<form method="post" novalidate="" ng-submit="commentfunc(soundcommentForm , 'soundcommentForm')" id="soundcommentForm" name="soundcommentForm" class="formComment">
+				<input type="hidden" ng-model="comment.type_id" name="type_id" value="{{sound.id}}"/>
+				<input type="hidden" na-model="comment.type" name="type" value="audio"/> 
+				<div>
+					<h5>{{ 'addCommentHeader_msg' | translate }}</h5>
+					<p>{{ 'addCommentMessage_msg' | translate }}</p>
+				</div>
+				<div ng-class="{ 'has-errors' : comment.username.$invalid, 'no-errors' : comment.username.$valid}" ng-messages-include="templates/error-list.html">
+					<span> {{ 'commenterName_msg' | translate }} </span> 
+					<input ng-model="comment.username" ng-minlength="3" ng-maxlength="20" required type="text" class="commenterName" name="username" />
+				</div>
+				<div class="error-container" ng-show="comment.username.$error" ng-messages="comment.username.$error" ng-messages-include="templates/error-list.html">
+		        </div>
+		        
+				<div ng-class="{ 'has-errors' : comment.content.$invalid, 'no-errors' : comment.content.$valid}" ng-messages-include="templates/error-list.html">
+					<span> {{ 'commentContent_msg' | translate }} </span>
+					<textarea ng-model="comment.content" name="content" class="commentContent" ng-minlength="3" required></textarea>
+				</div>
+				<div class="error-container" ng-show="comment.content.$error" ng-messages="comment.content.$error" ng-messages-include="templates/error-list.html">
+		        </div>
+		        
+		<!-- 		<div> -->
+		<!-- 			<input ng-model="comment.checkbox" type="checkbox" name="checkbox"> {{ 'commentCheckbox_msg' | translate }} -->
+		<!-- 		</div> -->
+				<br />
+				<button id="button-1" type="submit" class="button">{{'addComment_msg' | translate }}</button>
+				
+			</form>
 		</div>
-		<div ng-class="{ 'has-errors' : comment.username.$invalid, 'no-errors' : comment.username.$valid}" ng-messages-include="templates/error-list.html">
-			<span> {{ 'commenterName_msg' | translate }} </span> 
-			<input ng-model="comment.username" ng-minlength="3" ng-maxlength="20" required type="text" class="commenterName" name="username" />
-		</div>
-		<div class="error-container" ng-show="comment.username.$error" ng-messages="comment.username.$error" ng-messages-include="templates/error-list.html">
-        </div>
-        
-		<div ng-class="{ 'has-errors' : comment.content.$invalid, 'no-errors' : comment.content.$valid}" ng-messages-include="templates/error-list.html">
-			<span> {{ 'commentContent_msg' | translate }} </span>
-			<textarea ng-model="comment.content" name="content" class="commentContent" ng-minlength="3" required></textarea>
-		</div>
-		<div class="error-container" ng-show="comment.content.$error" ng-messages="comment.content.$error" ng-messages-include="templates/error-list.html">
-        </div>
-        
-<!-- 		<div> -->
-<!-- 			<input ng-model="comment.checkbox" type="checkbox" name="checkbox"> {{ 'commentCheckbox_msg' | translate }} -->
-<!-- 		</div> -->
-		
-		<button id="button-1" type="submit" class="button">{{'addComment_msg' | translate }}</button>
-		<br /> <br /> <br />
-	</form>
+	</div>
 </div>
 
 </ion-content> </ion-view>

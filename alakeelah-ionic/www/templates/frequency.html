@@ -1,5 +1,5 @@
 <ion-view class="pageView" view-title=""> 
-<ion-content overflow-scroll="true" class="pageContent frequancy"> <!--  <h1>{{ 'frequency_msg' | translate }}</h1>  -->
+<ion-content class="pageContent frequancy"> <!--  <h1>{{ 'frequency_msg' | translate }}</h1>  -->
 
 
 <div class="row">
@@ -31,35 +31,38 @@
 			<div class="item item-divider">{{ comment.comment_date }} {{comment.time }}</div>
 		</div>
 	</div>
-
-	<form method="post" novalidate="" ng-submit="commentfunc(frequencycommentForm , 'frequencycommentForm')" id="frequencycommentForm" name="frequencycommentForm" class="formComment">
-		<input type="hidden" ng-model="comment.type_id" name="type_id" value="0"/>
-		<input type="hidden" na-model="comment.type" name="type" value="frequency"/> 
-		<div>
-			<h5>{{ 'addCommentHeader_msg' | translate }}</h5>
-			<p>{{ 'addCommentMessage_msg' | translate }}</p>
+	
+	<div class="row">
+		<div class="col">
+			<form method="post" novalidate="" ng-submit="commentfunc(frequencycommentForm , 'frequencycommentForm')" id="frequencycommentForm" name="frequencycommentForm" class="formComment">
+				<input type="hidden" ng-model="comment.type_id" name="type_id" value="0"/>
+				<input type="hidden" na-model="comment.type" name="type" value="frequency"/> 
+				<div>
+					<h5>{{ 'addCommentHeader_msg' | translate }}</h5>
+					<p>{{ 'addCommentMessage_msg' | translate }}</p>
+				</div>
+				<div ng-class="{ 'has-errors' : comment.username.$invalid, 'no-errors' : comment.username.$valid}" ng-messages-include="templates/error-list.html">
+					<span> {{ 'commenterName_msg' | translate }} </span> 
+					<input ng-model="comment.username" ng-minlength="3" ng-maxlength="20" required type="text" class="commenterName" name="username" />
+				</div>
+				<div class="error-container" ng-show="comment.username.$error" ng-messages="comment.username.$error" ng-messages-include="templates/error-list.html">
+		        </div>
+		        
+				<div ng-class="{ 'has-errors' : comment.content.$invalid, 'no-errors' : comment.content.$valid}" ng-messages-include="templates/error-list.html">
+					<span> {{ 'commentContent_msg' | translate }} </span>
+					<textarea ng-model="comment.content" name="content" class="commentContent" ng-minlength="3" required></textarea>
+				</div>
+				<div class="error-container" ng-show="comment.content.$error" ng-messages="comment.content.$error" ng-messages-include="templates/error-list.html">
+		        </div>
+		        
+		<!-- 		<div> -->
+		<!-- 			<input ng-model="comment.checkbox" type="checkbox" name="checkbox"> {{ 'commentCheckbox_msg' | translate }} -->
+		<!-- 		</div> -->
+				<br />
+				<button id="button-1" type="submit" class="button">{{'addComment_msg' | translate }}</button>
+			</form>
 		</div>
-		<div ng-class="{ 'has-errors' : comment.username.$invalid, 'no-errors' : comment.username.$valid}" ng-messages-include="templates/error-list.html">
-			<span> {{ 'commenterName_msg' | translate }} </span> 
-			<input ng-model="comment.username" ng-minlength="3" ng-maxlength="20" required type="text" class="commenterName" name="username" />
-		</div>
-		<div class="error-container" ng-show="comment.username.$error" ng-messages="comment.username.$error" ng-messages-include="templates/error-list.html">
-        </div>
-        
-		<div ng-class="{ 'has-errors' : comment.content.$invalid, 'no-errors' : comment.content.$valid}" ng-messages-include="templates/error-list.html">
-			<span> {{ 'commentContent_msg' | translate }} </span>
-			<textarea ng-model="comment.content" name="content" class="commentContent" ng-minlength="3" required></textarea>
-		</div>
-		<div class="error-container" ng-show="comment.content.$error" ng-messages="comment.content.$error" ng-messages-include="templates/error-list.html">
-        </div>
-        
-<!-- 		<div> -->
-<!-- 			<input ng-model="comment.checkbox" type="checkbox" name="checkbox"> {{ 'commentCheckbox_msg' | translate }} -->
-<!-- 		</div> -->
-		
-		<button id="button-1" type="submit" class="button">{{'addComment_msg' | translate }}</button>
-		<br /> <br /> <br />
-	</form>
+	</div>
 </div>
 
 </ion-content> 
