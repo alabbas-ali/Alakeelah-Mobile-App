@@ -32,6 +32,14 @@ a {
 	background-color: transparent !important;
 }
 
+audio::-webkit-media-controls-volume-slider, video::-webkit-media-controls-volume-slider{
+	display: none;
+}
+
+audio::-webkit-media-controls-timeline, video::-webkit-media-controls-timeline{
+	background-color: rgb(192, 139, 31);
+}
+
 .sharebtn {
 	border: none;
 	background-color: transparent;
@@ -218,9 +226,11 @@ ion-side-menu {
 	margin: 10px 5px;
 	border-radius: 0px;
 }
+
 .navViewer{
 	height: 77%;
 }
+
 .box {
 	display: block;
 	min-height: 127px;
@@ -253,18 +263,6 @@ ion-side-menu {
 	height: 190px;
 }
 
-/******
-.box video {
-	width: 100%;
-	height: 100%;
-	max-height: 170px;
-	display: block;
-	background: transparent url('../img/defult.png') no-repeat 0 0;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-} *********/
 .box .title {
 	text-align: center;
 	position: absolute;
@@ -309,10 +307,6 @@ ion-side-menu {
 .box .title .date {
 	width: 20%;
 	float: left;
-}
-
-.title .share {
-	float: right;
 }
 
 .box .title .date h3 {
@@ -485,12 +479,17 @@ ion-side-menu {
 	display: block;
 }
 
+.box-newsdetials audio {
+	width: 100%;
+	}
+
 .box-newsdetials .title {
 	text-align: center;
 	width: 100%;
 	background-color: #d5d5d5;
 	padding: 5px 0 8px;
-	margin-top: 0px;
+	margin-top: -3px;
+	position: relative;
 }
 
 .box-newsdetials .title p, .box-newsdetials .title h2, .box-newsdetials .title h3,
@@ -500,13 +499,21 @@ ion-side-menu {
 }
 
 .box-newsdetials .title .main-title {
-	width: 75%;
-	padding-bottom: 10px;
+	width: 68%;
+  	padding-bottom: 0px;
+  	margin-left: 50px;
 }
 
 .box-newsdetials .title .date {
 	width: 15%;
 	float: right;
+}
+
+.box-newsdetials .title .share {
+	position: absolute;
+	left: 0px;
+	top: 6px;
+	width: 50px;
 }
 
 .box-newsdetials .title .date h3 {
@@ -525,162 +532,9 @@ ion-side-menu {
 	margin-top: -10px;
 }
 
-/************ box-vediodetials ********
-.box-vediodetials video {
-	width: 100%;
-	max-height: 170px;
-	display: block;
-	background-color: #250001;
-	background: transparent url('../img/defult.png') no-repeat 0 0;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
- ******/
-.box-vediodetials .title {
-	text-align: center;
-	width: 100%;
-	background-color: #d5d5d5;
-	padding: 5px 0 8px;
-	margin-top: -3px;
-}
-
-.box-vediodetials .title p, .box-vediodetials .title h2,
-	.box-vediodetials .title h3, .box-newsdetials .title h4 {
-	margin-top: 5px;
-	color: #000;
-}
-
-.box-vediodetials .title .main-title {
-	width: 75%;
-	padding-bottom: 10px;
-}
-
-.box-vediodetials .title .date {
-	width: 15%;
-	float: right;
-}
-
-.box-vediodetials .title .date h3 {
-	font-size: 12px;
-	float: right;
-	width: 100%;
-}
-
-.box-vediodetials .content {
-	padding: 10px;
-	background-color: #fff;
-}
-
-.box-vediodetials.comments {
-	background-color: #5e5e5e;
-	margin-top: -10px;
-}
-
-/************ box-picturedetials **************/
-.box-picturedetials img {
-	width: 100%;
-	background-color: #250001;
-	max-height: 190px;
-	display: block;
-}
-
-.box-picturedetials .title {
-	text-align: center;
-	width: 100%;
-	background-color: #d5d5d5;
-	padding: 5px 0 8px;
-	margin-top: -4px;
-}
-
-.box-picturedetials .title p, .box-picturedetials .title h2,
-	.box-picturedetials .title h3, .box-newsdetials .title h4 {
-	margin-top: 5px;
-	color: #000;
-}
-
-.box-picturedetials .title .main-title {
-	width: 75%;
-	padding-bottom: 10px;
-}
-
-.box-picturedetials .title .date {
-	width: 15%;
-	float: right;
-}
-
-.box-picturedetials .title .date h3 {
-	font-size: 12px;
-	float: right;
-	width: 100%;
-}
-
-.box-picturedetials .content {
-	padding: 10px;
-	background-color: #fff;
-}
-
-.box-picturedetials.comments {
-	background-color: #5e5e5e;
-	margin-top: -10px;
-}
-
-/************ box-sounddetials **************/
-.box-sounddetials img {
-	width: 100%;
-	background-color: #250001;
-	max-height: 190px;
-	display: block;
-}
-
-.box-sounddetials audio {
-	width: 100%;
-	margin-top: -10px;
-	background-color: #250001;
-}
-
-.box-sounddetials .title {
-	text-align: center;
-	width: 100%;
-	background-color: #d5d5d5;
-	padding: 5px 0 8px;
-	margin-top: -4px;
-}
-
-.box-sounddetials .title p, .box-sounddetials .title h2,
-	.box-sounddetials .title h3, .box-newsdetials .title h4 {
-	margin-top: 5px;
-	color: #000;
-}
-
-.box-sounddetials .title .main-title {
-	width: 75%;
-	padding-bottom: 10px;
-}
-
-.box-sounddetials .title .date {
-	width: 15%;
-	float: right;
-}
-
-.box-sounddetials .title .date h3 {
-	font-size: 12px;
-	float: right;
-	width: 100%;
-}
-
-.box-sounddetials .content {
-	padding: 10px;
-	background-color: #fff;
-}
-
-.box-sounddetials.comments {
-	background-color: #5e5e5e;
-	margin-top: -10px;
-}
 
 /************ frequency ******************/
+
 .frequency {
 	background-image: url("../img/frec.png");
 	background-repeat: no-repeat;
@@ -691,6 +545,7 @@ ion-side-menu {
 	overflow: hidden;
 	padding: 45px 28px 0px 0px !important;
 	color: #fff;
+	top: 50px;
 }
 
 .frequency div {
@@ -793,7 +648,7 @@ ion-side-menu {
 }
 
 .userName {
-	direction: ltr;
+	direction: rtl;
 	text-align: start;
 	width: 100%;
 	padding: 5px 0px;
@@ -803,11 +658,12 @@ ion-side-menu {
 }
 
 .userName .icon {
-	background-image: url("../img/entt.png");
+	/* background-image: url("../img/entt.png"); */
+	background-image: url("../img/tt.png");
 	background-size: 100%;
 	display: block;
 	height: 25px;
-	float: left;
+	float: right;
 	margin: -1px 6px;
 	width: 25px;
 }
@@ -817,17 +673,17 @@ ion-side-menu {
 }
 
 .userName .userheader{
-	margin-right: 35px;
+	margin-left: 35px;
 }
 
 .userName .proflink {
-		display: block;
+	display: block;
 	  height: 30px;
 	  width: 30px;
 	  /* float: right; */
 	  position: absolute;
 	  top: 0px;
-	  right: 0px;
+	  left: 0px;
 }
 
 .userName .proflink div {
@@ -836,53 +692,6 @@ ion-side-menu {
   display: block;
   height: 30px;
   width: 23px;
-}
-
-.subtitle {
-	padding: 0px 5px;
-}
-
-.subtitle p {
-	font-size: 12px;
-}
-
-.box .title .main-title .subtitle p {
-	font-size: 12px;
-	margin-top: 1px;
-	color: #fff;
-}
-
-.frequancy {
-	top: 50px;
-}
-
-/* Empty. Add your own CSS if you like */
-.videogular-container {
-	width: 100%;
-	height: 235px;
-	margin: auto;
-	overflow: hidden;
-}
-
-@media ( min-width : 1200px) {
-	.videogular-container {
-		width: 1170px;
-		height: 658.125px;
-	}
-}
-
-@media ( min-width : 992px) and (max-width: 1199px) {
-	.videogular-container {
-		width: 940px;
-		height: 528.75px;
-	}
-}
-
-@media ( min-width : 768px) and (max-width: 991px) {
-	.videogular-container {
-		width: 728px;
-		height: 409.5px;
-	}
 }
 
 /*********************************************************/
@@ -935,7 +744,7 @@ ion-side-menu {
 	border-radius: 5px;
 }
 
-/************************************************/
+/******************* programList *****************************/
 .programList {
 	background-color: rgba(255, 255, 255, 0.21);
 	color: #fff;
@@ -1000,8 +809,8 @@ ion-side-menu {
 }
 
 .ar .content {
-	direction: rtl;
 	text-align: right;
+	direction: rtl !important;
 }
 
 .ar .comments .comment-row {
@@ -1014,60 +823,4 @@ ion-side-menu {
 	text-align: start;
 }
 
-.ar .userName {
-	direction: rtl;
-}
 
-.ar .userName .icon {
-	background-image: url("../img/tt.png");
-	float: right;
-}
-
-.ar .userName .userheader{
-	margin-left: 35px;
-}
-
-.ar .userName .proflink {
-	left:0px;
-	}
-
-/*********** jwplyer ************************/
-.jwmain {
-	transition: all 7s ease;
-}
-
-.jwdisplayIcon {
-	background: none !important;
-}
-
-.jwplayer .jwuniform {
-	background-size: 100% 100% !important;
-}
-
-.jwicon {
-	background-size: 57px 100px !important;
-	width: 64px !important;
-}
-
-.jwcapLeft {
-	display: none;
-	visibility: hidden;
-	opacity: 0;
-}
-
-.jwcapRight {
-	display: none;
-	visibility: hidden;
-	opacity: 0;
-}
-
-.jwcontrolbar {
-	display: block !important;
-	opacity: 1 !important;
-	height: 40px !important;
-}
-
-.jwbackground {
-	background-image: none !important;
-	background-color: rgba(0, 0, 0, 0.62) !important;
-}

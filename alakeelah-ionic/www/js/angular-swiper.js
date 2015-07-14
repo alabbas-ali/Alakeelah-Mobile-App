@@ -63,7 +63,7 @@
                         loop : true,
                         autoplay : 1,
                         autoplayDisableOnInteraction : false,
-                        speed: 9000,
+                        speed: 7500,
                         auto: 30,
                         continuous: true,
                         

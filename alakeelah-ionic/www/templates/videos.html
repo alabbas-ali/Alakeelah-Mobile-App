@@ -1,4 +1,4 @@
-<ion-view class="pageView" view-title=""> <ion-content overflow-scroll="true"
+<ion-view class="pageView" view-title=""> <ion-content 
 	class="pageContent"> <!-- <h1>{{ 'videos_msg' | translate }}</h1>  -->
 
 <div class="row">
@@ -8,7 +8,7 @@
 				{{ 'most_public' | translate }} <i class="fa fa-star"></i>
 			</div> -->
 			<div class="item item-body">
-				<ion-slide-box show-pager="true"> 
+				<ion-slide-box auto-play="true" slide-interval="7000" does-continue="true" show-pager="true"> 
 				<ion-slide ng-repeat="publicVideo in publicVideos" ng-if="$index < 5">
 				<div class="box sliderimg">
 					<a href="#/app/videoDetials/{{publicVideo.id}}" class="link"> <img
