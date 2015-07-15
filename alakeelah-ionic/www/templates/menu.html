@@ -13,24 +13,19 @@
       
       <ks-swiper-container ng-if="resentNews.length > 0" class="topbarNews" initial-slide="1" loop="true" show-nav-buttons="false" slides-per-view="2" autoplay="100" space-between="20" pagination-clickable="false">
 	    <ks-swiper-slide class="swiper-slide" ng-repeat="resent in resentNews">
-	        						<a href="#/app/newsDetials/{{resent.id}}">
-                                        <div>
-                                            <div class="sliderlogo"></div>
-                                            
-                                            <div ng-if=" currentLang() == 'en'">
-												<p>{{ resent.title }}</p>
-											</div>
-											<div ng-if=" currentLang() == 'ar'">
-												<p>{{ resent.artitle }}</p>
-											</div>
-											<div ng-if="currentLang() == 'en'" class="subtitle">
-												<p>{{ resent.subtitle }} </p>
-											</div>
-											<div ng-if="currentLang() == 'ar'" class="subtitle">
-												<p>{{ resent.subartitle }} </p>
-											</div>
-                                        </div>
-                                    </a>
+	       	<a href="#/app/newsDetials/{{resent.id}}">
+				<div>
+                   	<div class="sliderlogo"></div>
+					<div ng-if=" currentLang() == 'en'">
+						<p>{{ resent.title }}</p>
+						<p>{{ resent.subtitle }} </p>
+					</div>
+					<div ng-if=" currentLang() == 'ar'">
+						<p>{{ resent.artitle }}</p>
+						<p>{{ resent.subartitle }} </p>
+					</div>
+				</div>
+			</a>
 	    </ks-swiper-slide>
 	</ks-swiper-container>
       

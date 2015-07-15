@@ -63,7 +63,10 @@
                         loop : true,
                         autoplay : 1,
                         autoplayDisableOnInteraction : false,
-                        speed: 7500,
+                        speed: 6000,
+                        freeMode: true,
+                        freeModeFluid: true,
+                        momentumRatio: 1,
                         auto: 30,
                         continuous: true,
                         

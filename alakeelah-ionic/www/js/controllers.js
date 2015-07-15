@@ -1202,8 +1202,14 @@ angular.module('starter.controllers', [])
 					});
 
 					promise.then(function(data) {
-						if(sound != null)
+						if(sound != null){
+							var prefix = 'http://';
+							var prefix2 = 'https://';
+							if (sound[0].audiolink.substr(0, prefix.length) !== prefix && sound[0].audiolink.substr(0, prefix2.length) !== prefix2 ){
+								sound[0].audiolink = prefix + sound[0].audiolink;
+							}
 							$scope.sound = sound[0];
+						}
 						$scope.commentsList = commentsList;
 						$scope.hideLoading();
 					}, null);

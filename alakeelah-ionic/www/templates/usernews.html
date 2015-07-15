@@ -4,9 +4,9 @@
 <div class="row">
 	<div class="col">
 		<div class="card">
-			<!-- <div class="item item-divider">
-				{{ 'most_public' | translate }} <i class="fa fa-star"></i>
-			</div> -->
+			<div style="padding: 0px 10px;direction: rtl;">
+				{{ 'most_publicNews' | translate }} <i class="fa fa-star"></i>
+			</div>
 			<div class="item item-body">
 				<ion-slide-box auto-play="true" slide-interval="7000" does-continue="true" show-pager="true"> <ion-slide
 					ng-repeat="publicNews in publicNewss" ng-if="$index < 5">
@@ -50,7 +50,7 @@
 </div>
 
 
-<div ng-repeat="rows in newsList" class="row">
+<div ng-repeat="rows in newsList" class="row list">
 	<div ng-repeat="news in rows" class="col">
 		<div class="card">
 			<!-- <div class="item item-divider">
@@ -80,6 +80,7 @@
 			</div>
 		</div>
 	</div>
+	<div class="col" ng-if="rows.length == 1"></div>
 </div>
 
 </ion-content> </ion-view>
