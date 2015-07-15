@@ -55,6 +55,7 @@
 
                     var params = {
                         slidesPerView: slidesPerView,
+                        centeredSlides: false,
                         slidesPerViewFit : false,
                         paginationClickable: paginationClickable,
                         initialSlide: initialSlide,
@@ -64,7 +65,9 @@
                         autoplay : 1,
                         autoplayDisableOnInteraction : false,
                         speed: 7500,
-                        auto: 30,
+                        freeMode: true,
+                        freeModeFluid: true,
+                        auto: 20,
                         continuous: true,
                         
                     };
