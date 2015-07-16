@@ -67,7 +67,8 @@
                         speed: 7500,
                         freeMode: true,
                         freeModeFluid: true,
-                        auto: 20,
+                        momentumRatio: 1,
+                        auto: 30,
                         continuous: true,
                         
                     };
