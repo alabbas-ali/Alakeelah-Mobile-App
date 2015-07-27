@@ -76,13 +76,16 @@ ion-nav-view {
 	transition: transform 549ms ease !important;
 }
 
-ion-side-menu {
-	/* display: none;
-	transition: 549ms ease !important; */
-	visibility: hidden;
-	opacity: 0;
-	transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+@media (max-width:768px){
+	ion-side-menu {
+		/* display: none;
+		transition: 549ms ease !important; */
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+	}
 }
+
 
 .menu-open ion-side-menu {
 	/* display: block; */
