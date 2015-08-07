@@ -23,8 +23,19 @@ a {
 	border-radius: 6px;
 	margin: 16px;
 	display: block;
-	width: 40%;
+	width: 38%;
 	float: left;
+}
+
+.daylink1 {
+	font-size: 12px;
+	background-color: rgba(255, 255, 255, 0.26);
+	padding: 4px;
+	border-radius: 6px;
+	margin: 16px;
+	display: block;
+	width: 38%;
+	float: right;
 }
 
 [nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"]
@@ -768,10 +779,10 @@ ion-nav-view {
 	color: #fff;
 	border: none;
 	padding: 0px;
-	height: 60px;
+	min-height: 50px;
 }
 
-.programList:nth-child(2) {
+.programList:nth-child(odd) {
 	background-color: rgba(0, 0, 0, 0.21);
 }
 
@@ -785,7 +796,7 @@ ion-nav-view {
 	background-color: rgba(255, 255, 255, 0.54);
 }
 
-.programList:nth-child(2) .time {
+.programList:nth-child(odd) .time {
 	background-color: rgba(0, 0, 0, 0.54);
 }
 

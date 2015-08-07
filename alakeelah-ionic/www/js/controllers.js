@@ -796,6 +796,18 @@ angular.module('starter.controllers', [])
 				$scope.hideLoading();
 			}, null);
 			
+			$scope.calcheight = function( start_date , duration ){
+				var objDate = new Date(start_date);
+				var h = objDate.getHours();
+				var m = objDate.getMinutes();
+				var objDate1 = new Date(duration);
+				var h1 = objDate1.getHours();
+				var m1 = objDate1.getMinutes();
+				var hieght = ((h1 - h) * 60 ) + ( m1 - m );
+				console.log(' hieght : = ' + hieght);
+				return hieght;
+			}
+			
 			$scope.programDay = {program_day:'1'};
 			$scope.changelist = function(day){
 				if(day==='today'){
