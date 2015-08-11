@@ -3,14 +3,14 @@ var serverURI = 'http://alaqila.tv/admin528/public/';
 var appStoreURL = '';
 var publicNunber = 5;
 
-var is_ios = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
+//var is_ios = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
 
-if(is_ios){
-	$('.body ion-side-menus').css("top", "20px;");
-	appStoreURL = 'https://itunes.apple.com/us/app/alaqila-tv/id1004536281?ls=1&mt=8'; 
-}else{
+//if(is_ios){
+	//$('.body ion-side-menus').css("top", "20px;");
+	//appStoreURL = 'https://itunes.apple.com/us/app/alaqila-tv/id1004536281?ls=1&mt=8'; 
+//}else{
 	appStoreURL = 'https://play.google.com/store/apps/details?id=com.alaqila'; 
-}
+//}
 
 var settingsList = "";
 
