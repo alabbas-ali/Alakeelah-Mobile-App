@@ -216,12 +216,12 @@ angular.module('starter.controllers', [])
 				        var pattern3 = /([-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?(?:jpg|jpeg|gif|png))/gi;
 
 				        if(pattern1.test(text)){
-				        	var replacement = '<div style="text-align:center"><iframe width="95%" height="200" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>';
+				        	var replacement = '<div style="text-align:center"><iframe webkit-playsinline width="95%" height="200" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>';
 				        	text = text.replace(pattern1, replacement);
 				        }
 				     
 				        if(pattern2.test(text)){
-				            var replacement = '<div style="text-align:center"><iframe width="95%" height="200" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div>';
+				            var replacement = '<div style="text-align:center"><iframe webkit-playsinline width="95%" height="200" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div>';
 				            text = text.replace(pattern2, replacement);
 				        }
 
@@ -742,11 +742,11 @@ angular.module('starter.controllers', [])
 									            var replacement = 'http://www.youtube.com/embed/$1';
 									            broadcastURI = broadcastURI.replace(pattern2, replacement);
 									            $scope.broadcastURI = broadcastURI;
-									            $('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="' + broadcastURI + '" allowfullscreen frameborder="0"></iframe>');
+									            $('#myplayer').html('<iframe webkit-playsinline id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="' + broadcastURI + '" allowfullscreen frameborder="0"></iframe>');
 									        }else{
 									        	//{{trustSrc(video.videolink)}}
 									        	$scope.broadcastURI = broadcastURI;
-									        	$('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="templates/player.html" allowfullscreen frameborder="0"></iframe>');
+									        	$('#myplayer').html('<iframe webkit-playsinline id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="templates/player.html" allowfullscreen frameborder="0"></iframe>');
 									        }
 											
 											$scope.viewPlayer=true;
@@ -1092,11 +1092,11 @@ angular.module('starter.controllers', [])
 									            var replacement = 'http://www.youtube.com/embed/$1';
 									            video[0].videolink = video[0].videolink.replace(pattern2, replacement);
 									            $scope.video = video[0];
-									            $('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="' + video[0].videolink + '" allowfullscreen frameborder="0"></iframe>');
+									            $('#myplayer').html('<iframe webkit-playsinline id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="' + video[0].videolink + '" allowfullscreen frameborder="0"></iframe>');
 									        }else{
 									        	//{{trustSrc(video.videolink)}}
 									        	$scope.video = video[0];
-									        	$('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="templates/player.html" allowfullscreen frameborder="0"></iframe>');
+									        	$('#myplayer').html('<iframe webkit-playsinline id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="templates/player.html" allowfullscreen frameborder="0"></iframe>');
 									        }
 										}
 										$scope.commentsList = commentsList;
