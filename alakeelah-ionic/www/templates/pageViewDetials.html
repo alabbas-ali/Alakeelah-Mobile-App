@@ -11,7 +11,7 @@
 						<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/usersounds/{{user.id}}"> {{ 'sounds_msg' | translate }} </a>
 						<span>::</span> <a style="text-decoration: none;color: #fff" href="#/app/userpictures/{{user.id}}"> {{ 'gallery_msg' | translate }} </a>
 					</div>
-					<a href="#/app/userDetials/{{user.id}}" class="proflink"> 
+					<a href="#/app/userDetials/{{user.id}}" ng-if="(currentLang() == 'en' && user.content != '') || (currentLang() == 'ar' &&user.arcontent != '')" class="proflink"> 
 						<div class="prof" ></div>
 					</a>
 				</div>
