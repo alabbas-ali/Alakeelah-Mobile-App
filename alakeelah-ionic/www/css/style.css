@@ -16,6 +16,10 @@ a {
 	padding-top: 50px;
 }
 
+.bar-header{
+	border: none;
+}
+
 .daylink {
 	font-size: 12px;
 	background-color: rgba(255, 255, 255, 0.26);
