@@ -7,7 +7,7 @@
 angular
 		.module(
 				'starter',
-				[ 'ionic', 'starter.controllers', 'ngCordova', 'ui.router' ,
+				[ 'ionic', 'starter.controllers', 'ngCordova', 'ui.router' , 'ngAnimate', 
 						'pascalprecht.translate', 'ngMessages', 'ngSanitize', 'ksSwiper' ])
 
 		.run(

@@ -4,8 +4,8 @@
 	<h1 class="pageHeader">{{ pageName }}</h1>
 
 
-	<div ng-repeat="rows in usersList" class="row" >
-		<div ng-repeat="user in rows" class="col">
+	<div ng-repeat="rows in usersList" class="row repeat-animation" >
+		<div ng-repeat="user in rows" class="col repeat-animation">
 			<div class="card">
 				<div class="item item-text-wrap box">
 					<a href="#/app/pageViewDetials/{{user.id}}" class="ui-link"> 

@@ -243,7 +243,7 @@ angular.module('starter.controllers', [])
 				function($scope, $stateParams, $q,$state, $ionicSlideBoxDelegate) {
 
 					$scope.showLoading();
-
+					
 					var news, vedios, sounds, pictures;
 					var promise = $q(function(resolve, reject) {
 						var ndone = false;
@@ -414,6 +414,7 @@ angular.module('starter.controllers', [])
 						$scope.pictures = pictures;
 						$ionicSlideBoxDelegate.update();
 						$scope.hideLoading();
+						
 					}, null);
 				})
 
