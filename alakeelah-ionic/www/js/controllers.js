@@ -1,7 +1,16 @@
 //var serverURI = 'http://localhost/NewProject/public/';
 var serverURI = 'http://alaqila.tv/admin528/public/';
-var appStoreURL = 'https://play.google.com/store/apps/details?id=com.alaqila';
+var appStoreURL = '';
 var publicNunber = 5;
+
+var is_ios = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
+
+if(is_ios){
+	$('.body').css("top", "20px;");
+	appStoreURL = 'https://itunes.apple.com/us/app/alaqila-tv/id1004536281?ls=1&mt=8'; 
+}else{
+	appStoreURL = 'https://play.google.com/store/apps/details?id=com.alaqila'; 
+}
 
 var settingsList = "";
 
@@ -183,7 +192,9 @@ angular.module('starter.controllers', [])
 					};
 
 					$scope.openOut = function(href) {
-						window.open(href, '_system', 'location=yes');
+						if( href != "" ){
+							window.open(href, '_system', 'location=yes');
+						}
 					}
 					
 					$scope.changImageUrl = function(href) {
@@ -804,7 +815,7 @@ angular.module('starter.controllers', [])
 				var h1 = objDate1.getHours();
 				var m1 = objDate1.getMinutes();
 				var hieght = ((h1 - h) * 60 ) + ( m1 - m );
-				console.log(' hieght : = ' + hieght);
+				//console.log(' hieght : = ' + hieght);
 				return hieght;
 			}
 			

@@ -95,6 +95,10 @@ ion-nav-view {
 		opacity: 0;
 		transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 	}
+	
+	.comments {
+    	width: 97% !important;
+	}
 }
 
 
@@ -399,7 +403,7 @@ ion-nav-view {
 
 /********* comments ************/
 .comments {
-	width: 97%;
+	width: 99%;
 	margin: auto;
 	padding: 10px 0px;
 }
@@ -413,7 +417,8 @@ ion-nav-view {
 	height: 55px;
 	background-image: url("../img/live.png");
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	background-size: contain;
+	background-position: center;
 	padding: 0px 12px;
 }
 
@@ -567,14 +572,14 @@ ion-nav-view {
 	background-image: url("../img/frec.png");
 	background-repeat: no-repeat;
 	background-position: right top;
-	background-size: 100%;
+	background-size: contain;
 	height: 83px;
 	max-height: 86px;
 	min-height: 155px;
 	overflow: hidden;
 	padding: 45px 28px 0px 0px !important;
 	color: #fff;
-	top: 50px;
+	top: 5px;
 }
 
 .frequency div {
@@ -882,7 +887,7 @@ ion-nav-view {
 	direction: rtl !important;
 }
 
-.ar .comments .comment-row {
+.comments .comment-row {
 	direction: rtl;
 	text-align: right;
 }
