@@ -23,26 +23,27 @@
 	<feature name="InAppBrowser">
 		<param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
 		<param name="ios-package" value="CDVInAppBrowser" />
-		<param name="id" value="org.apache.cordova.inappbrowser" />
-	</feature>
+		
+		<param name="wp-package" value="InAppBrowser" />
+	<param name="id" value="org.apache.cordova.inappbrowser" /></feature>
 
 	<feature name="Console">
 		<param name="ios-package" value="CDVLogger" />
 		<param name="wp-package" value="DebugConsole" />
-		<param name="id" value="org.apache.cordova.console" />
-	</feature>
+		
+	<param name="id" value="org.apache.cordova.console" /></feature>
 	<feature name="Keyboard">
 		<param name="android-package" value="com.ionic.keyboard.IonicKeyboard" />
 		<param name="onload" value="true" />
 		<param name="ios-package" value="IonicKeyboard" />
-		<param name="id" value="com.ionic.keyboard" />
-	</feature>
+		
+	<param name="id" value="com.ionic.keyboard" /></feature>
 	<feature name="Globalization">
 		<param name="android-package" value="org.apache.cordova.globalization.Globalization" />
 		<param name="ios-package" value="CDVGlobalization" />
 		<param name="wp-package" value="Globalization" />
-		<param name="id" value="org.apache.cordova.globalization" />
-	</feature>
+		
+	<param name="id" value="org.apache.cordova.globalization" /></feature>
 	<feature name="File">
 		<param name="android-package" value="org.apache.cordova.file.FileUtils" />
 		<param name="onload" value="true" />
@@ -53,22 +54,24 @@
 		<param name="android-package" value="org.apache.cordova.media.AudioHandler" />
 		<param name="ios-package" value="CDVSound" />
 		<param name="wp-package" value="Media" />
-		<param name="id" value="org.apache.cordova.media" />
-	</feature>
+		
+	<param name="id" value="org.apache.cordova.media" /></feature>
 	<feature name="Device">
 		<param name="android-package" value="org.apache.cordova.device.Device" />
 		<param name="ios-package" value="CDVDevice" />
 		<param name="wp-package" value="Device" />
-		<param name="id" value="org.apache.cordova.device" />
-	</feature>
+		
+	<param name="id" value="org.apache.cordova.device" /></feature>
 	<feature name="SocialSharing">
 		<param name="android-package" value="nl.xservices.plugins.SocialSharing" />
 		<param name="ios-package" value="SocialSharing" />
 		<param name="onload" value="true" />
 		<param name="wp-package" value="SocialSharing" />
+
+
 		
 		
-	<param name="url" value="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" /><param name="id" value="nl.x-services.plugins.socialsharing" /></feature>
+	<param name="id" value="nl.x-services.plugins.socialsharing" /><param name="url" value="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" /></feature>
 
 	<!-- for iOS -->
 
@@ -79,12 +82,12 @@
 		<icon src="/res/icons/mdpi.png" density="mdpi" />
 		<icon src="/res/icons/hdpi.png" density="hdpi" />
 		<icon src="/res/icons/xhdpi.png" density="xhdpi" />
-		
+
 		<splash src="res/splash/splash.png" density="land-ldpi" />
 		<splash src="res/splash/splash.png" density="land-mdpi" />
 		<splash src="res/splash/splash.png" density="land-hdpi" />
 		<splash src="res/splash/splash.png" density="land-xhdpi" />
-		
+
 		<splash src="res/splash/splash.png" density="port-ldpi" />
 		<splash src="res/splash/splash.png" density="port-mdpi" />
 		<splash src="res/splash/splash.png" density="port-hdpi" />
@@ -124,15 +127,16 @@
 		<icon src="/res/icons/50.png" width="50" height="50" />
 		<icon src="/res/icons/100.png" width="100" height="100" />
 		
-		<splash src="/res/splash/splash.png" width="320" height="480"/>
-        <splash src="/res/splash/splash.png" width="640" height="960"/>
-        <splash src="/res/splash/splash.png" width="768" height="1024"/>
-        <splash src="/res/splash/splash.png" width="1536" height="2048"/>
-        <splash src="/res/splash/splash.png" width="1024" height="768"/>
-        <splash src="/res/splash/splash.png" width="2048" height="1536"/>
-        <splash src="/res/splash/splash.png" width="640" height="1136"/>
-        <splash src="/res/splash/splash.png" width="750" height="1334"/>
-        <splash src="/res/splash/splash.png" width="1242" height="2208"/>
-        <splash src="/res/splash/splash.png" width="2208" height="1242"/>
+		<!-- images are determined by width and height. The following are supported -->
+	    <splash src="/res/splash/ios/Default~iphone.png" width="320" height="480"/>
+	    <splash src="/res/splash/ios/Default@2x~iphone.png" width="640" height="960"/>
+	    <splash src="/res/splash/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
+	    <splash src="/res/splash/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+	    <splash src="/res/splash/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
+	    <splash src="/res/splash/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
+	    <splash src="/res/splash/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
+	    <splash src="/res/splash/ios/Default-667h.png" width="750" height="1334"/>
+	    <splash src="/res/splash/ios/Default-736h.png" width="1242" height="2208"/>
+	    <splash src="/res/splash/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
 	</platform>
 </widget>
