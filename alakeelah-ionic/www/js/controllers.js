@@ -3,15 +3,10 @@ var serverURI = 'http://alaqila.tv/admin528/public/';
 var appStoreURL = '';
 var publicNunber = 5;
 
-//var is_ios = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
+//appStoreURL = 'https://itunes.apple.com/us/app/alaqila-tv/id1004536281?ls=1&mt=8'; 
+appStoreURL = 'https://play.google.com/store/apps/details?id=com.alaqila'; 
 
-//if(is_ios){
-	//$('.body ion-side-menus').css("top", "20px;");
-	//appStoreURL = 'https://itunes.apple.com/us/app/alaqila-tv/id1004536281?ls=1&mt=8'; 
-//}else{
-	appStoreURL = 'https://play.google.com/store/apps/details?id=com.alaqila'; 
-//}
-
+	
 var settingsList = "";
 
 function chunk(arr, size) {
@@ -1739,4 +1734,25 @@ angular.module('starter.controllers', [])
 						$ionicSlideBoxDelegate.update();
 						$scope.hideLoading();
 					}, null);
+				})
+				
+				.directive('animatedMenu', function ($timeout, $ionicSideMenuDelegate) {
+				    return {
+				        restrict: 'A',
+				        replace: false,
+				        link: function ($scope, $element, $attr) {
+				            // Run in the next scope digest
+				            $timeout(function () {
+				                // Watch for changes to the openRatio which is a value between 0 and 1 that says how "open" the side menu is
+				                $scope.$watch(function () {
+				                        return $ionicSideMenuDelegate.getOpenRatio();
+				                    },
+				                    function (ratio) {
+				                       console.log((Number(ratio)));
+				                       $element[0].style.webkitTransform = "translateX(" + (Number(ratio) * 100) + "px)";
+				                       $element[0].style.opacity = (Number(ratio));
+				                    });
+				            });
+				        }
+				    }
 				});

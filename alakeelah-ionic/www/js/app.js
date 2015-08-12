@@ -292,8 +292,8 @@ angular
 						advertisment_msg : "اعلانات",
 						yellow_msg : "ذهبي",
 						blue_msg : "ازرق",
-						green_msg : "أحضر",
-						neal_msg : "كحلي",
+						green_msg : "أخضر",
+						neal_msg : "بنفسجي",
 						language_msg : "اللغة",
 						arabic_msg : "العربية",
 						english_msg : "English",
@@ -378,4 +378,6 @@ angular
 
 					$translateProvider.preferredLanguage = "en";
 					$translateProvider.fallbackLanguage = "en";
+					
+					$translateProvider.useSanitizeValueStrategy(null);
 				});
