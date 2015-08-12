@@ -293,7 +293,7 @@ ion-nav-view {
 	text-align: center;
 	position: absolute;
 	z-index: 999;
-	max-height: 65px;
+	max-height: 45px;
 	bottom: 0px;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
@@ -304,13 +304,19 @@ ion-nav-view {
 	padding: 5px 0 10px;
 }
 
+.box.sliderimg .title{
+	max-height: 65px;
+}
+
 .box .title .main-title h2 {
 	font-size: 12px;
 	padding: 0px 5px;
+	max-height: 29px;
 }
 
 .box.sliderimg .title .main-title h2{
 	font-size: 13px;
+	max-height: 50px;
 }
 
 .box .title .subtitle p{
@@ -677,12 +683,18 @@ ion-nav-view {
 }
 
 .topbarNews p {
-	padding: 0px;
-	padding-top: 4px;
+	padding: 0px 5px;
+	padding-top: 10px;
 	margin: 0px;
 	text-align: center;
 	color: #fff;
-	font-size: 14px;
+	font-size: 11px;
+	max-height: 40px;
+}
+
+.topbarNews p.sub{
+	font-size: 10px;
+	padding-top: 6px;
 }
 
 /**************** swiper  ************************/
@@ -858,36 +870,36 @@ ion-nav-view {
 
 .ar .body {
 	text-align: right;
-	font-family: 'Droid Arabic Kufi', Tahoma,"Open Sans", Helvetica;
+	font-family: 'Droid Arabic Kufi', Tahoma,"Open Sans", Helvetica !important;
 }
 
 .ar .ionic-body{
-	font-family: 'Droid Arabic Kufi', Tahoma,"Open Sans", Helvetica;
+	font-family: 'Droid Arabic Kufi', Tahoma,"Open Sans", Helvetica !important;
 }
 
 .ar{
-	font-family: 'Droid Arabic Kufi', Tahoma,"Open Sans", Helvetica;
+	font-family: 'Droid Arabic Kufi', Tahoma,"Open Sans", Helvetica !important;
 }
 
 .ar h1, .ar h2, .ar h3, .ar h4, .ar h5, .ar h6, .ar .h1, .ar .h2, .ar .h3, .ar .h4, .ar .h5, .ar .h6{
-	font-family: 'Droid Arabic Kufi', Tahoma,"Open Sans", Helvetica;
+	font-family: 'Droid Arabic Kufi', Tahoma,"Open Sans", Helvetica !important;
 }
 
 .ar input, .ar button, .ar select, .ar textarea{
-	font-family: 'Droid Arabic Kufi', Tahoma,"Open Sans", Helvetica;
+	font-family: 'Droid Arabic Kufi', Tahoma,"Open Sans", Helvetica !important;
 }
 
 .ar .card .item-divider {
 	direction: rtl;
-	text-align: right;
+	text-align: right !important;
 }
 
 .ar .sidemenu {
-	text-align: right;
+	text-align: right !important;
 }
 
 .ar .menu .list .item .icon {
-	float: right;
+	float: right !important;
 }
 
 .ar .menu .list .item .text {
@@ -896,11 +908,11 @@ ion-nav-view {
 }
 
 .ar .commentsHeader {
-	text-align: right;
+	text-align: right !important;
 }
 
 .ar .formComment {
-	text-align: right;
+	text-align: right !important;
 	direction: rtl;
 }
 
@@ -911,12 +923,12 @@ ion-nav-view {
 
 .comments .comment-row {
 	direction: rtl;
-	text-align: right;
+	text-align: right !important;
 }
 
 .ar .advertisment .title {
 	direction: rtl;
-	text-align: start;
+	text-align: right !important;
 }
 
 //////////////////////////////////////////////////////////

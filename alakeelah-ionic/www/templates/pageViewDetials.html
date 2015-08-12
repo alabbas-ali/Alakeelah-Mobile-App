@@ -97,9 +97,12 @@
 			          <div class="iconlinks link2" ng-if="user.instagram" ng-click="openOut(user.instagram)">
 			          		<div class="inst"></div>
 			          </div>
-			          <a class="iconlinks link3" href="#/app/liveBroadcast/{{user.id}}">
+			          <div class="iconlinks link3" ng-if="user.livestream" ng-click="openOut(user.livestream)">
 			          		<div class="live"></div>
-			          </a>
+			          </div>
+			         <!-- <a class="iconlinks link3" href="#/app/liveBroadcast/{{user.id}}">
+			          		<div class="live"></div>
+			          </a>  --> 
 		         </div>
 			</div>
 		</div>
