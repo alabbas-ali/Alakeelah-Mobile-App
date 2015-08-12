@@ -119,17 +119,19 @@ ion-nav-view {
 	background-position: center;
 	color: #fff;
 	background-size: 100% 100%;
-	-webkit-transition: all 500ms;
-	-moz-transition: all 500ms;
-	-ms-transition: all 500ms;
-	-o-transition: all 500ms;
-	transition: all 500ms;
+	-webkit-transition: all 2500ms ease-in-out !important;
+	-moz-transition: all 2500ms ease-in-out !important;
+	-ms-transition: all 2500ms ease-in-out !important;
+	-o-transition: all 2500ms ease-in-out !important;
+	transition: all 2500ms ease-in-out !important;
 	text-align: left;
 }
 
+/***** Just for IOS  *****/
 .body ion-side-menus{
 	margin-top: 20px;
 }
+/***** Just for IOS  *****/
 
 .content div {
 	text-align: justify;
@@ -960,3 +962,14 @@ ion-nav-view {
   background: rgba(255, 255, 255, 0) !important;
 }
 
+
+.fade-in-out.ng-enter, .fade-in-out .ng-enter {
+  -webkit-animation: fadeIn 0.3s;
+  -moz-animation: fadeIn 0.3s;
+  animation: fadeIn 0.3s;
+  position: absolute; }
+.fade-in-out.ng-leave, .fade-in-out .ng-leave {
+  -webkit-animation: fadeOut 0.3s;
+  -moz-animation: fadeOut 0.3s;
+  animation: fadeOut 0.3s;
+  position: absolute; }
