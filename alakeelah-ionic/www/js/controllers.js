@@ -39,6 +39,7 @@ angular.module('starter.controllers', [])
 					$ionicHistory.clearCache();
 					
 					$scope.showLoading = function() {
+						$scope.shownGroup = false;
 						$ionicLoading.show({
 							templateUrl : 'templates/loading.html',
 							hideOnStateChange : true
@@ -229,6 +230,15 @@ angular.module('starter.controllers', [])
 				        
 				        return $sce.trustAsHtml(text);
 					}
+					
+					
+					$scope.showMore = function() {
+						$scope.shownGroup = true;
+					};
+					
+				    $scope.isGroupShown = function() {
+				    	return $scope.shownGroup;
+				    };
 					
 					$scope.changeBgColor = cahngColor;
 		})
@@ -1748,7 +1758,7 @@ angular.module('starter.controllers', [])
 				                        return $ionicSideMenuDelegate.getOpenRatio();
 				                    },
 				                    function (ratio) {
-				                       console.log((Number(ratio)));
+				                       //console.log((Number(ratio)));
 				                       $element[0].style.webkitTransform = "translateX(" + (Number(ratio) * 100) + "px)";
 				                       $element[0].style.opacity = (Number(ratio));
 				                    });

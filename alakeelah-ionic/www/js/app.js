@@ -41,7 +41,10 @@ angular
 				})
 
 		.config(
-				function($stateProvider, $urlRouterProvider, $translateProvider) {
+				function($stateProvider, $urlRouterProvider, $translateProvider , $ionicConfigProvider) {
+					
+					$ionicConfigProvider.scrolling.jsScrolling(false);
+					
 					$stateProvider
 
 					.state('app', {
@@ -307,6 +310,7 @@ angular
 						addCommentMessage_msg : " التعليقات تمثل رأي أصحابها وقناة العقيلة الفضائية تخلي مسؤوليته عنها",
 						commenterName_msg : "الإسم :",
 						commentContent_msg : "التعليق :",
+						moreComment_msg : "عرض المزيد من التعليقات",
 						commentCheckbox_msg : "أختر لأضافة التعليق إلى حسابك في تويتر و فيس بوك",
 						addComment_msg : "إضافة تعليق",
 						newsCountry_msg : "اخبار",
@@ -360,6 +364,7 @@ angular
 						addCommentMessage_msg : "Comments represent the opinion of owners not ours ...",
 						commenterName_msg : "Name :",
 						commentContent_msg : "Comment :",
+						moreComment_msg : "Show More Comments",
 						commentCheckbox_msg : "Add Your Comment Into Facebook Account",
 						addComment_msg : "Add Comment",
 						newsCountry_msg : "News",
