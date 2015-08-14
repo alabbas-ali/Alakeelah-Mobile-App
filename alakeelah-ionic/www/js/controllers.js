@@ -18,11 +18,11 @@ function chunk(arr, size) {
 	return newArr;
 }
 
-function objLog(op) {
-	for ( var key in op) {
-		console.log("key " + key + " : " + op.key);
-	}
-}
+//function objLog(op) {
+//	for ( var key in op) {
+//		console.log("key " + key + " : " + op.key);
+//	}
+//}
 
 var cahngColor = function(color) {
 	$('.body').css({
@@ -143,8 +143,14 @@ angular.module('starter.controllers', [])
 								}
 							});
 
-					if (localStorage.language)
+					if (localStorage.language){
 						$scope.changeLang(localStorage.language);
+						setTimeout(function() {
+							if (localStorage.language == "ar") {
+								$('.body').addClass("ar");
+							}
+					    }, 1000);
+					}
 
 					if (localStorage.color)
 						cahngColor(localStorage.color);

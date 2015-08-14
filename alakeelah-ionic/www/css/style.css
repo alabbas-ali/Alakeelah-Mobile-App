@@ -88,29 +88,16 @@ ion-nav-view {
 }
 
 .menu-animated {
-	transition: transform 549ms ease !important;
+	transition: transform 500ms ease !important;
 }
 
 @media (max-width:768px){
-	ion-side-menu {
-		/* display: none;
-		transition: 549ms ease !important; */
-		visibility: hidden;
+	ion-side-menu .menu-container.menu-animated {
 		opacity: 0;
-		transition: visibility 0s linear 0.9s, opacity 0.9s linear;
 	}
-	
 	.comments {
     	width: 97% !important;
 	}
-}
-
-
-.menu-open ion-side-menu {
-	/* display: block; */
-	visibility: visible;
-	opacity: 1;
-	transition-delay: 0s;
 }
 
 .body {

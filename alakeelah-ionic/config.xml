@@ -15,16 +15,16 @@
 
 	<preference name="SplashScreen" value="screen" />
 	<preference name="SplashScreenDelay" value="7000" />
-	
+
 	<preference name="StatusBarStyle" value="lightcontent" />
-	
+
 	<feature name="StatusBar">
-		<param name="ios-package" value="CDVStatusBar" onload="true"/>
+		<param name="ios-package" value="CDVStatusBar" onload="true" />
 		<param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
 		<param name="onload" value="true" />
 		<param name="wp-package" value="StatusBar" />
 		<param name="id" value="org.apache.cordova.statusbar" />
-		
+
 	</feature>
 
 	<feature name="InAppBrowser">
@@ -85,6 +85,8 @@
 		<param name="url"
 			value="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" />
 	</feature>
+	
+	
 
 	<!-- for iOS -->
 
