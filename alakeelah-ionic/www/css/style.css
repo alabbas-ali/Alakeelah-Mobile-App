@@ -604,7 +604,8 @@ ion-nav-view {
 	float: right;
 	text-align: right;
 	color: #fff;
-	font-size: 14px;
+	font-size: 12px;
+	line-height: 16px;
 }
 
 /************** tttt ********************/
@@ -673,17 +674,19 @@ ion-nav-view {
 
 .topbarNews p {
 	padding: 0px 5px;
-	padding-top: 10px;
-	margin: 0px;
-	text-align: center;
-	color: #fff;
-	font-size: 11px;
-	max-height: 40px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    margin: 0px;
+    text-align: center;
+    color: #fff;
+    font-size: 11px;
+    max-height: 48px;
+    overflow: hidden;
 }
 
 .topbarNews p.sub{
-	font-size: 10px;
-	padding-top: 6px;
+	font-size: 9px;
+	padding-top: 0px;
 }
 
 /**************** swiper  ************************/
@@ -943,6 +946,14 @@ ion-nav-view {
   width: 100% !important;
   height: 100% !important;
   margin-left: -100px !important;
+}
+
+
+@media (min-width:768px){
+	.menu-container {
+	  margin-left: 0px !important;
+	  opacity: 1 !important;
+	}
 }
 
 .menu-content .scroll-content {

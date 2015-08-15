@@ -252,7 +252,13 @@ angular.module('starter.controllers', [])
 		.controller(
 				'mainCtrl',
 				function($scope, $stateParams, $q,$state, $ionicSlideBoxDelegate) {
-
+					
+					$scope.$on('$ionicView.loaded', function() {
+						  ionic.Platform.ready( function() {
+						    if(navigator && navigator.splashscreen) navigator.splashscreen.hide();
+						  });
+						});
+					
 					$scope.showLoading();
 					
 					var news, vedios, sounds, pictures;

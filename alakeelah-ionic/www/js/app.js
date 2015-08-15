@@ -382,8 +382,8 @@ angular
 						tomorow_programs : "Tomorrow",
 					});
 
-					$translateProvider.preferredLanguage = "en";
-					$translateProvider.fallbackLanguage = "en";
+					$translateProvider.preferredLanguage = "ar";
+					$translateProvider.fallbackLanguage = "ar";
 					
 					$translateProvider.useSanitizeValueStrategy(null);
 				});
