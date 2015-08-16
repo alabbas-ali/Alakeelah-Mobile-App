@@ -151,6 +151,8 @@ angular.module('starter.controllers', [])
 							}
 					    }, 1000);
 					}
+					
+					if($translate.use()=="ar") $('.body').addClass("ar");
 
 					if (localStorage.color)
 						cahngColor(localStorage.color);
