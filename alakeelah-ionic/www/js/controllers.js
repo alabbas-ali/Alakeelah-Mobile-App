@@ -247,17 +247,16 @@ angular.module('starter.controllers', [])
 				    };
 					
 					$scope.changeBgColor = cahngColor;
+					
+					$timeout( function(){ 
+						if(navigator && navigator.splashscreen) navigator.splashscreen.hide();
+					}, 1000);
 		})
 
 		.controller(
 				'mainCtrl',
 				function($scope, $stateParams, $q,$state, $ionicSlideBoxDelegate) {
 					
-					$scope.$on('$ionicView.loaded', function() {
-						  ionic.Platform.ready( function() {
-						    if(navigator && navigator.splashscreen) navigator.splashscreen.hide();
-						  });
-						});
 					
 					$scope.showLoading();
 					

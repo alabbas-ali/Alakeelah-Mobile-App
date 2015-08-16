@@ -114,12 +114,6 @@ ion-nav-view {
 	text-align: left;
 }
 
-/***** Just for IOS  *****/
-.body ion-side-menus{
-	margin-top: 20px;
-}
-/***** Just for IOS  *****/
-
 .content div {
 	text-align: justify;
 }
@@ -968,9 +962,6 @@ ion-nav-view {
   transition: 0.09s all linear;
 }
 
-.overflow-scroll{
-	bottom: 10px !important;	
-}
 
 .button.button-balanced.button-outline{
 	border-color: #FFFFFF;
