@@ -42,18 +42,6 @@
 	</div>
 </div>
 
-<div>
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- live app -->
-		<ins class="adsbygoogle"
-		     style="display:block"
-		     data-ad-client="ca-pub-2732966410918009"
-		     data-ad-slot="2523706173"
-		     data-ad-format="auto"></ins>
-		<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-	</script>
-</div>
 
 <div class="comments">
 
@@ -72,7 +60,7 @@
 			<div class="item item-divider">{{ comment.comment_date }} {{comment.time }}</div>
 		</div>
 	</div>
-	<a ng-click="showMore()" ng-show="!isGroupShown() && comment.lenght > 3" class="button button-outline icon-right ion-chevron-right button-balanced">&nbsp; {{ 'moreComment_msg' | translate }} ...</a>
+	<a ng-click="showMore()" ng-show="!isGroupShown() && commentsList.length > 4" class="button button-outline icon-right ion-chevron-right button-balanced">&nbsp; {{ 'moreComment_msg' | translate }} ...</a>
 
 	<div class="row">
 		<div class="col">

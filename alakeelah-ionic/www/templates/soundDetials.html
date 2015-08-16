@@ -68,7 +68,7 @@
 			<div class="item item-divider">{{ comment.comment_date }} {{comment.time }}</div>
 		</div>
 	</div>
-	<a ng-click="showMore()" ng-show="!isGroupShown() && comment.lenght > 3" class="button button-outline icon-right ion-chevron-right button-balanced">&nbsp; {{ 'moreComment_msg' | translate }} ...</a>
+	<a ng-click="showMore()" ng-show="!isGroupShown() && commentsList.length > 4" class="button button-outline icon-right ion-chevron-right button-balanced">&nbsp; {{ 'moreComment_msg' | translate }} ...</a>
 
 	<div class="row">
 		<div class="col">
