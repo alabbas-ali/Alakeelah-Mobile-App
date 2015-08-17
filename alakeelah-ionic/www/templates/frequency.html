@@ -24,14 +24,14 @@
 		</div>
 	</div>
 	
-	<div class="row comment-row" ng-repeat="comment in commentsList">
+	<div class="row comment-row" ng-repeat="comment in commentsList" ng-show="isGroupShown() || $index <= 3">
 		<div class="col">
 			<div class="item item-divider">{{ comment.username }}</div>
 			<div class="item item-text-wrap">{{ comment.content }}</div>
 			<div class="item item-divider">{{ comment.comment_date }} {{comment.time }}</div>
 		</div>
 	</div>
-	
+	<a ng-click="showMore()" ng-show="!isGroupShown() && commentsList.length > 4" class="button button-outline icon-right ion-chevron-right button-balanced">&nbsp; {{ 'moreComment_msg' | translate }} ...</a>
 	<div class="row">
 		<div class="col">
 			<form method="post" novalidate="" ng-submit="commentfunc(frequencycommentForm , 'frequencycommentForm')" id="frequencycommentForm" name="frequencycommentForm" class="formComment">

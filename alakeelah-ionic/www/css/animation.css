@@ -1,0 +1,35 @@
+
+.repeat-animation.ng-enter-stagger {
+  /* 200ms will be applied between each sucessive enter operation */ 
+  -webkit-transition-delay:0.6s;
+  transition-delay:0.6s;
+  /* this is here to avoid accidental CSS inheritance */
+  -webkit-transition-duration:0;
+  transition-duration:0;
+}
+
+.repeat-animation.ng-enter {
+  -webkit-transition:0.6s linear all;
+  transition:0.6s linear all;
+  opacity:0;
+  line-height:0;
+}
+
+.repeat-animation.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.fade-in-out.ng-enter, .fade-in-out .ng-enter {
+	  -webkit-animation: fadeIn 0.3s;
+	  -moz-animation: fadeIn 0.3s;
+	  animation: fadeIn 0.3s;
+	  position: absolute; 
+}
+.fade-in-out.ng-leave, .fade-in-out .ng-leave {
+	  -webkit-animation: fadeOut 0.3s;
+	  -moz-animation: fadeOut 0.3s;
+	  animation: fadeOut 0.3s;
+	  position: absolute; 
+}
+
+

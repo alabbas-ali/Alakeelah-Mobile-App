@@ -7,7 +7,7 @@
 angular
 		.module(
 				'starter',
-				[ 'ionic', 'starter.controllers', 'ngCordova', 'ui.router' ,
+				[ 'ionic', 'starter.controllers', 'ngCordova', 'ui.router' , 'ngAnimate', 
 						'pascalprecht.translate', 'ngMessages', 'ngSanitize', 'ksSwiper' ])
 
 		.run(
@@ -19,6 +19,7 @@ angular
 						// accessory
 						// bar above the keyboard
 						// for form inputs)
+
 						if (window.cordova && window.cordova.plugins.Keyboard) {
 							cordova.plugins.Keyboard
 									.hideKeyboardAccessoryBar(true);
@@ -41,7 +42,10 @@ angular
 				})
 
 		.config(
-				function($stateProvider, $urlRouterProvider, $translateProvider) {
+				function($stateProvider, $urlRouterProvider, $translateProvider , $ionicConfigProvider) {
+					
+					$ionicConfigProvider.scrolling.jsScrolling(false);
+					
 					$stateProvider
 
 					.state('app', {
@@ -292,8 +296,8 @@ angular
 						advertisment_msg : "اعلانات",
 						yellow_msg : "ذهبي",
 						blue_msg : "ازرق",
-						green_msg : "أحضر",
-						neal_msg : "كحلي",
+						green_msg : "أخضر",
+						neal_msg : "بنفسجي",
 						language_msg : "اللغة",
 						arabic_msg : "العربية",
 						english_msg : "English",
@@ -307,6 +311,7 @@ angular
 						addCommentMessage_msg : " التعليقات تمثل رأي أصحابها وقناة العقيلة الفضائية تخلي مسؤوليته عنها",
 						commenterName_msg : "الإسم :",
 						commentContent_msg : "التعليق :",
+						moreComment_msg : "عرض المزيد من التعليقات",
 						commentCheckbox_msg : "أختر لأضافة التعليق إلى حسابك في تويتر و فيس بوك",
 						addComment_msg : "إضافة تعليق",
 						newsCountry_msg : "اخبار",
@@ -360,6 +365,7 @@ angular
 						addCommentMessage_msg : "Comments represent the opinion of owners not ours ...",
 						commenterName_msg : "Name :",
 						commentContent_msg : "Comment :",
+						moreComment_msg : "Show More Comments",
 						commentCheckbox_msg : "Add Your Comment Into Facebook Account",
 						addComment_msg : "Add Comment",
 						newsCountry_msg : "News",
@@ -376,6 +382,8 @@ angular
 						tomorow_programs : "Tomorrow",
 					});
 
-					$translateProvider.preferredLanguage = "en";
-					$translateProvider.fallbackLanguage = "en";
+					$translateProvider.preferredLanguage = "ar";
+					$translateProvider.fallbackLanguage = "ar";
+					
+					$translateProvider.useSanitizeValueStrategy(null);
 				});

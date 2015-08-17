@@ -5,7 +5,7 @@
 <div class="row">
 	<div class="col">
 		<div class="card">
-			<div style="padding: 0px 10px;direction: rtl;">
+			<div style="padding: 0px 10px;direction: rtl;font-size: 12px">
 				{{ 'most_publicPic' | translate }} <i class="fa fa-star"></i>
 			</div>
 			<div class="item item-body">
@@ -51,8 +51,8 @@
 </div>
 
 
-<div ng-repeat="rows in picturesList" class="row list">
-	<div ng-repeat="picture in rows" class="col">
+<div ng-repeat="rows in picturesList" class="row list repeat-animation">
+	<div ng-repeat="picture in rows" class="col repeat-animation">
 		<div class="card">
 			<!-- <div class="item item-divider">
 					{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>

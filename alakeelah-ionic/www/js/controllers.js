@@ -1,8 +1,12 @@
 //var serverURI = 'http://localhost/NewProject/public/';
 var serverURI = 'http://alaqila.tv/admin528/public/';
-var appStoreURL = 'https://play.google.com/store/apps/details?id=com.alaqila';
+var appStoreURL = '';
 var publicNunber = 5;
 
+//appStoreURL = 'https://itunes.apple.com/us/app/alaqila-tv/id1004536281?ls=1&mt=8'; 
+appStoreURL = 'https://play.google.com/store/apps/details?id=com.alaqila'; 
+
+	
 var settingsList = "";
 
 function chunk(arr, size) {
@@ -14,11 +18,11 @@ function chunk(arr, size) {
 	return newArr;
 }
 
-function objLog(op) {
-	for ( var key in op) {
-		console.log("key " + key + " : " + op.key);
-	}
-}
+//function objLog(op) {
+//	for ( var key in op) {
+//		console.log("key " + key + " : " + op.key);
+//	}
+//}
 
 var cahngColor = function(color) {
 	$('.body').css({
@@ -35,6 +39,7 @@ angular.module('starter.controllers', [])
 					$ionicHistory.clearCache();
 					
 					$scope.showLoading = function() {
+						$scope.shownGroup = false;
 						$ionicLoading.show({
 							templateUrl : 'templates/loading.html',
 							hideOnStateChange : true
@@ -138,8 +143,16 @@ angular.module('starter.controllers', [])
 								}
 							});
 
-					if (localStorage.language)
+					if (localStorage.language){
 						$scope.changeLang(localStorage.language);
+						setTimeout(function() {
+							if (localStorage.language == "ar") {
+								$('.body').addClass("ar");
+							}
+					    }, 1000);
+					}
+					
+					if($translate.use()=="ar") $('.body').addClass("ar");
 
 					if (localStorage.color)
 						cahngColor(localStorage.color);
@@ -183,7 +196,9 @@ angular.module('starter.controllers', [])
 					};
 
 					$scope.openOut = function(href) {
-						window.open(href, '_system', 'location=yes');
+						if( href != "" ){
+							window.open(href, '_system', 'location=yes');
+						}
 					}
 					
 					$scope.changImageUrl = function(href) {
@@ -205,12 +220,12 @@ angular.module('starter.controllers', [])
 				        var pattern3 = /([-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?(?:jpg|jpeg|gif|png))/gi;
 
 				        if(pattern1.test(text)){
-				        	var replacement = '<div style="text-align:center"><iframe width="95%" height="200" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>';
+				        	var replacement = '<div style="text-align:center"><iframe webkit-playsinline width="95%" height="200" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>';
 				        	text = text.replace(pattern1, replacement);
 				        }
 				     
 				        if(pattern2.test(text)){
-				            var replacement = '<div style="text-align:center"><iframe width="95%" height="200" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div>';
+				            var replacement = '<div style="text-align:center"><iframe webkit-playsinline width="95%" height="200" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div>';
 				            text = text.replace(pattern2, replacement);
 				        }
 
@@ -224,15 +239,29 @@ angular.module('starter.controllers', [])
 				        return $sce.trustAsHtml(text);
 					}
 					
+					
+					$scope.showMore = function() {
+						$scope.shownGroup = true;
+					};
+					
+				    $scope.isGroupShown = function() {
+				    	return $scope.shownGroup;
+				    };
+					
 					$scope.changeBgColor = cahngColor;
+					
+					$timeout( function(){ 
+						if(navigator && navigator.splashscreen) navigator.splashscreen.hide();
+					}, 1000);
 		})
 
 		.controller(
 				'mainCtrl',
 				function($scope, $stateParams, $q,$state, $ionicSlideBoxDelegate) {
-
+					
+					
 					$scope.showLoading();
-
+					
 					var news, vedios, sounds, pictures;
 					var promise = $q(function(resolve, reject) {
 						var ndone = false;
@@ -403,6 +432,7 @@ angular.module('starter.controllers', [])
 						$scope.pictures = pictures;
 						$ionicSlideBoxDelegate.update();
 						$scope.hideLoading();
+						
 					}, null);
 				})
 
@@ -730,11 +760,11 @@ angular.module('starter.controllers', [])
 									            var replacement = 'http://www.youtube.com/embed/$1';
 									            broadcastURI = broadcastURI.replace(pattern2, replacement);
 									            $scope.broadcastURI = broadcastURI;
-									            $('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="' + broadcastURI + '" allowfullscreen frameborder="0"></iframe>');
+									            $('#myplayer').html('<iframe webkit-playsinline id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="' + broadcastURI + '" allowfullscreen frameborder="0"></iframe>');
 									        }else{
 									        	//{{trustSrc(video.videolink)}}
 									        	$scope.broadcastURI = broadcastURI;
-									        	$('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="templates/player.html" allowfullscreen frameborder="0"></iframe>');
+									        	$('#myplayer').html('<iframe webkit-playsinline id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="templates/player.html" allowfullscreen frameborder="0"></iframe>');
 									        }
 											
 											$scope.viewPlayer=true;
@@ -795,6 +825,18 @@ angular.module('starter.controllers', [])
 				//alert(programList);
 				$scope.hideLoading();
 			}, null);
+			
+			$scope.calcheight = function( start_date , duration ){
+				var objDate = new Date(start_date);
+				var h = objDate.getHours();
+				var m = objDate.getMinutes();
+				var objDate1 = new Date(duration);
+				var h1 = objDate1.getHours();
+				var m1 = objDate1.getMinutes();
+				var hieght = ((h1 - h) * 60 ) + ( m1 - m );
+				//console.log(' hieght : = ' + hieght);
+				return hieght;
+			}
 			
 			$scope.programDay = {program_day:'1'};
 			$scope.changelist = function(day){
@@ -1068,11 +1110,11 @@ angular.module('starter.controllers', [])
 									            var replacement = 'http://www.youtube.com/embed/$1';
 									            video[0].videolink = video[0].videolink.replace(pattern2, replacement);
 									            $scope.video = video[0];
-									            $('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="' + video[0].videolink + '" allowfullscreen frameborder="0"></iframe>');
+									            $('#myplayer').html('<iframe webkit-playsinline id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="' + video[0].videolink + '" allowfullscreen frameborder="0"></iframe>');
 									        }else{
 									        	//{{trustSrc(video.videolink)}}
 									        	$scope.video = video[0];
-									        	$('#myplayer').html('<iframe id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="templates/player.html" allowfullscreen frameborder="0"></iframe>');
+									        	$('#myplayer').html('<iframe webkit-playsinline id="videoframe" class="youtube-player" type="text/html" width="100%" height="210" src="templates/player.html" allowfullscreen frameborder="0"></iframe>');
 									        }
 										}
 										$scope.commentsList = commentsList;
@@ -1715,4 +1757,25 @@ angular.module('starter.controllers', [])
 						$ionicSlideBoxDelegate.update();
 						$scope.hideLoading();
 					}, null);
+				})
+				
+				.directive('animatedMenu', function ($timeout, $ionicSideMenuDelegate) {
+				    return {
+				        restrict: 'A',
+				        replace: false,
+				        link: function ($scope, $element, $attr) {
+				            // Run in the next scope digest
+				            $timeout(function () {
+				                // Watch for changes to the openRatio which is a value between 0 and 1 that says how "open" the side menu is
+				                $scope.$watch(function () {
+				                        return $ionicSideMenuDelegate.getOpenRatio();
+				                    },
+				                    function (ratio) {
+				                       //console.log((Number(ratio)));
+				                       $element[0].style.webkitTransform = "translateX(" + (Number(ratio) * 100) + "px)";
+				                       $element[0].style.opacity = (Number(ratio));
+				                    });
+				            });
+				        }
+				    }
 				});

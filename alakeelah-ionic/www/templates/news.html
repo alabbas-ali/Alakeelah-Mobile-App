@@ -1,10 +1,10 @@
-<ion-view class="pageView" view-title=""> 
+<ion-view class="pageView" animation="slide-left-right" view-title=""> 
 <ion-content class="pageContent"> <!-- <h1>{{ 'news_msg' | translate }}</h1>  -->
 
 <div class="row">
 	<div class="col">
 		<div class="card">
-			<div  style="padding: 0px 10px;direction: rtl;">
+			<div  style="padding: 0px 10px;direction: rtl;font-size: 12px">
 				{{ 'most_publicNews' | translate }} <i class="fa fa-star"></i>
 			</div>
 			<div class="item item-body">
@@ -50,8 +50,8 @@
 </div>
 
 
-<div ng-repeat="rows in newsList" class="row list">
-	<div ng-repeat="news in rows" class="col">
+<div ng-repeat="rows in newsList" class="row list repeat-animation">
+	<div ng-repeat="news in rows" class="col repeat-animation">
 		<div class="card">
 			<!-- <div class="item item-divider">
 					{{ 'videos_msg' | translate }} <i class="fa fa-play"></i>

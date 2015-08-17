@@ -1,5 +1,5 @@
 <ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
+  <ion-side-menu-content fall-away>
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
@@ -18,11 +18,11 @@
                    	<div class="sliderlogo"></div>
 					<div ng-if=" currentLang() == 'en'">
 						<p>{{ resent.title }}</p>
-						<p>{{ resent.subtitle }} </p>
+						<p class="sub">{{ resent.subtitle }} </p>
 					</div>
 					<div ng-if=" currentLang() == 'ar'">
 						<p>{{ resent.artitle }}</p>
-						<p>{{ resent.subartitle }} </p>
+						<p class="sub">{{ resent.subartitle }} </p>
 					</div>
 				</div>
 			</a>
@@ -30,124 +30,126 @@
 	</ks-swiper-container>
       
     </ion-nav-bar>
-    <ion-nav-view name="menuContent" class="navViewer"> 
+    <ion-nav-view name="menuContent" animation="fade-in-out" class="navViewer"> 
     
     </ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left" class="sidemenu">
-    <ion-content>
-      <ion-list>
-      	<ion-item class="menu-title">
- 			{{ 'liveBroadcast_msg' | translate }}
- 		</ion-item >
-        <ion-item nav-clear menu-close href="#/app/liveBroadcast/0">
-          <div class="icon"><i class="fa fa-desktop"></i> </div> <div class="text"> {{ 'live_msg' | translate }} </div>
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/frequency">
-          <div class="icon"><i class="fa fa-map-marker"></i> </div> <div class="text">{{ 'frequency_msg' | translate }}  </div>
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/broadcastTable">
-           <div class="icon"><i class="fa fa-clock-o"></i> </div> <div class="text">{{ 'broadcastTable_msg' | translate }}  </div>
-        </ion-item>
- 		<ion-item class="menu-title">
- 			{{ 'divisions_msg' | translate }}
- 		</ion-item >
-        
-        <ion-item nav-clear menu-close href="#/app/main">
-          <div class="icon"><i class="fa fa-home"></i> </div> <div class="text">{{ 'home_msg' | translate }}  </div>
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/news">
-          <div class="icon"><i class="fa fa-newspaper-o"></i> </div> <div class="text">{{ 'news_msg' | translate }}  </div>
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/videos">
-          <div class="icon"><i class="fa fa-play-circle-o"></i> </div> <div class="text">{{ 'videos_msg' | translate }}  </div>
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/sounds">
-          <div class="icon"><i class="fa fa-microphone"></i> </div> <div class="text">{{ 'sounds_msg' | translate }}  </div>
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/pictures">
-          <div class="icon"><i class="fa fa-picture-o"></i> </div> <div class="text">{{ 'gallery_msg' | translate }}  </div>
-        </ion-item>
-        
-        <ion-item class="menu-title">
- 			{{ 'pages_msg' | translate }}
- 		</ion-item >
- 		<ion-item nav-clear menu-close ng-repeat="page in pageList" href="#/app/pageView/{{page.id}}/{{ page.name }}" >
-          <div class="icon"><i class="fa {{ page.image }}"></i> </div>  <div class="text">
-          							<div ng-if=" currentLang() == 'en'">
-										{{ page.enname }} 
-									</div>
-									<div ng-if=" currentLang() == 'ar'">
-										{{ page.name }} 
-									</div> 
-          
-          </div>
-        </ion-item> 
-        <ion-item nav-clear menu-close href="#/app/advertisment">
-          <div class="icon"><i class="fa fa-bullhorn"></i> </div> <div class="text">{{ 'advertisment_msg' | translate }}  </div>
-        </ion-item>
-        
-        <ion-item class="menu-title" ng-if="settingsList.facebook || settingsList.twitter || settingsList.instagram || settingsList.youtube">
- 			{{ 'socialNetworks_msg' | translate }}
- 		</ion-item >
- 		<ion-item nav-clear menu-close ng-if="settingsList.facebook" ng-click="openOut(settingsList.facebook)">
- 		<div class="item-content">
-          <div class="icon"><i class="fa fa-facebook-official"></i> </div> <div class="text">{{ 'facebook_msg' | translate }}  </div>
-          </div>
-        </ion-item>
-        <ion-item nav-clear menu-close ng-if="settingsList.twitter"  ng-click="openOut(settingsList.twitter)">
-        <div class="item-content">
-          <div class="icon"><i class="fa fa-twitter-square"></i> </div> <div class="text">{{ 'twitter_msg' | translate }}  </div>
-          </div>
-        </ion-item>
-        <ion-item nav-clear menu-close ng-if="settingsList.instagram"  ng-click="openOut(settingsList.instagram)">
-        <div class="item-content">
-          <div class="icon"><i class="fa fa-instagram"></i> </div> <div class="text">{{ 'instagram_msg' | translate }}  </div>
-          </div>
-        </ion-item>
-        <ion-item nav-clear menu-close ng-if="settingsList.youtube"  ng-click="openOut(settingsList.youtube)">
-        <div class="item-content">
-          <div class="icon"><i class="fa fa-youtube-play"></i> </div> <div class="text">{{ 'youtube_msg' | translate }}  </div>
-          </div>
-        </ion-item>
-        <ion-item class="menu-title">
- 			{{ 'setting_msg' | translate }}
- 		</ion-item >
- 		<ion-item nav-clear menu-close ng-click="changeBgColor('Yellow')">
- 		<div class="item-content">
-          <div class="icon"><i style="color:yellow;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'yellow_msg' | translate }}  </div>
-        </div>
-        </ion-item>
-        <ion-item nav-clear menu-close ng-click="changeBgColor('Blue')">
-        <div class="item-content">
-          <div class="icon"><i style="color:#1b2b66;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'blue_msg' | translate }}  </div>
-        </div>
-        </ion-item>
-        <ion-item nav-clear menu-close ng-click="changeBgColor('Green')">
-        <div class="item-content">
-          <div class="icon"><i style="color: #2f9474;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'green_msg' | translate }}  </div>
-        </div>
-        </ion-item>
-        <ion-item nav-clear menu-close ng-click="changeBgColor('Neal')">
-        <div class="item-content">
-          <div class="icon"><i style="color: #641c88;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'neal_msg' | translate }}  </div>
-        	</div>
-        </ion-item>
-        <ion-item class="menu-title">
- 			{{ 'language_msg' | translate }}
- 		</ion-item >
- 		<ion-item nav-clear menu-close ng-click="changeLang('ar')">
- 			<div class="item-content">
- 				<div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'arabic_msg' | translate }}  </div>
- 			</div>
-        </ion-item>
-        <ion-item nav-clear menu-close ng-click="changeLang('en')">
-        	<div class="item-content">
-          		<div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'english_msg' | translate }}  </div>
-          	</div>
-        </ion-item>
-      </ion-list>
-    </ion-content>
+  <ion-side-menu side="left" class="sidemenu" expose-aside-when="large">
+	  <div class="menu-container menu-animated" animated-menu>
+		    <ion-content>
+		      <ion-list>
+		      	<ion-item class="menu-title">
+		 			{{ 'liveBroadcast_msg' | translate }}
+		 		</ion-item >
+		        <ion-item nav-clear menu-close href="#/app/liveBroadcast/0">
+		          <div class="icon"><i class="fa fa-desktop"></i> </div> <div class="text"> {{ 'live_msg' | translate }} </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close href="#/app/frequency">
+		          <div class="icon"><i class="fa fa-map-marker"></i> </div> <div class="text">{{ 'frequency_msg' | translate }}  </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close href="#/app/broadcastTable">
+		           <div class="icon"><i class="fa fa-clock-o"></i> </div> <div class="text">{{ 'broadcastTable_msg' | translate }}  </div>
+		        </ion-item>
+		 		<ion-item class="menu-title">
+		 			{{ 'divisions_msg' | translate }}
+		 		</ion-item >
+		        
+		        <ion-item nav-clear menu-close href="#/app/main">
+		          <div class="icon"><i class="fa fa-home"></i> </div> <div class="text">{{ 'home_msg' | translate }}  </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close href="#/app/news">
+		          <div class="icon"><i class="fa fa-newspaper-o"></i> </div> <div class="text">{{ 'news_msg' | translate }}  </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close href="#/app/videos">
+		          <div class="icon"><i class="fa fa-play-circle-o"></i> </div> <div class="text">{{ 'videos_msg' | translate }}  </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close href="#/app/sounds">
+		          <div class="icon"><i class="fa fa-microphone"></i> </div> <div class="text">{{ 'sounds_msg' | translate }}  </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close href="#/app/pictures">
+		          <div class="icon"><i class="fa fa-picture-o"></i> </div> <div class="text">{{ 'gallery_msg' | translate }}  </div>
+		        </ion-item>
+		        
+		        <ion-item class="menu-title">
+		 			{{ 'pages_msg' | translate }}
+		 		</ion-item >
+		 		<ion-item nav-clear menu-close ng-repeat="page in pageList" href="#/app/pageView/{{page.id}}/{{ page.name }}" >
+		          <div class="icon"><i class="fa {{ page.image }}"></i> </div>  <div class="text">
+		          							<div ng-if=" currentLang() == 'en'">
+												{{ page.enname }} 
+											</div>
+											<div ng-if=" currentLang() == 'ar'">
+												{{ page.name }} 
+											</div> 
+		          
+		          </div>
+		        </ion-item> 
+		        <ion-item nav-clear menu-close href="#/app/advertisment">
+		          <div class="icon"><i class="fa fa-bullhorn"></i> </div> <div class="text">{{ 'advertisment_msg' | translate }}  </div>
+		        </ion-item>
+		        
+		        <ion-item class="menu-title" ng-if="settingsList.facebook || settingsList.twitter || settingsList.instagram || settingsList.youtube">
+		 			{{ 'socialNetworks_msg' | translate }}
+		 		</ion-item >
+		 		<ion-item nav-clear menu-close ng-if="settingsList.facebook" ng-click="openOut(settingsList.facebook)">
+		 		<div class="item-content">
+		          <div class="icon"><i class="fa fa-facebook-official"></i> </div> <div class="text">{{ 'facebook_msg' | translate }}  </div>
+		          </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close ng-if="settingsList.twitter"  ng-click="openOut(settingsList.twitter)">
+		        <div class="item-content">
+		          <div class="icon"><i class="fa fa-twitter-square"></i> </div> <div class="text">{{ 'twitter_msg' | translate }}  </div>
+		          </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close ng-if="settingsList.instagram"  ng-click="openOut(settingsList.instagram)">
+		        <div class="item-content">
+		          <div class="icon"><i class="fa fa-instagram"></i> </div> <div class="text">{{ 'instagram_msg' | translate }}  </div>
+		          </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close ng-if="settingsList.youtube"  ng-click="openOut(settingsList.youtube)">
+		        <div class="item-content">
+		          <div class="icon"><i class="fa fa-youtube-play"></i> </div> <div class="text">{{ 'youtube_msg' | translate }}  </div>
+		          </div>
+		        </ion-item>
+		        <ion-item class="menu-title">
+		 			{{ 'setting_msg' | translate }}
+		 		</ion-item >
+		 		<ion-item nav-clear menu-close ng-click="changeBgColor('Yellow')">
+		 		<div class="item-content">
+		          <div class="icon"><i style="color:yellow;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'yellow_msg' | translate }}  </div>
+		        </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close ng-click="changeBgColor('Blue')">
+		        <div class="item-content">
+		          <div class="icon"><i style="color:#1b2b66;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'blue_msg' | translate }}  </div>
+		        </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close ng-click="changeBgColor('Green')">
+		        <div class="item-content">
+		          <div class="icon"><i style="color: #2f9474;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'green_msg' | translate }}  </div>
+		        </div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close ng-click="changeBgColor('Neal')">
+		        <div class="item-content">
+		          <div class="icon"><i style="color: #641c88;" class="fa fa-dot-circle-o"></i> </div> <div class="text">{{ 'neal_msg' | translate }}  </div>
+		        	</div>
+		        </ion-item>
+		        <ion-item class="menu-title">
+		 			{{ 'language_msg' | translate }}
+		 		</ion-item >
+		 		<ion-item nav-clear menu-close ng-click="changeLang('ar')">
+		 			<div class="item-content">
+		 				<div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'arabic_msg' | translate }}  </div>
+		 			</div>
+		        </ion-item>
+		        <ion-item nav-clear menu-close ng-click="changeLang('en')">
+		        	<div class="item-content">
+		          		<div class="icon"><i class="fa fa-language"></i> </div> <div class="text">{{ 'english_msg' | translate }}  </div>
+		          	</div>
+		        </ion-item>
+		      </ion-list>
+		    </ion-content>
+	    </div>
   </ion-side-menu>
 </ion-side-menus>

@@ -7,8 +7,10 @@
 	<div class="col">
 		<div class="card">
 			<div class="item item-text-wrap box">
-				 <img ng-src="{{advertisment.image}}" altSrc="img/defult.png"
-					onerror="this.src = $(this).attr('altSrc')" />
+				
+				 	<img ng-src="{{advertisment.image}}" altSrc="img/defult.png"
+						onerror="this.src = $(this).attr('altSrc')" ng-click="openOut(advertisment.url)" />
+				
 			</div>
 		</div>
 	</div>
